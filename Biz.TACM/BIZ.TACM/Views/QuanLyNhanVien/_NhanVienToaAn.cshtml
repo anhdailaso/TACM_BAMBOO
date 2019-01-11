@@ -1,0 +1,65 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.QuanLyNhanVien.NhanVienToaAnViewModel
+    @{ 
+        string s = null;
+    }
+@using (Html.BeginForm("TruyCapTheoToaAn", "QuanLyNhanVien", FormMethod.Post, new { id = "formNhanVienToaAn" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.NhanvienID)
+    @Html.HiddenFor(x=>x.ToaAnID,new {@id="nvToaAnid" })
+    <div class="modal-header">
+        <h4 class="text-uppercase">@ViewText.TITLE_TRUYCAPTHEOTOAAN</h4>
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-hover table-custom table-bordered">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>
+                        @ViewText.TABLE_TOAAN
+                    </td>
+                    <td style="text-align:center">
+                        @ViewText.TABLE_TOAANTRUCTHUOC
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @for(var i=0;i<Model.ListToaAn.Count();i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(x=>x.ListToaAn[i].isckeck, new {@id="cb-"+Model.ListToaAn[i].ToaAnID })
+                        </td>
+                        <td>
+                            @Model.ListToaAn[i].TenToaAn
+                            @Html.HiddenFor(x => x.ListToaAn[i].TenToaAn)
+                            @Html.HiddenFor(x => x.ListToaAn[i].ToaAnID)
+                        </td>
+                        <td style="text-align:center">
+                            @if(Model.ListToaAn[i].ToaAnID==Model.ToaAnID)
+                            {
+                                s = "checked";
+                            }
+                            else { s = null; }
+
+                            <input type="radio" id="r_@Model.ListToaAn[i].ToaAnID" name="tructhuoc" @s value="@Model.ListToaAn[i].ToaAnID"/>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="NVToaAn-btn" aria-hidden="true">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script>
+    $(function () {
+        ToaAnNhanVienModule.init();
+        CheckRadioModule.init();
+    });
+</script>

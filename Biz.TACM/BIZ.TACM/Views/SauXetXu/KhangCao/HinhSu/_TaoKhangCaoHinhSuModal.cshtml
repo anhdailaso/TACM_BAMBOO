@@ -1,0 +1,127 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangCao.KhangCaoModalViewModel
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@(ViewBag.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC ? ViewText.LABEL_KHIEUNAI_KIENNGHI : ViewText.LABEL_KHANGCAO)</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("TaoKhangCao", "SauXetXu", FormMethod.Post, new { id = "khang-cao-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_NGUOIKHANGCAO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownList("nguoi-khang-cao-dropdownlist", Model.DanhSachDuongSu, Setting.DDL_CHOOSE, new {@class = "form-control"})
+                        <small class="form-text text-danger"><span for="nguoi-khang-cao-dropdownlist"></span></small>
+                    </div>
+                </div>
+
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_NGAYLAMDON_KHANGCAO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group" id="ngay-lam-don-khang-cao-dtp">
+                            <input type="text" class="form-control" name="ngay-lam-don-khang-cao-dtp" id="ngay-lam-don-khang-cao-input"/>
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="ngay-lam-don-khang-cao-input"></span></small>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_NGAYNOPDON_KHANGCAO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group" id="ngay-nop-don-khang-cao-dtp">
+                            <input type="text" class="form-control" name="ngay-nop-don-khang-cao-dtp" id="ngay-nop-don-khang-cao-input"/>
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="ngay-nop-don-khang-cao-input"></span></small>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_HINHTHUCNOP<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownList("hinh-thuc-dropdownlist", Model.DanhSachHinhThucNop, Setting.DDL_CHOOSE, new {@class = "form-control"})
+                        <small class="form-text text-danger"><span for="hinh-thuc-dropdownlist"></span></small>
+                    </div>
+                </div>
+                <br/> 
+                <div class="row">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_TINHTRANG_KHANGCAO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownList("tinh-trang-dropdownlist", Model.DanhSachTinhTrangKhangCao, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger"><span for="tinh-trang-dropdownlist"></span></small>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs" role="tablist" id="tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#noi-dung-khang-cao-tab" role="tab">@(ViewBag.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC ? ViewText.LABEL_NOIDUNG_KHIEUNAI_KIENNGHI : ViewText.LABEL_NOIDUNG_KHANGCAO)<span class="input-required">*</span></a>
+                            </li>                   
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tai-lieu-chung-tu-tab" role="tab">@ViewText.LABEL_TAILIEU_KEMTHEO</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-1">
+                            <div class="tab-pane active" id="noi-dung-khang-cao-tab" role="tabpanel">
+                                @Html.TextArea("noi-dung-khang-cao-textarea", null, new {@class = "form-control", style = "width: 100%"})
+                                <small class="form-text text-danger"><span for="noi-dung-khang-cao-textarea"></span></small>
+                            </div>
+                            <div class="tab-pane" id="tai-lieu-chung-tu-tab" role="tabpanel">
+                                @Html.TextArea("tai-lieu-chung-tu-kem-theo-textarea", null, new {@class = "form-control", style = "width: 100%"})
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <div class="col-5">
+                <label class="d-block">@ViewText.LABEL_BICAO_BI_KHANGCAO</label>
+                @*<small class="form-text text-danger mb-2"><span for="DanhSachNguoiBiKhangCao[]"></span></small>*@
+                @*<input type="hidden" name="DanhSachNguoiBiKhangCao[]" />*@
+                <ul class="list-unstyled">     
+                    @if (Model.DanhSachDuongSuBiKhangCao.Any())
+                    {
+                        foreach (var item in Model.DanhSachDuongSuBiKhangCao)
+                        {
+                            <li><label><input class="align-middle ngoi-bi-khang-cao-checkbox" name="DanhSachNguoiBiKhangCao[]" value="@item.Value" type="checkbox"/> @item.Text</label></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><small class="form-text text-danger mb-2"><span>@NotifyMessage.CHUACO_DULIEU</span></small></li>
+                    }                  
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="khang-cao-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        KhangCaoModalModule.init();
+    });
+</script>

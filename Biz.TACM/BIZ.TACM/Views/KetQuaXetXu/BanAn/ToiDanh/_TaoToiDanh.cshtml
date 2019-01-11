@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+}
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.KetQuaXetXu.Model.ToiDanhModel
+
+@using (Html.BeginForm("TaoToiDanh", "KetQuaXetXu", FormMethod.Post, new { @id = "formTaoToiDanh" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_TOIDANH</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_BICAO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.BiCao, (SelectList)ViewBag.ddlBiCao, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.BiCao)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_KETQUA_XETXU<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.KetQuaXetXu, (SelectList)ViewBag.ddlKetQuaXetXu, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "ddlKetQuaXetXu" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.KetQuaXetXu)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_DIEULUATAPDUNG<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.DieuLuatApDung, (SelectList)ViewBag.ddlDieuLuatApDung, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "dieu-ddl" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.DieuLuatApDung)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_TOIDANH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.ToiDanh, new { @class = "form-control", @id = "toidanhtb" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.ToiDanh)</small>
+                        @Html.DropDownList("ToiDanhHidden", (SelectList)ViewBag.ddlToiDanh, null, new { @class = "d-none" })
+                    </div>
+                </div>
+                <div class="form-group row HinhPhatContent">
+                    <label class="col-5">@ViewText.LABEL_HINHPHAT</label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.HinhPhat, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HinhPhat)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_ANPHI<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.AnPhi, new { @class = "form-control text-right", id = "an-phi-txt", @maxlength = "23" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.AnPhi)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_DINHKEM_FILE</label>
+                    <div class="col-7">
+                        <input id="file_upload" type="file" accept=".doc, .docx, .pdf" />
+                    </div>
+                    @Html.HiddenFor(m => m.DinhKemFile)
+                    <p class="col-12">@NotifyMessage.DUNGLUONG_FILE_TOIDA</p>
+                </div>
+            </div>
+            <div class="col-6 pl-0">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#ModalToiDanhTrachNhienDanSu" role="tab">@ViewText.LABEL_TRACHNHIEMDANSU</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#ModalToiDanhXuLyVatChung" role="tab">@ViewText.LABEL_XULYVATCHUNG</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#ModalToiDanhGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-1">
+                            <div class="tab-pane active" id="ModalToiDanhTrachNhienDanSu" role="tabpanel">
+                                @Html.TextAreaFor(m => m.TrachNhiemDanSu, new { @class = "form-control ckeditorClassToiDanh tinymce-editor", @style = "width:100%", @rows = "8" })
+                            </div>
+                            <div class="tab-pane" id="ModalToiDanhXuLyVatChung" role="tabpanel">
+                                @Html.TextAreaFor(m => m.XuLy, new { @class = "form-control ckeditorClassToiDanh tinymce-editor", @style = "width:100%", @rows = "8" })
+                            </div>
+                            <div class="tab-pane" id="ModalToiDanhGhiChu" role="tabpanel">
+                                @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control ckeditorClassToiDanh tinymce-editor", @style = "width:100%", @rows = "8" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item BienPhapTuPhapContent">
+                                <a class="nav-link active" data-toggle="tab" href="#ModalToiDanhBienPhapTuPhap" role="tab">@ViewText.LABEL_BIENPHAPTUPHAP</a>
+                            </li>
+                            <li class="nav-item BienPhapGiamSatContent">
+                                <a class="nav-link active" data-toggle="tab" href="#ModalToiDanhBienPhapGiamSat" role="tab">@ViewText.LABEL_BIENPHAPGIAMSAT</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content p-1">
+                            <div class="tab-pane active" id="ModalToiDanhBienPhapTuPhap" role="tabpanel">
+                                @Html.TextAreaFor(m => m.BienPhapTuPhap, new { @class = "form-control ckeditorClassToiDanh tinymce-editor", @style = "width:100%", @rows = "8" })
+                            </div>
+                            <div class="tab-pane active" id="ModalToiDanhBienPhapGiamSat" role="tabpanel">
+                                @Html.TextAreaFor(m => m.BienPhapKhienTrach, new { @class = "form-control ckeditorClassToiDanh tinymce-editor", @style = "width:100%", @rows = "8" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="tao-toi-danh-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        TaoSuaToiDanhModule.initCreating();
+    });
+</script>

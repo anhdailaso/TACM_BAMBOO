@@ -1,0 +1,78 @@
+﻿
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.TamUngAnPhi.TamUngAnPhiViewModel
+    
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoTamUngAnPhi", @class = "custom-select mb-2" })
+            <button id="btnSuaTamUngAnPhi" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("TamUngAnPhiModal", "SauXetXu", new{ hoSoVuAnId = Model.HoSoVuAnID , anPhiId = Model.AnPhiID})"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.AnPhiID</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span class="nop-an-phi-lbl">@ViewText.LABEL_NOPANPHI</span><span class="font-weight-bold">@Model.NopAnPhi</span></li>              
+                <li class="list-group-item d-flex justify-content-between"><span class="tong-an-phi-lbl">@ViewText.LABEL_TONGANPHI</span><span class="font-weight-bold text-danger">@(Model.YeuCauDuNopViewModel.TongAnPhi != "" ? String.Format("{0} {1}", Model.YeuCauDuNopViewModel.TongAnPhi, "VND") : "")</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_PHANTRAM_DUNOP</span><span class="font-weight-bold text-danger">@(Model.YeuCauDuNopViewModel.PhanTramDuNop != "" ? String.Format("{0}{1}", Model.YeuCauDuNopViewModel.PhanTramDuNop, "%") : "")</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TRIGIA_DUNOP</span><span class="font-weight-bold text-danger">@(Model.YeuCauDuNopViewModel.GiaTriDuNop != "" ? String.Format("{0} {1}", Model.YeuCauDuNopViewModel.GiaTriDuNop, "VND") : "")</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span class="han-nop-an-phi-lbl">@ViewText.LABEL_HANNOP_TAMUNGANPHI</span><span class="font-weight-bold">@Model.YeuCauDuNopViewModel.HanNopAnPhi</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_COQUAN_THIHANHANTHU</span><span class="font-weight-bold">@Model.YeuCauDuNopViewModel.CoQuanThiHanhAnThu</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_DIACHI_COQUANTHIHANHAN</span><span class="font-weight-bold">@Model.YeuCauDuNopViewModel.DiaChiCoQuanThiHanhAnThu</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYRATHONGBAO</span><span class="font-weight-bold">@Model.YeuCauDuNopViewModel.NgayRaThongBao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYGIAO_THONGBAO</span><span class="font-weight-bold">@Model.YeuCauDuNopViewModel.NgayGiaoThongBao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span class="ngay-nop-an-phi-lbl">@ViewText.LABEL_NGAYNOP_TAMUNGANPHI</span><span class="font-weight-bold">@Model.KetQuaNopViewModel.NgayNopAnPhi</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SOBIENLAI</span><span class="font-weight-bold">@Model.KetQuaNopViewModel.SoBienLai</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYNOP_BIENLAI_TOAAN</span><span class="font-weight-bold">@Model.KetQuaNopViewModel.NgayNopBienLaiChoToaAn</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOINHAN_BIENLAI</span><span class="font-weight-bold">@(Model.KetQuaNopViewModel.NhanVienNguoiNhanBienLai == null ? "" : Model.KetQuaNopViewModel.NhanVienNguoiNhanBienLai.HoVaTenNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+            </ul>
+        </div>
+
+    </div>
+   
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">                   
+                    <button id="btnThemTamUngAnPhi" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("TamUngAnPhiModal", "SauXetXu", new{ ViewBag.hoSoVuAnId , anPhiId = 0})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+<!-- style modal tam ung an phi-->
+<style type="text/css">
+    @@media (min-width: 576px) {
+        .modal-anphi-custom {
+            max-width: 500px;
+            margin: 30px auto;
+        }
+    }
+</style>
+<script>
+    $(function () {
+        if ($("#loaiQuanHe").val() === "Yêu cầu") {
+            $(".nop-an-phi-lbl").html("@ViewText.LABEL_NOPLEPHI");
+            $(".tong-an-phi-lbl").html("@ViewText.LABEL_TONGLEPHI");
+            $(".han-nop-an-phi-lbl").html("@ViewText.LABEL_HANNOP_TAMUNGLEPHI");
+            $(".ngay-nop-an-phi-lbl").html("@ViewText.LABEL_NGAYNOP_TAMUNGLEPHI");
+        } 
+    });
+</script>

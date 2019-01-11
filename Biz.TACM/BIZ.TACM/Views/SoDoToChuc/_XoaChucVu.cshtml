@@ -1,0 +1,34 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model int
+
+@using (Html.BeginForm("XoaChucDanhConfirmed", "SoDoToChuc", FormMethod.Post, new { id = "formXoaChucDanh" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="soDoToChucId" value="@ViewBag.Test" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_XOACHUCDANH</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    @string.Format(NotifyMessage.BANCO_MUONXOA, "chức vụ")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="xoa-chuc-danh-btn" aria-hidden="true">@ViewText.BUTTON_XOA</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        XoaChucDanhModule.init();
+    });
+</script>
+
+

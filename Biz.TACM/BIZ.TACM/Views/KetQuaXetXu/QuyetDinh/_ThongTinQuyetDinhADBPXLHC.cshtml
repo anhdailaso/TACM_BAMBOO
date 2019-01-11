@@ -1,0 +1,69 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.KetQuaXetXu.Model.QuyetDinhADBPXLHCModel
+
+@if (Model != null && Model.HoSoVuAnID != 0)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaQuyetDinhKQXX" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#modelKetQuaXetXuQuyetDinhADBPXLHC"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownListFor(m => m.QuyetDinhID, (SelectList)ViewBag.ddlNgayTao, new { @id = "selectNgayTaoQuyetDinhADBPXLHC", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.SoQuyetDinh</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYRA_QUYETDINH</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayRaQuyetDinh)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@Model.NhanVienThamPhan.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KIEMSATVIEN</span><span class="font-weight-bold">@Model.NhanVienKiemSatVien.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@Model.NhanVienThuKy.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KETQUA_GIAIQUYET</span><span class="font-weight-bold">@Model.KetQuaGiaiQuyet</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+    </div>
+    <div class="col-6">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#KetQuaXetXuQuyetDinhNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_QUYETDINH</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuQuyetDinhGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="KetQuaXetXuQuyetDinhNoiDung" role="tabpanel">
+                <div class="card">
+                    <div class="card-block" style="height: 275px; overflow: scroll">
+                        @Html.Raw(Server.HtmlDecode(@Model.LyDo))
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="KetQuaXetXuQuyetDinhGhiChu" role="tabpanel">
+                <div class="card">
+                    <div class="card-block" style="height: 275px; overflow: scroll">
+                        @Html.Raw(Server.HtmlDecode(@Model.GhiChu))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+<div class="container-fluid row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <button id="btnThemQuyetDinhKQXX" class="btn btn-sm btn-primary float-right mt-2" data-toggle="modal" data-target="#modelKetQuaXetXuQuyetDinhADBPXLHC"><i class="fa fa-plus btn-icon-size"></i></button>
+            </div>
+        </div>
+        <div class="mb-1 text-center empty-data">
+            <blockquote>
+                <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+            </blockquote>
+        </div>
+    </div>
+</div>
+}

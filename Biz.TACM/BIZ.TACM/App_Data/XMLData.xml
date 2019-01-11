@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<autobind>
+  <currency>
+    <item text="VND" value="VNĐ" />
+    <item text="USD" value="USD" />
+  </currency>
+  
+  <gender>
+    <item text="Nam" value="Nam" />
+    <item text="Nữ" value="Nữ" />
+  </gender>
+  
+  <trangthaihoatdong>
+    <item text="Đang hoạt động" value="1" />
+    <item text="Không hoạt động" value="0" />
+  </trangthaihoatdong>
+  
+  <vietnam_city_province>
+    <item text="An Giang" value="An Giang" />
+    <item text="Bà Rịa - Vũng Tàu" value="Bà Rịa - Vũng Tàu" />
+    <item text="Bắc Giang" value="Bắc Giang" />
+    <item text="Bắc Kạn" value="Bắc Kạn" />
+    <item text="Bạc Liêu" value="Bạc Liêu" />
+    <item text="Bắc Ninh" value="Bắc Ninh" />
+    <item text="Bến Tre" value="Bến Tre" />
+    <item text="Bình Định" value="Bình Định" />
+    <item text="Bình Dương" value="Bình Dương" />
+    <item text="Bình Phước" value="Bình Phước" />
+    <item text="Bình Thuận" value="Bình Thuận" />
+    <item text="Cà Mau" value="Cà Mau" />
+    <item text="Cần Thơ" value="Cần Thơ" />
+    <item text="Cao Bằng" value="Cao Bằng" />
+    <item text="Đà Nẵng" value="Đà Nẵng" />
+    <item text="Đắk Lắk" value="Đắk Lắk" />
+    <item text="Đắk Nông" value="Đắk Nông" />
+    <item text="Điện Biên" value="Điện Biên" />
+    <item text="Đồng Nai" value="Đồng Nai" />
+    <item text="Đồng Tháp" value="Đồng Tháp" />
+    <item text="Gia Lai" value="Gia Lai" />
+    <item text="Hà Giang" value="Hà Giang" />
+    <item text="Hà Nam" value="Hà Nam" />
+    <item text="Hà Nội" value="Hà Nội" />
+    <item text="Hà Tĩnh" value="Hà Tĩnh" />
+    <item text="Hải Dương" value="Hải Dương" />
+    <item text="Hải Phòng" value="Hải Phòng" />
+    <item text="Hậu Giang" value="Hậu Giang" />
+    <item text="Hòa Bình" value="Hòa Bình" />
+    <item text="Hưng Yên" value="Hưng Yên" />
+    <item text="Khánh Hòa" value="Khánh Hòa" />
+    <item text="Kiên Giang" value="Kiên Giang" />
+    <item text="Kon Tum" value="Kon Tum" />
+    <item text="Lai Châu" value="Lai Châu" />
+    <item text="Lâm Đồng" value="Lâm Đồng" />
+    <item text="Lạng Sơn" value="Lạng Sơn" />
+    <item text="Lào Cai" value="Lào Cai" />
+    <item text="Long An" value="Long An" />
+    <item text="Nam Định" value="Nam Định" />
+    <item text="Nghệ An" value="Nghệ An" />
+    <item text="Ninh Bình" value="Ninh Bình" />
+    <item text="Ninh Thuận" value="Ninh Thuận" />
+    <item text="Phú Thọ" value="Phú Thọ" />
+    <item text="Phú Yên" value="Phú Yên" />
+    <item text="Quảng Bình" value="Quảng Bình" />
+    <item text="Quảng Nam" value="Quảng Nam" />
+    <item text="Quảng Ngãi" value="Quảng Ngãi" />
+    <item text="Quảng Ninh" value="Quảng Ninh" />
+    <item text="Quảng Trị" value="Quảng Trị" />
+    <item text="Sóc Trăng" value="Sóc Trăng" />
+    <item text="Sơn La" value="Sơn La" />
+    <item text="Tây Ninh" value="Tây Ninh" />
+    <item text="Thái Bình" value="Thái Bình" />
+    <item text="Thái Nguyên" value="Thái Nguyên" />
+    <item text="Thanh Hóa" value="Thanh Hóa" />
+    <item text="Thừa Thiên Huế" value="Thừa Thiên Huế" />
+    <item text="Tiền Giang" value="Tiền Giang" />
+    <item text="Hồ Chí Minh" value="Hồ Chí Minh" />
+    <item text="Trà Vinh" value="Trà Vinh" />
+    <item text="Tuyên Quang" value="Tuyên Quang" />
+    <item text="Vĩnh Long" value="Vĩnh Long" />
+    <item text="Vĩnh Phúc" value="Vĩnh Phúc" />
+    <item text="Yên Bái" value="Yên Bái" />
+  </vietnam_city_province>
+
+  <hcm_district>
+    <item text="Quận 1" value="Quận 1" />
+    <item text="Quận 2" value="Quận 2" />
+    <item text="Quận 3" value="Quận 3" />
+    <item text="Quận 4" value="Quận 4" />
+    <item text="Quận 5" value="Quận 5" />
+    <item text="Quận 6" value="Quận 6" />
+    <item text="Quận 7" value="Quận 7" />
+    <item text="Quận 8" value="Quận 8" />
+    <item text="Quận 9" value="Quận 9" />
+    <item text="Quận 10" value="Quận 10" />
+    <item text="Quận 11" value="Quận 11" />
+    <item text="Quận 12" value="Quận 12" />
+    <item text="Quận Gò Vấp" value="Quận Gò Vấp" />
+    <item text="Quận Tân Bình" value="Quận Tân Bình" />
+    <item text="Quận Tân Phú" value="Quận Tân Phú" />
+    <item text="Quận Bình Thạnh" value="Quận Bình Thạnh" />
+    <item text="Quận Phú Nhuận" value="Quận Phú Nhuận" />
+    <item text="Quận Thủ Đức" value="Quận Thủ Đức" />
+    <item text="Quận Bình Tân" value="Quận Bình Tân" />
+    <item text="Quận Bình Chánh" value="Quận Bình Chánh" />
+    <item text="Huyện Củ Chi" value="Huyện Củ Chi" />
+    <item text="Huyện Hóc Môn" value="Huyện Hóc Môn" />
+    <item text="Huyện Nhà Bè" value="Huyện Nhà Bè" />
+    <item text="Huyện Cần Giờ" value="Huyện Cần Giờ" />
+  </hcm_district>
+
+  <month>
+    <item value="1" text="1" />
+    <item value="2" text="2" />
+    <item value="3" text="3" />
+    <item value="4" text="4" />
+    <item value="5" text="5" />
+    <item value="6" text="6" />
+    <item value="7" text="7" />
+    <item value="8" text="8" />
+    <item value="9" text="9" />
+    <item value="10" text="10" />
+    <item value="11" text="11" />
+    <item value="12" text="12" />
+  </month>
+
+  <city_province>
+    <item value="1" text="An Giang" />
+    <item value="2" text="Bà Rịa - Vũng Tàu" />
+    <item value="3" text="Bắc Giang" />
+    <item value="4" text="Bắc Kạn" />
+    <item value="5" text="Bạc Liêu" />
+    <item value="6" text="Bắc Ninh" />
+    <item value="7" text="Bến Tre" />
+    <item value="8" text="Bình Định" />
+    <item value="9" text="Bình Dương" />
+    <item value="10" text="Bình Phước" />
+    <item value="11" text="Bình Thuận" />
+    <item value="12" text="Cà Mau" />
+    <item value="13" text="Cao Bằng" />
+    <item value="14" text="Đắk Lắk" />
+    <item value="15" text="Đắk Nông" />
+    <item value="16" text="Điện Biên" />
+    <item value="17" text="Đồng Nai" />
+    <item value="18" text="Đồng Tháp" />
+    <item value="19" text="Gia Lai" />
+    <item value="20" text="Hà Giang" />
+    <item value="21" text="Hà Nam" />
+    <item value="22" text="Hà Tĩnh" />
+    <item value="23" text="Hải Dương" />
+    <item value="24" text="Hậu Giang" />
+    <item value="25" text="Hòa Bình" />
+    <item value="26" text="Hưng Yên" />
+    <item value="27" text="Khánh Hòa" />
+    <item value="28" text="Kiên Giang" />
+    <item value="29" text="Kon Tum" />
+    <item value="30" text="Lai Châu" />
+    <item value="31" text="Lâm Đồng" />
+    <item value="32" text="Lạng Sơn" />
+    <item value="33" text="Lào Cai" />
+    <item value="34" text="Long An" />
+    <item value="35" text="Nam Định" />
+    <item value="36" text="Nghệ An" />
+    <item value="37" text="Ninh Bình" />
+    <item value="38" text="Ninh Thuận" />
+    <item value="39" text="Phú Thọ" />
+    <item value="40" text="Quảng Bình" />
+    <item value="41" text="Quảng Nam" />
+    <item value="42" text="Quảng Ngãi" />
+    <item value="43" text="Quảng Ninh" />
+    <item value="44" text="Quảng Trị" />
+    <item value="45" text="Sóc Trăng" />
+    <item value="46" text="Sơn La" />
+    <item value="47" text="Tây Ninh" />
+    <item value="48" text="Thái Bình" />
+    <item value="49" text="Thái Nguyên" />
+    <item value="50" text="Thanh Hóa" />
+    <item value="51" text="Thừa Thiên Huế" />
+    <item value="52" text="Tiền Giang" />
+    <item value="53" text="Trà Vinh" />
+    <item value="54" text="Tuyên Quang" />
+    <item value="55" text="Vĩnh Long" />
+    <item value="56" text="Vĩnh Phúc" />
+    <item value="57" text="Yên Bái" />
+    <item value="58" text="Phú Yên" />
+    <item value="59" text="Cần Thơ" />
+    <item value="60" text="Đà Nẵng" />
+    <item value="61" text="Hải Phòng" />
+    <item value="62" text="Hà Nội" />
+    <item value="63" text="Hồ Chí Minh" />
+  </city_province>
+  
+  <status>
+    <item text="Active" value="1"/>
+    <item text="Inactive" value="-1"/>
+  </status>
+  
+  <trangthai>
+    <item text="Nhận đơn" value="1" />
+    <item text="Chuyển đơn" value="2" />
+    <item text="Hủy đơn" value="3" />
+  </trangthai>
+  
+  <CongDoanHoSo>
+    <item text="Nhận Đơn" value="1" />
+    <item text="Thụ Lý" value="2" />
+    <item text="Chuẩn Bị Xét Xử" value="3" />
+    <item text="Kết Quả Giải Quyết" value="4" />
+    <item text="Sau Xét Xử" value="5" />
+    <item text="Lưu Kho" value="-1" />
+  </CongDoanHoSo>
+  
+  <CongDoanHoSoPhucTham>
+    <item text="Nhận Hồ Sơ" value="1" />
+    <item text="Thụ Lý" value="2" />
+    <item text="Chuẩn Bị Xét Xử" value="3" />
+    <item text="Kết Quả Giải Quyết" value="4" />
+    <item text="Sau Xét Xử" value="5" />
+    <item text="Lưu Kho" value="-1" />
+  </CongDoanHoSoPhucTham>
+  
+  <GiaiDoan>
+    <item text="--Chọn--" value="-1"/>
+    <item text="Sơ Thẩm" value="1"/>
+    <item text="Phúc Thẩm" value="2"/>
+    <item text="Giám đốc thẩm, Tái Thẩm" value="3"/>
+  </GiaiDoan>
+  <GiamDocThamTaiTham>
+    <item text="Giám đốc thẩm" value="Giám đốc thẩm"/>
+    <item text="Tái thẩm" value="Tái thẩm"/>
+  </GiamDocThamTaiTham>
+  <HinhThucGuiDon>
+    <item text="Trực tiếp" value="Trực tiếp" />
+    <item text="Gián tiếp" value="Gián tiếp" />
+    <item text="Khác" value="-1" />
+  </HinhThucGuiDon>
+  
+  <LoaiDon>
+    <item text="Mới" value="Mới" />
+    <item text="Cũ" value="Cũ" />
+  </LoaiDon>
+  
+  <LoaiQuanHe>
+    <item text="Yêu cầu" value="Yêu cầu" />
+    <item text="Yêu cầu" value="Yêu cầu" />
+  </LoaiQuanHe>
+  
+  <QuanHePhapLuat>
+    <item text="TBD" value="TBD" />
+  </QuanHePhapLuat>
+  
+  <YeuToNuocNgoai>
+    <item text="Có" value="Có" />
+    <item text="Không" value="Không" />
+  </YeuToNuocNgoai>
+  
+  <HieuLuc>
+    <item text="Có" value="Có" />
+    <item text="Không" value="Không" />
+  </HieuLuc>
+  
+  <XetXu>
+    <item text="Có" value="Có" />
+    <item text="Không" value="Không" />
+  </XetXu>
+  
+  <LyDoTraDon>
+    <item text="Lý do 1" value="Lý do 1" />
+    <item text="Lý do 2" value="Lý do 2" />
+    <item text="Lý do 3" value="Lý do 3" />
+  </LyDoTraDon>
+  
+  <Nhom>
+    <item text="Nhóm 1" value="Nhóm 1" />
+    <item text="Nhóm 2" value="Nhóm 2" />
+    <item text="Nhóm 3" value="Nhóm 3" />
+  </Nhom>
+  
+  <LanThu>
+    <item text="1" value="1" />
+    <item text="2" value="2" />
+    <item text="3" value="3" />
+  </LanThu>
+  
+  <ThuTuc>
+    <item text="Thủ tục 1" value="Thủ tục 1" />
+    <item text="Thủ tục 2" value="Thủ tục 2" />
+    <item text="Thủ tục 3" value="Thủ tục 3" />
+  </ThuTuc>
+  
+  <VuAn>
+    <item text="Vụ án 1" value="Vụ án 1" />
+    <item text="Vụ án 2" value="Vụ án 2" />
+    <item text="Vụ án 3" value="Vụ án 3" />
+  </VuAn>
+  
+  <KhangCaoKhangNghiQuaHan>
+    <item text="Kháng Cáo" value="Kháng Cáo" />
+    <item text="Kháng Nghị" value="Kháng Nghị" />
+  </KhangCaoKhangNghiQuaHan>
+
+  <VungChuyenDon>
+    <item text="Trong tỉnh" value="Trong tỉnh" />
+    <item text="Ngoài tỉnh" value="Ngoài tỉnh" />
+  </VungChuyenDon>
+
+  <QuyetDinhLoai>
+    <item text="Quyết định" value="1" />
+    <item text="Thông báo" value="2" />
+  </QuyetDinhLoai>
+  
+  <XemXetQuyetDinh>
+    <item text="Áp dụng" value="Áp dụng" />
+    <item text="Không áp dụng" value="Không áp dụng" />
+  </XemXetQuyetDinh>
+  
+  <Hour>
+    <item text="0" value="0" />
+    <item text="1" value="1" />
+    <item text="2" value="2" />
+    <item text="3" value="3" />
+    <item text="4" value="4" />
+    <item text="5" value="5" />
+    <item text="6" value="6" />
+    <item text="7" value="7" />
+    <item text="8" value="8" />
+    <item text="9" value="9" />
+    <item text="10" value="10" />
+    <item text="11" value="11" />
+    <item text="12" value="12" />
+    <item text="13" value="13" />
+    <item text="14" value="14" />
+    <item text="15" value="15" />
+    <item text="16" value="16" />
+    <item text="17" value="17" />
+    <item text="18" value="18" />
+    <item text="19" value="19" />
+    <item text="20" value="20" />
+    <item text="21" value="21" />
+    <item text="22" value="22" />
+    <item text="23" value="23" />
+  </Hour>
+  
+  <Minute>
+    <item text="00" value="0" />
+    <item text="01" value="1" />
+    <item text="02" value="2" />
+    <item text="03" value="3" />
+    <item text="04" value="4" />
+    <item text="05" value="5" />
+    <item text="06" value="6" />
+    <item text="07" value="7" />
+    <item text="08" value="8" />
+    <item text="09" value="9" />
+    <item text="10" value="10" />
+    <item text="11" value="11" />
+    <item text="12" value="12" />
+    <item text="13" value="13" />
+    <item text="14" value="14" />
+    <item text="15" value="15" />
+    <item text="16" value="16" />
+    <item text="17" value="17" />
+    <item text="18" value="18" />
+    <item text="19" value="19" />
+    <item text="20" value="20" />
+    <item text="21" value="21" />
+    <item text="22" value="22" />
+    <item text="23" value="23" />
+    <item text="24" value="24" />
+    <item text="25" value="25" />
+    <item text="26" value="26" />
+    <item text="27" value="27" />
+    <item text="28" value="28" />
+    <item text="29" value="29" />
+    <item text="30" value="30" />
+    <item text="31" value="31" />
+    <item text="32" value="32" />
+    <item text="33" value="33" />
+    <item text="34" value="34" />
+    <item text="35" value="35" />
+    <item text="36" value="36" />
+    <item text="37" value="37" />
+    <item text="38" value="38" />
+    <item text="39" value="39" />
+    <item text="40" value="40" />
+    <item text="41" value="41" />
+    <item text="42" value="42" />
+    <item text="43" value="43" />
+    <item text="44" value="44" />
+    <item text="45" value="45" />
+    <item text="46" value="46" />
+    <item text="47" value="47" />
+    <item text="48" value="48" />
+    <item text="49" value="49" />
+    <item text="50" value="50" />
+    <item text="51" value="51" />
+    <item text="52" value="52" />
+    <item text="53" value="53" />
+    <item text="54" value="54" />
+    <item text="55" value="55" />
+    <item text="56" value="56" />
+    <item text="57" value="57" />
+    <item text="58" value="58" />
+    <item text="59" value="59" />
+  </Minute>
+
+  <Dieu>
+    <item text="Điều 1" value="Điều 1" />
+    <item text="Điều 2" value="Điều 2" />
+    <item text="Điều 3" value="Điều 3" />
+    <item text="Điều 4" value="Điều 4" />
+    <item text="Điều 5" value="Điều 5" />
+    <item text="Điều 6" value="Điều 6" />
+    <item text="Điều 7" value="Điều 7" />
+    <item text="Điều 8" value="Điều 8" />
+    <item text="Điều 9" value="Điều 9" />
+    <item text="Điều 10" value="Điều 10" />
+    <item text="Điều 11" value="Điều 11" />
+    <item text="Điều 12" value="Điều 12" />
+    <item text="Điều 13" value="Điều 13" />
+    <item text="Điều 14" value="Điều 14" />
+    <item text="Điều 15" value="Điều 15" />
+    <item text="Điều 16" value="Điều 16" />
+    <item text="Điều 17" value="Điều 17" />
+    <item text="Điều 18" value="Điều 18" />
+    <item text="Điều 19" value="Điều 19" />
+    <item text="Điều 20" value="Điều 20" />
+    <item text="Điều 21" value="Điều 21" />
+    <item text="Điều 22" value="Điều 22" />
+    <item text="Điều 23" value="Điều 23" />
+    <item text="Điều 24" value="Điều 24" />
+    <item text="Điều 25" value="Điều 25" />
+    <item text="Điều 26" value="Điều 26" />
+    <item text="Điều 27" value="Điều 27" />
+    <item text="Điều 28" value="Điều 28" />
+    <item text="Điều 29" value="Điều 29" />
+    <item text="Điều 30" value="Điều 30" />
+    <item text="Điều 31" value="Điều 31" />
+    <item text="Điều 32" value="Điều 32" />
+    <item text="Điều 33" value="Điều 33" />
+    <item text="Điều 34" value="Điều 34" />
+    <item text="Điều 35" value="Điều 35" />
+    <item text="Điều 36" value="Điều 36" />
+    <item text="Điều 37" value="Điều 37" />
+    <item text="Điều 38" value="Điều 38" />
+    <item text="Điều 39" value="Điều 39" />
+    <item text="Điều 40" value="Điều 40" />
+    <item text="Điều 41" value="Điều 41" />
+    <item text="Điều 42" value="Điều 42" />
+    <item text="Điều 43" value="Điều 43" />
+    <item text="Điều 44" value="Điều 44" />
+    <item text="Điều 45" value="Điều 45" />
+    <item text="Điều 46" value="Điều 46" />
+    <item text="Điều 47" value="Điều 47" />
+    <item text="Điều 48" value="Điều 48" />
+    <item text="Điều 49" value="Điều 49" />
+    <item text="Điều 50" value="Điều 50" />
+    <item text="Điều 51" value="Điều 51" />
+    <item text="Điều 52" value="Điều 52" />
+    <item text="Điều 53" value="Điều 43" />
+    <item text="Điều 54" value="Điều 54" />
+    <item text="Điều 55" value="Điều 55" />
+    <item text="Điều 56" value="Điều 56" />
+    <item text="Điều 57" value="Điều 57" />
+    <item text="Điều 58" value="Điều 58" />
+    <item text="Điều 59" value="Điều 59" />
+    <item text="Điều 60" value="Điều 60" />
+    <item text="Điều 51" value="Điều 51" />
+    <item text="Điều 52" value="Điều 52" />
+    <item text="Điều 53" value="Điều 43" />
+    <item text="Điều 54" value="Điều 54" />
+    <item text="Điều 55" value="Điều 55" />
+    <item text="Điều 56" value="Điều 56" />
+    <item text="Điều 57" value="Điều 57" />
+    <item text="Điều 58" value="Điều 58" />
+    <item text="Điều 59" value="Điều 59" />
+    <item text="Điều 60" value="Điều 60" />
+    <item text="Điều 61" value="Điều 61" />
+    <item text="Điều 62" value="Điều 62" />
+    <item text="Điều 63" value="Điều 63" />
+    <item text="Điều 64" value="Điều 64" />
+    <item text="Điều 65" value="Điều 65" />
+    <item text="Điều 66" value="Điều 66" />
+    <item text="Điều 67" value="Điều 67" />
+    <item text="Điều 68" value="Điều 68" />
+    <item text="Điều 69" value="Điều 69" />
+    <item text="Điều 70" value="Điều 70" />
+    <item text="Điều 71" value="Điều 71" />
+    <item text="Điều 72" value="Điều 72" />
+    <item text="Điều 73" value="Điều 73" />
+    <item text="Điều 74" value="Điều 74" />
+    <item text="Điều 75" value="Điều 75" />
+    <item text="Điều 76" value="Điều 76" />
+    <item text="Điều 77" value="Điều 77" />
+    <item text="Điều 78" value="Điều 78" />
+    <item text="Điều 79" value="Điều 79" />
+    <item text="Điều 80" value="Điều 80" />
+    <item text="Điều 81" value="Điều 81" />
+    <item text="Điều 82" value="Điều 82" />
+    <item text="Điều 83" value="Điều 83" />
+    <item text="Điều 84" value="Điều 84" />
+    <item text="Điều 85" value="Điều 85" />
+    <item text="Điều 86" value="Điều 86" />
+    <item text="Điều 87" value="Điều 87" />
+    <item text="Điều 88" value="Điều 88" />
+    <item text="Điều 89" value="Điều 89" />
+    <item text="Điều 90" value="Điều 90" />
+    <item text="Điều 91" value="Điều 91" />
+    <item text="Điều 92" value="Điều 92" />
+    <item text="Điều 93" value="Điều 93" />
+    <item text="Điều 94" value="Điều 94" />
+    <item text="Điều 95" value="Điều 95" />
+    <item text="Điều 96" value="Điều 96" />
+    <item text="Điều 97" value="Điều 97" />
+    <item text="Điều 98" value="Điều 98" />
+    <item text="Điều 99" value="Điều 99" />
+    <item text="Điều 100" value="Điều 100" />
+    <item text="Điều 101" value="Điều 101" />
+    <item text="Điều 102" value="Điều 102" />
+    <item text="Điều 103" value="Điều 103" />
+    <item text="Điều 104" value="Điều 104" />
+    <item text="Điều 105" value="Điều 105" />
+    <item text="Điều 106" value="Điều 106" />
+    <item text="Điều 107" value="Điều 107" />
+    <item text="Điều 108" value="Điều 108" />
+    <item text="Điều 109" value="Điều 109" />
+    <item text="Điều 110" value="Điều 110" />
+    <item text="Điều 111" value="Điều 111" />
+    <item text="Điều 112" value="Điều 112" />
+    <item text="Điều 113" value="Điều 113" />
+    <item text="Điều 114" value="Điều 114" />
+    <item text="Điều 115" value="Điều 115" />
+    <item text="Điều 116" value="Điều 116" />
+    <item text="Điều 117" value="Điều 117" />
+    <item text="Điều 118" value="Điều 118" />
+    <item text="Điều 119" value="Điều 119" />
+    <item text="Điều 120" value="Điều 120" />
+    <item text="Điều 121" value="Điều 121" />
+    <item text="Điều 122" value="Điều 122" />
+    <item text="Điều 123" value="Điều 123" />
+    <item text="Điều 124" value="Điều 124" />
+    <item text="Điều 125" value="Điều 125" />
+    <item text="Điều 126" value="Điều 126" />
+    <item text="Điều 127" value="Điều 127" />
+    <item text="Điều 128" value="Điều 128" />
+    <item text="Điều 129" value="Điều 129" />
+    <item text="Điều 130" value="Điều 130" />
+    <item text="Điều 131" value="Điều 131" />
+    <item text="Điều 132" value="Điều 132" />
+    <item text="Điều 133" value="Điều 133" />
+    <item text="Điều 134" value="Điều 134" />
+    <item text="Điều 135" value="Điều 135" />
+    <item text="Điều 136" value="Điều 136" />
+    <item text="Điều 137" value="Điều 137" />
+    <item text="Điều 138" value="Điều 138" />
+    <item text="Điều 139" value="Điều 139" />
+    <item text="Điều 140" value="Điều 140" />
+    <item text="Điều 141" value="Điều 141" />
+    <item text="Điều 142" value="Điều 142" />
+    <item text="Điều 143" value="Điều 143" />
+    <item text="Điều 144" value="Điều 144" />
+    <item text="Điều 145" value="Điều 145" />
+    <item text="Điều 146" value="Điều 146" />
+    <item text="Điều 147" value="Điều 147" />
+    <item text="Điều 148" value="Điều 148" />
+    <item text="Điều 149" value="Điều 149" />
+    <item text="Điều 150" value="Điều 150" />
+    <item text="Điều 151" value="Điều 151" />
+    <item text="Điều 152" value="Điều 152" />
+    <item text="Điều 153" value="Điều 153" />
+    <item text="Điều 154" value="Điều 154" />
+    <item text="Điều 155" value="Điều 155" />
+    <item text="Điều 156" value="Điều 156" />
+    <item text="Điều 157" value="Điều 157" />
+    <item text="Điều 158" value="Điều 158" />
+    <item text="Điều 159" value="Điều 159" />
+    <item text="Điều 160" value="Điều 160" />
+    <item text="Điều 161" value="Điều 161" />
+    <item text="Điều 162" value="Điều 162" />
+    <item text="Điều 163" value="Điều 163" />
+    <item text="Điều 164" value="Điều 164" />
+    <item text="Điều 165" value="Điều 165" />
+    <item text="Điều 166" value="Điều 166" />
+    <item text="Điều 167" value="Điều 167" />
+    <item text="Điều 168" value="Điều 168" />
+    <item text="Điều 169" value="Điều 169" />
+    <item text="Điều 170" value="Điều 170" />
+    <item text="Điều 171" value="Điều 171" />
+    <item text="Điều 172" value="Điều 172" />
+    <item text="Điều 173" value="Điều 173" />
+    <item text="Điều 174" value="Điều 174" />
+    <item text="Điều 175" value="Điều 175" />
+    <item text="Điều 176" value="Điều 176" />
+    <item text="Điều 177" value="Điều 177" />
+    <item text="Điều 178" value="Điều 178" />
+    <item text="Điều 179" value="Điều 179" />
+    <item text="Điều 180" value="Điều 180" />
+    <item text="Điều 181" value="Điều 181" />
+    <item text="Điều 182" value="Điều 182" />
+    <item text="Điều 183" value="Điều 183" />
+    <item text="Điều 184" value="Điều 184" />
+    <item text="Điều 185" value="Điều 185" />
+    <item text="Điều 186" value="Điều 186" />
+    <item text="Điều 187" value="Điều 187" />
+    <item text="Điều 188" value="Điều 188" />
+    <item text="Điều 189" value="Điều 189" />
+    <item text="Điều 190" value="Điều 190" />
+    <item text="Điều 191" value="Điều 191" />
+    <item text="Điều 192" value="Điều 192" />
+    <item text="Điều 193" value="Điều 193" />
+    <item text="Điều 194" value="Điều 194" />
+    <item text="Điều 195" value="Điều 195" />
+    <item text="Điều 196" value="Điều 196" />
+    <item text="Điều 197" value="Điều 197" />
+    <item text="Điều 198" value="Điều 198" />
+    <item text="Điều 199" value="Điều 199" />
+    <item text="Điều 200" value="Điều 200" />
+    <item text="Điều 201" value="Điều 201" />
+    <item text="Điều 202" value="Điều 202" />
+    <item text="Điều 203" value="Điều 203" />
+    <item text="Điều 204" value="Điều 204" />
+    <item text="Điều 205" value="Điều 205" />
+    <item text="Điều 206" value="Điều 206" />
+    <item text="Điều 207" value="Điều 207" />
+    <item text="Điều 208" value="Điều 208" />
+    <item text="Điều 209" value="Điều 209" />
+    <item text="Điều 210" value="Điều 210" />
+    <item text="Điều 211" value="Điều 211" />
+    <item text="Điều 212" value="Điều 212" />
+    <item text="Điều 213" value="Điều 213" />
+    <item text="Điều 214" value="Điều 214" />
+    <item text="Điều 215" value="Điều 215" />
+    <item text="Điều 216" value="Điều 216" />
+    <item text="Điều 217" value="Điều 217" />
+    <item text="Điều 218" value="Điều 218" />
+    <item text="Điều 219" value="Điều 219" />
+    <item text="Điều 220" value="Điều 220" />
+    <item text="Điều 221" value="Điều 221" />
+    <item text="Điều 222" value="Điều 222" />
+    <item text="Điều 223" value="Điều 223" />
+    <item text="Điều 224" value="Điều 224" />
+    <item text="Điều 225" value="Điều 225" />
+    <item text="Điều 226" value="Điều 226" />
+    <item text="Điều 227" value="Điều 227" />
+    <item text="Điều 228" value="Điều 228" />
+    <item text="Điều 229" value="Điều 229" />
+    <item text="Điều 230" value="Điều 230" />
+    <item text="Điều 231" value="Điều 231" />
+    <item text="Điều 232" value="Điều 232" />
+    <item text="Điều 233" value="Điều 233" />
+    <item text="Điều 234" value="Điều 234" />
+    <item text="Điều 235" value="Điều 235" />
+    <item text="Điều 236" value="Điều 236" />
+    <item text="Điều 237" value="Điều 237" />
+    <item text="Điều 238" value="Điều 238" />
+    <item text="Điều 239" value="Điều 239" />
+    <item text="Điều 240" value="Điều 240" />
+    <item text="Điều 241" value="Điều 241" />
+    <item text="Điều 242" value="Điều 242" />
+    <item text="Điều 243" value="Điều 243" />
+    <item text="Điều 244" value="Điều 244" />
+    <item text="Điều 245" value="Điều 245" />
+    <item text="Điều 246" value="Điều 246" />
+    <item text="Điều 247" value="Điều 247" />
+    <item text="Điều 248" value="Điều 248" />
+    <item text="Điều 249" value="Điều 249" />
+    <item text="Điều 250" value="Điều 250" />
+    <item text="Điều 251" value="Điều 251" />
+    <item text="Điều 252" value="Điều 252" />
+    <item text="Điều 253" value="Điều 253" />
+    <item text="Điều 254" value="Điều 254" />
+    <item text="Điều 255" value="Điều 255" />
+    <item text="Điều 256" value="Điều 256" />
+    <item text="Điều 257" value="Điều 257" />
+    <item text="Điều 258" value="Điều 258" />
+    <item text="Điều 259" value="Điều 259" />
+    <item text="Điều 260" value="Điều 260" />
+    <item text="Điều 261" value="Điều 261" />
+    <item text="Điều 262" value="Điều 262" />
+    <item text="Điều 263" value="Điều 263" />
+    <item text="Điều 264" value="Điều 264" />
+    <item text="Điều 265" value="Điều 265" />
+    <item text="Điều 266" value="Điều 266" />
+    <item text="Điều 267" value="Điều 267" />
+    <item text="Điều 268" value="Điều 268" />
+    <item text="Điều 269" value="Điều 269" />
+    <item text="Điều 270" value="Điều 270" />
+    <item text="Điều 271" value="Điều 271" />
+    <item text="Điều 272" value="Điều 272" />
+    <item text="Điều 273" value="Điều 273" />
+    <item text="Điều 274" value="Điều 274" />
+    <item text="Điều 275" value="Điều 275" />
+    <item text="Điều 276" value="Điều 276" />
+    <item text="Điều 277" value="Điều 277" />
+    <item text="Điều 278" value="Điều 278" />
+    <item text="Điều 279" value="Điều 279" />
+    <item text="Điều 280" value="Điều 280" />
+    <item text="Điều 281" value="Điều 281" />
+    <item text="Điều 282" value="Điều 282" />
+    <item text="Điều 283" value="Điều 283" />
+    <item text="Điều 284" value="Điều 284" />
+    <item text="Điều 285" value="Điều 285" />
+    <item text="Điều 286" value="Điều 286" />
+    <item text="Điều 287" value="Điều 287" />
+    <item text="Điều 288" value="Điều 288" />
+    <item text="Điều 289" value="Điều 289" />
+    <item text="Điều 290" value="Điều 290" />
+    <item text="Điều 291" value="Điều 291" />
+    <item text="Điều 292" value="Điều 292" />
+    <item text="Điều 293" value="Điều 293" />
+    <item text="Điều 294" value="Điều 294" />
+    <item text="Điều 295" value="Điều 295" />
+    <item text="Điều 296" value="Điều 296" />
+    <item text="Điều 297" value="Điều 297" />
+    <item text="Điều 298" value="Điều 298" />
+    <item text="Điều 299" value="Điều 299" />
+    <item text="Điều 300" value="Điều 300" />
+    <item text="Điều 301" value="Điều 301" />
+    <item text="Điều 302" value="Điều 302" />
+    <item text="Điều 303" value="Điều 303" />
+    <item text="Điều 304" value="Điều 304" />
+    <item text="Điều 305" value="Điều 305" />
+    <item text="Điều 306" value="Điều 306" />
+    <item text="Điều 307" value="Điều 307" />
+    <item text="Điều 308" value="Điều 308" />
+    <item text="Điều 309" value="Điều 309" />
+    <item text="Điều 310" value="Điều 310" />
+    <item text="Điều 311" value="Điều 311" />
+    <item text="Điều 312" value="Điều 312" />
+    <item text="Điều 313" value="Điều 313" />
+    <item text="Điều 314" value="Điều 314" />
+    <item text="Điều 315" value="Điều 315" />
+    <item text="Điều 316" value="Điều 316" />
+    <item text="Điều 317" value="Điều 317" />
+    <item text="Điều 318" value="Điều 318" />
+    <item text="Điều 319" value="Điều 319" />
+    <item text="Điều 320" value="Điều 320" />
+    <item text="Điều 321" value="Điều 321" />
+    <item text="Điều 322" value="Điều 322" />
+    <item text="Điều 323" value="Điều 323" />
+    <item text="Điều 324" value="Điều 324" />
+    <item text="Điều 325" value="Điều 325" />
+    <item text="Điều 326" value="Điều 326" />
+    <item text="Điều 327" value="Điều 327" />
+    <item text="Điều 328" value="Điều 328" />
+    <item text="Điều 329" value="Điều 329" />
+    <item text="Điều 330" value="Điều 330" />
+    <item text="Điều 331" value="Điều 331" />
+    <item text="Điều 332" value="Điều 332" />
+    <item text="Điều 333" value="Điều 333" />
+    <item text="Điều 334" value="Điều 334" />
+    <item text="Điều 335" value="Điều 335" />
+    <item text="Điều 336" value="Điều 336" />
+    <item text="Điều 337" value="Điều 337" />
+    <item text="Điều 338" value="Điều 338" />
+    <item text="Điều 339" value="Điều 339" />
+    <item text="Điều 340" value="Điều 340" />
+    <item text="Điều 341" value="Điều 341" />
+    <item text="Điều 342" value="Điều 342" />
+    <item text="Điều 343" value="Điều 343" />
+    <item text="Điều 344" value="Điều 344" />
+    <item text="Điều 345" value="Điều 345" />
+    <item text="Điều 346" value="Điều 346" />
+    <item text="Điều 347" value="Điều 347" />
+    <item text="Điều 348" value="Điều 348" />
+    <item text="Điều 349" value="Điều 349" />
+    <item text="Điều 350" value="Điều 350" />
+    <item text="Điều 351" value="Điều 351" />
+    <item text="Điều 352" value="Điều 352" />
+    <item text="Điều 353" value="Điều 353" />
+    <item text="Điều 354" value="Điều 354" />
+    <item text="Điều 355" value="Điều 355" />
+    <item text="Điều 356" value="Điều 356" />
+    <item text="Điều 357" value="Điều 357" />
+    <item text="Điều 358" value="Điều 358" />
+    <item text="Điều 359" value="Điều 359" />
+    <item text="Điều 360" value="Điều 360" />
+    <item text="Điều 361" value="Điều 361" />
+    <item text="Điều 362" value="Điều 362" />
+    <item text="Điều 363" value="Điều 363" />
+    <item text="Điều 364" value="Điều 364" />
+    <item text="Điều 365" value="Điều 365" />
+    <item text="Điều 366" value="Điều 366" />
+    <item text="Điều 367" value="Điều 367" />
+    <item text="Điều 368" value="Điều 368" />
+    <item text="Điều 369" value="Điều 369" />
+    <item text="Điều 370" value="Điều 370" />
+    <item text="Điều 371" value="Điều 371" />
+    <item text="Điều 372" value="Điều 372" />
+    <item text="Điều 373" value="Điều 373" />
+    <item text="Điều 374" value="Điều 374" />
+    <item text="Điều 375" value="Điều 375" />
+    <item text="Điều 376" value="Điều 376" />
+    <item text="Điều 377" value="Điều 377" />
+    <item text="Điều 378" value="Điều 378" />
+    <item text="Điều 379" value="Điều 379" />
+    <item text="Điều 380" value="Điều 380" />
+    <item text="Điều 381" value="Điều 381" />
+    <item text="Điều 382" value="Điều 382" />
+    <item text="Điều 383" value="Điều 383" />
+    <item text="Điều 384" value="Điều 384" />
+    <item text="Điều 385" value="Điều 385" />
+    <item text="Điều 386" value="Điều 386" />
+    <item text="Điều 387" value="Điều 387" />
+    <item text="Điều 388" value="Điều 388" />
+    <item text="Điều 389" value="Điều 389" />
+    <item text="Điều 390" value="Điều 390" />
+    <item text="Điều 391" value="Điều 391" />
+  </Dieu>
+  
+  <Khoang>
+    <item text="Khoản 1" value="Khoản 1" />
+    <item text="Khoản 2" value="Khoản 2" />
+    <item text="Khoản 3" value="Khoản 3" />
+    <item text="Khoản 4" value="Khoản 4" />
+    <item text="Khoản 5" value="Khoản 5" />
+    <item text="Khoản 6" value="Khoản 6" />
+    <item text="Khoản 7" value="Khoản 7" />
+    <item text="Khoản 8" value="Khoản 8" />
+    <item text="Khoản 9" value="Khoản 9" />
+    <item text="Khoản 10" value="Khoản 10" />
+    <item text="Khoản 11" value="Khoản 11" />
+    <item text="Khoản 12" value="Khoản 12" />
+    <item text="Khoản 13" value="Khoản 13" />
+    <item text="Khoản 14" value="Khoản 14" />
+    <item text="Khoản 15" value="Khoản 15" />
+  </Khoang>
+  
+  <Diem>
+    <item text="Điểm a" value="Điểm a" />
+    <item text="Điểm b" value="Điểm b" />
+    <item text="Điểm c" value="Điểm c" />
+    <item text="Điểm d" value="Điểm d" />
+    <item text="Điểm đ" value="Điểm đ" />
+    <item text="Điểm e" value="Điểm e" />
+    <item text="Điểm f" value="Điểm f" />
+    <item text="Điểm g" value="Điểm g" />
+    <item text="Điểm h" value="Điểm h" />
+    <item text="Điểm i" value="Điểm i" />
+    <item text="Điểm j" value="Điểm j" />
+    <item text="Điểm k" value="Điểm k" />
+    <item text="Điểm l" value="Điểm l" />
+    <item text="Điểm m" value="Điểm m" />
+    <item text="Điểm n" value="Điểm n" />
+    <item text="Điểm o" value="Điểm o" />
+    <item text="Điểm p" value="Điểm p" />
+    <item text="Điểm q" value="Điểm q" />
+    <item text="Điểm r" value="Điểm r" />
+    <item text="Điểm s" value="Điểm s" />
+    <item text="Điểm t" value="Điểm t" />
+    <item text="Điểm x" value="Điểm x" />
+    <item text="Điểm y" value="Điểm y" />
+    <item text="Điểm z" value="Điểm z" />
+  </Diem>
+    
+</autobind>

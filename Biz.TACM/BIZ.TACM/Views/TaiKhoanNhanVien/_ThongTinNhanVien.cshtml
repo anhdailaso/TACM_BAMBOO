@@ -1,0 +1,78 @@
+﻿@model Biz.Lib.TACM.QuanLyNhanVien.Model.NhanVienModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    string trangthai;
+    string color;
+}
+
+@if (Model.TrangThai == 1)
+{
+    trangthai = ViewText.TRANGTHAI_HOATDONG;
+    color = "#3cab3c";
+}
+else
+{
+    trangthai = ViewText.TRANGTHAI_KHONGHOATDONG;
+    color = "red";
+}
+
+<div class="row mb-2">
+    <div class="col-10">
+        <h3 class="text-uppercase mb-2">@ViewText.TITLE_THONGTINNHANVIEN.ToUpper()</h3>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("CapNhatThongTinNhanVien", "TaiKhoanNhanVien")"><i class="fa fa-pencil-square-o"></i></button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-block">
+        <div class="col-12">
+            <table class="table table-information table-hover">
+                <tbody>
+                    <tr>
+                        <td>@ViewText.LABEL_HOVATEN</td>
+                        <td class="text-value-bold">@Model.HoVaTen</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_MANV</td>
+                        <td class="text-value-bold">@Model.MaNVMoi</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_CHUCDANH</td>
+                        <td class="text-value-bold">@Model.ChucDanh</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_TENCHUCVU</td>
+                        <td class="text-value-bold">@Model.ChucVu</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_GIOITINH</td>
+                        <td class="text-value-bold">@Model.GioiTinh</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_NGAYSINH</td>
+                        <td class="text-value-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgaySinh)</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_SODIENTHOAI</td>
+                        <td class="text-value-bold">@Model.SoDienThoai</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_EMAIL</td>
+                        <td class="text-value-bold">@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_TRANGTHAI</td>
+                        <td class="text-value-bold" style="color: @color;">@trangthai</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_TOAAN</td>
+                        <td class="text-value-bold">@Model.TenToaAn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

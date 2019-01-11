@@ -1,0 +1,131 @@
+@model IEnumerable<Biz.Lib.TACM.QuanLyNhanVien.Model.NhanVienModel>
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.UtilityHelpers
+@using Microsoft.Ajax.Utilities
+
+@{
+    string trangthai = ViewText.TRANGTHAI_KHONGHOATDONG;
+    string color = "red";
+    
+}
+
+<div class="col-lg-12 col-md-12">
+    @if (Model != null && Model.Any())
+    {
+        <input type="hidden" id="toaAnId" value="@Model.First().ToaAnID" />
+        foreach (var NhanVien in Model)
+        {           
+            <div id="NhanVienItem_@NhanVien.NhanvienID" class="col-6 float-left" style="padding-top:20px;padding-bottom:20px;">
+                <div class="custom-NVItem">
+                    <div class="float-left" >
+                        @if (NhanVien.TrangThai == 1)
+                        {
+                            trangthai = ViewText.TRANGTHAI_HOATDONG;
+                            color = "green";
+                            
+                        }
+                        else
+                        {
+                            trangthai = ViewText.TRANGTHAI_KHONGHOATDONG;
+                            color = "red";
+                            
+                        }
+                        <a data-toggle="tooltip" data-placement="top" title="@NotifyMessage.TITLE_NHANVAO_THAYDOI_HINHDAIDIEN"
+                           style="width: 100px; cursor: pointer; height: 100px; display: block;padding-top:10px"
+                           data-trigger="modal"
+                           data-target="#modal"
+                           data-url="@Url.Action("UploadDocument", "Home", new DropzoneOptions
+                                     {
+                                         Url = Url.Action("CapNhatHinhDaiDien", "QuanLyNhanVien", new {maNV = NhanVien.MaNVMoi}), MaxFiles = 1, MaxFileSize = 2
+                                     })">
+
+                            <img class="circleBase" src="@Url.Content(string.Format(Setting.EMPLOYEE_IMAGE_FOLDER, NhanVien.DuongDanHinhDaiDien))" alt=""
+                                 onerror="this.onerror = null;this.src = '@Url.Content(string.Format(Setting.NHANVIEN_HINH_TACM, Setting.DEFAULT_IMAGE_200x200))'" />
+                        </a>
+                    </div>
+                    <div class="float-left" style="font-size:larger; padding-left:10px">
+                        <p class="mb-0" style="word-spacing:normal; width:270px;"><i class="fa fa-circle-thin" aria-hidden="true"></i> @NhanVien.HoVaTen</p>
+                        <p class="mb-0"><i class="fa fa-circle-thin" aria-hidden="true"></i> @ViewText.LABEL_MANV: @NhanVien.MaNVMoi</p>
+                        <p class="mb-0" style="word-spacing:normal; width:270px;"><i class="fa fa-circle-thin" aria-hidden="true"></i> @ViewText.LABEL_CHUCDANH: @NhanVien.ChucDanh</p>
+                        <p class="mb-0" style="word-spacing:normal; width:270px;"><i class="fa fa-circle-thin" aria-hidden="true"></i> @ViewText.LABEL_TENCHUCVU: @NhanVien.ChucVu</p>
+                        <p class="mb-0"><i class="fa fa-circle-thin" aria-hidden="true"></i> @ViewText.LABEL_TRANGTHAI: <span style="color:@color"> @trangthai</span></p>
+
+                        <span class="btn-span-with-tooltip" data-trigger="modal"
+                              data-target="#modalCTNhanVien"
+                              data-url="@Url.Action("ChiTietNhanVien","QuanLyNhanVien",
+                                                  new { id = @NhanVien.NhanvienID })">
+                            <a class="" title="Chi tiết nhân viên">
+                                <i class="btn btn-sm btn-outline-success fa fa-search btn-treeview" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span class="btn-span-with-tooltip" data-trigger="modal"
+                              data-target="#modal"
+                              data-url="@Url.Action("CapNhatChucNang", "QuanLyNhanVien", new { maNV = @NhanVien.MaNVMoi })">
+                            <a class="" title="Cập nhật chức năng">
+                                <i class="btn btn-sm btn-outline-primary fa fa-link btn-treeview" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span class="btn-span-with-tooltip" data-trigger="modal"
+                              data-target="#modal"
+                              data-url="@Url.Action("TruyCapTheoToaAn", "QuanLyNhanVien", new { id = @NhanVien.NhanvienID })">
+                            <a class="" title="Truy cập theo tòa án">
+                                <i class="btn btn-sm btn-outline-primary fa fa-shield btn-treeview " aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span class="btn-span-with-tooltip" data-trigger="modal"
+                              data-target="#modal"
+                              data-url="@Url.Action("CapNhatNhanVien","QuanLyNhanVien",
+                                                  new { id = @NhanVien.NhanvienID, toaanid = @NhanVien.ToaAnID })">
+                            <a class="" title="Cập nhật thông tin nhân viên">
+                                <i class="btn btn-sm btn-outline-primary fa fa-pencil-square-o btn-treeview" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                        @if ((NhanVien.ChucDanh.IsNullOrWhiteSpace() ? "" : NhanVien.ChucDanh.ToLower()) == Setting.CHUCDANH_THAMPHAN.ToLower())
+                        {
+                            <span class="btn-span-with-tooltip" data-trigger="modal"
+                                  data-target="#modalthuky"
+                                  data-url="@Url.Action("ThuKyTheoThamPhan","QuanLyNhanVien",
+                                                new { manv = @NhanVien.MaNV,idta = NhanVien.ToaAnID })">
+                                <a class="" title="Cập nhật thư ký / thẩm tra viên theo thẩm phán">
+                                    <i class="btn btn-sm btn-outline-primary fa fa-adjust btn-treeview" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        }
+                        <span class="btn-span-with-tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                            <a data-trigger="modal"
+                               data-target="#modal"
+                               data-url="@Url.Action("XoaNhanVien", "QuanLyNhanVien", new { id = @NhanVien.NhanvienID })">
+                                <i class="btn btn-sm btn-outline-danger fa fa-trash-o btn-treeview" aria-hidden="true"></i>
+                            </a>
+                        </span>                    
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="mt-5 text-center empty-data">
+            <blockquote>
+                <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+            </blockquote>
+        </div>
+    }
+
+</div>
+<div class="modal fade" id="modalCTNhanVien" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width:540px">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalthuky" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width:540px">
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,7 @@
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\bin\Debug\Biz.Lib.TACM.GiamDocThamTaiTham.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\bin\Debug\Biz.Lib.TACM.GiamDocThamTaiTham.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\bin\Debug\Biz.Lib.Helpers.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\bin\Debug\Log.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\obj\Debug\Biz.Lib.TACM.GiamDocThamTaiTham.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\obj\Debug\Biz.Lib.TACM.GiamDocThamTaiTham.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\obj\Debug\Biz.Lib.TACM.GiamDocThamTaiTham.pdb

@@ -1,0 +1,39 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = ViewText.TITLE_NHANHOSOPHUCTHAM;
+}
+
+@section Title
+{
+    @{ Html.RenderPartial("_PageTitlePartial");}
+}
+
+@section VerticalMenu
+{
+    @{ Html.RenderPartial("_VerticalMenuPartial");}
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div id="nhanHoSoPhucThamContainer">
+            <table class="table table-hover table-bordered table-custom" cellspacing="0" id="tableNhanHoSoPhucTham" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.TABLE_MAHOSO</td>
+                        <td>@ViewText.TABLE_TENVUAN</td>@*Tên của các đương sự*@
+                        <td>@ViewText.TABLE_NGAYCHUYEN</td>
+                        <td>@ViewText.TABLE_NGUOICHUYEN</td>
+                        <td style="min-width:100px">@ViewText.TABLE_XEMCHITIET</td>
+                        <td style="min-width:100px"></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/NhanHoSoPhucTham")
+}

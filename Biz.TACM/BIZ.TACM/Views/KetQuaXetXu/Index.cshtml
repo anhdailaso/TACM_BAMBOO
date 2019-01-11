@@ -1,0 +1,174 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnModel
+
+
+@{
+    ViewBag.Title = ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET;
+}
+
+@section Title
+{
+    @{ Html.RenderPartial("_PageTitlePartial", ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET);}
+}
+
+@section VerticalMenu
+{
+    @{ Html.RenderPartial("_VerticalMenuPartial");}
+}
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var maNhomAn = Model.NhomAn;
+    var roleCongDoan = ViewBag.ActiveCongDoan == 4 ? 1 : -1;
+}
+
+<input type="hidden" id="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+<input type="hidden" id="roleGiaiDoan" value="@ViewBag.RoleGiaiDoan" />
+<input type="hidden" id="roleCongDoan" value="@roleCongDoan" />
+<input type="hidden" id="loaiQuanHe" value="@Model.LoaiQuanHe" />
+<input type="hidden" id="nhomAnHSVA" value="@Model.NhomAn" />
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="text-uppercase mb-4">@ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET</h3>
+            </div>
+            <div class="col-6 text-right">
+                <div class="d-inline-block mr-3">
+                    @if ((int)ViewBag.ActiveCongDoan != CongDoan.NhanDon.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanPrev" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
+                    }
+
+                    <a id="btnChuyenCongDoan" href="#" data-toggle="modal" data-target="#modalChuyenCongDoan" class="remove-outline"><span class="label-cell-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)">@Html.GetCongDoanHoSoAsString((int)ViewBag.ActiveCongDoan, maNhomAn, giaiDoan) &nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+                    @if ((int)ViewBag.ActiveCongDoan != CongDoan.LuuKho.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanNext" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+
+                    }
+                </div>
+                <div class="label-cell">
+                    @Html.Raw(string.Format(ViewText.HOSOVUAN_NUMBER, Model.MaHoSo, Model.SoHoSo))
+                </div>
+            </div>
+        </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-sau-xet-xu-sticky" role="tablist">
+
+            @if (Model.LoaiQuanHe == "Yêu cầu" || maNhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+            {
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#content_quyet_dinh" role="tab">@ViewText.LABEL_QUYETDINH</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#content_quyet_dinh" role="tab">@ViewText.LABEL_QUYETDINH</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#content_ban_an" role="tab">@ViewText.TITLE_BANAN</a>
+                </li>
+                if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#content_tra_ho_so_dieu_tra" role="tab">@ViewText.LABEL_TRAHOSO_DIEUTRABOSUNG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#content_dinh_chi_vu_an" role="tab">@ViewText.LABEL_DINHCHI_VUAN</a>
+                    </li>
+                }
+            }
+
+            @*<li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#content_mau_in" role="tab">@ViewText.LABEL_MAUIN</a>
+        </li>*@
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            @if (Model.LoaiQuanHe == "Yêu cầu" || maNhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+            {
+                <div class="tab-pane fade active show" id="content_quyet_dinh" role="tabpanel">
+                    @Html.Partial("QuyetDinh/_QuyetDinh")
+                </div>
+            }
+            else
+            {
+                <div class="tab-pane fade active show" id="content_quyet_dinh" role="tabpanel">
+                    @Html.Partial("QuyetDinh/_QuyetDinh")
+                </div>
+                <div class="tab-pane fade" id="content_ban_an" role="tabpanel">
+                    @Html.Partial("BanAn/_BanAn")
+                </div>
+                if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    <div class="tab-pane fade" id="content_tra_ho_so_dieu_tra" role="tabpanel">
+                        @Html.Partial("TraHoSoDieuTraBoSung/_TraHoSoDieuTraBoSung")
+                    </div>
+
+                    <div class="tab-pane fade" id="content_dinh_chi_vu_an" role="tabpanel">
+                        @Html.Partial("DinhChiVuAn/_DinhChiVuAn")
+                    </div>
+
+                }
+            }
+
+            @*<div class="tab-pane fade" id="content_mau_in" role="tabpanel">
+            @Html.Partial("MauIn/_MauIn")
+        </div>*@
+        </div>
+    </div>
+</div>
+
+<!-- Modal chuyen cong doan -->
+<div class="modal fade" id="modalChuyenCongDoan" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("ChuyenCongDoan", "NhanDon", FormMethod.Post, new { @id = "formChuyenCongDoan" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase">@ViewText.LABEL_CAPNHAT_CONGDOAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_CONGDOAN_CHUYENDEN</label>
+                                @Html.DropDownListFor(m => m.CongDoanHoSo, (SelectList)ViewBag.ddlTrangThai, new { @id = "selectChuyenCongDoan", @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger text-uppercase pull-right" id="chuyen-cong-doan-btn">Lưu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/KetQuaXetXu")
+
+    <script>
+        $(document).ready(function () {
+            //if ($("#loaiQuanHe").val() === "Yêu cầu" || $("#nhomAn").val() == "AD") {
+            //    $('[href="#content_ban_an"]').closest('li').hide();
+            //}
+        });
+    </script>
+}

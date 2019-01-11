@@ -1,0 +1,63 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+@model Biz.Lib.TACM.NhanDon.Model.TraLaiDonModel
+
+@using (Html.BeginForm("EditTraLaiDon", "NhanDon", FormMethod.Post, new { @id = "formEditTraLaiDon" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_TRALAIDON_KHANGCAO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYTRADON<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayTraDon, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayTraDon)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_LYDO_TRADON<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.LyDoTraDon, (SelectList)ViewBag.ddlLyDo, "--Chọn--", new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LyDoTraDon)</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>@ViewText.LABEL_GHICHU</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", style = "width: 100%", @maxlength = 2000 })
+                        <small class="form-text text-danger"><span for="GhiChu"></span></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        EditTraLaiDonKhangCao.init();
+    });
+</script>

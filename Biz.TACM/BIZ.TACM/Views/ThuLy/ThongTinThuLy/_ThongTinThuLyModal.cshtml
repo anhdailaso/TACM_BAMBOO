@@ -1,0 +1,273 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Models.ViewModel.ThuLy
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@using Biz.TACM.Models.Model
+@model ThongTinThuLyViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+    var giaiDoan = anSessionModel.GiaiDoanId;
+}
+
+@using (Html.BeginForm("EditThongTinThuLy", "ThuLy", FormMethod.Post, new { @id = "formEditThongTinThuLy" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_THONGTIN_THULY</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="HoSoVuAnID" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+        <input type="hidden" name="ThongTinThuLyID" value="@Model.ThongTinThuLyID" />
+        <input type="hidden" id="SoThuLyLienTuc" name="SoThuLyLienTuc" value="@Model.SoThuLy" />
+        <div class="row">
+            <div class="col-6">
+                <div class="row mb-3" style="margin-top: 10px;">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_SOTHULY<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @*@{Model.SoThuLy = ViewBag.SoThuLy;}*@
+                        @Html.TextBoxFor(x => x.SoThuLy, new { @class = "form-control" })
+                        <small class="form-text text-danger"><span for="SoThuLy"></span></small>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_TRUONGHOP_THULY<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.TruongHopThuLy, (SelectList)ViewBag.listTruongHopThuLy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger"><span for="TruongHopThuLy"></span></small>
+                    </div>
+                </div>
+
+                @if (maNhomAn != Setting.MANHOMAN_HINHSU)
+                {
+                    <div class="row mb-3" id="thuly-theo-thu-tuc-group">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_THULY_THUTUC<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-7">
+                            @Html.DropDownListFor(m => m.ThuLyTheoThuTuc, (SelectList)ViewBag.listThuLyTheoThuTuc, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger"><span for="ThuLyTheoThuTuc"></span></small>
+                        </div>
+                    </div>
+                }
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGAYTHULY<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-thu-ly-dtp">
+                            @Html.TextBoxFor(x => x.NgayThuLy, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="NgayThuLy"></span></small>
+                    </div>
+                </div>
+
+                @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_LOAI_QUANHE<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-7">
+                            @Html.DropDownList("LoaiQuanHe", (SelectList)ViewBag.listLoaiQuanHe, null, new { @class = "form-control" })
+                            <small class="form-text text-danger"><span for="LoaiQuanHe"></span></small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_KHIEUKIEN<span class="input-required">*</span></label>
+                        </div>
+                        <input id="KhieuKienHidden" type="hidden" name="KhieuKienHidden" value="@Model.QuanHePhapLuat" />
+                        <div class="col-7">
+                            @Html.DropDownList("QuanHePhapLuat", (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control" ,id="khieukienddl"})
+                            <div class="row option-hidden">
+                                <div class="col-2 d-inline-block">
+                                    <label>Khác</label>
+                                </div>
+                                <div class="col-9 d-inline-block">
+                                    @Html.TextBoxFor(m => m.QuanHePhapLuat, string.Empty, new { @class = "form-control", id = "KhieuKienTextbox", @style = "width:110%" })
+                                </div>
+                            </div>
+                            <small class="form-text text-danger"><span for="QuanHePhapLuat"></span></small>
+                        </div>
+                    </div>
+
+                }
+                else if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                {
+
+                }
+                else
+                {
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_LOAI_QUANHE</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-7">
+                            @Html.DropDownList("LoaiQuanHe", (SelectList)ViewBag.listLoaiQuanHe, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger"><span for="LoaiQuanHe"></span></small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_QUANHE_PHAPLUAT</label><span class="input-required">*</span>
+                        </div>
+                        <div class="col-7">
+                            @Html.DropDownList("QuanHePhapLuat", (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control", id = "QuanHePhapLuatDDL-tl" })
+                            <input type="hidden" id="QuanHePhapLuatHidden" value="@Model.QuanHePhapLuat" />
+                            <ul id="list-qhpl-tranh-chap" class="list-unstyled invisible hidden-xl-down">
+                                @foreach (var item in ViewBag.listQuanHePhapLuatTranhChap)
+                                {
+                                    <li><input value="@item.Value" /></li>
+                                }
+                            </ul>
+                            <ul id="list-qhpl-yeu-cau" class="list-unstyled invisible hidden-xl-down">
+                                @foreach (var item in ViewBag.listQuanHePhapLuatYeuCau)
+                                {
+                                    <li><input value="@item.Value" /></li>
+                                }
+                            </ul>
+                            <div class="row option-hidden">
+                                <div class="col-2 d-inline-block">
+                                    <label>Khác</label>
+                                </div>
+                                <div class="col-9 d-inline-block">
+                                    @Html.TextBoxFor(m => m.QuanHePhapLuat, string.Empty, new { @class = "form-control", id = "QuanHePhapLuatTextbox", @style = "width:110%" })
+                                </div>
+                            </div>
+                            <small class="form-text text-danger"><span for="QuanHePhapLuat"></span></small>
+                        </div>
+                    </div>
+                }
+
+                @if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_THOIHAN_GIAIQUYET</label>
+                        </div>
+                        <div class="col-7">
+                            @Html.DropDownListFor(m => m.ThoiHanGiaiQuyet, (SelectList)ViewBag.listThoiHanGiaiQuyet, Setting.DDL_CHOOSE, new { @class = "form-control col-9 d-inline-block" })
+                            <span class="ml-2">ngày</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row mb-2">
+                        <div class="col-5">
+                            <label>@ViewText.LABEL_THOIHAN_GIAIQUYET:</label>
+                        </div>
+                    </div>
+                }
+
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_TUNGAY</label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="thoi-han-giai-quyet-tu-ngay-dtp">
+                            @Html.TextBox("ThoiHanGiaiQuyetTuNgay", Model.NgayThuLy, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_DENNGAY<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="thoi-han-giai-quyet-den-ngay-dtp">
+                            @Html.TextBoxFor(x => x.ThoiHanGiaiQuyetDenNgay, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="ThoiHanGiaiQuyetDenNgay"></span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    <div class="mb-4">
+                        <div>
+                            <label class="noi-dung-yeu-cau-tab-title">@ViewText.TAB_TITLE_NOIDUNG_KHANGCAO_KHANGNGHI<span class="input-required">*</span></label>
+                        </div>
+                        <div>
+                            @Html.TextAreaFor(m => m.NoiDungKhangCao, new { @class = "form-control", id = "noi-dung-khang-cao-textarea" })
+                            <small class="form-text text-danger"><span for="noi-dung-khang-cao-textarea"></span></small>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>@ViewText.LABLE_CACTAILIEU_KEMTHEO</label>
+                        </div>
+                        <div>
+                            @Html.TextArea("TaiLieuChungTuKemTheo", Html.Raw(HttpUtility.HtmlDecode(Model.TaiLieuChungTuKemTheo)).ToString(), new { @class = "form-control", id = "tai-lieu-chung-tu-textarea" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                    {
+                        <div class="mb-4">
+                            <div>
+                                <label>@ViewText.LABEL_GHICHU</label>
+                            </div>
+                            <div>
+                                @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", id = "ghi-chu-thongtinthuly-textarea" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mb-4">
+                            <div>
+                                <label>@ViewText.LABEL_NOIDUNGYEUCAU_TOAAN_GIAIQUYET<span class="input-required">*</span></label>
+                            </div>
+                            <div>
+                                @Html.TextAreaFor(m => m.NoiDungYeuCau, new { @class = "form-control", id = "noi-dung-yeu-cau-textarea" })
+                                <small class="form-text text-danger"><span for="noi-dung-yeu-cau-textarea"></span></small>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label>@ViewText.LABLE_CACTAILIEU_KEMTHEO</label>
+                            </div>
+                            <div>
+                                @Html.TextArea("TaiLieuChungTuKemTheo", Html.Raw(HttpUtility.HtmlDecode(Model.TaiLieuChungTuKemTheo)).ToString(), new { @class = "form-control", id = "tai-lieu-chung-tu-textarea" })
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-thong-tin-thu-ly-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        EditThongTinThuLyModule.init();
+    });
+</script>

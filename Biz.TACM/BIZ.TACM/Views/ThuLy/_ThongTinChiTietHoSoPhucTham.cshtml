@@ -1,0 +1,49 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@using Microsoft.Ajax.Utilities
+@model Biz.TACM.Models.ViewModel.ThuLy.HoSoVuAnThuLyViewModel
+@{
+    Layout = null;
+}
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+<div class="row">
+    <div class="col-6">
+        @Html.DropDownList("ddlNgayTaoHoSo", (SelectList)ViewBag.listNgayTao, null, new { @class = "custom-select mb-2", id = "selectNgayTaoHoSoThuLy" })
+        <button id="btnSuaHoSoThuLy" class="btn btn-sm btn-outline-primary btn-custom-size float-right mb-1" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditChiTietHoSo", "ThuLy", new { id = Model.HoSoVuAnLogID, hoSoVuAnId = Model.HoSoVuAnID })"><i class="fa fa-pencil-square-o"></i></button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYLAM_HOSO</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayLamDon)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAI_QUANHE</span><span id="HoSoVuAn_LoaiQuanHe" class="font-weight-bold">@Model.LoaiQuanHe</span></li>
+            @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+            {
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHIEUKIEN</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+            }
+            else
+            {                       
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_QUANHE_PHAPLUAT</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+            }
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_CANBONHAN_HOSO</span><span class="font-weight-bold">@(Model.NhanVienCanBoNhanDon == null ? "" : Model.NhanVienCanBoNhanDon.HoTenVaMaNV)</span></li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@ViewText.LABEL_CONGDOAN</span>
+                <span class="btn-cong-doan-size badge badge-pill @Html.GetColorStateAsString(Model.CongDoanHoSo)">@Html.GetCongDoanHoSoAsString(Model.CongDoanHoSo, maNhomAn, giaiDoan)</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span id="HoSoVuAn_ThamPhan" class="font-weight-bold text-danger">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCAPNHAT</span><span class="font-weight-bold"> @Model.NgayTao</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOICAPNHAT</span><span class="font-weight-bold">@(Model.NhanVienNguoiLapDon == null ? "" : Model.NhanVienNguoiLapDon.HoTenVaMaNV)</span></li>
+        </ul>
+    </div>
+</div>
+

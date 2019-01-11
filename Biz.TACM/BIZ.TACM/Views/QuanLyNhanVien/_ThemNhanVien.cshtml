@@ -1,0 +1,191 @@
+﻿@model Biz.TACM.Models.ViewModel.QuanLyNhanVien.NhanVienViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@using (Html.BeginForm("ThemNhanVien", "QuanLyNhanVien", FormMethod.Post, new { id = "formThemNhanVien" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_THEM_THONGTIN_NHANVIEN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_MANV<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.MaNV, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.MaNV)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_HO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.HoNV, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoNV)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_TENLOT</label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.TenLotNV, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.TenLotNV)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_TEN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.TenNV, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.TenNV)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    
+                    <label class="col-5">@ViewText.LABEL_GIOITINH<span class="input-required">*</span></label>
+                    
+                    <div class="col-7">
+                        @Html.DropDownList("GioiTinh", (SelectList)ViewBag.listGioiTinh, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.GioiTinh)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    
+                        <label class="col-5">@ViewText.LABEL_NGAYSINH</label>
+                    
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-sinh-dtp">
+                            @Html.TextBoxFor(x => x.NgaySinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="form-group row">
+
+                    <label class="col-5">@ViewText.LABEL_SODIENTHOAI</label>
+
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.SoDienThoai, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoDienThoai)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="col-5">@ViewText.LABEL_EMAIL<span class="input-required">*</span></label>
+
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Email)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="col-5">@ViewText.LABEL_TRANGTHAI<span class="input-required">*</span></label>
+
+                    <div class="col-7">
+                        @Html.DropDownList("TrangThai", (SelectList)ViewBag.listhoatdong, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TrangThai)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <label class="col-5">@ViewText.LABEL_CHUCDANH<span class="input-required">*</span></label>
+
+                    <div class="col-7">
+                        @Html.DropDownList("SoDoToChucID", (SelectList)ViewBag.listChucDanh, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoDoToChucID)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label class="col-5">@ViewText.LABEL_TENCHUCVU</label>
+
+                    <div class="col-7">
+                        @Html.DropDownList("SoDoToChucChucVuID", (SelectList)ViewBag.listChucVu, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label class="col-7">@ViewText.LABEL_TAOTAIKHOAN_NHANVIEN<span class="input-required">*</span></label>
+
+                    <div class="col-5">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                @Html.RadioButton("TaoTaiKhoan", true, new { @class = "form-check-input" }) Có
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                @Html.RadioButton("TaoTaiKhoan", false, true, new { @class = "form-check-input" }) không
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+            <h5 class="modal-title text-uppercase">@ViewText.TITLE_THEMCHUCNANG_NHANVIEN</h5><br />
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover table-bordered table-custom">
+                        <thead>
+                            <tr>
+                                <td><input class="checkboxAll" type="checkbox" /></td>
+                                <td>@ViewText.TABLE_CHUCNANG</td>
+                                <td class="text-center">@ViewText.TABLE_CHUCNANGCHINH</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.ChucNangNhanVien.ListChucNang.Count; i++)
+                    {
+                        var chucNangId = string.Format("chucNang-{0}", Model.ChucNangNhanVien.ListChucNang[i].MaChucNang);
+                        var chucNangChinhId = string.Format("chucNangChinh-{0}", Model.ChucNangNhanVien.ListChucNang[i].MaChucNang);
+                        <tr>
+                            @Html.HiddenFor(m => Model.ChucNangNhanVien.ListChucNang[i].MaChucNang)
+                            @Html.HiddenFor(m => Model.ChucNangNhanVien.ListChucNang[i].TenChucNang)
+                            <td>@Html.CheckBoxFor(m => Model.ChucNangNhanVien.ListChucNang[i].IsHaveChucNang, new { id = chucNangId, @class = "cb-chucnang" })</td>
+                            <td>@Html.DisplayFor(m => Model.ChucNangNhanVien.ListChucNang[i].TenChucNang)</td>
+                            <td class="text-center">@Html.RadioButtonFor(m => m.ChucNangNhanVien.ChucNangChinh, Model.ChucNangNhanVien.ListChucNang[i].MaChucNang, new { id = chucNangChinhId, @class = "radio-btn" })</td>
+                        </tr>
+            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btn_them_nhan_vien">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+
+    $(function () {
+        ThemNhanVien.init();
+        $('form').removeData('validator');
+        $('form').removeData('unobtrusiveValidation');
+        $.validator.unobtrusive.parse('form');
+    });
+    $(function () {
+        CheckAllModule.init();
+    });
+    $(function () {
+        CheckRadioModule.init();
+    });
+</script>

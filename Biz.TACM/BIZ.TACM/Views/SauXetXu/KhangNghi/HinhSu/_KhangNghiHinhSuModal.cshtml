@@ -1,0 +1,102 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangNghi.ThongTinKhangNghiViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.LABEL_KHANGNGHI</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("KhangNghi", "SauXetXu", FormMethod.Post, new { id = "khang-nghi-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_VIENKIEMSAT_KHANGNGHI<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+
+                        @Html.DropDownListFor(x => x.VienKiemSatKhangNghi, (SelectList)ViewBag.danhSachVienKiemSatKhangNghi, Setting.DDL_CHOOSE, new { @class = "form-control", id = "vien-kiem-sat-khang-nghi-dropdownlist" })
+                        <small class="form-text text-danger"><span for="vien-kiem-sat-khang-nghi-dropdownlist">@Html.ValidationMessageFor(x => x.VienKiemSatKhangNghi)</span></small>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_VANBAN_KHANGNGHI<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBox("van-ban-khang-nghi-textbox", @Model.VanBanKhangNghi, new { @class = "form-control" })
+                        <small class="form-text text-danger"><span for="van-ban-khang-nghi-textbox"></span></small>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-5">
+                        <label style="display: inline">@ViewText.LABEL_TOAAN_NHAN_VANBANKHANGNGHI<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group" id="ngay-toa-an-nha-van-ban-dtp">
+                            <input type="text" class="form-control" name="ngay-toa-an-nha-van-ban-dtp" value="@Model.NgayToaAnNhanVanBan" />
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="ngay-toa-an-nha-van-ban-dtp"></span></small>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_HINHTHUC<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.HinhThuc, (SelectList)ViewBag.danhSachHinhThuc, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "hinh-thuc-dropdownlist" })
+                        <small class="form-text text-danger"><span for="hinh-thuc-dropdownlist">@Html.ValidationMessageFor(m => m.HinhThuc)</span></small>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <label>@ViewText.LABEL_NOIDUNG_KHANGNGHI<span class="input-required">*</span></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @Html.TextArea("noi-dung-khang-nghi-textarea", Model.NoiDungKhangNghi, new { @class = "form-control", style = "width: 100%" })
+                        <small class="form-text text-danger"><span for="noi-dung-khang-nghi-textarea"></span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <label class="d-block">@ViewText.LABEL_BICAO_BI_KHANGNGHI<span class="input-required">*</span></label>
+                <small class="form-text text-danger mb-2"><span for="DanhSachNguoiBiKhangNghi[]"></span></small>
+                <ul class="list-unstyled">
+                    @if (ViewBag.listDuongSuBiKhangNghi != null)
+                    {
+                        foreach (var item in ViewBag.listDuongSuBiKhangNghi)
+                        {
+                            <li><label><input class="align-middle nguoi-bi-khang-nghi-checkbox" name="DanhSachNguoiBiKhangNghi[]" @(item.Checked ? "checked" : "") value="@item.HoVaTen" type="checkbox" /> @item.HoVaTen</label></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><small class="form-text text-danger mb-2"><span>@NotifyMessage.CHUACO_DULIEU</span></small></li>
+                    } 
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="khang-nghi-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        KhangNghiModalModule.init();
+    });
+</script>

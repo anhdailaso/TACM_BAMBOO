@@ -1,0 +1,139 @@
+﻿@model Biz.TACM.Models.ViewModel.SauXetXu.SuaChuaBanAn.ThongTinSuaChuaBanAnViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+<div class="modal-header">
+    <h5 id="titleSuaChuaBoSungQuyetDinhBanAn" class="modal-title text-uppercase">@ViewText.TITLE_MODAL_SUACHUABOSUNGBANAN_QUYETDINH</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("SuaChuaBanAn", "SauXetXu", FormMethod.Post, new { id = "sua-chua-ban-an-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-5">
+                <label>@ViewText.TEXT_SAUXETXU_LYDOSUACHUABOSUNG<span class="input-required">*</span></label>
+            </div>
+            <div class="col-7">
+                @Html.TextBox("ly-do-textbox", Model.LyDo, new { @class = "form-control" })
+                <small class="form-text text-danger"><span for="ly-do-textbox"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-5">
+                <label>@ViewText.TEXT_SAUXETXU_NGAYSUACHUABOSUNG<span class="input-required">*</span></label>
+            </div>
+            <div class="col-7">
+                <div class="input-group" id="ngay-sua-chua-ban-an-modal-dtp">
+                    <input type="text" class="form-control" name="ngay-sua-chua-ban-an-modal-dtp" value="@Model.NgaySuaChua" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text text-danger"><span for="ngay-sua-chua-ban-an-modal-dtp"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-5">
+                <label>@ViewText.LABEL_NGUOIKY<span class="input-required">*</span></label>
+            </div>
+            <div class="col-7">
+                @Html.DropDownListFor(m => m.NguoiKy, (SelectList)ViewBag.danhSachNguoiKy, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "nguoi-ky-dropdownlist" })
+                <small class="form-text text-danger"><span for="nguoi-ky-dropdownlist">@Html.ValidationMessageFor(m => m.NguoiKy)</span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-5">
+                <label>@ViewText.TEXT_ATTACHEDFILE</label>
+            </div>
+            <div class="col-7">
+                <div>
+                    <input id="file_upload" type="file" accept=".doc,.docx,.pdf"/>
+                </div>
+                @Html.HiddenFor(m => m.DinhKemFile)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>@NotifyMessage.DUNGLUONG_FILE_TOIDA</label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <label>@ViewText.TEXT_SAUXETXU_NOIDUNGSUACHUABOSUNG<span class="input-required">*</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @Html.TextArea("noi-dung-sua-chua-textarea", Model.NoiDung, new { @class = "form-control", style = "width: 100%" })
+                <small class="form-text text-danger"><span for="noi-dung-sua-chua-textarea"></span></small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="sua-chua-ban-an-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        SuaChuaBanAnModalModule.init();
+    });
+
+    $('#sua-chua-ban-an-form #file_upload').change(function (e) {
+        var files = e.target.files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+                $.ajax({
+                    type: "POST",
+                    dateType: "json",
+                    url: '/SauXetXu/UploadFiles',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    beforeSend: function () {
+
+                    },
+                    success: function (result) {
+                        if (result.status == 'success') {
+                            $('#sua-chua-ban-an-form #DinhKemFile').val(result.fileName);
+                            $('#sua-chua-ban-an-form #file_upload').parent().next('.error').remove();
+                        }
+                        else if (result.status == 'fail') {
+                            if ($('#sua-chua-ban-an-form #file_upload').parent().next('.error').length == 0) {
+                                $('#sua-chua-ban-an-form #file_upload').parent().after('<div class="error has-error">' + result.msg + '</div>');
+                            }
+                        }
+                    }
+                });
+            } else {
+                alert("This browser doesn't support HTML5 file uploads!");
+            }
+        }
+    });
+
+    $(function () {
+        if ($("#nhomAn").val() !== "HC") {
+            if ($("#nhomAn").val() === "HS") {
+                $("#titleSuaChuaBoSungQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_SUACHUABOSUNGBANAN_QUYETDINH');
+            } else {
+                if ($("#loaiQuanHe").val() === "Yêu cầu") {
+                    $("#titleSuaChuaBoSungQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_SUACHUABOSUNGQUYETDINH');
+                }
+                else {
+                    $("#titleSuaChuaBoSungQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_SUACHUABOSUNGBANAN');
+                }
+            }
+            
+        }
+        
+        });
+</script>

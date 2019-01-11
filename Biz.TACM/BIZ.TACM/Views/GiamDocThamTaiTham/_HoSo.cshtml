@@ -1,0 +1,133 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.GiamDocThamTaiTham.GiamDocThamTaiThamViewModel
+<input type="hidden" value="@(Model.Hoso.GiaiDoan)" id="giaiDoan-gdttt" />
+<div class="row" id="hoso-gdttt-partial">
+    <div class="col-6">
+        <div class="tab-st">
+            <table class="table table-hover table-custom table-bordered table-scroll">
+                <thead>
+                    <tr>
+                        <td width="5%"></td>
+                        <td width="15%" class="text-center">
+                            @ViewText.TABLE_NHOM
+                        </td>
+                        <td width="80%" class="text-center">
+                            @ViewText.TABLE_NOIDUNG
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(x => x.QuyetDinhSoTham)
+                        </td>
+                        <td>
+                            @ViewText.LABEL_QUYETDINH
+                        </td>
+                        <td style="white-space:normal">
+                            <label id="qdst">@Html.Raw(Model.Hoso.NoiDungQuyetDinhST ?? "")</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(x => x.BanAnSoTham)
+                        </td>
+                        <td>
+                            @ViewText.TITLE_BANAN
+                        </td>
+                        <td style="white-space:normal">
+                            <label id="bast">@Html.Raw(Model.Hoso.NoiDungBanAnST ?? "")</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5 text-center empty-data tab-st" id="data-sotham" style=" display:none">
+            <blockquote>
+                <strong>@(NotifyMessage.CHUACO_DULIEU)</strong>
+            </blockquote>
+        </div>
+    </div>
+    <div class=" col-6">
+        <div class="tab-pt">
+            <table class="table table-hover table-custom table-bordered table-scroll">
+                <thead>
+                    <tr>
+                        <td width="5%"></td>
+                        <td width="15%" class="text-center">
+                            @ViewText.TABLE_NHOM
+                        </td>
+                        <td width="80%" class="text-center">
+                            @ViewText.TABLE_NOIDUNG
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(x => x.QuyetDinhPhucTham)
+                        </td>
+                        <td>
+                            @ViewText.LABEL_QUYETDINH
+                        </td>
+                        <td style="white-space:normal">
+                            <label id="qdst">@Html.Raw(Model.Hoso.NoiDungQuyetDinhPT ?? "")</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.CheckBoxFor(x => x.BanAnPhucTham)
+                        </td>
+                        <td>
+                            @ViewText.TITLE_BANAN
+                        </td>
+                        <td style="white-space:normal">
+                            <label id="bapt">@Html.Raw(Model.Hoso.NoiDungBanAnPT ?? "")</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5 text-center empty-data" id="data-phuctham" style=" display:none">
+            <blockquote>
+                <strong>@(NotifyMessage.CHUACO_DULIEU)</strong>
+            </blockquote>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="p-2 tab-st" style="overflow-x: scroll; height:290px;border:solid 1px rgba(0, 0, 0, 0.125);border-radius: 0.25rem">
+            @if (Model.Hoso.HoiDongSoTham != null && Model.Hoso.HoiDongSoTham.Any())
+            {
+                @Html.Partial("_HoiDongItem", Model.Hoso.HoiDongSoTham)
+            }
+            else
+            {
+                <div class="mt-5 text-center empty-data">
+                    <blockquote>
+                        <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                    </blockquote>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="p-2 tab-pt" style="overflow-x: scroll; height:290px;border:solid 1px rgba(0, 0, 0, 0.125);border-radius: 0.25rem">
+                @if (Model.Hoso.HoiDongPhucTham != null && Model.Hoso.HoiDongPhucTham.Any())
+                {
+                    @Html.Partial("_HoiDongItem", Model.Hoso.HoiDongPhucTham)
+                }
+                else
+                {
+                    <div class="mt-5 text-center empty-data">
+                        <blockquote>
+                            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                        </blockquote>
+                    </div>
+                }
+            </div>
+    </div>
+</div>
+

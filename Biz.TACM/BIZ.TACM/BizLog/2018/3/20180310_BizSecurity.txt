@@ -1,0 +1,6 @@
+--- LOG DATE: 10/03/2018 10:13:49 SA ---
+
+10/03/2018 10:13:49 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang) in C:\Users\Hoa\Documents\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 314
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\Users\Hoa\Documents\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 525]
+

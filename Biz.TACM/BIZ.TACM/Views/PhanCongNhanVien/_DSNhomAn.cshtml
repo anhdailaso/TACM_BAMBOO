@@ -1,0 +1,43 @@
+﻿@model List<Biz.Lib.TACM.PhanCongNhanVien.Model.NhomAnNhanVienModel>
+@using Biz.Lib.TACM.Resources.Resources
+<table class="table table-hover table-custom table-bordered">
+    <thead>
+        <tr>
+            <td style="width:7%">
+                @ViewText.TABLE_STT
+            </td>
+            <td style="width:76%">
+                @ViewText.TALBLE_NHOMAN
+            </td>
+            <td style="width:17%">
+                @ViewText.TALBLE_SL_NHANVIEN
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 1; i <= Model.Count(); i++)
+        {
+
+            <tr class="slr" id="id_@Model[i-1].NhomAnID">
+                <td>
+                    @i
+                    <input type="hidden" value="@Model[i-1].NhomAnID" class="hdid" name="nhomAnID">
+                </td>
+                <td>
+                    @Model[i - 1].TenNhomAn
+                </td>
+                <td style="text-align: center">
+                    @Model[i - 1].SLNhanVien
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+
+    $(function () {
+        SelectrowModule.init();
+    });
+
+</script>

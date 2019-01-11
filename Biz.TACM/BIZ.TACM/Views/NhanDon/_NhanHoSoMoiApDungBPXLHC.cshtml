@@ -1,0 +1,150 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@{
+    Layout = null;
+}
+
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnApDungModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+
+
+@using (Html.BeginForm("ThemHoSoVuAnApDungBPXLHC", "NhanDon", FormMethod.Post, new { @id = "formThemHoSoVuAnApDung" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" id="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@(Model.HoSoVuAnID == 0 ? ViewText.TITLE_TAOHOSO_MOI : ViewText.TITLE_CAPNHATHOSO)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_SOTHULY<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @{Model.SoThuLy = ViewBag.SoThuLy;}
+                        @Html.TextBoxFor(m => m.SoThuLy, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoThuLy)</small>
+                    </div>                    
+                </div>
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGAYNHAN_HOSO<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayNopDonTaiToaAn, new {@class = "form-control"})
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayNopDonTaiToaAn)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        @ViewText.LABEL_HINHTHUC_NHANHOSO<span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" id="hinh-thuc-goi-don-hidden" value="@Model.HinhThucGoiDon"/>
+                        @Html.DropDownListFor(m => m.HinhThucGoiDon, (SelectList) ViewBag.ddlHinhThucGoiDon, Setting.DDL_CHOOSE, new {@class = "form-control", id = "hinh-thuc-goi-don-ddl"})
+                        <div class="row option-hidden">
+                            <div class="col-2 d-inline-block">
+                                <label>Khác</label>
+                            </div>
+                            <div class="col-9 d-inline-block">
+                                @Html.TextBoxFor(m => m.HinhThucGoiDon, string.Empty, new {@class = "form-control", id = "hinh-thuc-goi-don-textbox", @style = "width:110%"})
+                            </div>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HinhThucGoiDon)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGUOINHAN_HOSO<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.TextBoxFor(m => m.CanBoNhanDon, new {@class = "form-control", disabled = "disabled"})
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        @ViewText.LABEL_TENCOQUAN_DENGHI<span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" id="ten-co-quan-de-nghi-hidden" value="@Model.TenCoQuanDeNghi"/>
+                        @Html.DropDownListFor(m => m.TenCoQuanDeNghi, (SelectList) ViewBag.ddlTenCoQuanDeNghi, Setting.DDL_CHOOSE, new {@class = "form-control", id = "ten-co-quan-de-nghi-ddl"})
+                        <div class="row option-hidden">
+                            <div class="col-2 d-inline-block">
+                                <label>Khác</label>
+                            </div>
+                            <div class="col-9 d-inline-block">
+                                @Html.TextBoxFor(m => m.TenCoQuanDeNghi, string.Empty, new {@class = "form-control", id = "ten-co-quan-de-nghi-textbox", @style = "width:110%"})
+                            </div>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenCoQuanDeNghi)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        @ViewText.LABEL_HOSO_DENGHI<span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(m => m.HoSoDeNghi, (SelectList) ViewBag.ddlHoSoDeNghi, Setting.DDL_CHOOSE, new {@class = "form-control"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HoSoDeNghi)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        @ViewText.LABEL_BIENPHAP_XLHC_DUOC_DENGHI<span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        @Html.DropDownListFor(m => m.BienPhapXuLyHanhChinh, (SelectList) ViewBag.ddlBienPhapXLHC, Setting.DDL_CHOOSE, new {@class = "form-control"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.BienPhapXuLyHanhChinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        @ViewText.LABEL_THOIHAN_APDUNG_DENGHI<span class="input-required">*</span>
+                    </div>
+                    <div class="col-6">
+                        <div class="">
+                            @Html.DropDownListFor(m => m.ThoiHanApDung, (SelectList) ViewBag.ddlThoiHanApDung, Setting.DDL_CHOOSE, new {@class = "form-control col-8 d-inline-block"})
+                            <span class="ml-2">tháng</span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.ThoiHanApDung)</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6">
+                <div class="form-group">
+                    <label>@ViewText.LABEL_GHICHU</label>
+                    @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", @style = "width:100%" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script>
+
+    $(function () {
+
+        EditNhanDonADBPXLHC.init();
+
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        CKEDITOR.replace(GhiChu);
+    });
+
+</script>

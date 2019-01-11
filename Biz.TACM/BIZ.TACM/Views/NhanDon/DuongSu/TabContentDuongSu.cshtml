@@ -1,0 +1,117 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    @*var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();*@
+    var maNhomAn = Model.NhomAn;
+}
+@if (maNhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+{
+    <div class="container-fluid row">
+        <div class="col-4 text-uppercase">
+            <strong>@ViewText.TITLE_DANHSACH_DUONGSU_NGUOIBIDENGHI</strong>
+        </div>
+        <div class="col-8 text-right">
+            <button id="btnTaoDuongSu" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="#modalLarge" data-url="#"><i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.BUTTON_THEMDUONGSU</button>
+        </div>
+    </div>
+    <div class="container-fluid row">
+        <div id="duong-su-container" style="width: 100%">
+            <table class="table table-hover table-bordered table-custom" cellspacing="0" id="duong-su-ca-nhan-table" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.TABLE_HOVATEN</td>
+                        <td>@ViewText.TABLE_CMND</td>
+                        <td>@ViewText.TABLE_NGAYSINH</td>
+                        <td>@ViewText.TABLE_QUOCTICH</td>
+                        <td>@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                        <td style="min-width:140px"></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-4">
+            <strong>@(maNhomAn == Setting.MANHOMAN_HINHSU ? ViewText.TITLE_DANHSACH_NGUOITGTT_CANHAN : ViewText.TITLE_DANHSACH_DUONGSU_CANHAN)</strong>
+        </div>
+        <div class="col-8 text-right">
+            <button id="btnTaoDuongSu" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="#modal" data-url="#"><i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@(maNhomAn == Setting.MANHOMAN_HINHSU ? ViewText.BUTTON_THEMNGUOITGTT : ViewText.BUTTON_THEMDUONGSU)</button>
+        </div>
+    </div>
+    <div class="container-fluid row">
+        <div id="duong-su-container" style="width: 100%">
+            @if(maNhomAn==Setting.MANHOMAN_HINHSU)
+            {
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="duong-su-ca-nhan-table" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.LABEL_HOVATEN</td>
+                        <td>@ViewText.LABEL_NOICUTRU</td>
+                        <td>@ViewText.LABEL_NGAYSINH</td>
+                        <td>@ViewText.LABEL_SODIENTHOAI</td>
+                        <td>@ViewText.LABEL_TUCACHTHAMGIA_TOTUNG</td>
+                        <td style="min-width:140px"></td>
+                    </tr>
+                </thead>
+            </table>
+            }
+            else
+            {
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="duong-su-ca-nhan-table" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.TABLE_HOVATEN</td>
+                        <td>@ViewText.TABLE_CMND</td>
+                        <td>@ViewText.TABLE_NGAYSINH</td>
+                        <td>@ViewText.TABLE_QUOCTICH</td>
+                        <td>@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                        <td style="min-width:140px"></td>
+                    </tr>
+                </thead>
+            </table>
+            }
+            <div class="mb-lg-5"></div>
+            <div class="col-5 mb-3">
+                <strong>@(maNhomAn == Setting.MANHOMAN_HINHSU ? ViewText.TITLE_DANHSACH_NGUOITGTT_COQUAN : ViewText.TITLE_DANHSACH_DUONGSU_COQUAN)</strong>
+            </div>
+            @if(maNhomAn==Setting.MANHOMAN_HINHSU)
+            {
+            <table class="table table-hover table-bordered table-custom" cellspacing="0" id="duong-su-to-chuc-table" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.LABEL_COQUAN_TOCHUC</td>
+                        <td>@ViewText.LABEL_TEN_NGUOIDAIDIEN</td>
+                        <td>@ViewText.LABEL_DIACHI</td>
+                        <td>@ViewText.LABEL_SODIENTHOAI</td>
+                        <td>@ViewText.LABEL_TUCACHTHAMGIA_TOTUNG</td>
+                        <td style="min-width:140px"></td>
+                    </tr>
+                </thead>
+            </table>
+            }
+            else
+            {
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="duong-su-to-chuc-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>@ViewText.TABLE_STT</td>
+                            <td class="text-capitalize">@ViewText.LABEL_COQUAN_TOCHUC</td>
+                            <td class="text-capitalize">@ViewText.LABEL_TEN_NGUOIDAIDIEN</td>
+                            <td class="text-capitalize">@ViewText.LABEL_DIACHI</td>
+                            <td class="text-capitalize">@ViewText.LABEL_SODIENTHOAI</td>
+                            <td class="text-capitalize">@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                            <td style="min-width:140px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            }
+            
+        </div>
+    </div>
+}

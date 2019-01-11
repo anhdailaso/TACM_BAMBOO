@@ -1,0 +1,153 @@
+﻿@model Biz.TACM.Models.ViewModel.QuanLyNhanVien.NhanVienViewModel
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    string img;
+    string trangthai;
+    string color;
+    bool isCheck;
+    bool isCheckc;
+}
+<div class="modal-header">
+    <h4 class="modal-title text-uppercase">@ViewText.TITLE_THONGTINNHANVIEN</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>   
+</div>
+
+<div class="card" style="display:inline-block">
+    <div class="col-md-auto" style="float:left;margin-top:30px;margin-left:20px;padding-right:20px;">
+        <img class="circleBase" src="@Url.Content(string.Format(Setting.EMPLOYEE_IMAGE_FOLDER, Model.DuongDanHinhDaiDien))" alt=""
+             onerror="this.onerror = null;this.src = '@Url.Content(string.Format(Setting.NHANVIEN_HINH_TACM, Setting.DEFAULT_IMAGE_200x200))'" />
+    </div>
+    <div>
+        <ul class="nav nav-tabs mt-4">
+            <!--tab thông tin nhân viên-->
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-thong-tin" role="tab">@ViewText.TITLE_THONGTINNHANVIEN</a>
+            </li>
+            <!--tab chức năng-->
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-chuc-nang" role="tab">@ViewText.TABLE_CHUCNANG</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+
+        @if (Model.DuongDanHinhDaiDien != null)
+        {
+            img = Model.DuongDanHinhDaiDien;
+        }
+        else
+        {
+            img = "../Content/Images/tacm/default_image_200x200.png";
+        }
+        @if (Model.TrangThai == 1)
+        {
+            trangthai = "Đang hoạt động";
+            color = "green";
+
+        }
+        else
+        {
+            trangthai = "Không hoạt động";
+            color = "red";
+
+        }
+
+        <div class="tab-pane active w-75" id="tab-thong-tin" role="tabpanel">
+            <div class="modal-body">
+                <div class="row" id="contentctiet" style="margin-top:-19px;">
+                    <div class="col-md-auto">
+                        <div>
+                            <div>
+                                <table class="table table-information" style="width:350px">
+                                    <tbody>
+                                        <tr>
+                                            <td>@ViewText.TABLE_FULLNAME</td>
+                                            <td class="text-right"><strong>@Model.HoVaTen</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_MANV</td>
+                                            <td class="text-right"><strong>@Model.MaNV</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_CHUCDANH</td>
+                                            <td class="text-right"><strong>@Model.ChucDanh</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_TENCHUCVU</td>
+                                            <td class="text-right"><strong>@Model.ChucVu</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_GIOITINH</td>
+                                            <td class="text-right"><strong>@Model.GioiTinh</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_NGAYSINH</td>
+                                            <td class="text-right"><strong>@Model.NgaySinh</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_SODIENTHOAI</td>
+                                            <td class="text-right"><strong>@Model.SoDienThoai</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_EMAIL</td>
+                                            <td class="text-right"><strong>@Model.Email</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@ViewText.LABEL_TRANGTHAI</td>
+                                            <td class="text-right" style="color:@color"><strong>@trangthai</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="tab-chuc-nang" role="tabpanel">
+            <div class="modal-body">
+                <div class="row" id="contentctiet">
+
+                    <!--table-->
+                    <table class="table table-hover table-custom table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>@ViewText.TABLE_CHUCNANG</th>
+                                <th>@ViewText.TABLE_CHUCNANGCHINH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.dschucnang)
+                            {
+                                isCheckc = item.TrangThai == 1 ? true : false;
+                                isCheck = item.ChucNangChinh == 1 ? true : false;
+                                <tr>
+                                    <td>
+                                        @Html.CheckBox("ChucNang", isCheckc)
+                                    </td>
+                                    <td style="white-space:normal;width:200px">
+                                        @item.TenChucNang
+                                    </td>
+                                    <td style="text-align:center">
+                                        @Html.RadioButton("ChucNangChinh", "", isCheck)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        selectTabPaneChange();
+    });
+    
+</script>

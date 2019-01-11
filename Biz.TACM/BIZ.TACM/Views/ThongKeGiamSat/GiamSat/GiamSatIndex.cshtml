@@ -1,0 +1,45 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.ThongKeGiamSat.GiamSatLocDuLieuViewModel
+
+@{
+    ViewBag.Title = ViewText.TITLE_GIAMSATTHUCHIEN.ToUpper();
+}
+
+<div class="float-left">
+    <h4 class="text-uppercase mb-2">@ViewText.TITLE_GIAMSATTHUCHIEN</h4>
+</div>
+<div class="clearfix"></div>
+
+<div id="main-content">
+    <div class="container-fluid row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12 text-right">
+                    <div id="menu-giamsat-btn" class="btn-group">
+                        <button id="btnBieuDoGiamSat" type="button" class="btn btn-outline-primary active">@ViewText.BUTTON_BIEUDO</button>
+                        <button id="btnDanhSachGiamSat" type="button" class="btn btn-outline-primary">@ViewText.BUTTON_DANHSACH</button>
+                    </div>
+                </div>
+            </div>
+            <div id="contentGiamSatThucHien">
+
+            </div>
+        </div>
+        <div id="contentFilterData" class="col-3">
+            @Html.Partial("GiamSat/_LocDuLieu", Model)
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ThongKeGiamSat")
+    <script type="text/javascript">
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $('#menu-giamsat-btn button').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    </script>
+}

@@ -1,0 +1,63 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+@model Biz.Lib.TACM.NhanDon.Model.SuaDoiBoSungDonModel
+
+
+@using (Html.BeginForm("EditSuaDoiBoSungDon", "NhanDon", FormMethod.Post, new { @id = "formEditSuaDoiBoSungDon" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_YEUCAUSUADOI_BOSUNG</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGAY<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayYeuCau, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayYeuCau)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_THOIHANSUADOI_BOSUNG<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.ThoiHanSuaDoi, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThoiHanSuaDoi)</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="">@ViewText.LABEL_NOIDUNGSUADOI_BOSUNG<span class="input-required">*</span></label>
+                    @Html.TextAreaFor(m => m.NoiDungYeuCau, new { @class = "form-control tinymce-editor", @style = "width:100%", @rows = "8" })
+                    <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NoiDungYeuCau)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        EditSuaDoiBoSungDon.init();
+    });
+</script>

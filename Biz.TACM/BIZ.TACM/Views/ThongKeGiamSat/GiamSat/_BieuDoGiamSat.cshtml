@@ -1,0 +1,80 @@
+﻿@model Biz.TACM.Models.ViewModel.ThongKeGiamSat.ChartViewModel
+
+@if (!string.IsNullOrEmpty(Model.Data))
+{
+    <input id="ListHoSoVuAnID" type="hidden" value="@ViewBag.ListHoSoVuAnID" />
+    <div id="bieuDoGiamSat" style="height: 500px; width: 100%;"></div>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var data = [[@Html.Raw(Model.Data)]];
+        var ticks = [@Html.Raw(Model.Label)];
+        $.jqplot('bieuDoGiamSat', data, {
+            //height: 400,
+            //width: 600,
+            //title: {
+            //    text: '@Model.Title', // title for the plot,
+            //    show: true
+            //},
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults: {
+                renderer: $.jqplot.BarRenderer,
+                //shadowAngle: 135,
+                color: '#1565c0',
+                rendererOptions: {
+                    barDirection: 'horizontal',
+                    highlightMouseDown: true,
+                    barWidth: 15,
+                    //barPadding: -15
+                },
+                pointLabels: { show: true, location: 'e', edgeTolerance: -5000, hideZeros: true, formatString: '%d', labels: [@Html.Raw(Model.PointLabels)] }
+                },
+                //legend: {
+                //    show: false,
+                //    location: 'e',
+                //    placement: 'outside'
+                //},
+                axes: {
+                    yaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        //pad: -1.05,
+                        ticks: ticks,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                        tickOptions: {
+                            mark: 'outside',    // Where to put the tick mark on the axis
+                                                // 'outside', 'inside' or 'cross',
+                            //angle: -30,
+                            fontSize: '11pt',
+                            showMark: true,
+                            pt2px: 2.0,
+                            textColor: 'black'
+                            //showGridline: true  // format string to use with the axis tick formatter
+                        }
+                    },
+                    xaxis: {
+                        tickOptions: {
+                            formatString: '%d',
+                            showLabel: false
+                        }
+                    }
+            },
+            grid: {
+                backgroundColor: 'white',
+                gridLineWidth: 0,
+                borderWidth: 0,
+                borderColor: '#d9d9d9'
+            }
+                @*grid: {
+                    drawGridLines: false, // wether to draw lines across the grid or not.
+                    gridLineColor: '@C3Setting.CHART_GRIDLINES_COLOR', // *Color of the grid lines.
+                background: '@C3Setting.CHART_GRIDLINES_BACKGROUND_COLOR', // CSS color spec for background color of grid.
+                borderColor: '@C3Setting.CHART_GRIDLINES_BORDER_COLOR', // CSS color spec for border around grid.
+                borderWidth: 1.0, // pixel width of border around grid.
+                shadow: true
+            }*@
+        });
+
+
+    });
+    </script>
+}

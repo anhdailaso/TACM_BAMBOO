@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="VALIDATION_DUONGSUPHATHANH" xml:space="preserve">
+    <value>Vui lòng chọn đương sự nhận phát hành.</value>
+  </data>
+  <data name="VALIDATION_TONTAI" xml:space="preserve">
+    <value>{0} này đã tồn tại.</value>
+  </data>
+  <data name="VALIDATION_FILE_SIZE_TOO_BIG" xml:space="preserve">
+    <value>Tập tin tải lên vượt quá dung lượng tối đa {0}.</value>
+  </data>
+  <data name="VALIDATION_KIEMTRAEMAIL" xml:space="preserve">
+    <value>Email không hợp lệ. Vui lòng nhập lại.</value>
+  </data>
+  <data name="VALIDATION_KIEMTRALAIMATKHAU" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới không chính xác.</value>
+  </data>
+  <data name="VALIDATION_KIEMTRARONG" xml:space="preserve">
+    <value>{0} không được để trống.</value>
+  </data>
+  <data name="VALIDATION_SOLUONGKYTUTOIDA" xml:space="preserve">
+    <value>{0} không được vượt quá {1} kí tự.</value>
+  </data>
+  <data name="VALIDATION_SOLUONGKYTUTOITHIEU" xml:space="preserve">
+    <value>{0} không được ít hơn {1} ký tự.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_NGAYLAMDON" xml:space="preserve">
+    <value>Ngày làm đơn không được lớn hơn ngày hiện tại.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_NGAYLAMDON_NHOHON" xml:space="preserve">
+    <value>Ngày làm đơn nhỏ hơn hoặc bằng ngày nộp đơn tại tòa án.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_NGAYMOPHIENHOP" xml:space="preserve">
+    <value>Ngày mở phiên họp phải nhỏ hơn ngày ngày ra quyết đinh.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_NGAYTRADON_SO_NGAYHIENTAI" xml:space="preserve">
+    <value>Ngày trả đơn không được lớn hơn ngày hiện tại.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_NGAYYEUCAY_SO_NGAYHIENTAI" xml:space="preserve">
+    <value>Ngày yêu cầu phải không được lơn hơn ngày hiện tại.</value>
+  </data>
+  <data name="VALIDATION_GIOIHAN_THOIHANSUADOI_SO_NGAYYEUCAU" xml:space="preserve">
+    <value>Thời hạn sửa đổi / bổ sung đơn phải lớn hơn hoặc bằng ngày yêu cầu.</value>
+  </data>
+  <data name="VALIDATION_GUIDONKHAC_KHONGDUOCTRONG" xml:space="preserve">
+    <value>Hình thức gửi đơn khác không được bỏ trống.</value>
+  </data>
+  <data name="VALIDATION_SOTHULYBITRUNG" xml:space="preserve">
+    <value>Số thụ lý bị trùng.</value>
+  </data>
+  <data name="VALIDATION_THOIGIANMOPHIENTOA_LONHON_RAQUYETDINH" xml:space="preserve">
+    <value>Thời gian mở phiên tòa/phiên họp phải lớn hơn ngày tháng năm ra quyết định</value>
+  </data>
+  <data name="VALIDATION_KIEMTRASO" xml:space="preserve">
+    <value>{0} phải là kiểu kí tự số.</value>
+  </data>
+  <data name="VALIDATION_CHUACHONFILE" xml:space="preserve">
+    <value>Chưa chọn file!</value>
+  </data>
+  <data name="VALIDATION_SONGUYENDUONG" xml:space="preserve">
+    <value>{0} phải là số nguyên dương.</value>
+  </data>
+  <data name="VALIDATION_HINHTHUCNOP_KHONGTRONG" xml:space="preserve">
+    <value>Hình thức nộp không được để trống.</value>
+  </data>
+  <data name="VALIDATION_HINHTHUC_KHONGTRONG" xml:space="preserve">
+    <value>Hình thức không được để trống.</value>
+  </data>
+  <data name="VALIDATION_HOITHAMNHANDAN2_KHONGTRONG" xml:space="preserve">
+    <value>Hội thẩm nhân dân 2 không được để trống.</value>
+  </data>
+  <data name="VALIDATION_HOITHAMNHANDAN_KHONGTRONG" xml:space="preserve">
+    <value>Hội thẩm nhân dân không được để trống.</value>
+  </data>
+  <data name="VALIDATION_LOAIQUANHE_KHONGTRONG" xml:space="preserve">
+    <value>Loại quan hệ không được để trống.</value>
+  </data>
+  <data name="VALIDATION_LYDO_KHONGQUA" xml:space="preserve">
+    <value>Lý do không được vượt quá 500 kí tự.</value>
+  </data>
+  <data name="VALIDATION_LYDO_KHONGTRONG" xml:space="preserve">
+    <value>Lý do không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYCHUYENHOSO_KHONGTRONG" xml:space="preserve">
+    <value>Ngày chuyển hồ sơ không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYLAMDON_KHONGTRONG" xml:space="preserve">
+    <value>Ngày làm đơn không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYLAMKHANGCAO_NHOHON_NGAYNOPKHANGCAO" xml:space="preserve">
+    <value>Ngày làm đơn kháng cáo phải nhỏ hơn hoặc bằng Ngày nộp đơn kháng cáo.</value>
+  </data>
+  <data name="VALIDATION_NGAYLUU_KHONGTRONG" xml:space="preserve">
+    <value>Ngày lưu không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYNOPDON_KHONGTRONG" xml:space="preserve">
+    <value>Ngày nộp đơn không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYNOPKHANGCAO_LONHON_NGAYLAMKHANGCAO" xml:space="preserve">
+    <value>Ngày nộp đơn kháng cáo phải lớn hơn hoặc bằng Ngày làm đơn kháng cáo.</value>
+  </data>
+  <data name="VALIDATION_NGAYPHANCONG_KHONGTRONG" xml:space="preserve">
+    <value>Ngày phân công không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYRAPHIEUCHUYEN_KHONGTRONG" xml:space="preserve">
+    <value>Ngày ra phiếu chuyển không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYSUACHUA_BOSUNG_KHONGTRONG" xml:space="preserve">
+    <value>Ngày sửa chữa, bổ sung không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYTHULY_KHONGTRONG" xml:space="preserve">
+    <value>Ngày thụ lý không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGAYTOAAN_KHONGTRONG" xml:space="preserve">
+    <value>Ngày tòa án nhận văn bản kháng nghị không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGUOIDAO_KHONGTRONG" xml:space="preserve">
+    <value>Người giao không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGUOIKHANGCAO_KHONGTRONG" xml:space="preserve">
+    <value>Người kháng cáo không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGUOIKY_KHONGTRONG" xml:space="preserve">
+    <value>Người ký không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGUOINHAN_KHONGTRONG" xml:space="preserve">
+    <value>Người nhận lưu không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NGUOIPHANCONG_KHONGTRONG" xml:space="preserve">
+    <value>Tên người phân công không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NOIDUNGGIAIQUYET_KHONGTRONG" xml:space="preserve">
+    <value>Nội dung yêu cầu tòa án giải quyết không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NOIDUNGKHANGCAO_KHONGTRONG" xml:space="preserve">
+    <value>Nội dung kháng cáo không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NOIDUNGSUACHUA_KHONGTRONG" xml:space="preserve">
+    <value>Nội dung sửa chữa không được để trống.</value>
+  </data>
+  <data name="VALIDATION_NOIDUNG_KHANGNGHI_KHONGTRONG" xml:space="preserve">
+    <value>Nội dung kháng nghị không được để trống.</value>
+  </data>
+  <data name="VALIDATION_QUANHEPHAPLUAT_KHONGTRONG" xml:space="preserve">
+    <value>Quan hệ pháp luật không được để trống.</value>
+  </data>
+  <data name="VALIDATION_SOTHULY_KHONGTRONG" xml:space="preserve">
+    <value>Số thụ lý không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THAMPHAN_KHONGTRONG" xml:space="preserve">
+    <value>Thẩm phán không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THOIGIANGIAIQUYET_KHONGTRONG" xml:space="preserve">
+    <value>Thời hạn giải quyết đến ngày không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THULYTHUTUC_KHONGTRONG" xml:space="preserve">
+    <value>Thụ lý theo thủ tục không được để trống.</value>
+  </data>
+  <data name="VALIDATION_TINHTRANGKHANGCAO_KHONGTRONG" xml:space="preserve">
+    <value>Tình trạng kháng cáo không được để trống.</value>
+  </data>
+  <data name="VALIDATION_TOAANCHUYENDEN_KHONGTRONG" xml:space="preserve">
+    <value>Tòa án chuyển đến không được để trống.</value>
+  </data>
+  <data name="VALIDATION_TRUONGHOPCHUYEN_KHONGTRONG" xml:space="preserve">
+    <value>Trường hợp chuyển không được để trống.</value>
+  </data>
+  <data name="VALIDATION_TRUONGHOPTHULY_KHONGTRONG" xml:space="preserve">
+    <value>Trường hợp thụ lý không được để trống.</value>
+  </data>
+  <data name="VALIDATION_VANBAN_KHANGNGHI_KHONGQUA" xml:space="preserve">
+    <value>Văn bản kháng nghị không được vượt quá 250. kí tự</value>
+  </data>
+  <data name="VALIDATION_VANBAN_KHANGNGHI_KHONGTRONG" xml:space="preserve">
+    <value>Văn bản kháng nghị không được để trống.</value>
+  </data>
+  <data name="VALIDATION_VIENKIERMSAT_KHONGTRONG" xml:space="preserve">
+    <value>Viện kiểm sát kháng nghị không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THAMPHAN1_KHONGTRONG" xml:space="preserve">
+    <value>Thẩm phán 1 không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THAMPHAN2_KHONGTRONG" xml:space="preserve">
+    <value>Thẩm phán 2 không được để trống.</value>
+  </data>
+  <data name="VALIDATION_EMAIL_KHONGHOPLE" xml:space="preserve">
+    <value>Email không hợp lệ. Vui lòng nhập lại.</value>
+  </data>
+  <data name="VALIDATION_LYDOCHUYENDON_KHONGTRONG" xml:space="preserve">
+    <value>Lý do chuyển đơn không được để trống.</value>
+  </data>
+  <data name="VALIDATION_LYDOCHUYENHOSO_KHONGTRONG" xml:space="preserve">
+    <value>Lý do chuyển hồ sơ không được để trống.</value>
+  </data>
+  <data name="VALIDATION_THUKY_KHONGTRONG" xml:space="preserve">
+    <value>Thư ký không được để trống.</value>
+  </data>
+  <data name="VALIDATION_KHONGDETRONG" xml:space="preserve">
+    <value>không được để trống.</value>
+  </data>
+  <data name="VALIDATION_GIATRINHAPKHONGHOPLE" xml:space="preserve">
+    <value>Giá trị nhập không hợp lệ.</value>
+  </data>
+</root>

@@ -1,0 +1,33 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThuLy.Model.GhiChuPhanCongModel
+
+@using (Html.BeginForm("ThemGhiChuPhanCong", "ThuLy", FormMethod.Post, new { @id = "formEditNoiDungChiChu" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_GHICHUPHANCONG</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                @Html.TextArea("NoiDungGhiChu", Html.Raw(Model.NoiDungGhiChu).ToString(), new { @class = "form-control" })
+                <small class="form-text text-danger"><span for="NoiDungGhiChu"></span></small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-noi-dung-ghi-chu-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        EditGhiChuPhanCongModule.init();
+    });
+</script>
+

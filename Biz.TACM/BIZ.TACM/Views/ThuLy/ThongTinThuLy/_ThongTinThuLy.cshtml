@@ -1,0 +1,159 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@using Biz.TACM.Models.Model
+@model Biz.TACM.Models.ViewModel.ThuLy.ThongTinThuLyViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoThongTinThuLy", @class = "custom-select mb-2" })
+            <button id="btnSuaThongTinThuLy" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="#modalLarge" data-url="@Url.Action("EditThongTinThuLy", "ThuLy", new{ hoSoVuAnId = Model.HoSoVuAnID , thongTinThuLyId = Model.ThongTinThuLyID})"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div id="bodyThongTinThuLy">
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SOTHULY</span><span class="font-weight-bold">@Model.SoThuLy</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TRUONGHOP_THULY</span><span class="font-weight-bold">@Model.TruongHopThuLy</span></li>
+                    @if (maNhomAn != Setting.MANHOMAN_HINHSU)
+                    {
+                        <li class="list-group-item d-flex justify-content-between thuly-theo-thu-tuc-lbl"><span>@ViewText.LABEL_THULY_THUTUC</span><span class="font-weight-bold">@Model.ThuLyTheoThuTuc</span></li>
+                    }
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTHULY</span><span class="font-weight-bold">@Model.NgayThuLy</span></li>
+                    @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+                    {
+                        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHIEUKIEN</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+                    }
+                    else if(maNhomAn == Setting.MANHOMAN_HINHSU)
+                    {                       
+                        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THOIHAN_GIAIQUYET</span><span class="font-weight-bold">@(string.IsNullOrEmpty(Model.ThoiHanGiaiQuyet) ? "" : Model.ThoiHanGiaiQuyet + " ngày" )</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Từ ngày</span><span class="font-weight-bold">@Model.ThoiHanGiaiQuyetTuNgay</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>Đến ngày</span><span class="font-weight-bold">@Model.ThoiHanGiaiQuyetDenNgay</span></li>
+                    }
+                    else
+                    {
+                        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAI_QUANHE</span><span class="font-weight-bold">@Model.LoaiQuanHe</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_QUANHE_PHAPLUAT</span><span class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+                        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THOIHAN_GIAIQUYET</span><span class="font-weight-bold">@string.Format("{0} - {1}", Model.ThoiHanGiaiQuyetTuNgay, Model.ThoiHanGiaiQuyetDenNgay)</span></li>
+                    }
+                    
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="nav nav-tabs" role="tablist">
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tabNoiDungKhangCao" role="tab">@ViewText.TAB_TITLE_NOIDUNG_KHANGCAO_KHANGNGHI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#TaiLieuChungTuKemTheo" role="tab">@ViewText.LABEL_TAILIEU_KEMTHEO</a>
+                    </li>
+                }
+                else
+                {
+                    if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabNoiDungYeuCau" role="tab">@ViewText.LABEL_NOIDUNGYEUCAU_TOAAN_GIAIQUYET</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#TaiLieuChungTuKemTheo" role="tab">@ViewText.LABEL_TAILIEU_KEMTHEO</a>
+                        </li>
+                    }
+                    
+                }                  
+                </ul>
+                <div class="tab-content">
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    <div class="tab-pane active" id="tabNoiDungKhangCao" role="tabpanel">
+                        <div class="card">
+                            <div class="card-block" style="height: 320px; overflow: scroll">
+                                @Html.Raw(Model.NoiDungKhangCao)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="TaiLieuChungTuKemTheo" role="tabpanel">
+                        <div class="card">
+                            <div class="card-block" style="height: 320px; overflow: scroll">
+                                @Html.Raw(Model.TaiLieuChungTuKemTheo)
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                    {
+                        <div class="tab-pane active" id="tabGhiChu" role="tabpanel">
+                            <div class="card">
+                                <div class="card-block" style="min-height: 276px; overflow: scroll">
+                                    @Html.Raw(Model.GhiChu)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="tab-pane active" id="tabNoiDungYeuCau" role="tabpanel">
+                            <div class="card">
+                                <div class="card-block" style="height: 320px; overflow: scroll">
+                                    @Html.Raw(Model.NoiDungYeuCau)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="TaiLieuChungTuKemTheo" role="tabpanel">
+                            <div class="card">
+                                <div class="card-block" style="height: 320px; overflow: scroll">
+                                    @Html.Raw(Model.TaiLieuChungTuKemTheo)
+                                </div>
+                            </div>
+                        </div>
+                    }                   
+                }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemThongTinThuLy" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="#modalLarge" data-url="@Url.Action("EditThongTinThuLy", "ThuLy", new {ViewBag.hoSoVuAnId, thongTinThuLyId = 0})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    if ($("#loaiQuanHe").val() === "Yêu cầu") {
+        $(".thuly-theo-thu-tuc-lbl").attr('style', 'display: none !important');
+    }
+</script>

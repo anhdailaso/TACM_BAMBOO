@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Biz.TACM.Models.ViewModel.SoDoToChuc.ChucDanhViewModel>
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = ViewText.TITLE_SODOTOCHUC;
+}
+
+<div id="main-content">
+    <div class="container-fluid pl-5">
+        <div class="row">
+            <h3 class="text-uppercase mb-2 mr-auto"><i class="fa fa-sitemap fa-lg mr-3" aria-hidden="true"></i>@ViewText.TITLE_SODOTOCHUC</h3>
+            <div class="mr-5">
+                <div class="col-auto d-inline-block align-middle mr-2 text-capitalize">
+                    @ViewText.LABEL_TOAAN
+                </div>
+                <div class="col-auto d-inline-block">
+                    @Html.DropDownList("ToaAnID", (SelectList)ViewBag.listToaAnSoDoToChuc, null, new { @class = "form-control", id = "ddlToaAnSoDoToChuc" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top:20px;padding-bottom:10px">
+            <div class="col-6">
+                <h4 class="text-uppercase mb-2 mr-auto text-center">@ViewText.LABEL_CHUCDANH</h4>
+            </div>
+            <div class="col-6">
+                <h4 class="text-uppercase mb-2 mr-auto text-center">@ViewText.LABEL_TENCHUCVU</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div id="soDoToChucTreeView" class="col-6" style="padding-right:20px; border-right: 1px solid #ccc;">
+                @**@
+            </div>
+            <div id="soDoToChucTreeViewChucVu" class="col-6">
+                @**@
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/treeview")
+    @Scripts.Render("~/bundles/SoDoToChuc")
+    <script type="text/javascript">
+        $(function () {
+            SoDoToChucTreeViewModule.loadSoDoToChuc();
+            SoDoToChucTreeViewModule.loadSoDoToChucChucVu();
+            DDLTreeViewModule.init();
+        });
+    </script>
+}

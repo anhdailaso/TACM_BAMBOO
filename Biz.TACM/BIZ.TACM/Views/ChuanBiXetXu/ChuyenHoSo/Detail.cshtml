@@ -1,0 +1,54 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.ChuanBiXetXu.ChuyenHoSoViewModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">            
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoChuyenHoSo", @class = "custom-select mb-2" })
+            <button id="btnSuaChuyenHoSo" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2 mb-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditChuyenHoSo", "ChuanBiXetXu", new{ hoSoVuAnId = Model.HoSoVuAnID , ChuyenHoSoId = Model.ChuyenHoSoID})"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.ChuyenHoSoID</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYRATHONGBAO</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayRaThongBao)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCHUYENHOSO</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayChuyenHoSo)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TOAANCHUYENDEN</span><span class="font-weight-bold">@Model.ToaAnChuyenDen</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LYDOCHUYEN_HOSO</span><span class="font-weight-bold">@Model.LyDoChuyenHoSo</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-block">
+                    <p><strong>@ViewText.LABEL_GHICHU</strong></p>
+                    <div class="card">
+                        <div class="card-block" style="height: 228px; overflow-y: scroll">
+                            @Html.Raw(Model.GhiChu)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{   
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemChuyenHoSo" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditChuyenHoSo", "ChuanBiXetXu", new{ ViewBag.hoSoVuAnId , ChuyenHoSoId = 0})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

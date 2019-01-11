@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ChuanBiXetXu.Model.QuyetDinhHinhSuModel
+
+@using (Html.BeginForm("EditChuanBiXetXuQuyetDinhHinhSu", "ChuanBiXetXu", FormMethod.Post, new { @id = "formEditTamDinhChiVuAn" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    @Html.HiddenFor(m => m.QuyetDinhGroup)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_TAMDINHCHI_VUAN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SOQUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @{Model.SoQuyetDinh = ViewBag.SoQuyetDinh;}
+                        @Html.TextBoxFor(m => m.SoQuyetDinh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYTHANGNAM<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayRaQuyetDinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayRaQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>@ViewText.LABEL_LYDO<span class="input-required">*</span></label>
+                    <div class="card">
+                        <div class="card-block">
+                            <ul class="list-unstyled">
+                                @foreach (var item in ViewBag.listLyDoTamDinhChiVuAn)
+                                {
+                                    <li><label><input class="align-middle" name="DanhSachLyDo[]" @(item.Checked ? "checked" : "") value="@item.LyDoItem" type="checkbox" /> @item.LyDoItem</label></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.DanhSachLyDo)</small>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-group">
+                    <label>@ViewText.LABEL_DINHKEM_FILE</label>
+                    <div>
+                        <input id="file_upload" type="file" accept=".doc, .docx,.pdf" />
+                    </div>
+                    @Html.HiddenFor(m => m.DinhKemFile)
+                    <p>@NotifyMessage.DUNGLUONG_FILE_TOIDA</p>
+                </div>
+                <div class="form-group">
+                    <label>@ViewText.LABEL_GHICHU</label>
+                    @Html.TextAreaFor(m => m.GhiChu, new {@class = "form-control", id = "ghi-chu-tam-dinh-chi-vu-an-textarea"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        EditTamDinhChiVuAn.init();
+    });
+</script>
+

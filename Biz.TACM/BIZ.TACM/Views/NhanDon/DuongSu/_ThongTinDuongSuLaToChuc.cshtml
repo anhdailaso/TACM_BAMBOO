@@ -1,0 +1,58 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.NhanDon.DuongSuViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">Thông tin đương sự</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="">
+                <div class="card-block">
+                    <table class="table table-information table-hover">
+                        <tbody>
+                            <tr>
+                                <td>@ViewText.LABEL_COQUAN_TOCHUC</td>
+                                <td class="text-value-bold">@Model.TenCoQuanToChuc</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_TEN_NGUOIDAIDIEN</td>
+                                <td class="text-value-bold">@Model.HoVaTen</td>
+                            </tr>
+
+                            <tr>
+                                <td>@ViewText.LABEL_SODIENTHOAI</td>
+                                <td class="text-value-bold">@Model.SoDienThoai</td>
+                            </tr>
+
+                            <tr>
+                                <td>@ViewText.LABEL_DIACHITRUSO</td>
+                                <td class="text-value-bold">@Model.NoiDKHKTT</td>
+                            </tr>
+
+                            <tr>
+                                <td>@ViewText.LABEL_TUCACHTHAMGIA_TOTUNG</td>
+                                <td class="text-value-bold">@Model.TuCachThamGiaToTung</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_DUONGSULA</td>
+                                <td class="text-value-bold">@Model.DuongSuLa</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_NGUOITAO</td>
+                                <td class="text-value-bold">@Model.NguoiTao</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_NGAYTAO</td>
+                                <td class="text-value-bold">@Model.NgayTao</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

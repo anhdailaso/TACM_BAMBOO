@@ -1,0 +1,50 @@
+﻿@model Biz.TACM.Models.ViewModel.PhanCongNhanVien.PhanCongViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+    <table class="table table-hover table-custom table-bordered">
+        <thead>
+            <tr>
+                <td style="width:5%">
+                    <input type="checkbox" id="allNV">
+                </td>
+                <td style="width:50%">
+                    @ViewText.TABLE_TENNHANVIEN
+                </td>
+                <td style="width:45%">
+                    @ViewText.TABLE_CHUCDANH
+                </td>
+            </tr>
+        </thead>
+        @Html.HiddenFor(m => Model.NhomAnID)
+        <tbody>
+            @for (var i = 0; i < Model.listnv.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBoxFor(m => Model.listnv[i].ischeck, new { @class = "eachcheck" })
+                        @Html.HiddenFor(m => Model.listnv[i].NhanVienID)
+                        @Html.HiddenFor(m => Model.listnv[i].HoTen)
+                        @Html.HiddenFor(m => Model.listnv[i].ChucDanh)
+                    </td>
+                    <td>
+                        @Model.listnv[i].HoTen
+                    </td>
+                    <td>
+                        @Model.listnv[i].ChucDanh
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+
+<script>
+
+    $(function () {
+        CheckAllModule.init();
+    });
+    /*$(function () {
+        SaveChangeModule.init();
+    });*/
+
+</script>

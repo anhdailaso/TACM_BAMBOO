@@ -1,0 +1,12 @@
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.SettingData.dll
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.SettingData.pdb
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.csproj.CoreCompileInputs.cache
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.dll
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.pdb
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.SettingData.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.SettingData.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.SettingData\obj\Debug\Biz.Lib.SettingData.pdb

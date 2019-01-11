@@ -1,0 +1,52 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="container-fluid row">
+    <div class="offset-3"></div>
+    <div class="card col-6" style="height: 450px;">
+        <div class="card-block">
+            <h3 class="text-center text-uppercase mb-4">@ViewText.TITLE_TRACUUHOSOVUVIEC</h3>
+            @using (Html.BeginForm("GetGetHoSoVuAnDuocTraCuu", "CongThongTinDienTu", FormMethod.Post, new { id = "traCuuForm", name = "traCuuForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row mb-3">
+                    <div class="offset-1"></div>
+                    <label class="col-2">@ViewText.LABEL_MAHOSO<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.TextBox("keyword", "", new { @id = "txtKeyword", @class = "form-control", maxlength = 50, placeholder = ViewText.PLACEHOLDER_KEYWORD_TRACUU })
+                        <small class="form-text text-danger"><span for="keyword"></span></small>
+                    </div>
+                    <div class="offset-3"></div>
+                </div>
+                <div class="row mb-3 captcha-group">
+                    <div class="offset-1"></div>
+                    <label class="col-2">@ViewText.LABEL_MAXACNHAN<span class="input-required">*</span></label>
+                    <div class="col-6 mb-3">
+                        <input type="text" name="captcha" id="captcha" class="form-control mb-1" placeholder="@ViewText.PLACEHOLDER_CAPTCHA" value=@ViewBag.TempCapcha maxlength="6" />
+                        <small class="form-text text-danger"><span for="captcha"></span></small>
+                    </div>
+                    <div class="offset-3"></div>
+
+                    <div class="offset-3"></div>
+                    <div class="col-6 text-center">
+                        <div id="CaptchaContent" class="d-inline-block">
+                            @Html.Partial("../Shared/_Captcha")
+                        </div>
+                        <button id="btn-refresh-captcha" class="btn btn-refresh-captcha" type="button"><i class="fa fa-2x fa-refresh" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="offset-3"></div>
+                </div>
+                <div class="row text-center mb-3">
+                    <div class="offset-3"></div>
+                    <div class="col-6">
+                        <button id="btnTraCuu" class="btn btn-custom w-100 cursor-link text-uppercase font-weight-bold" type="submit"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_TRACUU</button>
+                    </div>
+                    <div class="offset-3"></div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-3" style="color: black;">
+        @Html.Raw(ViewText.TEXT_HUONGDAN_CONGTHONGTINDIENTU)
+    </div>
+</div>

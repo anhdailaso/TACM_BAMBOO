@@ -1,0 +1,126 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.ThuLy.PhanCongThamPhanViewModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "ddlNgayTaoPhanCongThamPhan", @class = "custom-select mb-2" })
+            <button id="btnSuaPhanCongThamPhan" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="#modalPhanCongThamPhan" data-url="@Url.Action("EditPhanCongThamPhan", "ThuLy", new{ hoSoVuAnId = Model.HoSoVuAnID , thamPhanId = Model.ThamPhanID})"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYPHANCONG</span><span class="font-weight-bold">@Model.NgayPhanCong</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOIPHANCONG</span><span class="font-weight-bold">@(Model.NhanVienNguoiPhanCong == null ? "" : Model.NhanVienNguoiPhanCong.HoTenVaMaNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between tham-phan-1-li"><span>@ViewText.LABEL_THAMPHAN1</span><span class="font-weight-bold">@(Model.NhanVienThamPhan1 == null ? "" : Model.NhanVienThamPhan1.HoTenVaMaNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between tham-phan-2-li"><span>@ViewText.LABEL_THAMPHAN2</span><span class="font-weight-bold">@(Model.NhanVienThamPhan2 == null ? "" : Model.NhanVienThamPhan2.HoTenVaMaNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@(Model.NhanVienThuKy == null ? "" : Model.NhanVienThuKy.HoTenVaMaNV)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tabThamPhan" role="tab">@ViewText.LABEL_THAMPHAN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tabThuKy" role="tab">@ViewText.LABEL_THUKY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tabGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                </li>
+            </ul>
+            <div class="tab-content" style="min-height: 309px;">
+                <div class="tab-pane active" id="tabThamPhan" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></label>
+                    </div>
+                    <div class="mb-3 border-bottom-custom tham-phan-1-li">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN1</span><span class="font-weight-bold">@(Model.NhanVienThamPhan1 == null ? "" : Model.NhanVienThamPhan1.HoTenVaMaNV)</span></label>
+                    </div>
+                    <div class="mb-3 border-bottom-custom tham-phan-2-li">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN2</span><span class="font-weight-bold">@(Model.NhanVienThamPhan2 == null ? "" : Model.NhanVienThamPhan2.HoTenVaMaNV)</span></label>
+                    </div>
+                    <div class="">
+                        <label>@ViewText.LABEL_THAMPHAN_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled">
+                                @foreach (var item in @Model.ThamPhanDuKhuyetViewModel)
+                                {
+                                    <li><label><input class="align-middle" type="checkbox" checked disabled /> @item.ThamPhanDuKhuyet</label></li>
+                                }
+                            </ul>
+                        </div>                     
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabThuKy" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@(Model.NhanVienThuKy == null ? "" : Model.NhanVienThuKy.HoTenVaMaNV)</span></label>
+                    </div>
+                    <div>
+                        <label>@ViewText.LABEL_THUKY_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled">
+                                @foreach (var item in @Model.ThuKyDuKhuyetViewModel)
+                                {
+                                    <li><label><input class="align-middle" type="checkbox" checked disabled /> @item.ThuKyDuKhuyet</label></li>
+                                }
+                            </ul>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabGhiChu" role="tabpanel">
+                    <div class="card" style="min-height: 280px;">
+                        <div class="card-block" style="overflow: scroll">
+                            @Html.Raw(Model.GhiChu)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemPhanCongThamPhan" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="#modalPhanCongThamPhan" data-url="@Url.Action("EditPhanCongThamPhan", "ThuLy", new{ ViewBag.hoSoVuAnId, thamPhanId = 0})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        if ($("#nhomAn").val() == "HC") {
+            if ($("#thuTuc").val() == "Rút gọn") {
+                $(".tham-phan-1-li, .tham-phan-2-li").attr('style', 'display: none !important');
+            }
+        }
+        if ($("#nhomAn").val() == "AD") {
+            $(".tham-phan-1-li, .tham-phan-2-li").attr('style', 'display: none !important');
+        }
+    });
+</script>
+
+<style type="text/css">
+    @@media (min-width: 576px) {
+        .modal-thamphan-custom {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+    }
+</style>

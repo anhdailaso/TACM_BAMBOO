@@ -1,0 +1,24 @@
+﻿@using Biz.Lib.TACM.Resources.Resources 
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.ChuyenHoSoID</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYRATHONGBAO</span><span class="font-weight-bold">@Model.NgayRaThongBao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCHUYENHOSO</span><span class="font-weight-bold">@Model.NgayChuyenHoSo</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TOAANCHUYENDEN</span><span class="font-weight-bold">@Model.ToaAnChuyenDen</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LYDOCHUYEN_HOSO</span><span class="font-weight-bold">@Model.LyDoChuyenHoSo</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p><strong>@ViewText.LABEL_GHICHU</strong></p>
+            <div class="card">
+                <div class="card-block" style="height: 226px; overflow: scroll">
+                    @Html.Raw(Model.GhiChu)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ChuanBiXetXu.dll
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ChuanBiXetXu.pdb
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.csprojResolveAssemblyReference.cache
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.csproj.CoreCompileInputs.cache
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.dll
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ChuanBiXetXu.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ChuanBiXetXu.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\obj\Debug\Biz.Lib.TACM.ChuanBiXetXu.pdb

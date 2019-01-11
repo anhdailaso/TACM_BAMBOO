@@ -1,0 +1,53 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.LocDuLieuThongKeModel
+
+@{
+    ViewBag.Title = @ViewText.TITLE_THONGKELUUKHO.ToUpper();
+}
+
+<div class="float-left">
+    <h4 class="text-uppercase mb-2">@ViewText.TITLE_THONGKELUUKHO</h4>
+</div>
+<div class="clearfix"></div>
+
+<div id="main-content">
+    <div class="container-fluid row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12 text-right">
+                    <div id="menu-thongke-btn" class="btn-group">
+                        <button id="bieu-do-btn" type="button" class="btn btn-outline-primary active">@ViewText.BUTTON_BIEUDO</button>
+                        <button id="danh-sach-btn" type="button" class="btn btn-outline-primary">@ViewText.BUTTON_DANHSACH</button>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" id="GroupByType" value="1" />
+            <div id="contentThongKeLuuKho" style="width: 100%">
+                <input id="loaiThongKe" type="hidden" value="1" />
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="row">
+                <a id="export-luukho" class="btn btn-primary mb-2 mr-1 ml-auto" href="@Url.Action("XuatExcelDanhSachHoSoThongKeLuuKho","ThongKeGiamSat", new { danhSachId="NoID"})"><i class="fa fa-file-excel-o" aria-hidden="true"></i> @ViewText.BUTTON_XUATFILE_EXCELL</a>
+            </div>
+            <div class="row">
+                @Html.Partial("ThongKe/_LocDuLieu")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ThongKeLuuKho")
+    <script type="text/javascript">
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $('#menu-thongke-btn button').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    </script>
+}

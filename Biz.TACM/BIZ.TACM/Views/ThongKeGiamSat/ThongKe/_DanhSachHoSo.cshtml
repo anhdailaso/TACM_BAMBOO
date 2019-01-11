@@ -1,0 +1,55 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_DANHSACHHOSO</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<input type="hidden" name="danhSachId" id="danhSachID" value="@ViewBag.DanhSachID" />
+<div class="modal-body">    
+    <div class="row mb-3">
+        <div class="col-6">
+            <div class="search-box">
+                @Html.TextBox("tim-kiem-ho-so-thong-ke-txt", null, new { @class = "form-control ml-3", placeholder = "Số, Mã hồ sơ, Tên vụ án, Số thụ lý" })
+                <button type="button" class="search-button"><i class="material-icons">search</i></button>
+            </div>               
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-primary pull-right mr-3" id="chi-tien-xet-xu-btn"
+                 onclick="location.href = '@Url.Action("XuatExcelChiTienXetXu", "ThongKeGiamSat", new {tuNgay = ViewBag.TuNgay, denNgay = ViewBag.DenNgay, toaAnID = ViewBag.ToaAnID})'">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Chi tiền xét xử
+            </button>
+            @*@using (Html.BeginForm("XuatExcelDanhSachHoSoThongKe", "ThongKeGiamSat", FormMethod.Post, new {id = "export-form"}))
+            {            
+                <button type="submit" class="btn btn-info text-uppercase pull-right mr-3" id="xuat-excel-btn">Xuất Excel</button>
+            }*@
+        </div>      
+    </div>
+   
+    <div class="row mb-3">
+        <div class="col-12">
+            <table class="table table-hover table-bordered table-custom" cellspacing="0" id="ho-so-thong-ke-table" style="width: 100%">
+                <thead class="thead-default">
+                    <tr>
+                        <td>@ViewText.TABLE_STT</td>
+                        <td>@ViewText.TABLE_MAHOSO</td>
+                        <td>@ViewText.TABLE_TENVUAN</td>
+                        <td>@ViewText.TABLE_SOTHULY</td>
+                        <td>@ViewText.TABLE_NGAYTHULY</td>
+                        <td>@ViewText.TABLE_CONGDOAN</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        DanhSachHoSoThongKeModule.init();
+
+        $("#ho-so-thong-ke-table_filter").hide();
+    });
+</script>

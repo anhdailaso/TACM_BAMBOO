@@ -1,0 +1,193 @@
+﻿@model Biz.Lib.Authentication.UserLoginViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = ViewText.TITLE_DANGNHAP;
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-frame">
+    <h2 class="text-center text-uppercase mb-4">@ViewText.TITLE_DANGNHAP</h2>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="2500" data-pause="false" style="position: absolute;left:100px;top:15px; height: 425px;">
+        <div class="carousel-inner" role="listbox">
+            @foreach (var imagePath in ViewBag.SlideShowFiles)
+            {
+                if (imagePath.Equals(((List<string>)ViewBag.SlideShowFiles).First()))
+                {
+                    <div class="carousel-item active">
+                        <img width="325" class="animated fadeInRight d-block img-fluid" src="@Url.Content(imagePath)" alt="">
+                    </div>
+                }
+                else
+                {
+                    <div class="carousel-item">
+                        <img width="325" class="animated fadeInRight d-block img-fluid" src="@Url.Content(imagePath)" alt="">
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginForm", name = "loginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", maxlength = 50, placeholder = ViewText.PLACEHOLDER_USERNAME , @autofocus="" })
+                            <small class="form-text text-danger"><span for="UserName"></span></small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", maxlength = 50, @type = "password", placeholder = ViewText.PLACEHOLDER_PASSWORD })
+                            <small class="form-text text-danger"><span for="Password"></span></small>
+                        </div>
+                    </div>
+                    <div class="row mb-3 captcha-group" style="display: @ViewBag.IsHidden">
+                        <div class="col-12 mb-3">
+                            <input type="text" name="captcha" id="captcha" class="form-control mb-1" placeholder="@ViewText.PLACEHOLDER_CAPTCHA" value=@ViewBag.TempCapcha maxlength="6" />
+                            <small class="form-text text-danger"><span for="captcha"></span></small>
+                        </div>
+                        <div class="col-12 text-center">
+                            <div id="CaptchaContent" class="d-inline-block">
+                                @Html.Partial("../Shared/_Captcha")
+                            </div>
+                            <button id="btn-refresh-captcha" class="btn btn-refresh-captcha" type="button"><i class="fa fa-2x fa-refresh" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col-12">
+                            <button class="btn btn-custom cursor-link text-uppercase font-weight-bold" type="submit">@ViewText.BUTTON_DANGNHAP</button>
+                        </div>
+                    </div>
+                    <div class="text-center mb-3" style="text-decoration: underline"><a href="@Url.Action("ForgotPassword", "Account")" class="text-gray-dark">@ViewText.BUTTON_QUENMATKHAU</a></div>
+
+                    @Html.HiddenFor(x => x.RememberMe)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                }
+            </div>
+        </div>
+    </div>
+    @*<div id="viewport" style="border:solid 2px #fff;box-shadow: 0 0 10px rgba(0,0,0,0.5);position: absolute;left:10px;top:10px; width:325px; ">
+            <div id="box">
+                <figure class="slide jbs-current">
+                    <img src="@Url.Content(String.Format(Setting.FILE_HINH_TOAANCAMAU,"1.jpg"))" alt="">
+                </figure>
+                <figure class="slide">
+                    <img src="@Url.Content(String.Format(Setting.FILE_HINH_TOAANCAMAU,"2.jpg"))" alt="">
+                </figure>
+                <figure class="slide">
+                    <img src="@Url.Content(String.Format(Setting.FILE_HINH_TOAANCAMAU,"3.jpg"))" alt="">
+                </figure>
+                <figure class="slide">
+                    <img src="@Url.Content(String.Format(Setting.FILE_HINH_TOAANCAMAU,"4.jpg"))" alt="">
+                </figure>
+                <figure class="slide">
+                    <img src="@Url.Content(String.Format(Setting.FILE_HINH_TOAANCAMAU,"5.jpg"))" alt="">
+                </figure>
+            </div>
+        </div>*@
+</div>
+@section Scripts{
+<script type="text/javascript">
+        $(function () {
+            (function () {
+                var screenHeight = $(window).height();
+                var screenWidth = $(window).width();
+                var loginHeight = $('.login-wrap').height();
+                if (loginHeight > 0 && loginHeight < screenHeight) {
+                    $('.login-wrap').css('margin-top', (screenHeight - loginHeight) / 7 + 'px');
+                    //$('#footer').css('bottom', (screenHeight - loginHeight) / 6 + 'px');
+                }
+
+                //var sliderBox = $("#viewport");
+                //if (sliderBox.length > 0) {
+                //    sliderBox.css('left', ((screenWidth - 300) / 2 - sliderBox.width()) / 2 + 'px');
+                //}
+
+                //$('#box').boxSlider({
+                //    speed: 500,
+                //    autoScroll: true,
+                //    effect: 'tile3d',
+                //    timeout: 2000
+                //});
+            })();
+        });
+
+        $("#btn-refresh-captcha").on("click", function () {
+            $("#CaptchaContent").load('@Url.Action("ReloadCaptcha", "Account")');
+        });
+
+        $("#loginForm").on("submit",
+            function () {
+                if ($("#loginForm").valid()) {
+                    showLoadingOverlay();
+                    $.ajax({
+                        type: $("#loginForm").prop("method"),
+                        url: $("#loginForm").prop("action"),
+                        data: $("#loginForm").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages[0] }, { type: "danger" });
+                                if (response.Data == true) {
+                                    $("#CaptchaContent").load('@Url.Action("ReloadCaptcha", "Account")');
+                                    $(".captcha-group").show();
+                                    $("#captcha").val("");
+                                }
+                            }
+                            else {
+                                window.location = response.Messages[0];
+                            }
+                        },
+                        complete: function () {
+                            hideLoadingOverlay();
+                        }
+                    });
+                }
+                return false;
+            }
+        );
+
+        $("#loginForm").validate({
+            ignore: '',
+            rules: {
+                "UserName": {
+                    required: true
+                },
+                "Password": {
+                    required: true
+                },
+                "captcha": {
+                    required: true,
+                    maxlength: 20
+                }
+            },
+            messages:
+            {
+                "UserName": {
+                    required: "@string.Format(ValidationMessages.VALIDATION_KIEMTRARONG,"Tên đăng nhập")"
+                },
+                "Password": {
+                    required: "@string.Format(ValidationMessages.VALIDATION_KIEMTRARONG,"Mật khẩu")"
+                },
+                "captcha": {
+                    required: "@string.Format(ValidationMessages.VALIDATION_KIEMTRARONG,"Mã xác nhận")",
+                    maxlength: "@string.Format(ValidationMessages.VALIDATION_SOLUONGKYTUTOIDA, "captcha", 20)"
+                }
+            },
+            errorPlacement: function (error) {
+                var htmlFor = error[0].htmlFor;
+
+                $('span[for="' + htmlFor + '"]').each(function () {
+                    $(this).append(error);
+                });
+            },
+            success: function (error) {
+                error.remove();
+            }
+        });
+</script>
+}

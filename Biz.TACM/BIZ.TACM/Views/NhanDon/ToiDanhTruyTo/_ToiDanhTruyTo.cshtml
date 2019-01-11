@@ -1,0 +1,44 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="row">
+    <div class="col-4 text-uppercase align-bottom">
+        <strong class="align-bottom">@ViewText.LABEL_TOIDANHTRUYTO</strong>
+    </div>
+    <div class="col-8 text-right">
+        <button id="btnTaoToiDanhTruyTo" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="#modelToiDanh" data-url="#"><i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.BUTTON_THEMTOIDANH</button>
+    </div>
+</div>
+<div class="row">
+    <div id="toi-danh-truy-to-container" style="width: 100%">
+        <table class="table table-hover table-bordered table-custom" cellspacing="0" id="toi-danh-truy-to-table" style="width: 100%">
+            <thead class="thead-default">
+                <tr>
+                    <td class="text-uppercase">@ViewText.TABLE_STT</td>
+                    <td class="text-capitalize">@ViewText.LABEL_DIEULUAT</td>
+                    <td class="text-capitalize">@ViewText.LABEL_TOIDANHTRUYTO</td>
+                    <td class="text-capitalize">@ViewText.TABLE_KHOANDIEM</td>
+                    <td style="min-width:140px"></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<style type="text/css">
+    @@media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 550px;
+            margin: 30px auto;
+        }
+    }
+</style>
+
+<div class="modal fade" id="modelToiDanh" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+

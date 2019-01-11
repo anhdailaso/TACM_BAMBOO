@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@using Biz.TACM.Models.Model
+@model IEnumerable<Biz.Lib.TACM.ChuanBiXetXu.Model.QuyetDinhModel>
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+<div class="row">
+    <div class="col-12">
+        <button id="btnThemQuyetDinh" class="btn btn-primary float-right mt-2 mb-2" data-toggle="modal" data-target="#modelChuanBiXetXuQuyetDinh">
+            <i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.BUTTON_THEMQUYETDINH
+        </button>
+    </div>
+</div>
+<table class="table table-hover table-bordered table-custom" id="duong-su-phat-hanh-ban-an-table" cellspacing="0" style="width: 100%">
+    <thead>
+        <tr>
+            @if (nhomAn.Equals(Setting.MANHOMAN_HINHSU))
+            {
+                <td class="text-capitalize">@ViewText.LABEL_SO</td>
+                <td class="text-capitalize">@ViewText.LABEL_TENQUYETDINH</td>
+                <td class="text-capitalize">@ViewText.LABEL_NGAYRAQUYETDINH</td>
+                <td></td>
+            }
+            else
+            {
+                <td class="text-capitalize">@ViewText.LABEL_SO</td>
+                <td class="text-capitalize">@ViewText.TABLE_QUYETDINH_THONGBAO</td>
+                <td class="text-capitalize">@ViewText.TABLE_TENQUYETDINH_THONGBAO</td>
+                <td class="text-capitalize">@ViewText.TABLE_NGAYRAQUYETDINH_THONGBAO</td>
+                <td class="text-capitalize">@ViewText.TABLE_THOIHANGIAHAN</td>
+                <td></td>
+            }           
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var quyetDinh in Model)
+            {
+                if (nhomAn.Equals(Setting.MANHOMAN_HINHSU))
+                {
+                    <tr>
+                        <td>@quyetDinh.QuyetDinhID</td>
+                        <td class="custom-wrap">@quyetDinh.TenQuyetDinh</td>
+                        <td>@string.Format("{0:dd/MM/yyyy}", quyetDinh.NgayRaQuyetDinh)</td>
+                        <td style="min-width: 100px" width="100px">
+                            <button class="btn btn-sm btn-outline-success fa fa-bars btn-custom-size" data-trigger="modal" data-target="#modalLarge" data-url="/ChuanBiXetXu/GetChuanBiXetXuQuyetDinhTheoQuyetDinhID?id=@quyetDinh.QuyetDinhID"></button>
+                            <a class="btn btn-sm btn-outline-primary fa fa-pencil-square-o btn-custom-size btn-grid" href="javascript;" data-toggle="modal" data-target="#modelChuanBiXetXuQuyetDinh" data-edit-id="@quyetDinh.QuyetDinhID"></a>
+                            <a class="btn btn-sm btn-outline-danger fa fa-trash-o btn-custom-size btn-grid" href="#" data-toggle="modal" data-target="#modelChuanBiXetXuXoaQuyetDinh" data-delete-url="/ChuanBiXetXu/XoaChuanBiXetXuQuyetDinh?id=@quyetDinh.QuyetDinhID"></a>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@quyetDinh.QuyetDinhID</td>
+                        <td class="custom-wrap">@(quyetDinh.QuyetDinhLoai == CBXXQuyetDinhLoai.ThongBao.GetHashCode() ? ViewText.LABEL_THONGBAO : ViewText.LABEL_QUYETDINH) </td>
+                        <td class="custom-wrap">@quyetDinh.TenQuyetDinh</td>
+                        <td>@string.Format("{0:dd/MM/yyyy}", quyetDinh.NgayRaQuyetDinh)</td>
+                        <td>@(string.IsNullOrEmpty(quyetDinh.ThoiHanGiaHan) ? "" : quyetDinh.ThoiHanGiaHan + " ngày")</td>
+                        <td style="min-width: 100px" width="100px">
+                            <button class="btn btn-sm btn-outline-success fa fa-bars btn-custom-size" data-trigger="modal" data-target="#modalLarge" data-url="/ChuanBiXetXu/GetChuanBiXetXuQuyetDinhTheoQuyetDinhID?id=@quyetDinh.QuyetDinhID"></button>
+                            <a class="btn btn-sm btn-outline-primary fa fa-pencil-square-o btn-custom-size btn-grid" href="javascript;" data-toggle="modal" data-target="#modelChuanBiXetXuQuyetDinh" data-edit-id="@quyetDinh.QuyetDinhID"></a>
+                            <a class="btn btn-sm btn-outline-danger fa fa-trash-o btn-custom-size btn-grid" href="#" data-toggle="modal" data-target="#modelChuanBiXetXuXoaQuyetDinh" data-delete-url="/ChuanBiXetXu/XoaChuanBiXetXuQuyetDinh?id=@quyetDinh.QuyetDinhID"></a>
+                        </td>
+                    </tr>
+                }               
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10">
+                    <div class="mt-4 text-center empty-data">
+                        <blockquote>
+                            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

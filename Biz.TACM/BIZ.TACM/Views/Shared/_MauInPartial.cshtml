@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Biz.Lib.TACM.MauIn.Model.MauInModel>
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.Lib.Authentication;
+@*@{
+        bool flag = true;
+    }*@
+@if (AccountUtils.IsAuthenticated())
+{
+    string userName = AccountUtils.CurrentUsername();
+    if (string.IsNullOrWhiteSpace(userName))
+    {
+        userName = AccountUtils.CurrentUsername();
+    }
+    <!-- Modal -->
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_MAUVANBANTOTUNG</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-sm">
+                    <div class="search-box">
+                        @*@using (Html.BeginForm("getDanhSachMauIn", "MauIn", FormMethod.Get, new { @id = "formTimKiemOnHeader" }))
+                            {
+                                @Html.TextBox("keyword", Request.QueryString["keyword"], new { @id = "searchBoxOnHeader", @class = "form-control", @placeholder = "Tìm Kiếm" })
+                                @Html.TextBox("nhomAn", Request.QueryString["nhomAn"], new { @type = "hidden" })
+                                @Html.TextBox("giaiDoan", Request.QueryString["giaiDoan"], new { @type = "hidden" })
+                                <button type="submit" class="search-button" id="#mau-in-so-61-btn"><i class="material-icons">search</i></button>
+                            }*@
+                        @Html.TextBox("keywordMauIn", @Request.QueryString["keywordMauIn"], new { @class = "form-control", @placeholder = "Tìm Kiếm" })
+                        <i class="search-button material-icons pr-2" style="cursor:pointer;">search</i>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 ml-1">
+                <div class="col-auto">
+                    <label class="pt-2">@ViewText.LABEL_NHOMAN</label>
+                </div>
+                <div class="col-sm">
+                    @Html.DropDownList("NhomAnID", (SelectList)ViewBag.nhomAn, Setting.DDL_CHOOSE, new { @class = "form-control", id = "dsNhomAn" })
+                </div>
+                <div class="col-auto">
+                    <label class="pt-2">@ViewText.LABEL_GIAIDOAN</label>
+                </div>
+                <div class="col-sm">
+                    @Html.DropDownList("GiaiDoan", (SelectList)ViewBag.giaiDoanddl, null, new { @class = "form-control", id = "dsGiaiDoan" })
+                </div>
+            </div>
+        </div>
+        <div class="table-bordered" id="danhSachMauIn">
+            @Html.Partial("_MauInItem", Model)
+            @*<div id="danhSachMauIn">
+                    <p class="pl-5 col-12 bg-success mb-0">Tên Mẫu In</p>
+                    @foreach (var item in ViewBag.listMauIn)
+                    {
+                        <p class="mb-0 pl-3 @(flag == true ? "" : "bg-faded")"><a href="#"><i class="material-icons">print</i>Mẫu @item.SoMauIn: @item.TenMauIn</a></p>
+                        flag = (flag == true ? false : true);
+                    }
+                </div>*@
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        MauInModule.init();
+        TimKiemMauInModule.init();
+    });
+</script>

@@ -1,0 +1,52 @@
+﻿@model int
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+<div class="container-fluid row">
+    <div class="col-4">
+        <strong class="text-uppercase">@(nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC) ? ViewText.TITLE_DANHSACH_NGUOIKHIEUNAI_KIENNGHI : ViewText.TITLE_DANHSACH_NGUOIKHANGCAO)</strong>
+    </div>
+    <div class="col-8 text-right">
+        <button id="btnTaoKhangCao" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="@(nhomAn.Equals(Setting.MANHOMAN_HINHSU) ? "#modalLarge" : "#modal")" data-url="@Url.Action("TaoKhangCaoModal", "SauXetXu", new {hoSoVuAnId = Model})">
+            <i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@(nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC) ? ViewText.BUTTON_THEMNGUOIKHIEUNAI_KIENNGHI : ViewText.BUTTON_THEMNGUOIKHANGCAO)
+        </button>
+    </div>
+</div>
+<div class="container-fluid row">
+    <div id="khang-cao-container" style="width: 100%">
+
+        <table class="table table-hover table-bordered table-custom" cellspacing="0" id="khang-cao-table" style="width: 100%">
+            <thead>
+                <tr>
+                    @if (anSessionModel.MaNhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+                    {
+                        <td>@ViewText.TABLE_STT</td>
+                        <td class="text-capitalize">@ViewText.LABEL_NGUOIKHIEUNAI_KIENNGHI</td>
+                        <td class="text-capitalize">@ViewText.LABEL_NGAY_KHIEUNAI_KIENNGHI</td>
+                        <td class="text-capitalize">@ViewText.LABEL_NGAYNHAN_KHIEUNAI_KIENNGHI</td>
+                        <td class="text-capitalize">@ViewText.TABLE_HINHTHUCNOP</td>
+                        <td style="min-width:140px"></td>
+                    }
+                    else
+                    {
+                        <td>@ViewText.TABLE_STT</td>
+                        <td class="text-capitalize">@ViewText.TABLE_NGUOIKHANGCAO</td>
+                        <td class="text-capitalize">@ViewText.TABLE_DUONGSULA</td>
+                        <td class="text-capitalize">@ViewText.TABLE_NGAYLAMDON</td>
+                        <td class="text-capitalize">@ViewText.TABLE_NGUOINOPDON</td>
+                        <td class="text-capitalize">@ViewText.TABLE_HINHTHUCNOP</td>
+                        <td class="text-capitalize">@ViewText.TABLE_TINHTRANG</td>
+                        <td style="min-width:140px"></td>
+                    }
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+

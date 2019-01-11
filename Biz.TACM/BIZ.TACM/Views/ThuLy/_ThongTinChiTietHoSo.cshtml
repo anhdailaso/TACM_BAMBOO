@@ -1,0 +1,65 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Microsoft.Ajax.Utilities
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@model Biz.TACM.Models.ViewModel.ThuLy.HoSoVuAnThuLyViewModel
+@{
+    Layout = null;
+}
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var maNhomAn = anSessionModel.MaNhomAn;
+    var toaAn = anSessionModel.ToaAnId;
+}
+<div class="row">
+    <div class="col-6">
+        @Html.DropDownList("ddlNgayTaoHoSo", (SelectList)ViewBag.listNgayTao, null, new { @class = "custom-select mb-2", id = "selectNgayTaoHoSoThuLy" })
+        <button id="btnSuaHoSoThuLy" class="btn btn-sm btn-outline-primary btn-custom-size float-right mb-1" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditChiTietHoSo", "ThuLy", new { id = Model.HoSoVuAnLogID, hoSoVuAnId = Model.HoSoVuAnID })"><i class="fa fa-pencil-square-o"></i></button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYLAMDON</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayLamDon)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYNOPDON_TOAAN</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayNopDonTaiToaAn)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HINHTHUC_GUIDON</span><span class="font-weight-bold">@Model.HinhThucGoiDon</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAIDON</span><span class="font-weight-bold">@Model.LoaiDon</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAI_QUANHE</span><span id="HoSoVuAn_LoaiQuanHe" class="font-weight-bold">@Model.LoaiQuanHe</span></li>
+            @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+            {
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHIEUKIEN</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+            }
+            else
+            {                       
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_QUANHE_PHAPLUAT</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+            }
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_CANBO_NHANDON</span><span class="font-weight-bold">@(Model.NhanVienCanBoNhanDon == null ? "" : Model.NhanVienCanBoNhanDon.HoTenVaMaNV)</span></li>
+            @if (toaAn == ToaAn.TinhCaMau.GetHashCode())
+            {
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_YEUTO_NUOCNGOAI</span><span class="font-weight-bold">@Model.YeuToNuocNgoai</span></li>
+            } 
+            
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOIKY_XACNHAN</span><span class="font-weight-bold">@(Model.NhanVienNguoiKyXacNhanDaNhanDon == null ? "" : Model.NhanVienNguoiKyXacNhanDaNhanDon.HoTenVaMaNV)</span></li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@ViewText.LABEL_CONGDOAN</span>
+                <span class="btn-cong-doan-size badge badge-pill @Html.GetColorStateAsString(Model.CongDoanHoSo)">@Html.GetCongDoanHoSoAsString(Model.CongDoanHoSo, maNhomAn, giaiDoan)</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span id="HoSoVuAn_ThamPhan" class="font-weight-bold text-danger">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_GIATRINOP</span><span id="HoSoVuAn_GiaTriDuNop" class="font-weight-bold text-danger">@(!Model.GiaTriDuNop.IsNullOrWhiteSpace() ? String.Format("{0} {1}", Model.GiaTriDuNop, "VND") : "")</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span class="han-nop-an-phi-lbl">@ViewText.LABEL_HANNOP_ANPHI</span><span id="HoSoVuAn_HanNopAnPhi" class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.HanNopAnPhi)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCHUYENDON</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayChuyenDon)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTRADON</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayTraDon)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAY_KHIEUNAI</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayKhieuNai)</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LALBLE_NGAYLAPDON</span><span class="font-weight-bold"> @Model.NgayTao</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOILAPDON</span><span class="font-weight-bold">@(Model.NhanVienNguoiLapDon == null ? "" : Model.NhanVienNguoiLapDon.HoTenVaMaNV)</span></li>
+        </ul>
+    </div>
+</div>
+

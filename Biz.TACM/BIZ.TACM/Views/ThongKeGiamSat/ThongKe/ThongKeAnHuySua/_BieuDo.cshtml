@@ -1,0 +1,38 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.ThongKeAnHuySuaModel
+
+<input id="loaiThongKe" type="hidden" value="2" />
+<input id="ListHoSoHuyID" type="hidden" value="@ViewBag.ListHoSoHuyID" />
+<input id="ListHoSoSuaID" type="hidden" value="@ViewBag.ListHoSoSuaID" />
+<div class="container-fluid row">
+    <div id="bieu-do-an-huy-sua-container" style="width: 100%">
+        <table class="table table-hover table-bordered table-custom" cellspacing="0" id="bieu-do-an-huy-sua-table" style="width: 100%">
+            <thead class="thead-default">
+            <tr>
+                <td>@ViewText.TABLE_NHOMAN</td>
+                <td>@ViewText.TABLE_SOANHUY</td>
+                <td>@ViewText.TABLE_SOANSUA</td>
+                <td>@ViewText.TABLE_TONG</td>
+            </tr>
+            </thead>
+            @*<tbody>
+            @foreach (var item in Model.ListData)
+            {
+                <tr>
+                    <td>@item.NhomAn</td>
+                    <td>@item.SoAnHuy</td>
+                    <td>@item.SoAnSua</td>
+                    <td>@item.TongHuySua</td>
+                </tr>
+            }
+            
+            </tbody>*@
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        ThongKeHuySuaBieuDoModule.init();
+    });
+</script>

@@ -1,0 +1,236 @@
+﻿@model Biz.TACM.Models.ViewModel.MauIn.MauInSo24ViewModel
+@{
+    string loaidon = null;
+    if (Model.LoaiQuanHe.Equals("Tranh chấp"))
+    { loaidon = "khởi kiện"; }
+    else if (Model.LoaiQuanHe.Equals("Yêu cầu"))
+    { loaidon = "yêu cầu"; }
+}
+@* margin is mapped with controller to print pdf *@
+<table border="0" cellspacing="0" style="font-size: 14pt; font-family: 'Times New Roman'; margin: 56.7pt 42.525pt 56.7pt 85.05pt;">
+    <tr>
+        <td colspan="3">
+            <p style="font-size:12pt;"> Hồ sơ: @Model.MaHoSo</p>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr valign="top">
+        <td align="left" width="35%">
+            <table cellspacing="0">
+                <tr>
+                    <td align="left" colspan="3" style="font-size: 12pt;">
+                        <p style="text-align: center; margin: 0 0 10px 0;"><strong>TÒA ÁN NHÂN DÂN</strong></p>
+                        <p style="text-align: center; margin: 0 0 0 0;"><strong>@Model.TenToaAn.ToUpper()</strong></p>
+                        @if (Model.TenToaAn.IndexOf("huyện") != -1 || Model.TenToaAn.IndexOf("thành phố") != -1)
+                        {
+                            <p style="text-align: center; margin: 10px 0 0 0;"><strong>TỈNH CÀ MAU</strong></p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="70px" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        <p style="font-size:13pt;">Số: @(Model.SoHoSo < 10 ? "0" + Model.SoHoSo : Model.SoHoSo.ToString())/@Model.NgayNopDonTaiToaAn.Year/GXN-TA</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="5%"></td>
+        <td align="right" width="55%">
+            <table cellspacing="0">
+                <tr style="text-transform: uppercase;">
+                    <td colspan="3" style="text-align: center;">
+                        <p style="margin: 0 0 10px 0; font-size: 12pt;"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p style="margin: 0 0 0 0; font-size:14pt"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="60%" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        <p style="font-size: 14pt;"><i>@Model.TenToaAn.Replace("huyện", "").Replace("thành phố", "TP.").Replace("tỉnh", ""), ngày @(Model.NgayNopDonTaiToaAn.Day < 10 ? "0" + Model.NgayNopDonTaiToaAn.Day.ToString() : Model.NgayNopDonTaiToaAn.Day.ToString()) tháng @(Model.NgayNopDonTaiToaAn.Month < 3 ? "0" + Model.NgayNopDonTaiToaAn.Month.ToString() : Model.NgayNopDonTaiToaAn.Month.ToString()) năm @Model.NgayNopDonTaiToaAn.Year.ToString()</i></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr>
+        <td align="center" colspan="3">
+            <p style="margin: 0 0 2px 0"><strong>GIẤY XÁC NHẬN</strong></p>
+            @if (Model.LoaiQuanHe.Equals("Tranh chấp"))
+            {
+                <p style="margin: 0 0 5px 0"><strong>ĐÃ NHẬN ĐƠN KHỞI KIỆN</strong></p>
+            }
+            else if (Model.LoaiQuanHe.Equals("Yêu cầu"))
+            {
+                <p style="margin: 0 0 5px 0"><strong>ĐÃ NHẬN ĐƠN YÊU CẦU</strong></p>
+            }
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr @*style="font-size:12pt;"*@>
+        <td colspan="3">
+            <table style="margin: 0 0 10px 0; font-size: 14pt;">
+                @if (Model.DanhSachDuongSuViewModel.Count() == 0)
+                {
+                    <tr style="height: 25px;">
+                        <td valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Kính gửi: Ông (Bà) ..................
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr style="height: 25px;">
+                        <td valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Địa chỉ: ......................................................
+                            </p>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model.DanhSachDuongSuViewModel)
+                    {
+                        <tr style="height: 25px">
+                            <td valign="top">
+                                <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                    @if (item == Model.DanhSachDuongSuViewModel.First())
+                                    {
+                                        <span>Kính gửi: </span>
+                                    }
+
+                                    @if (item.DuongSuLa == "Cá nhân")
+                                    {
+                                        @(item.GioiTinh == "Nam" ? "Ông " : "Bà ")@item.HoTenDuongSu
+
+                                        if(item.NgayThangNamSinh!=null)
+                                        {
+                                            <span>sinh năm @(item.NgayThangNamSinh.Count() > 4 ? DateTime.Parse(item.NgayThangNamSinh).Year.ToString() : item.NgayThangNamSinh).</span>
+                                        }
+                                    }
+                                    else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                    {
+                                        @item.TenCoQuanToChuc<span>.</span>
+                                    }
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr style="height: 25px;">
+                            <td colspan="2" valign="top">
+                                <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                    Địa chỉ: @(item.NoiTamTru ?? item.NoiDKHKTT)<span>.</span>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <div>
+                <p style="margin: 10px 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    Toà án nhân dân @Model.TenToaAn đã nhận được đơn @loaidon đề ngày @(Model.NgayLamDon.Day < 10 ? "0" + Model.NgayLamDon.Day.ToString() : Model.NgayLamDon.Day.ToString()) tháng @(Model.NgayLamDon.Month < 3 ? "0" + Model.NgayLamDon.Month.ToString() : Model.NgayLamDon.Month.ToString()) năm @Model.NgayLamDon.Year.ToString() của
+                    @if (Model.DanhSachDuongSuViewModel.Count() == 0)
+                    {
+                        @(string.Format("{0}", "ông (bà) .................."))
+                    }
+                    else
+                    {
+                        foreach (var item in Model.DanhSachDuongSuViewModel)
+                        {
+                            if (item != Model.DanhSachDuongSuViewModel.Last())
+                            {
+                                if (item.DuongSuLa == "Cá nhân")
+                                {
+                                    @(string.Format("{0}{1}, ", item.GioiTinh == "Nam" ? "ông " : "bà ", item.HoTenDuongSu))
+                                }
+                                else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                {
+                                    @(string.Format("{0}, ", item.TenCoQuanToChuc))
+                                }
+                            }
+                            else
+                            {
+                                if (item.DuongSuLa == "Cá nhân")
+                                {
+                                    @(string.Format("{0}{1} ", item.GioiTinh == "Nam" ? "ông " : "bà ", item.HoTenDuongSu))
+                                }
+                                else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                {
+                                    @item.TenCoQuanToChuc
+                                }
+                            }
+                        }
+                    }
+                    @if (Model.HinhThucGoiDon.Equals("Trực tiếp"))
+                    {
+                        <span>nộp trực tiếp</span>
+                    }
+                    else if (Model.HinhThucGoiDon.Equals("Gián tiếp"))
+                    {
+                        <span>do tổ chức dịch vụ bưu chính chuyển đến</span>
+                    }
+                    else
+                    {
+                        <span>gửi qua @Model.HinhThucGoiDon.ToLower()</span>
+                    }
+                    ngày @(Model.NgayNopDonTaiToaAn.Day < 10 ? "0" + Model.NgayNopDonTaiToaAn.Day.ToString() : Model.NgayNopDonTaiToaAn.Day.ToString()) tháng @(Model.NgayNopDonTaiToaAn.Month < 3 ? "0" + Model.NgayNopDonTaiToaAn.Month.ToString() : Model.NgayNopDonTaiToaAn.Month.ToString()) năm @Model.NgayNopDonTaiToaAn.Year.ToString().
+                </p>
+                <p style="margin: 0 0 10px 0; text-indent: 28.35pt;">
+                    Về việc yêu cầu Toà án giải quyết (ghi tóm tắt các yêu cầu trong đơn @loaidon):
+                </p>
+            </div>
+            <div style="color:black;">
+                @Html.Raw("<p style=\"margin: 0px 0 10px 0;padding-left:28.5pt; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;\"><ul style=\"padding-left:14pt;margin: 0px 0 5px 0;list-style-type: none;\">")
+                @Html.Raw(Server.HtmlDecode(Model.NoiDungDon))
+                @Html.Raw("</ul></p>")
+            </div>
+            <div>
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    Toà án nhân dân @Model.TenToaAn sẽ tiến hành xem xét đơn @loaidon theo quy định của pháp luật tố tụng dân sự.
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr style="height: 50px;"><td></td></tr>
+    <tr valign="top" @*style="font-size:11pt"*@>
+        <td style="font-size:11pt">
+            <p style="font-size:12pt;margin-bottom:5px"><strong><i>Nơi nhận:</i></strong></p>
+            <p style="margin:3px 0 3px 0">- Người @loaidon;</p>
+            <p style="margin:3px 0 3px 0">- Lưu hồ sơ vụ án.</p>
+        </td>
+        <td></td>
+        <td align="right">
+            <div style="float: right; text-align:center;font-size:13pt;padding-right:50px">
+                @if (Model.ChucVuNguoiKyXacNhan.ToLower() == "chánh án" || Model.ChucDanhNguoiKyXacNhan.ToLower() == "thẩm phán")
+                {
+                    <p><strong @*style="font-size:12pt"*@>@Model.ChucDanhNguoiKyXacNhan.ToUpper()</strong></p>
+                }
+                else
+                {
+                    <p>
+                        <strong>
+                            TL. CHÁNH ÁN <br />
+                            KT. CHÁNH VĂN PHÒNG <br />
+                            PHÓ CHÁNH VĂN PHÒNG
+                        </strong>
+                    </p>
+                }
+
+                <p style="margin: 100px 0 0 0">@Model.HoTenNguoiKyXacNhanDaNhanDon</p>
+            </div>
+        </td>
+    </tr>
+</table>
+

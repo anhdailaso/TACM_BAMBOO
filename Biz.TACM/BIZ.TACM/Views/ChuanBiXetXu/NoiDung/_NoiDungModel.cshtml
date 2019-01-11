@@ -1,0 +1,438 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@{
+    Layout = null;
+}
+
+@model Biz.Lib.TACM.XetXu.Model.XetXuModel
+
+@using (Html.BeginForm("EditXetXuNoiDung", "XetXu", FormMethod.Post, new { @id = "formEditXetXuNoiDung" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    @Html.HiddenFor(m => m.XetXuGroup)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase" id="popup-noi-dung-title">@ViewText.TITLE_NOIDUNG_DUAVUANRAXETXU</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <!-- left -->
+            <div class="col-6">
+                @if (!ViewBag.MaNhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+                {
+                    <div class="form-group row" id="mo-phien-hop-group">
+                        <label class="col-6">@ViewText.LABEL_THUTUC<span class="input-required">*</span></label>
+                        <div class="col-6">
+                            @Html.DropDownListFor(m => m.ThuTuc, (SelectList)ViewBag.ddlThuTuc, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThuTuc)</small>
+                        </div>
+                    </div>
+                }
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGAYTHANG_RAQUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayRaQuyetDinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayRaQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6" id="thoi-gian-mo-phien-toa-lbl">@ViewText.LABEL_THOIGIAN_MOPHIENTOA<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker mb-3">
+                            @Html.TextBoxFor(m => m.ThoiGianMoPhienToa, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <div class="row text-vertical-align-center">
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("GioMoPhienToa", (SelectList)ViewBag.GioMoPhienToaDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                giờ
+                            </label>
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("PhutMoPhienToa", (SelectList)ViewBag.PhutMoPhienToaDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                phút
+                            </label>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThoiGianMoPhienToa)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6" id="dia-diem-mo-phien-toa-lbl">@ViewText.LABEL_DIADIEM_MOPHIENTOA<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.TextBoxFor(m => m.DiaDiemMoPhienToa, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.DiaDiemMoPhienToa)</small>
+                    </div>
+                </div>
+                <div class="form-group row" id="vu-an-duoc-xet-xu-group">
+                    <label class="col-6">@ViewText.LABEL_VUAN_DUOCXETXU <span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.DropDownListFor(m => m.VuAnDuocXetXu, (SelectList)ViewBag.ddlVuAnDuocXetXu, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.VuAnDuocXetXu)</small>
+                    </div>
+                </div>
+            </div>
+            <!-- right -->
+            <div class="col-6" id="tabsContent">
+                <!-- hoidong3, hoidong5 -->
+                @*@if (Model.HoiDong == HoiDong.HoiDong5.GetHashCode())
+                    {
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong3.GetHashCode(), new { @class = "align-middle" })
+                            <label>@ViewText.LABEL_HOIDONG_3</label>
+                        </div>
+                        <div class="col-7">
+                            @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong5.GetHashCode(), new { @class = "align-middle", @checked = true })
+                            <label>@ViewText.LABEL_HOIDONG_5</label>
+                        </div>
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="row mb-3">
+                        <div class="col-5">
+                            @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong3.GetHashCode(), new { @class = "align-middle", @checked = true })
+                            <label>@ViewText.LABEL_HOIDONG_3</label>
+                        </div>
+                        <div class="col-7">
+                            @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong5.GetHashCode(), new { @class = "align-middle" })
+                            <label>@ViewText.LABEL_HOIDONG_5</label>
+                        </div>
+                    </div>
+                    }*@
+                @Html.HiddenFor(m => m.HoiDong)
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.openValidTab == null || ViewBag.openValidTab == "ThamPham" ? "active" : "" )" data-toggle="tab" href="#modelContentThamPhan" role="tab">Thẩm phán</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.openValidTab == "HoiThamNhanDan" ? "active" : "" )" data-toggle="tab" href="#modelContentHoiThamNhanDan" role="tab">Hội thẩm nhân dân</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.openValidTab == "ThuKy" ? "active" : "" )" data-toggle="tab" href="#modelContentThuKy" role="tab">Thư ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.openValidTab == "KiemSatVien" ? "active" : "" )" data-toggle="tab" href="#modelContentKiemSatVien" role="tab">Kiểm sát viên</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane @(ViewBag.openValidTab == null || ViewBag.openValidTab == "ThamPham" ? "active" : "" ) " id="modelContentThamPhan" role="tabpanel">
+                        <div class="form-group row">
+                            <label class="col-6">@ViewText.LABEL_THAMPHAN_CHUTOA<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan)</small>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="tham-phan-khac-form-group">
+                            <label class="col-6">@ViewText.LABEL_THAMPHAN_KHAC<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.ThamPhanKhac, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhanKhac)</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@ViewText.LABEL_THAMPHAN_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @for (int i = 0; i < ViewBag.listThamPhanDuKhuyet.Count; i++)
+                                        {
+                                            var item = ViewBag.listThamPhanDuKhuyet[i];
+                                            <li><label><input class="align-middle" name="ThamPhanDuKhuyet[@i].MaNV" @(item.Checked ? "checked" : "" ) value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                            <input type="hidden" name="ThamPhanDuKhuyet[@i].MaNV" value="" />
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane @(ViewBag.openValidTab == "HoiThamNhanDan" ? "active" : "" )" id="modelContentHoiThamNhanDan" role="tabpanel">
+                        <div class="form-group row">
+                            <label class="col-6">@ViewText.LABEL_HOITHAMNHANDAN_1<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan)</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-6">@ViewText.LABEL_HOITHAMNHANDAN_2<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan2, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan2)</small>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="hoi-tham-nhan-dan3-form-group">
+                            <label class="col-6">@ViewText.LABEL_HOITHAMNHANDAN_3<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan3, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan3)</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@ViewText.LABEL_HOITHAMNHANDAN_DUKHUYET </label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @for (int i = 0; i < ViewBag.listHoiThamNhanDanDuKhuyet.Count; i++)
+                                        {
+                                            var item = ViewBag.listHoiThamNhanDanDuKhuyet[i];
+                                            <li><label><input class="align-middle" name="HoiThamNhanDanDuKhuyet[@i].MaNV" @(item.Checked ? "checked" : "" ) value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                            <input type="hidden" name="HoiThamNhanDanDuKhuyet[@i].MaNV" value="" />
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane @(ViewBag.openValidTab == "ThuKy" ? "active" : "" )" id="modelContentThuKy" role="tabpanel">
+                        <div class="form-group row">
+                            <label class="col-6">@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.ddlThuKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThuKy)</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@ViewText.LABEL_THUKY_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @for (int i = 0; i < ViewBag.listThuKyDuKhuyet.Count; i++)
+                                        {
+                                            var item = ViewBag.listThuKyDuKhuyet[i];
+                                            <li><label><input class="align-middle" name="ThuKyDuKhuyet[@i].MaNV" @(item.Checked ? "checked" : "" ) value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                            <input type="hidden" name="ThuKyDuKhuyet[@i].MaNV" value="" />
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane @(ViewBag.openValidTab == "KiemSatVien" ? "active" : "" )" id="modelContentKiemSatVien" role="tabpanel">
+                        <div class="form-group row">
+                            <label class="col-6">@ViewText.LABEL_KIEMSATVIEN<span class="input-required">*</span></label>
+                            <div class="col-6">
+                                @Html.DropDownListFor(m => m.KiemSatVien, (SelectList)ViewBag.ddlKiemSatVien, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KiemSatVien)</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>@ViewText.LABEL_KIEMSATVIEN_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @for (int i = 0; i < ViewBag.listKiemSatVienDuKhuyet.Count; i++)
+                                        {
+                                            var item = ViewBag.listKiemSatVienDuKhuyet[i];
+                                            <li><label><input class="align-middle" name="KiemSatVienDuKhuyet[@i].MaNV" @(item.Checked ? "checked" : "" ) value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                            <input type="hidden" name="KiemSatVienDuKhuyet[@i].MaNV" value="" />
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        if ($("#loaiQuanHe").val() === "Yêu cầu" || $("#nhomAn").val() === "AD") {
+            $("#popup-noi-dung-title").html("@ViewText.TITLE_NOIDUNG_MOPHIENHOP");
+            $("#thoi-gian-mo-phien-toa-lbl").html("@ViewText.LABEL_THOIGIAN_MOPHIENHOP<span class=\"input-required\">*</span>");
+            $("#dia-diem-mo-phien-toa-lbl").html("@ViewText.LABEL_DIADIEM_MOPHIENHOP<span class=\"input-required\">*</span>");
+            $('[href="#modelContentHoiThamNhanDan"]').closest('li').hide();
+            $("#modelContentHoiThamNhanDan *").hide().prop("disabled", true);
+            //$("#tabsContent").tabs({ disabled: [1, 2] });
+            $("#mo-phien-hop-group, #vu-an-duoc-xet-xu-group").hide();
+        }
+
+    //onSelectHoiDongChange($('input[type=radio][name=HoiDong]:checked').val());
+    });
+
+    if (@Model.HoiDong == 1 || @Model.HoiDong == 0) {
+        $("#tham-phan-khac-form-group, #hoi-tham-nhan-dan3-form-group").hide();
+    }
+    //$('input[type=radio][name=HoiDong]').change(function () {
+    //    onSelectHoiDongChange($(this).val());
+    //});
+    //function onSelectHoiDongChange(hoiDong) {
+    //    if (hoiDong == 1) {
+    //        $("#tham-phan-khac-form-group, #hoi-tham-nhan-dan3-form-group").hide();
+    //    } else {
+    //        $("#tham-phan-khac-form-group, #hoi-tham-nhan-dan3-form-group").show();
+    //    }
+    //}
+
+    $('.datepicker').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+
+    //$('.datetimepicker').datetimepicker({
+    //    format: 'DD/MM/YYYY HH:mm:ss'
+    //});
+
+    if ($('#ThamPhanKhac').val() != '') {
+        $('#ThamPhan').find("option[value='" + $('#ThamPhanKhac').val() + "']").hide();
+    }
+    if ($('#ThamPhan').val() != '') {
+        $('#ThamPhanKhac').find("option[value='" + $('#ThamPhan').val() + "']").hide();
+    }
+    if ($('#HoiThamNhanDan').val() != '') {
+        $('#HoiThamNhanDan2, #HoiThamNhanDan3').find("option[value='" + $('#HoiThamNhanDan').val() + "']").hide();
+    }
+    if ($('#HoiThamNhanDan2').val() != '') {
+        $('#HoiThamNhanDan, #HoiThamNhanDan3').find("option[value='" + $('#HoiThamNhanDan2').val() + "']").hide();
+    }
+    if ($('#HoiThamNhanDan3').val() != '') {
+        $('#HoiThamNhanDan, #HoiThamNhanDan2').find("option[value='" + $('#HoiThamNhanDan3').val() + "']").hide();
+    }
+
+    $('#ThamPhan,#ThamPhanKhac,#HoiThamNhanDan,#HoiThamNhanDan2,#HoiThamNhanDan3,#ThuKy,#KiemSatVien').each(function () {
+        if ($(this).val() == '') {
+            $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+                $(this).find('input').prop('checked', true);
+            });
+            return;
+        }
+        $(this).closest('.tab-pane').find("input[value='" + $(this).val() + "']").closest('li').hide();
+    });
+
+    $('#ThamPhan,#ThamPhanKhac,#HoiThamNhanDan,#HoiThamNhanDan2,#HoiThamNhanDan3,#ThuKy,#KiemSatVien').on('change', function () {
+        var targetElement,
+            targetElement2,
+            $selectTarget,
+            $selectTarget2;
+        if (this.id == 'ThamPhan' || this.id == 'ThamPhanKhac') {
+            var _this = this;
+            $(this).closest('.tab-pane').find('input[type=checkbox]').each(function () {
+                var value = $(this).val();
+                if (value != $('#ThamPhan').val() && value != $('#ThamPhanKhac').val()) {
+                    $(this).closest('li').show();
+                    $(this).prop('checked', true);
+                }
+            });
+
+            //hide option select
+            targetElement = this.id == 'ThamPhan' ? 'ThamPhanKhac' : 'ThamPhan';
+            $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+            $selectTarget.find('option').show();
+            $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+        }
+        else if (this.id == 'HoiThamNhanDan' || this.id == 'HoiThamNhanDan2' || this.id == 'HoiThamNhanDan3') {
+            var _this = this;
+            $(this).closest('.tab-pane').find('input[type=checkbox]').each(function () {
+                var value = $(this).val();
+                if (value != $('#HoiThamNhanDan').val() && value != $('#HoiThamNhanDan2').val() && value != $('#HoiThamNhanDan3').val()) {
+                    $(this).closest('li').show();
+                    $(this).prop('checked', true);
+                }
+            });
+
+            //hide option select
+            if (this.id == 'HoiThamNhanDan') {
+                targetElement = 'HoiThamNhanDan2';
+                targetElement2 = 'HoiThamNhanDan3';
+            }
+            else if (this.id == 'HoiThamNhanDan2') {
+                targetElement = 'HoiThamNhanDan';
+                targetElement2 = 'HoiThamNhanDan3';
+            } else {
+                targetElement = 'HoiThamNhanDan';
+                targetElement2 = 'HoiThamNhanDan2';
+            }
+            $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+            $selectTarget.find('option').show();
+            $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+
+            $selectTarget2 = $(this).closest('.tab-pane').find('select#' + targetElement2);
+            $selectTarget2.find('option').show();
+            $selectTarget2.find("option[value='" + $(this).val() + "']").hide();
+            $selectTarget2.find("option[value='" + $selectTarget.val() + "']").hide();
+        }
+        else if (this.id == 'ThuKy') {
+            var _this = this;
+            $(this).closest('.tab-pane').find('input[type=checkbox]').each(function () {
+                var value = $(this).val();
+                if (value != $('#ThuKy').val()) {
+                    $(this).closest('li').show();
+                    $(this).prop('checked', true);
+                }
+            });
+
+            //hide option select
+            targetElement = this.id == 'ThuKy';
+            $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+            $selectTarget.find('option').show();
+            $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+        }
+        else if (this.id == 'KiemSatVien') {
+            var _this = this;
+            $(this).closest('.tab-pane').find('input[type=checkbox]').each(function () {
+                var value = $(this).val();
+                if (value != $('#KiemSatVien').val()) {
+                    $(this).closest('li').show();
+                    $(this).prop('checked', true);
+                }
+            });
+
+            //hide option select
+            targetElement = this.id == 'KiemSatVien';
+            $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+            $selectTarget.find('option').show();
+            $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+        }
+        else {
+            $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').show();
+        }
+
+        if ($(this).val() == '') {
+            return;
+        }
+
+        $(this).closest('.tab-pane').find("input[value='" + $(this).val() + "']").prop('checked', false);
+        $(this).closest('.tab-pane').find("input[value='" + $(this).val() + "']").closest('li').hide();
+    });
+
+    $('.js-check-all').click(function () {
+        if ($(this).is(":checked")) {
+            $(this).closest('ul').find('li').each(function () {
+                if ($(this).css('display') != 'none') {
+                    $(this).find('input[type=checkbox]').prop("checked", true);
+                }
+                else {
+                    $(this).find('input[type=checkbox]').prop("checked", false);
+                }
+            });
+        }
+        else {
+            $(this).closest('ul').find('input[type=checkbox]').prop("checked", false);
+        }
+    });
+    $(function () {
+        ChuanBiXetXu.changeSelectThamPhan();
+    });
+    //});
+</script>

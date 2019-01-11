@@ -1,0 +1,68 @@
+﻿@model Biz.TACM.Models.ViewModel.ThongKeGiamSat.ChartViewModel
+
+@if (!string.IsNullOrEmpty(Model.Data))
+{
+    <input id="loaiThongKe" type="hidden" value="1" />
+    <input id="ListHoSoVuAnID" type="hidden" value="@ViewBag.ListHoSoVuAnID" />
+    <div id="bieuDoThongKe" style="height: 500px; width: 100%;"></div>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var data = [[@Html.Raw(Model.Data)]];
+        var ticks = [@Html.Raw(Model.Label)];
+        $.jqplot('bieuDoThongKe', data, {
+            animate: !$.jqplot.use_excanvas,
+            seriesDefaults: {
+                renderer: $.jqplot.BarRenderer,
+                color: '#1565c0',
+                rendererOptions: {
+                    barDirection: 'horizontal',
+                    highlightMouseDown: true,
+                    barWidth: 15,
+                    //barPadding: -15
+                },
+                pointLabels: { show: true, location: 'e', edgeTolerance: -15, hideZeros: true, formatString: '%d', labels: [@Html.Raw(Model.PointLabels)] }
+            },
+            //legend: {
+            //    show: false,
+            //    location: 'e',
+            //    placement: 'outside'
+            //},
+                axes: {
+                    yaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: ticks,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                        tickOptions: {
+                            //show: false,
+                            //showGridline: false,
+                            mark: 'outside',    // Where to put the tick mark on the axis
+                                                // 'outside', 'inside' or 'cross',
+                            fontSize: '11pt',
+                            //fontStretch: 1.0,
+                            //enableFontSupport: true,
+                            pt2px: 2.0,
+                            textColor: 'black', // label color
+                        }
+                    },
+                    xaxis: {
+                        tickOptions: {
+                            //show : false,
+                            showLabel: false, //show and hide label
+                            formatString: '%d',
+                            //showGridline: false,
+                        }
+                    }
+                },
+            grid: {
+                backgroundColor: 'white',
+                gridLineWidth: 0,
+                borderWidth: 0,
+                borderColor: '#d9d9d9'
+            }
+
+        });
+
+    });
+    </script>
+}

@@ -1,0 +1,78 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.HuyHoSo.HoSoVuAnViewModel
+@if (Model != null && Model.HoSoVuAnID != 0)
+{
+<div class="row pb-1" style="background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.5rem; display:flex;">
+    <div class="col-12 p-2">
+        <button id="confirm-huy" class="btn btn-primary float-right" aria-hidden="true" data-trigger="modal" data-target="#modelXacNhan" data-url="@Url.Action("XacNhanHuy", "HuyHoSo", new { maHoSo=Model.MaHoSo})">@ViewText.LABEL_HUYHOSO</button>
+    </div>
+    <div class="col-6 pt-2">
+        <table class="table table-information table-hover">
+            <tbody>
+                <tr>
+                    <td>@ViewText.LABEL_SO</td>
+                    <td class="text-value-bold">@Model.SoHoSo</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_MAHOSO</td>
+                    <td class="text-value-bold">@Model.MaHoSo</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_TENVUAN</td>
+                    <td class="text-value-bold">@Model.TenVuAn</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_TOAAN</td>
+                    <td class="text-value-bold">@Model.ToaAn</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_NHOMAN</td>
+                    <td class="text-value-bold">@Model.NhomAn</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_GIAIDOAN</td>
+                    <td class="text-value-bold">@Model.GiaiDoan</td>
+                </tr>
+                <tr>
+                    <td>@ViewText.LABEL_CONGDOAN</td>
+                    <td class="text-value-bold">@Model.CongDoan</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-6 pt-2">
+        @using (Html.BeginForm("ThemHuyHoSo", "HuyHoSo", FormMethod.Post, new { id = "formThemHuyHoSo" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.HoSoVuAnID)
+            <div class="row">
+                <div class="col-md-5">
+                    <label>@ViewText.LABEL_LYDOHUY<span class="input-required">*</span></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    @Html.TextAreaFor(m => m.LyDoHuy, new { @class = "form-control", @maxlength = 2000, id = "ly-do-HuyHoSo" })
+                    <small class="form-text text-danger"><span for="ly-do-HuyHoSo"></span></small>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+}
+else
+{
+    <div class="mt-5 text-center empty-data">
+        <blockquote>
+            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+        </blockquote>
+    </div>
+}
+    <div class="modal fade" id="modelXacNhan" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                
+            </div>
+        </div>
+    </div>

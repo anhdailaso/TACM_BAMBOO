@@ -1,0 +1,61 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.ThongKeGiamSat.GiamSatLocDuLieuViewModel
+
+@using (Html.BeginForm("LocDuLieuGiamSat", "ThongKeGiamSat", FormMethod.Get, new { @id = "formLocDuLieuGiamSat" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Group, new { @id = "GroupByType" })
+    <div class="card">
+        <div class="card-block">
+            <div class="col-12">
+                @ViewText.LABEL_TUNGAY<span class="input-required">*</span>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="input-group date datepicker">
+                    @Html.TextBoxFor(x => x.TuNgay, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text">@Html.ValidationMessageFor(x => x.TuNgay)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_DENNGAY<span class="input-required">*</span>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="input-group date datepicker">
+                    @Html.TextBoxFor(x => x.DenNgay, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text">@Html.ValidationMessageFor(x => x.DenNgay)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_TOAAN
+            </div>
+            <div class="col-12 mb-3">
+                @Html.DropDownListFor(x => x.ToaAnID, (SelectList)ViewBag.ddlToaAn, Setting.DDL_TATCA, new { @class = "form-control", @id = "ddlToaAn" })
+                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ToaAnID)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_NHOMAN
+            </div>
+            <div class="col-12 mb-3">
+                @Html.DropDownListFor(x => x.NhomAn, (SelectList)ViewBag.ddlNhomAn, Setting.DDL_TATCA, new { @class = "form-control", @id = "ddlNhomAn" })
+                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NhomAn)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_GIAIDOAN
+            </div>
+            <div class="col-12" style="margin-bottom: 30px;">
+                @Html.DropDownListFor(x => x.GiaiDoan, (SelectList)ViewBag.ddlGiaiDoan, Setting.DDL_TATCA, new { @class = "form-control", @id = "ddlGiaiDoan" })
+                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.GiaiDoan)</small>
+            </div>
+            <div class="col-12 mt-4">
+                <button type="button" class="btn btn-danger text-uppercase pull-left" style="width: 48%;" id="xem-btn"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_XEM</button>
+                <button type="reset" class="btn btn-default text-uppercase pull-right" style="width: 48%;"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_LAMLAI</button>
+            </div>
+        </div>
+    </div>
+}

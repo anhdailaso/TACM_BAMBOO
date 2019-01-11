@@ -1,0 +1,12 @@
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThuLy.dll
+C:\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThuLy.pdb
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.csproj.CoreCompileInputs.cache
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.dll
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.pdb
+C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThuLy.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThuLy.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThuLy\obj\Debug\Biz.Lib.TACM.ThuLy.pdb

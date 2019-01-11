@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Biz.Lib.TACM.MauIn.Model.MauInModel>
+
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    bool flag = true;
+}
+<div>
+    <p class="pl-5 col-12 bg-primary mb-0 color-white">@ViewText.TABLE_TENMAUIN</p>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <p class="mb-0 p-2 @(flag == true ? "" : "bg-faded")"><a target="_blank" href="@(item.DuongDanFileMau != null?item.DuongDanFileMau:"#") "><i class="fa fa-file-word-o btn-icon-size">&emsp;</i>Mẫu @item.SoMauIn: @item.TenMauIn</a></p>
+            flag = (flag == true ? false : true);
+        }
+    }
+    else
+    {
+        <div class="mt-3 text-center empty-data">
+            <blockquote>
+                <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+            </blockquote>
+        </div>
+    }
+</div>

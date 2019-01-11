@@ -1,0 +1,37 @@
+﻿@model List<Biz.TACM.Models.ViewModel.NhomAnToaAn.NhomAnViewModel>
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    ViewBag.Title = ViewText.TITLE_NHOMTOAAN;
+}
+@using (Html.BeginForm("Luu", "NhomAnToaAn", FormMethod.Post, new { id = "formNhomAn" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="main-content" style="padding-left:50px">
+        <div class="container-fluid" id="formNhomAn">
+            <div class="row">
+                <h1>@ViewText.TITLE_NHOMTOAAN.ToUpper()</h1>
+            </div>
+            <div class="row">
+                @Html.DropDownList("ToaAnID", (SelectList)ViewBag.listToaAn, null, new { @class = "form-control float-rigrt", @style = "width:25%", @id = "toaAn-ddl" })
+            </div>
+            <div class="row" style="padding-top:20px;padding-bottom:20px">
+                <div id="checkboxlist" style="font-size:16px">
+                    @Html.Partial("_CheckList", Model)
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary text-uppercase" id="NhomAn-save" aria-hidden="true">@ViewText.BUTTON_LUUTHAYDOI</button>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts
+{
+    @Scripts.Render("~/bundles/NhomAnToaAn")
+    <script>
+        $(function () {
+            ThayDoiNhomAnModule.init();
+        });
+    </script>
+
+}

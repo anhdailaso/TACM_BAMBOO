@@ -1,0 +1,9 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+<div class="row" style="width:100%;padding-left:3%">
+    <div class="col-12 text-center text-white">
+        @string.Format(ViewText.FOOTER_VERSION, DateTime.Now.Year)
+    </div>
+    <div class="col-12 text-center text-white">
+        @Html.Raw(string.Format(ViewText.FOOTER_COPYRIGHT, ViewText.COMPANY_URL, ViewText.COMPANY_NAME))
+    </div>
+</div>

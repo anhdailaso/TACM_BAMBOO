@@ -1,0 +1,52 @@
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.PhanCongNhanVien.PhanCongViewModel
+@{
+    ViewBag.Title = "Nhân Viên & Nhóm Án Tòa Án";
+    List<Biz.Lib.TACM.PhanCongNhanVien.Model.NhomAnNhanVienModel> lnhomAn = ViewBag.NhomAn;
+}
+<div id="main-content" style="padding-left:50px">
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="text-uppercase">Nhân viên & Nhóm Án Toà Án</h1>
+        </div>
+        <div class="row">
+            <div class="col-6" id="dsToaAn">
+                @Html.DropDownList("ToaAnID", (SelectList)ViewBag.listToaAn, null, new { @class = "form-control float-rigrt", @style = "display: inline-block; width:40%", @id = "toaAn-ddl" })
+            </div>
+            <div class="col-5" id="dsChucDanh">
+                @Html.DropDownList("SoDoToChucID", (SelectList)ViewBag.listChucDanh, "--Chọn chức danh--", new { @class = "form-control float-rigrt", @style = "display: inline-block; width:40%", @id = "chucDanh-ddl" })
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary float-right" id="PhanCong-save" aria-hidden="true">@ViewText.BUTTON_LUUTHAYDOI</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6" id="dsNhomAn">
+                @Html.Partial("_DSNhomAn", lnhomAn)
+            </div>
+            <div class="col-6">
+                @using (Html.BeginForm("Luu", "PhanCongNhanVien", FormMethod.Post, new { id = "formPhanCong" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div id="dsNhanVien">
+                        @Html.Partial("_NhanVienChucDanh", Model)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/PhanCongNhanVien")
+    <script>
+        $(function () {
+            ChucDanhddlModule.init();
+            SelectrowModule.init();
+            CheckAllModule.init();
+            ChucDanhChangeModule.init();
+            SaveChangeModule.init();
+        });
+    </script>
+}

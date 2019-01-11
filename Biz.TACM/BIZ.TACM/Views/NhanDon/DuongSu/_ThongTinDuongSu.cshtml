@@ -1,0 +1,180 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.NhanDon.DuongSuViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_THONGTIN_DUONGSU</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="">
+                <div class="card-block">
+                    @if (maNhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+                    {
+                        <table class="table table-information table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>@ViewText.LABEL_HOVATEN</td>
+                                    <td class="text-value-bold">@Model.HoVaTen</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_CMND</td>
+                                    <td class="text-value-bold">@Model.SoCMND</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYCAPCMND</td>
+                                    <td class="text-value-bold">@Model.NgayCapCMND</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NOICAPCMND</td>
+                                    <td class="text-value-bold">@Model.NoiCapCMND</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_SODIENTHOAI</td>
+                                    <td class="text-value-bold">@Model.SoDienThoai</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_GIOITINH</td>
+                                    <td class="text-value-bold">@Model.GioiTinh</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DANTOC</td>
+                                    <td class="text-value-bold">@Model.DanToc</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TONGIAO</td>
+                                    <td class="text-value-bold">@Model.TonGiao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYSINH</td>
+                                    <td class="text-value-bold">@Model.NgayThangNamSinh</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_QUOCTICH</td>
+                                    <td class="text-value-bold">@Model.QuocTich</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NOIDKKTT</td>
+                                    <td class="text-value-bold">@Model.NoiDKHKTT</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TAMTRU_NEUCO</td>
+                                    <td class="text-value-bold">@Model.NoiTamTru</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGHENGHIEP</td>
+                                    <td class="text-value-bold">@Model.NgheNghiep</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TRINHDOVANHOA</td>
+                                    <td class="text-value-bold">@Model.TrinhDoVanHoa</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOIGIAMHOHOTEN</td>
+                                    <td class="text-value-bold">@Model.HoTenNguoiGiamHo</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DIACHI</td>
+                                    <td class="text-value-bold">@Model.DiaChiNguoiGiamHo</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_CON_ONG_HOVATEN</td>
+                                    <td class="text-value-bold">@Model.HoTenCha</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DIACHI</td>
+                                    <td class="text-value-bold">@Model.DiaChiCha</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_CON_BA_HOVATEN</td>
+                                    <td class="text-value-bold">@Model.HoTenMe</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DIACHI</td>
+                                    <td class="text-value-bold">@Model.DiaChiMe</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOITAO</td>
+                                    <td class="text-value-bold">@Model.NguoiTao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYTAO</td>
+                                    <td class="text-value-bold">@Model.NgayTao</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <table class="table table-information table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>@ViewText.LABEL_HOVATEN</td>
+                                    <td class="text-value-bold">@Model.HoVaTen</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_CMND</td>
+                                    <td class="text-value-bold">@Model.SoCMND</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_SODIENTHOAI</td>
+                                    <td class="text-value-bold">@Model.SoDienThoai</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_GIOITINH</td>
+                                    <td class="text-value-bold">@Model.GioiTinh</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DANTOC</td>
+                                    <td class="text-value-bold">@Model.DanToc</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYSINH</td>
+                                    <td class="text-value-bold">@Model.NgayThangNamSinh</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_QUOCTICH</td>
+                                    <td class="text-value-bold">@Model.QuocTich</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NOIDKKTT</td>
+                                    <td class="text-value-bold">@Model.NoiDKHKTT</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TAMTRU_NEUCO</td>
+                                    <td class="text-value-bold">@Model.NoiTamTru</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TUCACHTHAMGIA_TOTUNG</td>
+                                    <td class="text-value-bold">@Model.TuCachThamGiaToTung</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DUONGSULA</td>
+                                    <td class="text-value-bold">@Model.DuongSuLa</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOITAO</td>
+                                    <td class="text-value-bold">@Model.NguoiTao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYTAO</td>
+                                    <td class="text-value-bold">@Model.NgayTao</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

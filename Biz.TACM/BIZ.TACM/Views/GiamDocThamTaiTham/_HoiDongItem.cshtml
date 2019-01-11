@@ -1,0 +1,20 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model List<Biz.Lib.SettingData.Model.NhanVienModel>
+ 
+     @foreach(var item in Model)
+     {
+         <div class="mb-2">
+             <div class="hoidongxx_custom">
+                 <div style="display: inline-block;vertical-align:top">
+                     <img class="circleSmall" src="@Url.Content(string.Format(Setting.EMPLOYEE_IMAGE_FOLDER, item.DuongDanHinhDaiDien))" alt=""
+                          onerror="this.onerror = null;this.src = '@Url.Content(string.Format(Setting.NHANVIEN_HINH_TACM, Setting.DEFAULT_IMAGE_SMALL))'" />
+                 </div>
+                 <div style="padding-left:10px;display: inline-block">
+                     <p class="mb-0" style="word-spacing:normal; width:250px;"><strong>@(item.GioiTinh == "Nam" ? "Ông " : "Bà ")@item.HoVaTenNV</strong></p>
+                     <p class="mb-0" style="word-spacing:normal; width:250px;">@item.ChucDanh</p>
+                 </div>
+             </div>
+         </div>
+     }
+ 
+ 

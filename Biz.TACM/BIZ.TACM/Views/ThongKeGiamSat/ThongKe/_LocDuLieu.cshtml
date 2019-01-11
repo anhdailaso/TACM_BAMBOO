@@ -1,0 +1,88 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.LocDuLieuThongKeModel
+
+<div class="card">
+    <div class="card-block">
+        <form>
+            <div class="col-12">
+                @ViewText.LABEL_TUNGAY<span class="input-required">*</span>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="input-group date datepicker">
+                    @Html.TextBoxFor(x => x.TuNgay, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text">@Html.ValidationMessageFor(x => x.TuNgay)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_DENNGAY<span class="input-required">*</span>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="input-group date datepicker">
+                    @Html.TextBoxFor(x => x.DenNgay, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text">@Html.ValidationMessageFor(x => x.DenNgay)</small>
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_TOAAN
+            </div>
+            <div class="col-12 mb-3">
+                @Html.DropDownListFor(x => x.ToaAnID, (SelectList)ViewBag.ddlToaAn, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_NHOMAN
+            </div>
+            <div class="col-12 mb-3">
+                @Html.DropDownListFor(x => x.NhomAn, (SelectList)ViewBag.ddlNhomAn, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12  lqh-group">
+                @ViewText.LABEL_LOAI_QUANHE
+            </div>
+            <div class="col-12 mb-3  lqh-group">
+                @Html.DropDownListFor(x => x.LoaiQuanHe, (SelectList)ViewBag.ddlLoaiQuanHe, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12  qhpl-group">
+                <span id="qhpl-label">@ViewText.LABEL_QUANHE_PHAPLUAT</span>
+                <span id="khieukien">@ViewText.LABEL_KHIEUKIEN</span>
+            </div>
+            <div class="col-12 mb-3  qhpl-group">
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.DSTC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "DS-TC",@style="display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.DSYC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "DS-YC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.HNTC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "HN-TC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.HNYC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "HN-YC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.LDTC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "LD-TC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.LDYC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "LD-YC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.KTTC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "KT-TC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.KTYC, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "KT-YC", @style = "display:none" })
+                @Html.DropDownListFor(x => x.QuanHePhapLuat, (SelectList)ViewBag.KhieuKienddl, Setting.DDL_TATCA, new { @class = "form-control  qhpl-ddl", @id = "KhieuKienddl", @style = "display:none" })
+            </div>
+            <div class="col-12  ldn-group">
+                @ViewText.LABEL_LOAIDENGHI
+            </div>
+            <div class="col-12 mb-3  ldn-group">
+                @Html.DropDownListFor(x => x.LoaiDeNghi, (SelectList)ViewBag.ddlLoaiDeNghi, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12  td-group">
+                @ViewText.LABEL_TOIDANH
+            </div>
+            <div class="col-12 mb-3  td-group">
+                @Html.DropDownListFor(x => x.ToiDanh, (SelectList)ViewBag.ddlToiDanh, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12">
+                @ViewText.LABEL_GIAIDOAN
+            </div>
+            <div class="col-12" style="margin-bottom: 30px;">
+                @Html.DropDownListFor(x => x.GiaiDoan, (SelectList)ViewBag.ddlGiaiDoan, Setting.DDL_TATCA, new { @class = "form-control" })
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-danger text-uppercase pull-left" style="width: 48%;" id="xem-btn"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_XEM</button>
+                <button type="reset" class="btn btn-default text-uppercase pull-right" style="width: 48%;"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_LAMLAI</button>
+            </div>
+        </form>
+    </div>
+</div>

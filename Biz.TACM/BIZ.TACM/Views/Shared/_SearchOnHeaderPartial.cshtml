@@ -1,0 +1,36 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="search-box">
+    @using (Html.BeginForm("Index", "NhanDon", FormMethod.Get, new { @id = "formTimKiemOnHeader" }))
+    {
+        @*@Html.TextBox("keyword", Request.QueryString["keyword"],
+            new
+            {
+                @id = "searchBoxOnHeader",
+                @class = "form-control",
+                @placeholder = "Tìm Kiếm",
+                @data - toggle = "tooltip",
+                @data - placement = "bottom",
+                @title = "Nhập ít nhất 2 kí tự để tìm hồ sơ liên quan theo:\nSố hồ sơ, Mã hồ sơ, Đương sự, Thẩm phán, Công đoạn, Trạng thái công đoạn (tab)"
+            })*@
+        @Html.TextBox("nhomAn", Request.QueryString["nhomAn"], new { @type = "hidden" })
+        @Html.TextBox("giaiDoan", Request.QueryString["giaiDoan"], new { @type = "hidden" })
+        @Html.TextBox("maNv", Request.QueryString["maNv"], new { @type = "hidden" })
+
+        <input id="searchBoxOnHeader"
+               class="form-control"
+               name="keyword"
+               value="@Request.QueryString["keyword"]"
+               placeholder="Số, Mã hồ sơ, Tên đương sự"
+               type="text"
+               @*data-toggle="tooltip"
+               data-placement="bottom"
+               data-html="true"
+               data-trigger="hover"
+               title="@ViewText.TOOLTIP_SEARCHONHEADER"*@ />
+
+        <button type="submit" class="search-button">
+            <i class="material-icons">search</i>
+        </button>
+    }
+</div>

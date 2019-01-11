@@ -1,0 +1,50 @@
+﻿@model Biz.TACM.Models.ViewModel.SauXetXu.PhatHanhBanAn.ThongTinPhatHanhBanAnViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+<div class="row">
+    @Html.HiddenFor(m => m.PhatHanhBanAnId, new { id = "phat-hanh-ban-an-id-hidden" })
+    @Html.HiddenFor(m => m.NgayTuyenAn, new { id = "ngay-tuyen-an" })
+    @Html.HiddenFor(m => m.HieuLuc, new { id = "hieu-luc-phat-hanh-hidden" })
+    <div class="col-5">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYPHATHANH</span><span id="ngay-phat-hanh" class="font-weight-bold">@Model.NgayPhatHanh</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HIEULUC</span><span id="ngay-hieu-luc" class="font-weight-bold">@Model.HieuLuc</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+        </ul>
+    </div>
+    <div class="col-7">
+        <div class="card" id="duong-su-phat-hanh-ban-an-container">
+            <div class="card-block">
+                <div class="grid">
+                    <div class="container-fluid">
+                        <p id="lblDSNhanPhatHanhInfo" class="font-weight-bold">@ViewText.LABEL_DUONGSU_NHANPHATHANH</p>
+                    </div>
+                    <table class="table table-hover table-bordered table-custom" id="duong-su-phat-hanh-ban-an-table" style="width: 100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td hidden></td>
+                                <td class="text-capitalize" width="200px">@ViewText.TABLE_HOTEN_HOAC_COQUAN</td>
+                                <td class="text-capitalize" width="200px">@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                                <td id="thNgayNhanPhatHanhInfo" class="text-capitalize" width="210px">@ViewText.LABEL_NGAYNHANPHATHANH</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        $(function () {
+            if ($("#loaiQuanHe").val() === "Yêu cầu") {
+                $("#lblDSNhanPhatHanhInfo").html('@ViewText.LABEL_DUONGSU_NHANPHATHANH_QUYETDINH');
+                $("#thNgayNhanPhatHanhInfo").html('@ViewText.LABEL_NGAYNHANPHATHANH_QUYETDINH');
+            }
+            else {
+                $("#lblDSNhanPhatHanhInfo").html('@ViewText.LABEL_DUONGSU_NHANPHATHANH_BANAN');
+                $("#thNgayNhanPhatHanhInfo").html('@ViewText.LABEL_NGAYNHANPHATHANH_BANAN');
+            }
+        });
+</script>

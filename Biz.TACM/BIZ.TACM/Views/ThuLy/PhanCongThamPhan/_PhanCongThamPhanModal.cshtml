@@ -1,0 +1,475 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@using Biz.TACM.Models.Model
+@using Biz.TACM.Models.ViewModel.ThuLy
+@model PhanCongThamPhanViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+@using (Html.BeginForm("EditPhanCongThamPhan", "ThuLy", FormMethod.Post, new { @id = "formEditPhanCongThamPhan" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="hoSoVuAnId" value="@Model.HoSoVuAnID" />
+    @Html.HiddenFor(model => model.ThamPhanID)
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@(nhomAn == Setting.MANHOMAN_HINHSU ? ViewText.LABEL_PHANCONG_HOIDONGXETXU : ViewText.TITLE_PHANCONG_THAMPHAN)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGAYPHANCONG<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-phan-cong-dtp">
+                            @Html.TextBoxFor(o => o.NgayPhanCong, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="NgayPhanCong"></span></small>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGUOIPHANCONG<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.DropDownList("TenNguoiPhanCong", (SelectList)ViewBag.listTenNguoiPhanCong, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger"><span for="TenNguoiPhanCong"></span></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>@ViewText.LABEL_GHICHU</label>
+                    </div>
+                    <div class="col-12">
+                        @Html.TextArea("GhiChu", Html.Raw(HttpUtility.HtmlDecode(Model.GhiChu)).ToString(), new { @class = "form-control", id = "ghi-chu-phan-cong-tham-phan-textarea" })
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-12">
+                        <a href="@Url.Action("ThongKePhanCongThamPhan","ThongKeGiamSat")" target="_blank">@ViewText.TITLE_THONGKE_PHANCONGTHAMPHAN</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                @if (nhomAn == Setting.MANHOMAN_APDUNG_BPXLHC || ViewBag.loaiQuanHe == Setting.LOAIQUANHE_YEUCAU 
+                    || (nhomAn == Setting.MANHOMAN_HANHCHINH && ViewBag.thuTuc == Setting.THUTUC_RUTGON))
+                {
+                    @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong3.GetHashCode(), new { @id = "HoiDong3", @class = "align-middle d-none", @checked = true })
+                }
+                else
+                {
+                    if (Model.HoiDong == HoiDong.HoiDong5.GetHashCode())
+                    {
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong3.GetHashCode(), new { @id = "HoiDong3", @class = "align-middle" })
+                                <label for="HoiDong3">@ViewText.LABEL_HOIDONG_3</label>
+                            </div>
+                            <div class="col-7">
+                                @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong5.GetHashCode(), new { @id = "HoiDong5", @class = "align-middle", @checked = true })
+                                <label for="HoiDong5">@ViewText.LABEL_HOIDONG_5</label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong3.GetHashCode(), new { @class = "align-middle", @checked = true })
+                                <label>@ViewText.LABEL_HOIDONG_3</label>
+                            </div>
+                            <div class="col-7">
+                                @Html.RadioButtonFor(m => m.HoiDong, HoiDong.HoiDong5.GetHashCode(), new { @class = "align-middle" })
+                                <label>@ViewText.LABEL_HOIDONG_5</label>
+                            </div>
+                        </div>
+                    }
+                }
+
+                <ul class="nav nav-tabs" role="tablist" id="tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tabThamPhan" data-toggle="tab" href="#modelContentThamPhan" role="tab">@ViewText.LABEL_THAMPHAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tabHoiThamNhanDan" data-toggle="tab" href="#modelContentHoiThamNhanDan" role="tab">@ViewText.LABEL_HOITHAMNHANDAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tabThuKy" data-toggle="tab" href="#modelContentThuKy" role="tab">@ViewText.LABEL_THUKY</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane @(ViewBag.openValidTab == null || ViewBag.openValidTab == "ThamPham" ? "active" : "")" id="modelContentThamPhan" role="tabpanel">
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_THAMPHAN_CHUTOA<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.listThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="ThamPhan"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3" id="tham-phan-khac-form-group">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_THAMPHAN_KHAC<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.ThamPhanKhac, (SelectList)ViewBag.listThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="ThamPhanKhac"></span></small>
+                            </div>
+                        </div>
+                        <div class="">
+                            <label>@ViewText.LABEL_THAMPHAN_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @foreach (var item in ViewBag.listThamPhanDuKhuyet)
+                                        {
+                                            <li><label><input class="align-middle" name="ThamPhanDuKhuyet[]" @(item.Checked ? "checked" : "") value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane @(ViewBag.openValidTab == "HoiThamNhanDan" ? "active" : "")" id="modelContentHoiThamNhanDan" role="tabpanel">
+                        <div class=" row mb-3">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_HOITHAMNHANDAN_1<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan, (SelectList)ViewBag.listHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="HoiThamNhanDan"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_HOITHAMNHANDAN_2<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan2, (SelectList)ViewBag.listHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="HoiThamNhanDan2"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3" id="hoi-tham-nhan-dan3-form-group">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_HOITHAMNHANDAN_3<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.HoiThamNhanDan3, (SelectList)ViewBag.listHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="HoiThamNhanDan3"></span></small>
+                            </div>
+                        </div>
+                        <div>
+                            <label>@ViewText.LABEL_HOITHAMNHANDAN_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @foreach (var item in ViewBag.listHoiThamNhanDanDuKhuyet)
+                                        {
+                                            <li><label><input class="align-middle" name="HoiThamNhanDanDuKhuyet[]" @(item.Checked ? "checked" : "") value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane @(ViewBag.openValidTab == "ThuKy" ? "active" : "")" id="modelContentThuKy" role="tabpanel">
+                        <div class="row mb-3">
+                            <div class="col-5">
+                                <label>@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.listThuKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"><span for="ThuKy"></span></small>
+                            </div>
+                        </div>
+                        <div class="">
+                            <label>@ViewText.LABEL_THUKY_DUKHUYET</label>
+                            <div class="card">
+                                <div class="card-block scroll-danhsachdukhuyet">
+                                    <ul class="list-unstyled DanhSachNhanhVien">
+                                        @foreach (var item in ViewBag.listThuKyDuKhuyet)
+                                        {
+                                            <li><label><input class="align-middle" name="ThuKyDuKhuyet[]" @(item.Checked ? "checked" : "") value="@item.MaNV" type="checkbox" /> @item.HoTenVaMaNV</label></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-phan-cong-tham-phan-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    var na = @Html.Raw(Json.Encode(ViewBag.nhomAn));
+    var lqh = @Html.Raw(Json.Encode(ViewBag.loaiQuanHe));
+    var tt = @Html.Raw(Json.Encode(ViewBag.thuTuc));
+    $(function () {
+        EditPhanCongThamPhanModule.init();
+
+        if (lqh == "Yêu cầu" || na == "AD" || (na == "HC" && tt == "Rút gọn"))
+        {
+            $('[href="#modelContentHoiThamNhanDan"]').closest('li').hide();
+            $("#HoiThamNhanDan, #HoiThamNhanDan2, #HoiThamNhanDan3").each(function () {
+                $(this).rules("remove");
+            });
+        } else {
+            $('[href="#modelContentHoiThamNhanDan"]').closest('li').show();
+        }
+
+        onSelectHoiDongChange($('input[type=radio][name=HoiDong]:checked').val());
+    });
+
+    $('input[type=radio][name=HoiDong]').change(function () {
+        onSelectHoiDongChange($(this).val());
+    });
+
+    function onSelectHoiDongChange(hoiDong) {
+        if (hoiDong == 1 || hoiDong == 0) {
+            $("#tham-phan-khac-form-group, #hoi-tham-nhan-dan3-form-group").hide();
+            $("#HoiThamNhanDan3, #ThamPhanKhac").each(function () {
+                $(this).rules("remove");
+            });
+        } else {
+            $("#tham-phan-khac-form-group, #hoi-tham-nhan-dan3-form-group").show();
+            if (lqh == "Tranh chấp") {
+                $("#HoiThamNhanDan3").rules("add", {
+                    required: true,
+                    messages: {
+                        required: ViewText.LABEL_HOITHAMNHANDAN_3 + " " + ValidationMessages.VALIDATION_KHONGDETRONG
+                    }
+                });
+            }
+
+            $("#ThamPhanKhac").rules("add", {
+                required: true,
+                messages: {
+                    required: ViewText.LABEL_THAMPHAN_KHAC + " " + ValidationMessages.VALIDATION_KHONGDETRONG
+                }
+            });
+        }
+    }
+
+    $('#ThamPhan, #ThamPhanKhac,#HoiThamNhanDan,#HoiThamNhanDan2,#HoiThamNhanDan3,#ThuKy').each(function () {
+        if ($(this).val() === '') {
+            $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+                $(this).find('input').prop('checked', true);
+            });
+            return;
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#ThamPhan').on('change', function () {
+        $('#ThamPhanKhac option').each(function () {
+            var value = $(this).val();
+            if (value !== $('#ThamPhan').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#ThamPhan').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $("#ThamPhanKhac").children("option[value^='" + $(this).val() + "']").hide();
+        if ($("#ThamPhanKhac").val() === $(this).val()) {
+            $("#ThamPhanKhac option:selected").prop("selected", false);
+        }
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#ThamPhanKhac').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThamPhanKhac').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThamPhanKhac').val() + "')").find('input').prop('checked', false);
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#ThamPhanKhac').on('change', function () {
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#ThamPhan').val() && value !== $('#ThamPhanKhac').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#ThamPhanKhac').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThamPhanKhac').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThamPhanKhac').val() + "')").find('input').prop('checked', false);
+        }
+        if ($('#HoiThamNhanDan2').val() !== '') {
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").find('input').prop('checked', false);
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#HoiThamNhanDan').on('change', function () {
+        $('#HoiThamNhanDan2 option').each(function () {
+            var value = $(this).val();
+            if (value !== $('#HoiThamNhanDan').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $('#HoiThamNhanDan3 option').each(function () {
+            var value = $(this).val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $("#HoiThamNhanDan2").children("option[value^='" + $(this).val() + "']").hide();
+        if ($("#HoiThamNhanDan2").val() === $(this).val()) {
+            $("#HoiThamNhanDan2 option:selected").prop("selected", false);
+        }
+        $("#HoiThamNhanDan3").children("option[value^='" + $(this).val() + "']").hide();
+        if ($("#HoiThamNhanDan3").val() === $(this).val()) {
+            $("#HoiThamNhanDan3 option:selected").prop("selected", false);
+        }
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val() && value !== $('#HoiThamNhanDan3').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#HoiThamNhanDan2').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").find('input').prop('checked', false);
+        }
+        if ($('#HoiThamNhanDan3').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan3').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan3').val() + "')").find('input').prop('checked', false);
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#HoiThamNhanDan2').on('change', function () {
+        $('#HoiThamNhanDan3 option').each(function () {
+            var value = $(this).val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        $("#HoiThamNhanDan3").children("option[value='" + $(this).val() + "']").hide();
+        if ($("#HoiThamNhanDan3").val() === $(this).val()) {
+            $("#HoiThamNhanDan3 option:selected").prop("selected", false);
+        }
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val() && value !== $('#HoiThamNhanDan3').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#HoiThamNhanDan').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan').val() + "')").find('input').prop('checked', false);
+        }
+        if ($('#HoiThamNhanDan2').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").find('input').prop('checked', false);
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#HoiThamNhanDan3').on('change', function () {
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#HoiThamNhanDan').val() && value !== $('#HoiThamNhanDan2').val() && value !== $('#HoiThamNhanDan3').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#HoiThamNhanDan').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan').val() + "')").find('input').prop('checked', false);
+        }
+        if ($('#HoiThamNhanDan2').val() !== '') {
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#HoiThamNhanDan2').val() + "')").find('input').prop('checked', false);
+        }
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+    $('#ThuKy').on('change', function () {
+        $(this).closest('.tab-pane').find('.DanhSachNhanhVien li').each(function () {
+            var value = $(this).find('input').val();
+            if (value !== $('#ThuKy').val()) {
+                $(this).show();
+                $(this).find('input').prop('checked', true);
+            }
+        });
+        if ($(this).val() === '') {
+            return;
+        }
+        if ($('#ThuKy').val() !== '') {
+
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThuKy').val() + "')").parent().hide();
+            $(this).closest('.tab-pane').find("label:contains('" + $('#ThuKy').val() + "')").find('input').prop('checked', false);
+        }
+
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").parent().hide();
+        $(this).closest('.tab-pane').find("label:contains('" + $(this).val() + "')").find('input').prop('checked', false);
+    });
+
+</script>
+

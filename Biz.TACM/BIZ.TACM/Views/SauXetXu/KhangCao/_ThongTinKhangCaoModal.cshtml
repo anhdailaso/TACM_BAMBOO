@@ -1,0 +1,168 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangCao.ThongTinKhangCaoViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@(nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC) ? ViewText.LABEL_KHIEUNAI_KIENNGHI : ViewText.LABEL_KHANGCAO)</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="">
+                <div class="card-block">
+                    @if (ViewBag.NhomAn != Setting.MANHOMAN_APDUNG_BPXLHC)
+                    {
+                        <table class="table table-information">
+                            <tbody>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOIKHANGCAO</td>
+                                    <td class="text-value-bold">@Model.NguoiKhangCao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_DUONGSULA</td>
+                                    <td class="text-value-bold">@Model.TuCachThamGiaToTung</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYLAMDON_KHANGCAO</td>
+                                    <td class="text-value-bold">@Model.NgayLamDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYNOPDON_KHANGCAO</td>
+                                    <td class="text-value-bold">@Model.NgayNopDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_HINHTHUCNOP</td>
+                                    <td class="text-value-bold">@Model.HinhThucNopDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_TINHTRANG_KHANGCAO</td>
+                                    <td class="text-value-bold">@Model.TinhTrangKhangCao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOITAO</td>
+                                    <td class="text-value-bold">@Model.NguoiTao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYTAO</td>
+                                    <td class="text-value-bold">@Model.NgayTao</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#KetQuaXetXuQuyetDinhNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_KHANGCAO</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuQuyetDinhGhiChu" role="tab">@ViewText.LABEL_TAILIEU_KEMTHEO</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="KetQuaXetXuQuyetDinhNoiDung" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 150px; overflow-y: scroll">
+                                            @Html.Raw(Server.HtmlDecode(@Model.NoiDungKhangCao))
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="KetQuaXetXuQuyetDinhGhiChu" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 150px; overflow-y: scroll">
+                                            @Html.Raw(Server.HtmlDecode(@Model.TaiLieuChungTuKemTheo))
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <table class="table table-information">
+                            <tbody>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOIKHIEUNAI_KIENNGHI</td>
+                                    <td class="text-value-bold">@Model.NguoiKhieuNai</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAY_KHIEUNAI_KIENNGHI</td>
+                                    <td class="text-value-bold">@Model.NgayLamDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOINHAN_KHIEUNAI_KIENNGHI</td>
+                                    <td class="text-value-bold">@Model.NguoiNhanKhieuNai</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYNHAN_KHIEUNAI_KIENNGHI</td>
+                                    <td class="text-value-bold">@Model.NgayNopDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_HINHTHUCNOP</td>
+                                    <td class="text-value-bold">@Model.HinhThucNopDon</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGUOITAO</td>
+                                    <td class="text-value-bold">@Model.NguoiTao</td>
+                                </tr>
+                                <tr>
+                                    <td>@ViewText.LABEL_NGAYTAO</td>
+                                    <td class="text-value-bold">@Model.NgayTao</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#KetQuaXetXuQuyetDinhNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_KHIEUNAI_KIENNGHI</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuQuyetDinhLyDo" role="tab">@ViewText.LABEL_LYDO_CANCU</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuQuyetDinhGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="KetQuaXetXuQuyetDinhNoiDung" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 150px; overflow: scroll">
+                                            @Html.Raw(Server.HtmlDecode(@Model.NoiDungKhangCao))
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="KetQuaXetXuQuyetDinhLyDo" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 150px; overflow: scroll">
+                                            @Html.Raw(Server.HtmlDecode(@Model.LyDo))
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="KetQuaXetXuQuyetDinhGhiChu" role="tabpanel">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 150px; overflow: scroll">
+                                            @Html.Raw(Server.HtmlDecode(@Model.GhiChu))
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<p class="pl-2-5">@ViewText.LABEL_NOIDUNG_KHANGCAO</p>
+                        <div class="card">
+                            <div class="card-block" style="height: 150px; overflow: scroll">
+                                @Html.Raw(Model.NoiDungKhangCao)
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.CongThongTinDienTu.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.CongThongTinDienTu.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.CongThongTinDienTu\obj\Debug\Biz.Lib.TACM.CongThongTinDienTu.csprojResolveAssemblyReference.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.CongThongTinDienTu\obj\Debug\Biz.Lib.TACM.CongThongTinDienTu.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.CongThongTinDienTu\obj\Debug\Biz.Lib.TACM.CongThongTinDienTu.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.CongThongTinDienTu\obj\Debug\Biz.Lib.TACM.CongThongTinDienTu.pdb

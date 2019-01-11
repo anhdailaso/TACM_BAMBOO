@@ -1,0 +1,107 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.QuanLyNhanVien.Model.NhanVienModel
+@using (Html.BeginForm("CapNhatThongTinNhanVien", "TaiKhoanNhanVien", FormMethod.Post, new { id = "formCapNhatThongTinNhanVien" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center">@ViewText.TITLE_CAPNHAT_THONGTIN_NHANVIEN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body pl-4 pr-4">
+        <div class="row">
+            <div class="col-12">
+                <input type="hidden" name="MaNV" value="@Model.MaNVMoi"/>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_MANV</label>
+                    </div>
+                    <div class="col-7">
+                        <label>@Model.MaNVMoi</label>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_HO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.HoNV, new {@class = "form-control", @disabled="true"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HoNV)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_TENLOT</label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.TenLotNV, new {@class = "form-control", @disabled = "true" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenLotNV)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_TEN<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.TenNV, new {@class = "form-control", @disabled = "true" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TenNV)</small>
+                    </div>
+                </div>
+
+
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_GIOITINH<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.DropDownList("GioiTinh", (SelectList) ViewBag.listGioiTinh, Setting.DDL_CHOOSE, new {@class = "form-control", @disabled = "true" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.GioiTinh)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGAYSINH<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-sinh-dtp">
+                            @Html.TextBoxFor(x => x.NgaySinh, new {@class = "form-control", @disabled = "true" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NgaySinh)</small>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_SODIENTHOAI</label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.SoDienThoai, new {@class = "form-control"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HoVaTen)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_EMAIL<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        @Html.TextBoxFor(x => x.Email, new {@class = "form-control", @disabled = "true" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.HoVaTen)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-thong-tin-tai-khoan-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        EditThongTinNhanVienModule.init();
+    });
+</script>

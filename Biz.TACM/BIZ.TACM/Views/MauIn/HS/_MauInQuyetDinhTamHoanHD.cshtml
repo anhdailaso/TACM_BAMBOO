@@ -1,0 +1,366 @@
+﻿@model Biz.TACM.Models.ViewModel.MauIn.MauInQuyetDinhTamHoanViewModel
+
+@* margin is mapped with controller to print pdf *@
+
+<table border="0" cellspacing="0" style="font-size: 14pt; font-family: 'Times New Roman'; margin: 56.7pt 42.525pt 56.7pt 85.05pt;">
+    <tr>
+        <td colspan="3">
+            <p style="font-size:12pt;"> Hồ sơ: @Model.MaHoSo</p>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr valign="top">
+        <td align="left" width="35%">
+            <table cellspacing="0">
+                <tr>
+                    <td align="left" colspan="3" style="font-size: 12pt;">
+                        <p style="text-align: center; margin: 0 0 10px 0;"><strong>TÒA ÁN NHÂN DÂN</strong></p>
+                        <p style="text-align: center; margin: 0 0 0 0;"><strong>@Model.TenToaAn.ToUpper()</strong></p>
+                        @if (Model.TenToaAn.IndexOf("huyện") != -1 || Model.TenToaAn.IndexOf("thành phố") != -1)
+                        {
+                            <p style="text-align: center; margin: 10px 0 0 0;"><strong>TỈNH CÀ MAU</strong></p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="70px" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        @if (Model.GiaiDoan == 1)
+                        {
+                        <p style="font-size:13pt;">Số: @Model.SoHoSo/@(Model.NgayRaQuyetDinh.Year==1 ? DateTime.Now.Year :Model.NgayRaQuyetDinh.Year)/HSST-@Model.NhomAn</p>
+                        }
+                        else
+                        {
+                            <p style="font-size:13pt;">Số: @Model.SoHoSo/@(Model.NgayRaQuyetDinh.Year==1 ? DateTime.Now.Year :Model.NgayRaQuyetDinh.Year)/HSPT-@Model.NhomAn</p>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="5%"></td>
+        <td align="right" width="55%">
+            <table cellspacing="0">
+                <tr style="text-transform: uppercase;">
+                    <td colspan="3" style="text-align: center;">
+                        <p style="margin: 0 0 10px 0;font-size: 12pt"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p style="margin: 0 0 0 0;font-size:14pt"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="60%" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        <p style="font-size: 14pt;"><i>@Model.TenToaAn.Replace("huyện", "").Replace("thành phố", "TP.").Replace("tỉnh", ""), ngày @(Model.NgayRaQuyetDinh.Day < 10 ? "0" + Model.NgayRaQuyetDinh.Day.ToString() : Model.NgayRaQuyetDinh.Day.ToString()) tháng @(Model.NgayRaQuyetDinh.Month < 3 ? "0" + Model.NgayRaQuyetDinh.Month.ToString() : Model.NgayRaQuyetDinh.Month.ToString()) năm @(Model.NgayRaQuyetDinh.Year==1 ? DateTime.Now.Year :Model.NgayRaQuyetDinh.Year)</i></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr>
+        <td align="center" colspan="3">
+            <p style="margin: 0 0 2px 0"><strong>QUYẾT ĐỊNH</strong></p>
+            
+                <p style="margin: 0 0 5px 0"><strong>HOÃN PHIÊN TÒA</strong></p>
+           
+                <p style="margin: 0 0 5px 0"><strong>TOÀ ÁN @Model.TenToaAn.ToUpper()</strong></p>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr @*style="font-size:12pt"*@>
+        <td colspan="3">
+            
+                <div>
+                    
+                    @if(Model.GiaiDoan==1)
+                    {
+                        <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                            <strong>- Thành phần Hội đồng xét xử sơ thẩm gồm có:</strong>
+                        </p>
+                    }
+                    else
+                    {
+                        <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                            <strong>- Thành phần Hội đồng xét xử phúc thẩm gồm có:</strong>
+                        </p>
+                    }
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Thẩm phán - Chủ toạ phiên toà:
+                        @if (Model.ThamPhan != null && !Model.ThamPhan.IsEmpty())
+                        {
+                            <span>@(Model.GioiTinhThamPhan == "Nam" ? "Ông" : "Bà") @Model.ThamPhan.</span>
+                        }
+                        else
+                        {
+                            <span>Ông (Bà) .................. </span>
+                        }
+                    </p>
+                    @if (Model.HoiDong==2 && Model.GiaiDoan==1)
+                    {
+                        <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Thẩm phán:
+                        @if (@Model.ThamPhanKhac != null)
+                        {
+                            <span>@(Model.GioiTinhThamPhanKhac == "Nam" ? "Ông" : "Bà") @Model.ThamPhanKhac.</span>
+                        }
+                        </p>
+                    }
+                    else if(Model.GiaiDoan==2)
+                    {
+                        <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Các thẩm phán:
+                        @if (Model.ThamPhan1 != null)
+                                    {
+                                        <span>
+                                            @(Model.GioiTinhThamPhan1 == "Nam" ? "Ông " : "Bà ")@Model.ThamPhan1
+                                        </span>
+                                    }
+
+
+                                    @if (Model.ThamPhan2 != null)
+                                    {
+                                        <span>
+                                            @(Model.GioiTinhThamPhan2 == "Nam" ? ", Ông " : ", Bà ")@Model.ThamPhan2
+                                        </span>
+                                    }
+                        .</p>
+                    }
+                    @if(Model.GiaiDoan==1)
+                    {
+                        <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Các Hội thẩm nhân dân:
+                        @if (Model.HoiThamNhanDan != null && !Model.HoiThamNhanDan.IsEmpty())
+                        {
+                            <span>@(Model.GioiTinhHoiThamNhanDan == "Nam" ? "Ông" : "Bà") @Model.HoiThamNhanDan</span>
+                        }
+                        else if(Model.HoiThamNhanDan2 != null && !Model.HoiThamNhanDan2.IsEmpty())
+                        {
+                            <span>@(Model.GioiTinhHoiThamNhanDan2 == "Nam" ? ", Ông" : ", Bà") @Model.HoiThamNhanDan2</span>
+                        }
+                        else if(Model.HoiThamNhanDan3 != null && !Model.HoiThamNhanDan3.IsEmpty())
+                        {
+                            <span>@(Model.GioiTinhHoiThamNhanDan3 == "Nam" ? ", Ông" : ", Bà") @Model.HoiThamNhanDan3</span>
+                        }
+                        else
+                        {
+                            <span>Ông (Bà) .................. </span>
+                        }
+                    .</p>
+                    }
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        <strong>- Thư ký phiên tòa:</strong>
+                        @if (Model.ThuKy != null && !Model.ThuKy.IsEmpty())
+                        {
+                            <span>@(Model.GioiTinhThuKy == "Nam" ? "Ông" : "Bà") @Model.ThuKy.</span>
+                        }
+                        else
+                        {
+                            <span>Ông (Bà) .................. </span>
+                        }
+                    </p>
+                    @if (Model.KiemSatVien != null && Model.KiemSatVien != "")
+                    {
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        <strong>- Đại diện Viện kiểm sát nhân dân @Model.TenToaAn tham gia phiên toà:</strong>
+                            <span>@(Model.GioiTinhKiemSatVien == "Nam" ? "Ông" : "Bà") @Model.KiemSatVien - Kiểm sát viên.</span>
+                    </p>
+                    }
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Căn cứ Điều ...... , 297 và 299 của Bộ luật Tố tụng hình sự;
+                    </p>
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Căn cứ văn bản lập ngày @(Model.NgayRaQuyetDinh.Day < 10 ? "0" + Model.NgayRaQuyetDinh.Day.ToString() : Model.NgayRaQuyetDinh.Day.ToString()) tháng @(Model.NgayRaQuyetDinh.Month < 3 ? "0" + Model.NgayRaQuyetDinh.Month.ToString() : Model.NgayRaQuyetDinh.Month.ToString()) năm @(Model.NgayRaQuyetDinh.Year==1 ? DateTime.Now.Year :Model.NgayRaQuyetDinh.Year)
+                        của Hội đồng xét xử 
+                        @if (Model.GiaiDoan == 1)
+                        {
+                        <span>sơ thẩm;</span>
+                        }
+                        else
+                        {
+                        <span>phúc thẩm;</span>
+                        }
+                    </p>
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Xét thấy: @(Model.LyDo ?? "......................................").
+                    </p>
+                
+                </div>
+             
+        </td>
+    </tr>
+    <tr>
+        <td align="center" colspan="3"><p style="margin: 0 0 10px 0"><strong>QUYẾT ĐỊNH:</strong></p></td>
+    </tr>
+    <tr @*style="font-size:12pt"*@>
+        <td colspan="3">
+            <div>
+                
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    @if(Model.GiaiDoan==1)
+                    {
+                    <span>
+                        1. Hoãn phiên tòa xét xử vụ án hình sự sơ thẩm thụ lý số: @(Model.SoThuLy ?? "........")/@(Model.NgayThuLy.Year==1 ? DateTime.Now.Year : Model.NgayThuLy.Year)/TLST-@Model.NhomAn
+                    </span>
+                    }
+                    else
+                    {
+                    <span>
+                        1. Hoãn phiên tòa xét xử vụ án hình sự phúc thẩm thụ lý số: @(Model.SoThuLy ?? "........")/@(Model.NgayThuLy.Year==1 ? DateTime.Now.Year : Model.NgayThuLy.Year)/TLPT-@Model.NhomAn
+                    </span>                       
+                    }
+                    ngày @(Model.NgayThuLy.Day < 10 ? "0" + Model.NgayThuLy.Day.ToString() : Model.NgayThuLy.Day.ToString()) tháng @(Model.NgayThuLy.Month < 3 ? "0" + Model.NgayThuLy.Month.ToString() : Model.NgayThuLy.Month.ToString()) năm @Model.NgayThuLy.Year.ToString()
+                    là @Model.ThoiHanGiaHan kể từ ngày @(Model.NgayRaQuyetDinh.Day < 10 ? "0" + Model.NgayRaQuyetDinh.Day.ToString() : Model.NgayRaQuyetDinh.Day.ToString()) tháng @(Model.NgayRaQuyetDinh.Month < 3 ? "0" + Model.NgayRaQuyetDinh.Month.ToString() : Model.NgayRaQuyetDinh.Month.ToString()) năm @(Model.NgayRaQuyetDinh.Year==1 ? DateTime.Now.Year :Model.NgayRaQuyetDinh.Year).
+                </p>
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    Đối với bị cáo (các bị cáo):
+                </p>
+                     @if (Model.DanhSachBiCao.Count() == 0)
+                {
+                    <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                        Họ tên:..................................;Ngày tháng năm sinh: .................;Nơi sinh:.............................;Nghề nghiệp:.............; Địa chỉ: .............................................................
+                    </p>
+                }
+                else
+                {
+                    foreach (var item in Model.DanhSachBiCao)
+                    {   
+                        if(item==Model.DanhSachBiCao.First())
+                        {
+                            if (item.DuongSuLa == "Cá nhân")
+                            {
+                                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                    Họ tên: @item.HoTenDuongSu; Ngày tháng năm sinh: @(item.NgayThangNamSinh ?? "..............."); Nơi sinh: @(item.NoiSinh ?? "..............."); Nơi cư trú: @if (item.NoiTamTru != null && item.NoiTamTru != "")
+                                {
+                                    @item.NoiTamTru
+                                }
+                                else
+                                {
+                                    @item.NoiDKHKTT
+                                }; Nghề nghiệp: @(item.NgheNghiep ?? "...............").
+                                </p>
+                            }
+                            else
+                            {
+                                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                    Cơ quan, tổ chức: @item.TenCoQuanToChuc người đại diện: @item.HoTenDuongSu; Địa chỉ: @if (item.NoiTamTru != null && item.NoiTamTru != "")
+                                {
+                                    @item.NoiTamTru<span>.</span>
+                                }
+                                else
+                                {
+                                    @item.NoiDKHKTT<span>.</span>
+                                }
+                                </p>
+                                 }
+                                 if(Model.GiaiDoan==1)
+                                 {
+                                     <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                        Bị Viện kiểm sát @Model.TenToaAn.
+                                     </p>
+                                     <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                        Truy tố về tội (các tội): @(Model.ToiDanh ==""?"..........":Model.ToiDanh).
+                                     </p>
+                                 }
+                                 else
+                                 {
+                                      <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                        Bị Toà án Nhân dân @Model.ToaAnSoTham.
+                                     </p>
+                                     <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                        Xét xử về tội (các tội): @(Model.ToiDanh ==""?"..........":Model.ToiDanh).
+                                     </p>
+                                 }
+                            
+                            
+                            <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                Theo @(Model.DieuLuat ==""?"..........":Model.DieuLuat) của Bộ luật Hình sự.
+                            </p>
+                            if(Model.DanhSachBiCao.Count()>1)
+                            {
+                                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                Và các đồng phạm: 
+                                </p>
+                            }
+                            
+                        }
+                        else
+                        {
+                            if (item.DuongSuLa == "Cá nhân")
+                            {
+                                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                    Họ tên: @item.HoTenDuongSu; Ngày tháng năm sinh: @(item.NgayThangNamSinh ?? "..............."); Nơi sinh: @(item.NoiSinh ?? "..............."); Nơi cư trú: 
+                                    @if (item.NoiTamTru != null && item.NoiTamTru != "")
+                                {
+                                    @item.NoiTamTru
+                                }
+                                else
+                                {
+                                    @item.NoiDKHKTT
+                                }; Nghề nghiệp: @(item.NgheNghiep ?? "...............").
+                                </p>
+                            }
+                            else
+                            {
+                                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                                    Cơ quan, tổ chức: @item.TenCoQuanToChuc người đại diện: @item.HoTenDuongSu; Địa chỉ: @if (item.NoiTamTru != null && item.NoiTamTru != "")
+                                {
+                                    @item.NoiTamTru<span>.</span>
+                                }
+                                else
+                                {
+                                    @item.NoiDKHKTT<span>.</span>
+                                }
+                                </p>
+                            }
+                        }
+                    }
+                }
+                 <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                     2. @if(Model.LanThu>1)
+                     {
+                     <span>
+                         Thời gian, địa điểm phiên tòa xét xử vụ án sẽ được mở lại vào hồi @(Model.ThoiGianMoPhienToa.Hour < 10 ? "0" + Model.ThoiGianMoPhienToa.Hour.ToString() : Model.ThoiGianMoPhienToa.Hour.ToString()) giờ @Model.ThoiGianMoPhienToa.Minute.ToString() phút,
+                         ngày @(Model.ThoiGianMoPhienToa.Day < 10 ? "0" + Model.ThoiGianMoPhienToa.Day.ToString() : Model.ThoiGianMoPhienToa.Day.ToString()) tháng @(Model.ThoiGianMoPhienToa.Month < 3 ? "0" + Model.ThoiGianMoPhienToa.Month.ToString() : Model.ThoiGianMoPhienToa.Month.ToString()) năm @Model.ThoiGianMoPhienToa.Year.ToString() 
+                         tại trụ sở Tòa án nhân dân @Model.DiaDiemMoPhienToa
+                         địa chỉ @Model.DiaChiToaAn.
+                     </span>
+                     }
+                     else
+                     {
+                         <span>Thời gian, địa điểm mở lại phiên toà xét xử vụ án sẽ được Toà án thông báo sau.</span>
+                     }
+                  </p>
+                </div>
+            </td>
+        </tr>
+        <tr style="height: 50px;"><td></td></tr>
+        <tr valign="top" @*style="font-size:11pt"*@>
+            <td colspan="3">
+                <div style="float: left;font-size:11pt">
+                    <p style="font-size:12pt;margin-bottom:5px"><strong><i>Nơi nhận:</i></strong></p>
+                    <p style="margin:3px 0 3px 0">- Viện kiểm sát nhân dân @Model.TenToaAn;</p>
+                    <p style="margin:3px 0 3px 0">- Người tham gia tố tụng;</p>
+                    <p style="margin:3px 0 3px 0">- Lưu hồ sơ vụ án.</p>
+                </div>
+                <div style="float: right; text-align:center;font-size:13pt;padding-right:50px">
+                    
+                <p><strong @*style="font-size:13pt"*@>
+                            TM. HỘI ĐỒNG XÉT XỬ <br />
+                         THẨM PHÁN - CHỦ TỌA PHIÊN TÒA
+                   </strong></p>
+           
+
+            <p style="margin: 100px 0 0 0"><strong>@Model.ThamPhan</strong></p>
+                </div>
+            </td>
+        </tr>
+    </table>

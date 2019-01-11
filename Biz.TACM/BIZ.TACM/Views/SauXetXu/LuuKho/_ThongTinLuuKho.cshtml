@@ -1,0 +1,39 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.LuuKho.ThongTinLuuKhoViewModel
+
+@Html.HiddenFor(m => m.LuuKhoId, new { id = "luu-kho-id-hidden" })
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYLUU</span><span class="font-weight-bold">@Model.NgayLuu</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOIGIAO</span><span class="font-weight-bold">@Model.NguoiGiao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOINHAN</span><span class="font-weight-bold">@Model.NguoiNhanLuu</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#ghi-chu-tinh-trang-ho-so" role="tab">@ViewText.LABEL_GHICHU_TINHTRANGHOSO</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#ghi-chu" role="tab">@ViewText.LABEL_GHICHU</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="ghi-chu-tinh-trang-ho-so" role="tabpanel">
+            <div class="card">
+                <div class="card-block" style="height: 148px; overflow: scroll">
+                    @Html.Raw(Model.GhiChuTinhTrangHoSo)
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="ghi-chu" role="tabpanel">
+            <div class="card">
+                <div class="card-block" style="height: 148px; overflow: scroll">
+                    @Html.Raw(Model.GhiChu)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

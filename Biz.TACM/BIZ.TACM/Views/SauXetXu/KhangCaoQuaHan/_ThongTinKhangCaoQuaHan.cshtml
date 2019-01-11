@@ -1,0 +1,29 @@
+﻿@model Biz.TACM.Models.ViewModel.SauXetXu.KhangCaoQuaHan.ThongTinKhangCaoQuaHanViewModel
+@using Biz.Lib.TACM.Resources.Resources
+@Html.HiddenFor(m => m.KhangCaoQuaHanId, new { id = "khang-cao-qua-han-id-hidden" })
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p><strong>@ViewText.LABEL_LYDO @(Model.KhangCaoHayKhangNghi.Equals("Kháng Cáo") ? "kháng cáo" : "kháng nghị") @ViewText.LABEL_QUAHAN:</strong></p>
+
+            <div class="card">
+                <div class="card-block" style="height: 188px; overflow: scroll">
+                    @Html.Raw(Model.LyDo)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p><strong>@ViewText.LABEL_KETQUA @(Model.KhangCaoHayKhangNghi.Equals("Kháng Cáo") ? "kháng cáo" : "kháng nghị") @ViewText.LABEL_QUAHAN:</strong></p>
+
+            <div class="card">
+                <div class="card-block" style="height: 188px; overflow: scroll">
+                    @Html.Raw(Model.KetQua)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model string
+@using Biz.Lib.TACM.Resources.Resources
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_CHUYENHOSO</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger" role="alert">
+                @Model
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-danger text-uppercase float-right" data-dismiss="modal">@ViewText.BUTTON_XACNHAN</button>
+</div>

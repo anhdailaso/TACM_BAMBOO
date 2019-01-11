@@ -1,0 +1,157 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnHinhSuModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var nhomAn = anSessionModel.MaNhomAn;
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+
+@{
+    ViewBag.Title = giaiDoan == 2 || maNhomAn == "HS" ? ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM : ViewText.TITLE_CONGDOAN_NHANDON;
+}
+
+
+@section Title
+{
+    @{ Html.RenderPartial("_PageTitlePartial"); }
+}
+
+@section VerticalMenu
+{
+    @{ Html.RenderPartial("_VerticalMenuPartial"); }
+}
+
+@{
+    var roleCongDoan = (int)ViewBag.ActiveCongDoan == 1 ? 1 : -1;
+}
+<input type="hidden" id="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+<input type="hidden" id="roleGiaiDoan" value="@ViewBag.RoleGiaiDoan" />
+<input type="hidden" id="roleCongDoan" value="@roleCongDoan" />
+<input type="hidden" id="NhomAn" value="@Model.NhomAn" />
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="text-uppercase mb-4">@(giaiDoan == 2 || maNhomAn == "HS" ? ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM : ViewText.TITLE_CONGDOAN_NHANDON)</h3>
+            </div>
+            <div class="col-6 text-right">
+                <div class="d-inline-block mr-3">
+                    @if ((int) ViewBag.ActiveCongDoan != CongDoan.NhanDon.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanPrev" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>                        
+                    }
+
+                    <a id="btnChuyenCongDoan" href="#" data-toggle="modal" data-target="#modalChuyenCongDoan" class="remove-outline"><span class="label-cell-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)">@Html.GetCongDoanHoSoAsString((int) ViewBag.ActiveCongDoan, nhomAn, giaiDoan) &nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+                    @if ((int) ViewBag.ActiveCongDoan != CongDoan.LuuKho.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanNext" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+                        
+                    }
+                </div>
+
+                <div class="label-cell">
+                    @Html.Raw(string.Format(ViewText.HOSOVUAN_NUMBER, Model.MaHoSo, Model.SoHoSo))
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button id="btnSuaHoSo" data-toggle="modal" data-target="#modelSuaHoSoMoi" class="btn btn-sm btn-outline-primary btn-custom-size remove-box-shadow float-right mb-1"><i class="fa fa-pencil-square-o"></i></button>
+                @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoHoSoVuAn", @class = "custom-select mb-2" })
+            </div>
+        </div>
+        <div class="row" id="contentChiTietHoSoVuAn">
+            <div class="col-6">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TENVUAN</span><span class="font-weight-bold">@Model.TenVuAn</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SOBICAN</span><span class="font-weight-bold">@Model.SoBiCan</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TONGSOBUTLUC</span><span class="font-weight-bold">@Model.TongSoButLuc</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHONGCO_CAC_BUTLUC</span><span class="font-weight-bold">@Model.KhongCoCacButLuc</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TRUYTOBANG</span><span class="font-weight-bold">@Model.TruyToBang</span></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.SoTruyTo</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTHANGNAM</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayTruyTo)</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_VKS_TRUYTO</span><span class="font-weight-bold">@Model.VienKiemSatTruyTo</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        <div>
+           @Html.Partial("ToiDanhTruyTo/_ToiDanhTruyTo") 
+        </div>
+    </div>
+</div>
+
+<!-- Modal chuyen Cong Doan -->
+<div class="modal fade" id="modalChuyenCongDoan" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("ChuyenCongDoan", "NhanDon", FormMethod.Post, new { @id = "formChuyenCongDoan" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase">Cập nhật công đoạn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_CONGDOAN_CHUYENDEN</label>
+                                @Html.DropDownListFor(m => m.CongDoanHoSo, (SelectList)ViewBag.ddlTrangThai, new { @id = "selectChuyenCongDoan", @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                    <button type="button" class="btn btn-danger text-uppercase pull-right" id="chuyen-cong-doan-btn">@ViewText.BUTTON_LUU</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal suaHoSoMoi -->
+<div class="modal fade" id="modelSuaHoSoMoi" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog @(Model.NhomAn.Equals(Setting.MANHOMAN_HINHSU) ? "" : "modal-lg")" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase">@ViewText.LABEL_CAPNHATHOSO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height: 300px">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/NhanDonChiTiet")
+    @Scripts.Render("~/bundles/NhanDon")
+    @Scripts.Render("~/bundles/MauIn")
+    @Scripts.Render("~/bundles/jqueryval")
+}

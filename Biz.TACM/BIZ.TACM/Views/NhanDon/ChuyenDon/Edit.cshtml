@@ -1,0 +1,88 @@
+﻿@using Biz.Lib.TACM.Resources.Resources;
+@model Biz.TACM.Models.ViewModel.NhanDon.ChuyenDonViewModel
+
+@using (Html.BeginForm("EditChuyenDon", "NhanDon", FormMethod.Post, new { @id = "formEditChuyenDon" }))
+{
+    @Html.AntiForgeryToken()
+        
+        <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+        <div class="modal-header">
+            <h5 class="modal-title">@ViewText.TITLE_CHUYENDON</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGAYRATHONGBAO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-ra-thong-bao-dtp">
+                            @Html.TextBoxFor(x => x.NgayRaThongBao, "{0:dd'/'MM'/'yyyy}", new {@class = "form-control"})
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="NgayRaThongBao"></span></small>
+                    </div>
+                </div>                   
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_NGAYCHUYENDON<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-chuyen-don-dtp">
+                            @Html.TextBoxFor(x => x.NgayChuyenDon, "{0:dd'/'MM'/'yyyy}", new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger"><span for="NgayChuyenDon"></span></small>
+                    </div>
+                </div>  
+                <div class="row mb-3">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_TOAANCHUYENDEN<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-7">
+                        <div style="margin-bottom: 15px">
+                            @Html.DropDownList("ddlVungChuyenDon", (SelectList)ViewBag.listVungChuyenDon, null, new {@class = "form-control" })
+                        </div>
+                        <div>
+                            <input id="hiddenToaAnChuyenDen" type="hidden" value="@Model.ToaAnChuyenDen" />
+                            @Html.DropDownList("ToaAnChuyenDen", (SelectList) ViewBag.listToaAnHuyen, new {@class = "form-control", id = "ddlToaAnChuyenDen"})
+                            @Html.TextBox("ToaAnChuyenDen", string.Empty, new {@class = "form-control", id = "txtToaAnChuyenDen"})
+                            <small class="form-text text-danger"><span for="txtToaAnChuyenDen"></span></small>
+                            <small class="form-text text-danger"><span for="ddlToaAnChuyenDen"></span></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <label>@ViewText.LABEL_LYDO_CHUYENDON<span class="input-required">*</span></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @Html.TextArea("LyDoChuyenDon", null, new {@class = "form-control", style= "width: 100%", @maxlength = 2000})
+                        @Html.HiddenFor(x=>x.CongDoanHoSo)
+                        @Html.HiddenFor(x=>x.GiaiDoan)
+                        <small class="form-text text-danger"><span for="LyDoChuyenDon"></span></small>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-chuyen-don-btn">@ViewText.BUTTON_LUU</button>
+    </div>       
+}
+<script type="text/javascript">
+    $(function () {
+        EditChuyenDonModule.init();
+    });        
+</script>

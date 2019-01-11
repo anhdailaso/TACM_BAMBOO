@@ -1,0 +1,70 @@
+--- LOG DATE: 10/03/2018 9:16:40 SA ---
+
+10/03/2018 9:16:40 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:17:11 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:20:19 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:34:08 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:37:34 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. d186sm5408733pfd.1 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:38:33 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. s62sm4227947pgc.12 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:39:49 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. l2sm4359656pgu.46 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:43:27 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. p24sm5486826pfk.102 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:45:34 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:53:28 SA-ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at Biz.Lib.Helpers.GMail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:54:51 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. j185sm4504135pgc.79 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 9:57:07 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. q87sm5284825pfa.29 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 10:08:00 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. z6sm1388691pfe.9 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 10:22:45 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. u21sm4930354pfg.60 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 10:24:41 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. l74sm4336555pga.33 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 10:37:22 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. f82sm5227626pfd.175 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+
+10/03/2018 10:38:16 SA-ERROR:System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. c21sm4926040pfi.91 - gsmtp
+   at Biz.Lib.Helpers.Mail.Send()
+   at Biz.Lib.Authentication.AuthenService.ForgotPassword(String email, String appName, String appUrl, Int32& responseCode)
+

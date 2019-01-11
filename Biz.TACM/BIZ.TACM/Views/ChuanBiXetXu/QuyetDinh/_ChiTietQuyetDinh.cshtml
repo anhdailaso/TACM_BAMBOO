@@ -1,0 +1,67 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.Lib.TACM.ChuanBiXetXu.Model.QuyetDinhModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase" id="thong-tin-quyet-dinh-modal-title">@ViewText.TITLE_THONGTIN_QUYETDINH</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="">
+                <div class="card-block">
+                    <table class="table table-information table-hover">
+                        <tbody>
+                            <tr>
+                                <td class="table-left-col" id="ten-quyet-dinh-lbl">@ViewText.LABEL_TENQUYETDINH</td>
+                                <td class="text-value-bold">@Model.TenQuyetDinh</td>
+                            </tr>
+                        <tr>
+                            <td id="ngay-ra-quyet-dinh-lbl">@ViewText.LABEL_NGAYRAQUYETDINH</td>
+                            <td class="text-value-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayRaQuyetDinh)</td>
+                        </tr>
+                            @if (nhomAn != Setting.MANHOMAN_HINHSU)
+                            {
+                                <tr>
+                                    <td table-left-col>@ViewText.LABEL_THOIHAN_GIAHAN</td>
+                                    <td class="text-value-bold">@(string.IsNullOrEmpty(Model.ThoiHanGiaHan) ? "" : Model.ThoiHanGiaHan + " ngày")</td>
+                                </tr>
+                            }                            
+                            <tr table-left-col>
+                                <td>@ViewText.LABEL_GHICHU</td>
+                                <td class="text-value-bold"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="card">
+                                        <div class="card-block" style="height: 200px; overflow: scroll">
+                                            @Html.Raw(Model.GhiChu)
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    if (@Model.QuyetDinhLoai == 2) // 1:quyetdinh, 2:thongbao
+    {
+        $("#thong-tin-quyet-dinh-modal-title").html("@ViewText.TITLE_THONGTIN_THONGBAO");
+        $("#ten-quyet-dinh-lbl").html("@ViewText.LABEL_TENTHONGBAO");
+        $("#ngay-ra-quyet-dinh-lbl").html("@ViewText.LABEL_NGAYRATHONGBAO");
+    }
+</script>

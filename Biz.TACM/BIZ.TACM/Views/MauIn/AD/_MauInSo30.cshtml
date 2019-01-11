@@ -1,0 +1,264 @@
+﻿@model Biz.TACM.Models.ViewModel.MauIn.MauInSo30ViewModel
+
+@* margin is mapped with controller to print pdf *@
+<table border="0" cellspacing="0" style="font-size: 14pt; font-family: 'Times New Roman'; margin: 56.7pt 42.525pt 56.7pt 85.05pt;">
+    <tr>
+        <td colspan="3">
+            <p style="font-size:12pt"> Hồ sơ: @Model.MaHoSo</p>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr valign="top">
+        <td align="left" width="35%">
+            <table cellspacing="0">
+                <tr>
+                    <td align="left" colspan="3" style="font-size: 12pt;">
+                        <p style="text-align: center; margin: 0 0 10px 0;"><strong>TÒA ÁN NHÂN DÂN</strong></p>
+                        <p style="text-align: center; margin: 0 0 0 0;"><strong>@Model.TenToaAn.ToUpper()</strong></p>
+                        @if (Model.TenToaAn.IndexOf("huyện") != -1 || Model.TenToaAn.IndexOf("thành phố") != -1)
+                        {
+                            <p style="text-align: center; margin: 10px 0 0 0;"><strong>TỈNH CÀ MAU</strong></p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="70px" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        
+                        <p style="font-size:13pt;">Số: @Model.ThuLyAD/@(Model.NgayNopDonTaiToaAn.Year.ToString() ?? ".....")/TB-TLHS</p>
+                        
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="5%"></td>
+        <td align="right" width="55%">
+            <table cellspacing="0">
+                <tr style="text-transform: uppercase;">
+                    <td colspan="3" style="text-align: center;">
+                        <p style="margin: 0 0 10px 0; font-size: 12pt;"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p style="margin: 0 0 0 0;font-size:14pt"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="60%" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+                <tr style="height: 15px;"><td></td></tr>
+                <tr style="text-align: center;">
+                    <td colspan="3">
+                        <p style="font-size: 14pt;"><i>@Model.TenToaAn.Replace("huyện", "").Replace("thành phố", "TP.").Replace("tỉnh", ""), ngày @(Model.NgayNopDonTaiToaAn.Day < 10 ? "0" + Model.NgayNopDonTaiToaAn.Day.ToString() : Model.NgayNopDonTaiToaAn.Day.ToString()) tháng @(Model.NgayNopDonTaiToaAn.Month < 3 ? "0" + Model.NgayNopDonTaiToaAn.Month.ToString() : Model.NgayNopDonTaiToaAn.Month.ToString()) năm @Model.NgayNopDonTaiToaAn.Year.ToString()</i></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr>
+        <td align="center" colspan="3">
+            <p style="margin: 0 0 2px 0"><strong>THÔNG BÁO</strong></p>
+
+            <p style="margin: 0 0 2px 0"><strong>Về việc thụ lý hồ sơ đề nghị xem xét, quyết định áp dụng biện pháp</strong></p>
+            <p style="margin: 0 0 5px 0"><strong>xử lý hành chính</strong></p>
+
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr @*style="font-size:12pt"*@>
+        <td colspan="3">
+            <table style="font-size: 14pt;">
+                <tr style="height: 25px">
+                        <td td colspan="2" valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Kính gửi: Viện kiểm sát nhân dân @Model.TenToaAn.
+                            </p>
+                        </td>
+                    </tr>
+                @if (Model.DanhSachDuongSuViewModel.Count() == 0)
+                {
+                    <tr style="height: 25px">
+                        <td colspan="2" valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Kính gửi: Ông (Bà) ..........................................
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <tr style="height: 25px;">
+                        <td colspan="2" valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Địa chỉ: ....................................................................
+                            </p>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    
+                    foreach (var item in Model.DanhSachDuongSuViewModel)
+                    {
+                        
+                            <tr style="height: 25px">
+                            <td colspan="2" valign="top">
+                                <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                    @if (item == Model.DanhSachDuongSuViewModel.First())
+                                    {
+                                        <span>Kính gửi: </span>
+                                    }
+
+                                    
+                                        @(item.GioiTinh == "Nam" ? "Ông " : "Bà ")@(item.HoTenNguoiGiamHo ?? "...............").
+                                    
+                                </p>
+                            </td>
+                        </tr>
+                       
+                        <tr style="height: 25px;">
+                            <td colspan="2" valign="top">
+                                <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                    Địa chỉ: @(item.DiaChiNguoiGiamHo ?? "...............").
+                                </p>
+                            </td>
+                        </tr>
+
+                      
+                    }
+                }
+            </table>
+            <table style="font-size: 14pt;">
+                <tr>
+                    <td>
+                        
+                        <p style="margin: 10px 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                            Ngày @(Model.NgayNopDonTaiToaAn.Day < 10 ? "0" + Model.NgayNopDonTaiToaAn.Day.ToString() : Model.NgayNopDonTaiToaAn.Day.ToString()) tháng @(Model.NgayNopDonTaiToaAn.Month < 3 ? "0" + Model.NgayNopDonTaiToaAn.Month.ToString() : Model.NgayNopDonTaiToaAn.Month.ToString()) năm @Model.NgayNopDonTaiToaAn.Year.ToString(),Tòa án nhân dân @Model.TenToaAn đã thụ lý hồ sơ
+                            của @Model.TenCoQuanDeNghi đề nghị xem xét, quyết định áp dụng biện pháp xử lý hành chính: @Model.BienPhapXuLyHanhChinh.
+                        </p>
+                        
+                    </td>
+                </tr>
+            </table>
+            <table style="font-size: 14pt;">
+                @if (Model.DanhSachDuongSuViewModel.Count() == 0)
+                {
+                    <tr style="height: 25px">
+                        <td colspan="2" valign="top">
+                           
+                                <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                    Đối với: ................................................
+                                </p>
+                            
+                        </td>
+                        
+                    </tr>
+                    <tr style="height: 25px;">
+                        <td colspan="2" valign="top">
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Sinh ngày ........ tháng ........ năm ................
+                            </p>
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                CMND số: .................... Ngày cấp: ............. Nơi cấp: ....................
+                            </p>
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Nghề nghiệp: ...................................................................
+                            </p>
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Nơi cư trú: .......................................................................
+                            </p>
+                            <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                Con ông: .............................. và bà: .................................
+                            </p>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    bool isFirst = true;
+                    
+                    foreach (var item in Model.DanhSachDuongSuViewModel)
+                    {
+                        
+                            
+                            <tr style="height: 25px">
+                                <td colspan="2" valign="top">
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        @if (isFirst)
+                                        {
+                                            
+                                            <span>Đối với: </span>
+                                            
+                                            isFirst = false;
+                                        }
+                                        
+                                    
+                                        @(item.GioiTinh == "Nam" ? "Ông " : "Bà ")@item.HoTenDuongSu.
+                            
+                                    </p>
+                                </td>
+                                @*<td valign="top">
+                                        <p style="text-align: justify; line-height: 1.3em;">
+                                            Số điện thoại: @item.SoDienThoai
+                                        </p>
+                                    </td>*@
+                            </tr>
+                            
+                            <tr style="height: 25px;">
+                                <td colspan="2" valign="top">
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        Sinh ngày @(item.NgayThangNamSinh ?? "...............").
+                                    </p>
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        CMND số: @(item.SoCMND ?? "...............")  Ngày cấp: @item.NgayCapCMND.ToString("dd/MM/yyyy") Nơi cấp: @(item.NoiCapCMND ??"...............").
+                                    </p>
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        Nghề nghiệp: @(item.NgheNghiep ?? "...............").
+                                    </p>
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        Nơi cư trú: @(item.NoiTamTru ?? item.NoiDKHKTT).
+                                    </p>
+                                    <p style="text-align: justify; text-indent: 28.35pt; line-height: 1.15em; margin: 0 0 10px 0">
+                                        Con ông: @(item.HoTenCha ??"....................") và bà: @(item.HoTenMe ?? "....................").
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    
+                }
+            </table>
+            
+            <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                Số thụ lý: @Model.ThuLyAD/@(Model.NgayNopDonTaiToaAn.Year.ToString() ?? ".....")/TLST-@Model.NhomAn ngày @(Model.NgayNopDonTaiToaAn.Day < 10 ? "0" + Model.NgayNopDonTaiToaAn.Day.ToString() : Model.NgayNopDonTaiToaAn.Day.ToString()) tháng @(Model.NgayNopDonTaiToaAn.Month < 3 ? "0" + Model.NgayNopDonTaiToaAn.Month.ToString() : Model.NgayNopDonTaiToaAn.Month.ToString()) năm @Model.NgayNopDonTaiToaAn.Year.ToString().
+            </p>
+            
+            <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                Kể từ ngày nhận được thông báo thụ lý cho đến thời điểm Tòa án mở phiên
+                họp, người bị đề nghị, cha mẹ hoặc người giám hộ của người bị đề nghị là người chưa
+                thành niên, người bảo vệ quyền, lợi ích hợp pháp của người bị đề nghị có quyền cung
+                cấp tài liệu, chứng cứ cho Tòa án đã thụ lý.
+            </p>
+           
+        </td>
+    </tr>
+    <tr style="height: 50px;"><td></td></tr>
+    <tr valign="top" @*style="font-size:11pt"*@>
+        <td colspan="3">
+            <div style="float: left;font-size:11pt">
+                <p style="font-size:12pt;margin-bottom:5px"><strong><i>Nơi nhận:</i></strong></p>
+                <p style="margin:3px 0 3px 0">- Như trên;</p>
+                <p style="margin:3px 0 3px 0">- Lưu hồ sơ vụ án.</p>
+            </div>
+            <div style="float: right; text-align:center;font-size:13pt;padding-right:50px">
+                <p><strong @*style="font-size:13pt"*@>THẨM PHÁN</strong></p>
+                
+                <p style="margin: 100px 0 0 0"><strong>@Model.ThamPhan</strong></p>
+            </div>
+        </td>
+    </tr>
+</table>
+

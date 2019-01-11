@@ -1,0 +1,45 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.UtilityHelpers
+@model Biz.Lib.TACM.QuanLyNhanVien.Model.NhanVienModel
+
+@{
+    ViewBag.Title = ViewText.TITLE_TAIKHOANNHANVIEN;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="mr-auto ml-auto" style="width: 1000px;">
+    <div class="left-column">
+        <div class="align-middle text-center rounded" style="background-color: #fff;">
+            
+            <div class="p-3">
+                <img class="circleLarge" src="@Url.Content(string.Format(Setting.EMPLOYEE_IMAGE_FOLDER, Model.DuongDanHinhDaiDien))" alt=""
+                     onerror="this.onerror = null;this.src = '@Url.Content(string.Format(Setting.NHANVIEN_HINH_TACM, Setting.DEFAULT_IMAGE_200x200))'" />
+            </div>
+            <div class="list-group">
+                <a class="custom-a  list-group-item custom-a-active" id="thong-tin-nhan-vien-btn" href="#" onclick="return false"><i class="fa fa-user-o"></i><span>@ViewText.TITLE_THONGTINNHANVIEN</span></a>
+                <a class="custom-a  list-group-item" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#contentChiTietNhanVien" href="/TaiKhoanNhanVien/DanhSachChucNang/"><i class="fa fa-th-list"></i><span>@ViewText.TITLE_DANHSACH_CHUCDANH</span></a>
+                <a class="custom-a  list-group-item" id="doi-mat-khau-btn" href="#" onclick="return false"><i class="fa fa-shield"></i><span>@ViewText.TITLE_DOIMATKHAU</span></a>
+                
+                <a class="custom-a info-nhan-vien-button list-group-item" href="@Url.Action("LogOff", "Account")"><i class="fa fa-sign-out"></i><span>@ViewText.TITLE_DANGXUAT</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="right-column">
+        <div id="main-content">
+            <div id="contentChiTietNhanVien" style="min-width:300px; min-height:300px">
+                @Html.Partial("_ThongTinNhanVien")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/Custom/QuanLyNhanVien/Biz.TaiKhoanNhanVien.js"></script>
+}

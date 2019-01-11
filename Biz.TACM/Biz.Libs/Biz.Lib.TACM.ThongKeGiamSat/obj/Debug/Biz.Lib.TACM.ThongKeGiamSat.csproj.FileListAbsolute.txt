@@ -1,0 +1,5 @@
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThongKeGiamSat.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.ThongKeGiamSat.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThongKeGiamSat\obj\Debug\Biz.Lib.TACM.ThongKeGiamSat.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThongKeGiamSat\obj\Debug\Biz.Lib.TACM.ThongKeGiamSat.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.ThongKeGiamSat\obj\Debug\Biz.Lib.TACM.ThongKeGiamSat.pdb

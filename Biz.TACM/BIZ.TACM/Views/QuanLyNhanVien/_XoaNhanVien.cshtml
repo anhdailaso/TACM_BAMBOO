@@ -1,0 +1,25 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model int
+@using (Html.BeginForm("XoaNhanVienConfirmed", "QuanLyNhanVien", FormMethod.Post, new { id = "formXoaNhanVien" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("nhanVienID", Model)
+    <div class="modal-header">
+        <h5 class="text-uppercase">@ViewText.TITLE_XOA_THONGTINNHANVIEN</h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+            @string.Format(NotifyMessage.BANCO_MUONXOA, "thông tin nhân viên")
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="NhanVien-del-btn" aria-hidden="true">@ViewText.BUTTON_XOA</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        XoaNhanVienModule.init();
+    });
+</script>

@@ -1,0 +1,52 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+
+<div id="contentChuanBiXetXuQuyetDinh">
+    
+</div>
+
+<!-- Modal Thêm quyết định -->
+<div class="modal fade" id="modelChuanBiXetXuQuyetDinh" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase">@ViewText.BUTTON_THEMQUYETDINH</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height: 200px">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal xóa quyết định -->
+<div class="modal fade" id="modelChuanBiXetXuXoaQuyetDinh" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase">@ViewText.TITLE_XOAQUYETDINH</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert">
+                    @string.Format(NotifyMessage.BANCO_MUONXOA,"quyết định")
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <a href="#" class="btn btn-danger text-uppercase pull-right delete-chuan-bi-xet-xu-quyet-dinh">@ViewText.BUTTON_XOA</a>
+            </div>
+        </div>
+    </div>
+</div>

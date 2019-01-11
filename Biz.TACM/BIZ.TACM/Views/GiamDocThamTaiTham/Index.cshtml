@@ -1,0 +1,74 @@
+﻿@model List<Biz.Lib.TACM.GiamDocThamTaiTham.Model.GiamDocThamTaiThamModel>
+@using Biz.Lib.TACM.Resources.Resources
+@using PagedList.Mvc
+@using Biz.TACM.Infrastructure.Extensions
+@{
+    ViewBag.Title = ViewText.TITLE_GIAMDOCTHAMTAITHAM;
+}
+<div class="float-left">
+    <h3 class="text-uppercase mb-2">@ViewText.TITLE_GIAMDOCTHAMTAITHAM</h3>
+</div>
+<div class="clearfix"></div>
+<div id="main-content">
+    <div class="container-fluid">
+        
+        <div class="row mb-4">
+            <div class="col-9">
+                <div class="search-box">
+                    @using (Html.BeginForm("Index", "GiamDocThamTaiTham", FormMethod.Get, new { @id = "formTimKiem" }))
+                    {
+
+                        @Html.TextBox("GDTTT-search", @Request.QueryString["MaHoSo"], new { @class = "form-control", placeholder = "Mã hồ sơ, số quyết định, ngày quyết định", @maxlength = "20" })
+                        <button type="button" class="search-button"><i class="material-icons">@ViewText.LABEL_SEARCH</i></button>
+                    }
+                </div>
+
+            </div>
+            <div class="col-3 text-right">
+
+                <a id="btnTaoHoSo" href="#" class="btn btn-primary" data-trigger="modal" data-target="#modelTaoHoSoMoi" data-url="@Url.Action("SuaGDTTT", "GiamDocThamTaiTham", new { gDTTTid=0})"><i class="fa fa-plus btn-icon-word-size"></i> @ViewText.BUTTON_THEMMOI</a>
+
+            </div>
+        </div>
+        <div class="container-fluid row">
+            <div id="giam-doc-tham-tai-tham-container" style="width: 100%">
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="giam-doc-tham-tai-tham-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>@ViewText.TABLE_SO</td>
+                            <td>@ViewText.TABLE_MAHOSO</td>
+                            <td>@ViewText.TABLE_NHOM</td>
+                            <td>@ViewText.TABLE_SO_QUYETDINH</td>
+                            <td>@ViewText.TABLE_NGAY_QUYETDINH</td>
+                            <td style="min-width:140px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modelTaoHoSoMoi" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modelchitiet" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/GiamDocThamTaiTham")
+    <script>
+        $(function () {
+            GDTTTModule.timKiem();
+        });
+    </script>
+    
+}
+

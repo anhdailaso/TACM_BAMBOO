@@ -1,0 +1,33 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.NhanDon.NoiDungDonViewModel
+
+@using (Html.BeginForm("EditNoiDungDon", "NhanDon", FormMethod.Post, new { @id = "formEditNoiDungDon" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title">@ViewText.TITLE_NOIDUNGDON</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                @Html.TextArea("NoiDungDon", Html.Raw(Model.NoiDungDon).ToString(), new { @class = "form-control" })
+                <small class="form-text text-danger"><span for="NoiDungDon"></span></small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-noi-dung-don-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        EditNoiDungDonModule.init();
+    });
+</script>
+

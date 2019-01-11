@@ -1,0 +1,139 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnModel
+@{
+    Layout = null;
+}
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var maNhomAn = anSessionModel.MaNhomAn;
+    var toaAn = anSessionModel.ToaAnId;
+}
+
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYLAMDON</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayLamDon)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYNOPDON_TOAAN</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayNopDonTaiToaAn)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HINHTHUC_GUIDON</span><span class="font-weight-bold">@Model.HinhThucGoiDon</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAIDON</span><span class="font-weight-bold">@Model.LoaiDon</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LOAI_QUANHE</span><span class="font-weight-bold">@Model.LoaiQuanHe</span></li>
+        @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+        {
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHIEUKIEN</span><span class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+        }
+        else
+        {                       
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_QUANHE_PHAPLUAT</span><span class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+        }
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_CANBO_NHANDON</span><span class="font-weight-bold">@(Model.NhanVienCanBoNhanDon == null ? "" : Model.NhanVienCanBoNhanDon.HoTenVaMaNV)</span></li>
+        @if (toaAn == ToaAn.TinhCaMau.GetHashCode())
+        {
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_YEUTO_NUOCNGOAI</span><span class="font-weight-bold">@Model.YeuToNuocNgoai</span></li>
+        } 
+        <li class="list-group-item d-flex justify-content-between">
+            <span>@ViewText.LABEL_NGUOIKY_XACNHAN</span><span class="font-weight-bold">
+                @(Model.NhanVienNguoiKyXacNhanDaNhanDon == null ? "" : Model.NhanVienNguoiKyXacNhanDaNhanDon.HoTenVaMaNV)
+            </span>
+        </li>
+        @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+        {
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span id="HoSoVuAn_ThamPhan" class="font-weight-bold text-danger">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></li>
+        }
+    </ul>
+</div>
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+            <span>@ViewText.LABEL_CONGDOAN</span>
+            <span class="btn-cong-doan-size badge badge-pill @Html.GetColorStateAsString(Model.CongDoanHoSo)">@Html.GetCongDoanHoSoAsString(Model.CongDoanHoSo, maNhomAn, giaiDoan)</span>
+        </li>
+        @if (maNhomAn != Setting.MANHOMAN_HANHCHINH)
+        {
+            <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span id="HoSoVuAn_ThamPhan" class="font-weight-bold text-danger">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></li>
+        }
+
+        @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>
+                    @ViewText.LABEL_NGUOIKHOIKIEN_HOAC_DAIDIEN
+                </span>
+                <span id="HoSoVuAn_NguyenDon" class="font-weight-bold">
+                    @if (Model.DuongSu != null)
+                    {
+                        foreach (var duongSu in @Model.DuongSu)
+                        {
+                            @(duongSu.TuCachThamGiaToTung == "Người khởi kiện hoặc đại diện")
+                        }
+                    }
+                </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>
+                    @ViewText.LABEL_NGUOIBIKIEN_HOAC_DAIDIEN
+                </span>
+                <span id="HoSoVuAn_NguyenDon" class="font-weight-bold">
+                    @if (Model.DuongSu != null)
+                    {
+                        foreach (var duongSu in @Model.DuongSu)
+                        {
+                            @(duongSu.TuCachThamGiaToTung == "Người bị kiện hoặc đại diện")
+                        }
+                    }
+                </span>
+            </li>
+        }
+        else
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_NGUYENDON : ViewText.LABEL_NGUOIYEUCAU)
+                </span>
+                <span id="HoSoVuAn_NguyenDon" class="font-weight-bold">
+                    @if (Model.DuongSu != null)
+                    {
+                        foreach (var duongSu in @Model.DuongSu)
+                        {
+                            @(duongSu.TuCachThamGiaToTung == "Nguyên đơn" | duongSu.TuCachThamGiaToTung == "Người yêu cầu" ? duongSu.HoVaTen : "")
+                        }
+                    }
+                </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_BIDON : ViewText.LABEL_NGUOILIENQUAN)
+                <span id="HoSoVuAn_BiDon" class="font-weight-bold">
+                    @if(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP)
+                    {
+                        if (@Model.DuongSu != null)
+                        {
+                            foreach (var duongSu in @Model.DuongSu)
+                            {
+                                @(duongSu.TuCachThamGiaToTung == "Bị đơn" ? duongSu.HoVaTen : "")
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (@Model.DuongSu != null)
+                        {
+                            foreach (var duongSu in @Model.DuongSu)
+                            {
+                                @(duongSu.TuCachThamGiaToTung == "Người có quyền lợi, nghĩa vụ liên quan" ? duongSu.HoVaTen : "")
+                            }
+                         }
+                    }
+                </span>
+            </li>
+        }
+
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCHUYENDON</span><span id="HoSoVuAn_NgayChuyenDon" class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayChuyenDon)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTRADON</span><span id="HoSoVuAn_NgayTraDon" class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayTraDon)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAY_KHIEUNAI</span><span id="HoSoVuAn_NgayKhieuNai" class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayKhieuNai)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LALBLE_NGAYLAPDON</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOILAPDON</span><span class="font-weight-bold">@(Model.NhanVienNguoiLapDon == null ? "" : Model.NhanVienNguoiLapDon.HoTenVaMaNV)</span></li>
+    </ul>
+</div>

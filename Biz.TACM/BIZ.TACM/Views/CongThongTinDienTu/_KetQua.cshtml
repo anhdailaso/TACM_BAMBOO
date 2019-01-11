@@ -1,0 +1,328 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.CongThongTinDienTu.TraCuuHoSoVuAnViewModel
+
+@{ 
+    int STTHG = 1;
+    int STTQD;
+    int STTDVARXX;
+    int STTTT;
+    if (Model.LoaiQuanHe == "Tranh chấp")
+    {
+        STTQD = 2;
+        STTDVARXX = 3;
+        STTTT = 4;
+    }
+    else
+    {
+        STTQD = 1;
+        STTDVARXX = 2;
+        STTTT = 3;
+    }
+}
+
+@Html.HiddenFor(m => m.GiaiDoan)
+<div class="container-fluid row">
+    <div class="card col-12">
+        <div class="card-block">
+            <a href="@Url.Action("Index", "CongThongTinDienTu")" class="btn btn-primary text-uppercase"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;@ViewText.BUTTON_QUAYLAI</a>
+            <h3 class="text-center text-uppercase mb-4">@ViewText.LABEL_THONGTINVUVIEC</h3>
+
+            <div class="row">
+                <div class="col-6">
+                    @* Sơ thẩm *@
+                    <h5 class="text-uppercase font-weight-bold mb-3">@ViewText.TITLE_GIAIDOAN_SOTHAM</h5>
+                    <table class="table table-bordered table-ketqua-tracuu" cellspacing="0">
+                        <tr>
+                            <td width="300">@ViewText.LABEL_MAHOSO</td>
+                            <td>@Model.MaHoSo</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_TENVUVIEC</td>
+                            <td>@Model.TenVuAn</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_THULY_SOTHAM_SO</td>
+                            <td>@Model.SoThuLySoTham</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_QUANHE_PHAPLUAT</td>
+                            <td>@Model.QuanHePhapLuat</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_THAMPHAN_DUOCPHANCONG</td>
+                            <td>@Model.TenThamPhanSoTham</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_KETQUA_GIAIQUYET_SOTHAM</td>
+                            <td>@Model.KetQuaGiaiQuyetSoTham</td>
+                        </tr>
+                        <tr>
+                            <td>@ViewText.LABEL_KHANGCAO_KHANGNGHI</td>
+                            <td>@Model.KhangCaoKhangNghi</td>
+                        </tr>
+                    </table>
+
+                    @* Phúc thẩm *@
+                    <div class="contentPhucTham">
+                        <h5 class="text-uppercase font-weight-bold mb-3">@ViewText.TITLE_GIAIDOAN_PHUCTHAM</h5>
+                        <table class="table table-bordered table-ketqua-tracuu" cellspacing="0">
+                            <tr>
+                                <td width="300">@ViewText.LABEL_THULY_PHUCTHAM_SO</td>
+                                <td>@Model.SoThuLyPhucTham</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_THAMPHAN_DUOCPHANCONG</td>
+                                <td>@Model.TenThamPhanPhucTham</td>
+                            </tr>
+                            <tr>
+                                <td>@ViewText.LABEL_KETQUA_GIAIQUYET_PHUCTHAM</td>
+                                <td>@Model.KetQuaGiaiQuyetPhucTham</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h5 class="text-uppercase font-weight-bold mb-3">@ViewText.LABEL_QUATRINHGIAIQUYET</h5>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-tabs-qua-trinh-giai-quyet" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#content_so_tham" role="tab">@ViewText.LABEL_SOTHAM</a>
+                        </li>
+                        <li class="nav-item contentPhucTham">
+                            <a class="nav-link" data-toggle="tab" href="#content_phuc_tham" role="tab">@ViewText.LABEL_PHUCTHAM</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="content_so_tham" role="tabpanel">
+                            <ul class="list-group">
+                                @if (Model.LoaiQuanHe == "Tranh chấp")
+                                {
+                                    <li class="list-group-item">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <span class="badge badge-primary btn-custom-size">@STTHG</span>
+                                                <span class="align-text-bottom">
+                                                    @(Model.NhomAn.Equals(Setting.MANHOMAN_HANHCHINH) ? ViewText.TAB_TITLE_CONGKHAICHUNGCUDOITHOAI : ViewText.TAB_TITLE_HOAGIA_CONGKHAI_CHUNGCU)
+                                                </span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">@STTHG</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_NGAYMO_PHIENHOP</span><span class="font-weight-bold">@Model.HoaGiaiNgayGioMoPhienHop</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                <li class="list-group-item">
+                                    <div class="w-100">
+                                        <div class="mb-3">
+                                            <span class="badge badge-primary btn-custom-size">@STTQD</span>
+                                            <span class="align-text-bottom">
+                                                @ViewText.LABEL_QUYETDINH_THONGBAO
+                                            </span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">@STTQD</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                @*<span>@ViewText.LABEL_NGAYMO_PHIENHOP</span><span class="font-weight-bold">@Model.HoaGiaiNgayGioMoPhienHop</span>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @if (Model.LoaiQuanHe == "Tranh chấp")
+                                {
+                                    <li class="list-group-item">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <span class="badge badge-primary btn-custom-size">@STTDVARXX</span>
+                                                <span class="align-text-bottom">
+                                                    @ViewText.LABEL_DUAVUAN_RAXETXU
+                                                </span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">@STTDVARXX</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_NGAYTHANG_RAQUYETDINH</span><span class="font-weight-bold">@Model.DuaVuAnRaXetXuNgayRaQuyetDinhSoTham</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">@STTDVARXX</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_THOIGIAN_MOPHIENTOA</span><span class="font-weight-bold">@Model.DuaVuAnRaXetXuNgayGioMoPhienToaSoTham</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="list-group-item">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <span class="badge badge-primary btn-custom-size">@STTDVARXX</span>
+                                                <span class="align-text-bottom">
+                                                    @ViewText.LABEL_MOPHIENHOP
+                                                </span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">@STTDVARXX</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_NGAYTHANG_RAQUYETDINH</span><span class="font-weight-bold">@Model.MoPhienHopNgayRaQuyetDinhSoTham</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">@STTDVARXX</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_THOIGIAN_MOPHIENHOP</span><span class="font-weight-bold">@Model.MoPhienHopNgayGioMoPhienHopSoTham</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                <li class="list-group-item">
+                                    <div class="w-100">
+                                        <div class="mb-3">
+                                            <span class="badge badge-primary btn-custom-size">@STTTT</span>
+                                            @ViewText.LABEL_TRIEUTAP
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">@STTTT</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_LANTHU</span><span class="font-weight-bold">@Model.TrieuTapLanThuSoTham</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">@STTTT</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_NGAYGIO_MOPHIENTOA</span><span class="font-weight-bold">@Model.TrieuTapThoiGianMoPhienToaSoTham</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">@STTTT</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_DIADIEM</span><span class="font-weight-bold">@Model.TrieuTapDiaDiemMoPhienToaSoTham</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade contentPhucTham" id="content_phuc_tham" role="tabpanel">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="w-100">
+                                        <div class="mb-3">
+                                            <span class="badge badge-primary btn-custom-size">1</span>
+                                            <span class="align-text-bottom">
+                                                @ViewText.LABEL_QUYETDINH_THONGBAO
+                                            </span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">1</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                @*<span>@ViewText.LABEL_NGAYMO_PHIENHOP</span><span class="font-weight-bold">@Model.HoaGiaiNgayGioMoPhienHop</span>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @if (Model.LoaiQuanHe == "Tranh chấp")
+                                {
+                                    <li class="list-group-item">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <span class="badge badge-primary btn-custom-size">2</span>
+                                                <span class="align-text-bottom">
+                                                    @ViewText.LABEL_DUAVUAN_RAXETXU
+                                                </span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">2</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_NGAYTHANG_RAQUYETDINH</span><span class="font-weight-bold">@Model.DuaVuAnRaXetXuNgayRaQuyetDinhSoTham</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">2</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_THOIGIAN_MOPHIENTOA</span><span class="font-weight-bold">@Model.DuaVuAnRaXetXuNgayGioMoPhienToaSoTham</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="list-group-item">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <span class="badge badge-primary btn-custom-size">2</span>
+                                                <span class="align-text-bottom">
+                                                    @ViewText.LABEL_MOPHIENHOP
+                                                </span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">2</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_NGAYTHANG_RAQUYETDINH</span><span class="font-weight-bold">@Model.MoPhienHopNgayRaQuyetDinhSoTham</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <span class="badge badge-primary btn-custom-size invisible">2</span>
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <span>@ViewText.LABEL_THOIGIAN_MOPHIENHOP</span><span class="font-weight-bold">@Model.MoPhienHopNgayGioMoPhienHopSoTham</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                <li class="list-group-item">
+                                    <div class="w-100">
+                                        <div class="mb-3">
+                                            <span class="badge badge-primary btn-custom-size">3</span>
+                                            @ViewText.LABEL_TRIEUTAP
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">3</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_LANTHU</span><span class="font-weight-bold">@Model.TrieuTapLanThuSoTham</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">3</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_NGAYGIO_MOPHIENTOA</span><span class="font-weight-bold">@Model.TrieuTapThoiGianMoPhienToaSoTham</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <span class="badge badge-primary btn-custom-size invisible">3</span>
+                                            <div class="d-flex justify-content-between w-100">
+                                                <span>@ViewText.LABEL_DIADIEM</span><span class="font-weight-bold">@Model.TrieuTapDiaDiemMoPhienToaSoTham</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        init();
+    });
+
+    function init() {
+        if ($("#GiaiDoan").val() == 1) {
+            hideControlByClass(".contentPhucTham");
+        }
+    }
+</script>
+}

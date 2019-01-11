@@ -1,0 +1,83 @@
+﻿@using Biz.Lib.Authentication
+@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhanVien = AccountUtils.CurrentUsername();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var nhomAn = anSessionModel.MaNhomAn;
+    var maHoSo = Request.QueryString["MaHoSo"];
+}
+
+<div class="float-right text-right">
+    <a href="#" class="toggle-status"><i class="material-icons">keyboard_arrow_down</i></a>
+</div>
+<div class="clearfix"></div>
+
+@if (ViewContext.RouteData.Values["controller"].ToString() == "NhanDon"
+    && (ViewContext.RouteData.Values["action"].ToString() == "Index" || ViewContext.RouteData.Values["action"].ToString() == "NhanHoSoPhucTham"))
+{
+    if (!string.IsNullOrEmpty(maHoSo))
+    {
+        <nav class="vertical-nav">
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 1, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == null || Request.QueryString["CongDoanHoSo"] == "1" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(1) ? ViewBag.TongCongDoan[1] : 0 )</span><span class="title text-uppercase">@((giaiDoan == 1 && nhomAn != Setting.MANHOMAN_HINHSU) ? ViewText.TITLE_CONGDOAN_NHANDON : ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM)</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 2, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "2" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(2) ? ViewBag.TongCongDoan[2] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_THULY</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 3, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "3" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(3) ? ViewBag.TongCongDoan[3] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_CHUANBIXETXU</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 4, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "4" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(4) ? ViewBag.TongCongDoan[4] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 5, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "5" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(5) ? ViewBag.TongCongDoan[5] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_SAUXETXU</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = -1, MaHoSo = maHoSo, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "-1" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(-1) ? ViewBag.TongCongDoan[-1] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_LUUKHO</span></a>
+        </nav>
+    }
+    else
+    {
+        <nav class="vertical-nav">
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 1, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == null || Request.QueryString["CongDoanHoSo"] == "1" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(1) ? ViewBag.TongCongDoan[1] : 0 )</span><span class="title text-uppercase">@(giaiDoan == 1 && nhomAn != Setting.MANHOMAN_HINHSU ? ViewText.TITLE_CONGDOAN_NHANDON : ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM)</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 2, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "2" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(2) ? ViewBag.TongCongDoan[2] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_THULY</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 3, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "3" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(3) ? ViewBag.TongCongDoan[3] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_CHUANBIXETXU</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 4, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "4" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(4) ? ViewBag.TongCongDoan[4] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = 5, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "5" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(5) ? ViewBag.TongCongDoan[5] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_SAUXETXU</span></a>
+            <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = -1, maNv = maNhanVien})" class="@(Request.QueryString["CongDoanHoSo"] == "-1" ? "active" : "")"><span class="badge">@(ViewBag.TongCongDoan != null && ViewBag.TongCongDoan.ContainsKey(-1) ? ViewBag.TongCongDoan[-1] : 0)</span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_LUUKHO</span></a>
+        </nav>
+    }
+}
+else
+{
+    <nav class="vertical-nav chi-tiet-ho-so">
+        <a href="@Url.Action("ChiTietHoSo", "NhanDon", new { id = ViewContext.RouteData.Values["id"] })" class="@(ViewContext.RouteData.Values["controller"].ToString() == "NhanDon" || ViewContext.RouteData.Values["controller"].ToString() == "NhanHoSo" ? "active" : "")">
+            <span class="badge">
+                @if (ViewBag.ActiveCongDoan >= 1 || ViewBag.ActiveCongDoan == -1)
+                {<i class='material-icons'>check</i>}
+            </span><span class="title text-uppercase">@(giaiDoan == 2 || nhomAn == Setting.MANHOMAN_HINHSU ? ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM : ViewText.TITLE_CONGDOAN_NHANDON)</span>
+        </a>
+        <a href="@Url.Action("Index", "ThuLy", new { id = ViewContext.RouteData.Values["id"] })" class="@(ViewContext.RouteData.Values["controller"].ToString() == "ThuLy" ? "active" : "")">
+            <span class="badge">
+                @if (ViewBag.ActiveCongDoan >= 2|| ViewBag.ActiveCongDoan == -1)
+                {<i class='material-icons'>check</i>}
+            </span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_THULY</span>
+        </a>
+        <a href="@Url.Action("Index", "ChuanBiXetXu", new { id = ViewContext.RouteData.Values["id"] })" class="@(ViewContext.RouteData.Values["controller"].ToString() == "ChuanBiXetXu" ? "active" : "")">
+            <span class="badge">
+                @if (ViewBag.ActiveCongDoan >= 3 || ViewBag.ActiveCongDoan == -1)
+                {<i class='material-icons'>check</i>}
+            </span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_CHUANBIXETXU</span>
+        </a>
+        <a href="@Url.Action("Index", "KetQuaXetXu", new { id = ViewContext.RouteData.Values["id"] })" class="@(ViewContext.RouteData.Values["controller"].ToString() == "KetQuaXetXu" ? "active" : "")">
+            <span class="badge">
+                @if (ViewBag.ActiveCongDoan >= 4 || ViewBag.ActiveCongDoan == -1)
+                {<i class='material-icons'>check</i>}
+            </span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET</span>
+        </a>
+        <a href="@Url.Action("Index", "SauXetXu", new { id = ViewContext.RouteData.Values["id"] })" class="@(ViewContext.RouteData.Values["controller"].ToString() == "SauXetXu" ? "active" : "")">
+            <span class="badge">
+                @if (ViewBag.ActiveCongDoan >= 5 || ViewBag.ActiveCongDoan == -1)
+                {<i class='material-icons'>check</i>}
+            </span><span class="title text-uppercase">@ViewText.TITLE_CONGDOAN_SAUXETXU</span>
+        </a>
+    </nav>
+
+}
+
+

@@ -1,0 +1,184 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.Lib.TACM.XetXu.Model.XetXuModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaNoiDungXetXu" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#modelXetXuNoiDung"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownListFor(m => m.XetXuID, (SelectList)ViewBag.ddlNgayTao, new { @id = "selectNgayTaoXetXu", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.XetXuID</span></li>
+                @if (!nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+                {
+                    <li class="list-group-item d-flex justify-content-between thu-tuc-lbl"><span>@ViewText.LABEL_THUTUC</span><span class="font-weight-bold">@Model.ThuTuc</span></li>
+                }
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTHANG_RAQUYETDINH</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayRaQuyetDinh)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span id="thoi-gian-mo-phien-toa-detail-lbl">@ViewText.LABEL_THOIGIAN_MOPHIENTOA</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.ThoiGianMoPhienToa)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span id="dia-diem-mo-phien-toa-detail-lbl">@ViewText.LABEL_DIADIEM_MOPHIENTOA</span><span class="font-weight-bold">@Model.DiaDiemMoPhienToa</span></li>
+                <li class="list-group-item d-flex justify-content-between vu-an-duoc-xet-xu-lbl"><span>@ViewText.LABEL_VUAN_DUOCXETXU</span><span class="font-weight-bold">@Model.VuAnDuocXetXu</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@Model.NhanVienThamPhan.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between tham-phan-khac-lbl"><span>@ViewText.LABEL_THAMPHAN_KHAC</span><span class="font-weight-bold">@Model.NhanVienThamPhanKhac.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between hoi-tham-nhan-dan-1-lbl"><span>@ViewText.LABEL_HOITHAMNHANDAN_1</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between hoi-tham-nhan-dan-2-lbl"><span>@ViewText.LABEL_HOITHAMNHANDAN_2</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan2.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between hoi-tham-nhan-dan-3-lbl"><span>@ViewText.LABEL_HOITHAMNHANDAN_3</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan3.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@Model.NhanVienThuKy.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KIEMSATVIEN</span>
+                    <span class="font-weight-bold">@(Model.KiemSatVien == Setting.VALUE_KIEMSATVIEN_KHONG ? Model.KiemSatVien : (Model.NhanVienKiemSatVien == null ? "" : Model.NhanVienKiemSatVien.HoTenVaMaNV))
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tabContentThamPhan" role="tab">@ViewText.LABEL_THAMPHAN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tabContentHoiThamNhanDan" role="tab">@string.Format(ViewText.LABEL_HOITHAMPHAN_NHANDAN, "") </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tabContentThuKy" role="tab">@ViewText.LABEL_THUKY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tabContentKiemSatVien" role="tab">@ViewText.LABEL_KIEMSATVIEN</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tabContentThamPhan" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@Model.NhanVienThamPhan.HoTenVaMaNV</span></label>
+                    </div>
+                    <div class="mb-3 border-bottom-custom  tham-phan-khac-lbl">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN_KHAC</span><span class="font-weight-bold">@Model.NhanVienThamPhanKhac.HoTenVaMaNV</span></label>
+                    </div>
+                    <div>
+                        <label>@ViewText.LABEL_THAMPHAN_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled DanhSachNhanhVien">
+                                @if (Model.ThamPhanDuKhuyet != null)
+                                {
+                                    foreach (var item in Model.ThamPhanDuKhuyet)
+                                    {
+                                        <li><label><input class="align-middle" checked type="checkbox" disabled /> @item.HoVaTenNV (@item.MaNV)</label></li>
+                                    }
+                                }
+                            </ul>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabContentHoiThamNhanDan" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom hoi-tham-nhan-dan-1-lbl">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_1</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan.HoTenVaMaNV</span></label>
+                    </div>
+                    <div class="mb-3 border-bottom-custom hoi-tham-nhan-dan-2-lbl">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_2</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan2.HoTenVaMaNV</span></label>
+                    </div>
+                    <div class="mb-3 border-bottom-custom hoi-tham-nhan-dan-3-lbl">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_3</span><span class="font-weight-bold">@Model.NhanVienHoiThamNhanDan3.HoTenVaMaNV</span></label>
+                    </div>
+                    <div>
+                        <label>@ViewText.LABEL_HOITHAMNHANDAN_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled DanhSachNhanhVien">
+                                @if (Model.HoiThamNhanDanDuKhuyet != null)
+                                {
+                                    foreach (var item in Model.HoiThamNhanDanDuKhuyet)
+                                    {
+                                        <li><label><input class="align-middle" checked type="checkbox" disabled /> @item.HoVaTenNV (@item.MaNV)</label></li>
+                                    }
+                                }
+                            </ul>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabContentThuKy" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom">
+                        <label class="d-flex justify-content-between"><span>Thư ký</span><span class="font-weight-bold">@Model.NhanVienThuKy.HoTenVaMaNV</span></label>
+                    </div>
+                    <div>
+                        <label>@ViewText.LABEL_THUKY_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled DanhSachNhanhVien">
+                                @if (Model.ThuKyDuKhuyet != null)
+                                {
+                                    foreach (var item in Model.ThuKyDuKhuyet)
+                                    {
+                                        <li><label><input class="align-middle" checked disabled type="checkbox" /> @item.HoVaTenNV (@item.MaNV)</label></li>
+                                    }
+                                }
+                            </ul>
+                        </div>                     
+                    </div>
+                </div>
+                <div class="tab-pane" id="tabContentKiemSatVien" role="tabpanel">
+                    <div class="mb-3 border-bottom-custom">
+                        <label class="d-flex justify-content-between"><span>@ViewText.LABEL_KIEMSATVIEN</span>
+                            <span class="font-weight-bold">@(Model.KiemSatVien == Setting.VALUE_KIEMSATVIEN_KHONG ? Model.KiemSatVien : (Model.NhanVienKiemSatVien == null ? "" : Model.NhanVienKiemSatVien.HoTenVaMaNV))</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label>@ViewText.LABEL_KIEMSATVIEN_DUKHUYET</label>
+                        <div class="card-block scroll-danhsachdukhuyet-chitiet">
+                            <ul class="list-unstyled DanhSachNhanhVien">
+                                @if (Model.KiemSatVienDuKhuyet != null)
+                                {
+                                    foreach (var item in Model.KiemSatVienDuKhuyet)
+                                    {
+                                        <li><label><input class="align-middle" checked disabled type="checkbox" /> @item.HoVaTenNV (@item.MaNV)</label></li>
+                                    }
+                                }
+                            </ul>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            if ($("#loaiQuanHe").val() === "Yêu cầu" || $("#nhomAn").val() == "AD") {
+                $("#thoi-gian-mo-phien-toa-detail-lbl").html("@ViewText.LABEL_THOIGIAN_MOPHIENHOP");
+                $("#dia-diem-mo-phien-toa-detail-lbl").html("@ViewText.LABEL_DIADIEM_MOPHIENHOP");
+                $(".hoi-tham-nhan-dan-1-lbl,.hoi-tham-nhan-dan-2-lbl,.hoi-tham-nhan-dan-3-lbl,.thu-tuc-lbl,.vu-an-duoc-xet-xu-lbl").attr('style', 'display: none !important');
+                $('[href="#tabContentHoiThamNhanDan"]').closest('li').hide();
+            }
+        });
+        if (@Model.HoiDong == 1 || @Model.HoiDong == 0) {
+            $(".tham-phan-khac-lbl,.hoi-tham-nhan-dan-3-lbl").attr('style', 'display: none !important');
+        }
+    </script>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemNoiDungXetXu" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-toggle="modal" data-target="#modelXetXuNoiDung"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

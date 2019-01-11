@@ -1,0 +1,105 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.QuanLyNhanVien.NhanVienViewModel
+
+@using (Html.BeginForm("ThuKyTheoThamPhan", "QuanLyNhanVien", FormMethod.Post, new { id = "formThuKyTheoThamPhan" }))
+{
+    @Html.AntiForgeryToken()
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase text-center">@ViewText.TITLE_THUKY_THAMPHAN</h5>
+    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+</div>
+    <div class="modal-body">
+        <div class="row mb-1">
+            <div class="col-8">
+
+            </div>
+            <div class="col-4">
+                <select id="loaiNV" class="form-control">
+                    <option value="1">
+                        @ViewText.LABEL_THUKY
+                    </option>
+                    <option value="2">
+                        @ViewText.LABEL_THAMTRAVIEN
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div id="tk" class="col-12">
+                <table class="table table-hover table-custom table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        <input id="checkboxAlltk" type="checkbox" />
+                    </td>
+                    <td>
+                        @ViewText.LABEL_THUKY
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (var i = 0; i < (int)ViewBag.sltk; i++)
+                {
+                    var manv = string.Format("manv-{0}", Model.ListNhanVienThuKy[i].MaNV);
+                    <tr>
+                            <td>
+                                @Html.CheckBoxFor(x => x.ListNhanVienThuKy[i].isckeck, new { @id = manv, @class = "cb-manv-tk" })
+                            </td>
+                            <td>
+                                @Model.ListNhanVienThuKy[i].HoTenVaMaNV
+                                @Html.HiddenFor(x => x.MaNV)
+                                @Html.HiddenFor(x => x.ListNhanVienThuKy[i].MaNV)
+                            </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+            </div>
+            <div id="ttv" class="col-12" style="display:none">
+                <table class="table table-hover table-custom table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        <input id="checkboxAllttv" type="checkbox" />
+                    </td>
+                    <td>
+                        @ViewText.LABEL_THAMTRAVIEN
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (var i = (int)ViewBag.sltk; i < Model.ListNhanVienThuKy.Count(); i++)
+                {
+                    var manv = string.Format("manv-{0}", Model.ListNhanVienThuKy[i].MaNV);
+                    <tr>
+                            <td>
+                                @Html.CheckBoxFor(x => x.ListNhanVienThuKy[i].isckeck, new { @id = manv, @class = "cb-manv-ttv" })
+                            </td>
+                            <td>
+                                @Model.ListNhanVienThuKy[i].HoTenVaMaNV
+                                @Html.HiddenFor(x => x.MaNV)
+                                @Html.HiddenFor(x => x.ListNhanVienThuKy[i].MaNV)
+                            </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btnCapNhatThuKy" aria-hidden="true">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+    <script type="text/javascript">
+        
+        $(function () {
+            ThuKyNhanVienModule.init();
+        });
+    </script>

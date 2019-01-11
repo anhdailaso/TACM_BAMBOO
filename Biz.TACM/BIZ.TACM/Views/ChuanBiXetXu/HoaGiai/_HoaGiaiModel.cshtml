@@ -1,0 +1,110 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+
+@model Biz.Lib.TACM.ChuanBiXetXu.Model.HoaGiaiModel
+
+
+@using (Html.BeginForm("EditChuanBiXetXuHoaGiai", "ChuanBiXetXu", FormMethod.Post, new { @id = "formEditChuanBiXetXuHoaGiai" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+
+    <div class="modal-header">
+        @if (ViewBag.MaNhomAn.Equals("HC"))
+        {
+            <h5 class="modal-title text-uppercase">@ViewText.TITLE_CONGKHAICHUNGCUDOITHOAI</h5>
+        }
+        else
+        {
+            <h5 class="modal-title text-uppercase">@ViewText.TITLE_HOAGIAI_CONGKHAI</h5>
+        }
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-4">@ViewText.LABEL_NGAYMO_PHIENHOP<span class="input-required">*</span></label>
+                    <div class="col-8">
+                        <div class="input-group date datepicker mb-3">
+                            @Html.TextBoxFor(m => m.NgayMoPhienHop, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <div class="row text-vertical-align-center">
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("GioMoPhienHop", (SelectList)ViewBag.GioMoPhienHopDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                giờ
+                            </label>
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("PhutMoPhienHop", (SelectList)ViewBag.PhutMoPhienHopDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                phút
+                            </label>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayMoPhienHop)</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>@ViewText.LABEL_NOIDUNG_PHIENHOP<span class="input-required">*</span></label>
+                    @Html.TextAreaFor(m => m.NoiDungPhienHop, new { @class = "form-control tinymce-editor", @style = "width:100%", @rows = "5" })
+                    <small>@Html.ValidationMessageFor(m => m.NoiDungPhienHop)</small>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4">@ViewText.LABEL_THAMPHAN<span class="input-required">*</span></label>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small>@Html.ValidationMessageFor(m => m.ThamPhan)</small>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-4">@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.ddlThuKy, Setting.DDL_CHOOSE, new { @class = "form-control"@*, disabled = "disabled"*@ })
+                        <input type="hidden" name="ThuKy" value="@Model.ThuKy" />
+                        <small>@Html.ValidationMessageFor(m => m.ThuKy)</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(".datepicker").datetimepicker({
+        format: 'DD/MM/YYYY',
+        defaultDate: new Date()
+        //useCurrent: false,
+        @*maxDate: moment('@string.Format("{0:dd/MM/yyyy}", ViewBag.NgayRaQuyetDinh)', 'DD/MM/YYYY').toDate()*@
+    });
+
+    //$('.datetimepicker').datetimepicker({
+    //    format: 'DD/MM/YYYY HH:mm:ss'
+    //});
+
+    //var settings = $.extend({
+    //    selector: ".tinymce-editor",
+    //    height: 143,
+    //}, $.tinymceDefaults);
+
+    //tinymce.remove();
+    //tinymce.init(settings);
+
+    CKEDITOR.replace('NoiDungPhienHop');
+
+    $("#ThamPhan").change();
+</script>

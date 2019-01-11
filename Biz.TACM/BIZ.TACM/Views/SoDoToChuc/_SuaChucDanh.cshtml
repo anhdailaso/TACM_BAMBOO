@@ -1,0 +1,80 @@
+﻿@model Biz.TACM.Models.ViewModel.SoDoToChuc.ChucDanhViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@using (Html.BeginForm("SuaChucDanh", "SoDoToChuc", FormMethod.Post, new { id = "formSuaChucDanh" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="ChucDanhID" value="@Model.SoDoToChucID" />
+    <input type="hidden" name="SoDoToChucID" value="@Model.SoDoToChucID" />
+    <input type="hidden" name="ToaAnID" value="@Model.ToaAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_CHINHSUA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_TENCHUCDANH<span class="input-required">*</span></label>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        @Html.TextBoxFor(m => m.ChucDanh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ChucDanh)</small>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_CHUCDANHCHA<span class="input-required">*</span></label>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        @*@Html.DropDownListFor(m => m.ChucDanhChaID, (SelectList)ViewBag.listChucDanh, "Không có", new { @class = "form-control" })*@
+                        <select id="treeviewDropdownBtn" name="ChucDanhChaID" class="form-control">
+                            <option id="chucDanhCha" selected hidden>@ViewText.LABEL_KHONGCO</option>
+                        </select>
+                        <div id="treeview" tabindex="-1" style="display: none; position: absolute; z-index: 1000; width: calc(100% - 30px);">
+                            <table class="tree tree-ddlist table table-hover table-bordered">
+                                @foreach (var item in ViewBag.listChucDanh)
+                                {
+                                    <tr class="treegrid-@item.SoDoToChucID @(item.ChucDanhChaID == 0 ? "" : "treegrid-parent-" + item.ChucDanhChaID)">
+                                        <td style="min-width: 250px;">
+                                            <span class="align-text-bottom itemChucDanhChaSoDoToChuc" data-id="@item.SoDoToChucID" data-chuc-danh="@item.ChucDanh" style="text-decoration: none; color: rgb(2, 117, 216);">
+                                                @item.ChucDanh
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_DIENDAINGHIEPVU</label>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12">
+                        @Html.TextArea("DienGiaiNghiepVu", null, new { @class = "form-control", style = "width: 100%", @maxlength = 2000, id = "dien-giai-nghiep-vu-sua-textarea" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="sua-chuc-danh-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        SuaChucDanhModule.init();
+    });
+</script>
+

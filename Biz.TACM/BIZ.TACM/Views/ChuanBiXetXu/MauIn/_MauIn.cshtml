@@ -1,0 +1,305 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@using Biz.Lib.Helpers
+@using Biz.TACM.Enums
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+}
+<div class="mt-3">
+    @if (giaiDoan == 1)
+    {
+        <div class="mb-3">
+            <span>
+                <a id="mau-in-so-47-btn" class="ml-2" href="#mau-in-so-47-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="mau-in-so-47-btn_Doc" class="ml-2" href="#mau-in-so-47-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+
+                    if (Model.ThuLyTheoThuTuc != Setting.THUTUC_RUTGON)
+                    {
+                        @ViewText.LABEL_MAUIN_HC_QUYETDINHXETXUSOTHAM
+                    }
+                    else
+                    {
+                        @ViewText.LABEL_MAUIN_HC_QUYETDINHXETXUSOTHAMRUTGON
+                    }
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_QUYETDINHXETXUSOTHAM : ViewText.LABEL_MAUIN_DS_QUYETDINHMOPHIENHOPSOTHAM)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_QUYETDINHXETXUSOTHAM : ViewText.LABEL_MAUIN_HN_QUYETDINHMOPHIENHOPSOTHAM)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_KD_QUYETDINHXETXUSOTHAM : ViewText.LABEL_MAUIN_KD_QUYETDINHMOPHIENHOPSOTHAM)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_LD_QUYETDINHXETXUSOTHAM : ViewText.LABEL_MAUIN_LD_QUYETDINHMOPHIENHOPSOTHAM)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    @ViewText.LABEL_MAUIN_HS_QUYETDINHDUAVUANRAXETXUST
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+                {
+                    @ViewText.LABEL_MAUIN_AD_QUYETDINHQUYETDINHMOPHIENHOP_ST
+                }
+                else
+                {
+                    <span>@string.Format(Setting.MAU, "47")</span>
+                    if ((Model.LoaiQuanHe == null || Model.LoaiQuanHe.Equals("Tranh chấp")) && Model.NhomAn != "AD")
+                    {
+                        <span>@ViewText.TEXT_QUYETDINH_XETXU</span>
+                    }
+                    else if (Model.NhomAn == "AD" || Model.LoaiQuanHe.Equals("Yêu cầu"))
+                    {
+                        <span>@ViewText.TEXT_QUYETDINH_MOPHIENHOP</span>
+                    }
+                }
+            </span>
+        </div>
+    }
+    else if (giaiDoan == 2)
+    {
+        <div class="mb-3">
+            <span>
+                <a id="mau-in-so-47PT-btn" class="ml-2" href="#mau-in-QD-PT-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="mau-in-so-47PT-btn_Doc" class="ml-2" href="#mau-in-QD-PT-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+
+                    if (Model.ThuLyTheoThuTuc != Setting.THUTUC_RUTGON)
+                    {
+                        @ViewText.LABEL_MAUIN_HC_QUYETDINHXETXUPHUCTHAM
+                    }
+                    else
+                    {
+                        @ViewText.LABEL_MAUIN_HC_QUYETDINHXETXUPHUCTHAMRUTGON
+                    }
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    @ViewText.LABEL_MAUIN_HS_QUYETDINHDUAVUANRAXETXUPT
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+                {
+                    if (Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP)
+                    {
+                        @(Model.LoaiKetQuaXetXu == LoaiKetQuaXetXu.QuyetDinh.GetHashCode() ? ViewText.LABEL_MAUIN_DS_QUYETDINHMOPHIENHOP_TC_PT : ViewText.LABEL_MAUIN_DS_QUYETDINHDUAVUANRAXETXUPT)
+                    }
+                    else
+                    {
+                        @ViewText.LABEL_MAUIN_DS_QUYETDINHMOPHIENHOPPT
+                    }
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+                {
+                    if (Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP)
+                    {
+                        @(Model.LoaiKetQuaXetXu == LoaiKetQuaXetXu.QuyetDinh.GetHashCode() ? ViewText.LABEL_MAUIN_HN_QUYETDINHMOPHIENHOP_TC_PT : ViewText.LABEL_MAUIN_HN_QUYETDINHDUAVUANRAXETXUPT)
+                    }
+                    else
+                    {
+                        @ViewText.LABEL_MAUIN_HN_QUYETDINHMOPHIENHOPPT
+                    }
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+                {
+                    @ViewText.LABEL_MAUIN_AD_QUYETDINHQUYETDINHMOPHIENHOP_PT
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+                {
+                    @ViewText.LABEL_MAUIN_KD_QUYETDINHDUAVUANRAXETXUPT
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+                {
+                    @ViewText.LABEL_MAUIN_LD_QUYETDINHDUAVUANRAXETXUPT
+                }
+                else
+                {
+                    if (Model.NhomAn != "AD" && (Model.LoaiQuanHe == null || Model.LoaiQuanHe == "Tranh chấp"))
+                    {
+                        <span>@ViewText.TEXT_QUYETDINH_XETXU phúc thẩm</span>
+                    }
+                    else if (Model.NhomAn == "AD" || Model.LoaiQuanHe.Equals("Yêu cầu"))
+                    {
+                        <span>@ViewText.TEXT_QUYETDINH_MOPHIENHOP phúc thẩm</span>
+                    }
+                }
+
+            </span>
+        </div>
+    }
+    @if (Model.NhomAn == "AD" && giaiDoan == 1)
+    {
+        <div class="mb-3">
+            <span>
+                <a a data-loai="dinhchi" class="ml-2 underline-custom quyet-dinh-dinh-chi-btn" href="#mau-in-quyet-dinh-dinh-chi-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="quyet-dinh-dinh-chi-btn_Doc" class="ml-2" href="#quyet-dinh-dinh-chi-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @ViewText.LABEL_MAUIN_AD_QUYETDINHDINHCHI
+            </span>
+        </div>
+        <div class="mb-3">
+            <span>
+                <a data-loai="tamdinhchi" class="ml-2 underline-custom quyet-dinh-dinh-chi-btn" href="#mau-in-quyet-dinh-tam-dinh-chi-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="quyet-dinh-tam-dinh-chi-btn_Doc" class="ml-2" href="#quyet-dinh-tam-dinh-chi-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @ViewText.LABEL_MAUIN_AD_QUYETDINHTAMDINHCHI
+            </span>
+        </div>
+    }
+
+
+    <div class="mb-3">
+        <span>
+            <a class="ml-2 mau-in-giay-trieu-tap-btn" href="#mau-in-giay-trieu-tap-btn">
+                <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+            </a>
+            <a id="mau-in-giay-trieu-tap-btn-Doc" class="ml-2" href="#mau-in-giay-trieu-tap-btn-Doc">
+                <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+            </a>
+            @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+            {
+                @ViewText.LABEL_MAUIN_HC_GIAYTRIEUTAP
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+            {
+                @ViewText.LABEL_MAUIN_HS_GIAYTRIEUTAPNGUOITHAMGIATOTUNG
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+            {
+                if (giaiDoan == 1)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_GIAYTRIEUTAP_TC : ViewText.LABEL_MAUIN_DS_GIAYTRIEUTAP_YC)
+                }
+                else
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_GIAYTRIEUTAP_TC_PT : ViewText.LABEL_MAUIN_DS_GIAYTRIEUTAP_YC_PT)
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+            {
+                if (giaiDoan == 1)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_GIAYTRIEUTAP_TC : ViewText.LABEL_MAUIN_HN_GIAYTRIEUTAP_YC)
+                }
+                else
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_GIAYTRIEUTAP_TC_PT : ViewText.LABEL_MAUIN_HN_GIAYTRIEUTAP_YC_PT)
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+            {
+                @ViewText.LABEL_MAUIN_KD_GIAYTRIEUTAP
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+            {
+                @ViewText.LABEL_MAUIN_LD_GIAYTRIEUTAP
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+            {
+                @ViewText.LABEL_MAUIN_AD_GIAYTRIEUTAP
+            }
+            else
+            {
+                @ViewText.TEXT_GIAY_TRIEUTAP
+            }
+        </span>
+    </div>
+
+
+    @if (Model.NhomAn == "HS")
+    {
+
+        <div class="mb-3">
+            <span>
+                <a data-loai="bicao" class="ml-2 underline-custom mau-in-giay-trieu-tap-btn" href="#mau-in-giay-trieu-tap-bi-cao-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="mau-in-giay-trieu-tap-bicao-btn-Doc" class="ml-2" href="#mau-in-giay-trieu-tap-bicao-btn-Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+
+                @ViewText.LABEL_MAUIN_HS_GIAYTRIEUTAPBICAO
+
+            </span>
+        </div>
+
+        if (giaiDoan == 1)
+        {
+            <div class="mb-3">
+                <span>
+                    <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                    <a data-mauInSo="4" class="ml-2 underline-custom mau-in-quyet-dinh-tam-giam-btn" href="#mau-in-quyet-dinh-tam-giam-btn">
+                        @(string.Format(ViewText.LABEL_QUYETDINH_TAMGIAM + " (mẫu số 04)"))
+                    </a>
+                </span>
+            </div>
+            <div class="mb-3">
+                <span>
+                    <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                    <a data-mauInSo="5" class="ml-2 underline-custom mau-in-quyet-dinh-tam-giam-btn" href="#mau-in-quyet-dinh-tam-giam-btn">
+                        @(string.Format(ViewText.LABEL_QUYETDINH_TAMGIAM + " (mẫu số 05)"))
+                    </a>
+                </span>
+            </div>
+        }
+
+
+        if (giaiDoan == 1)
+        {
+            <div class="mb-3">
+                <span>
+                    <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                    <a id="mau-in-quyet-dinh-gia-han-btn" class="ml-2 underline-custom" href="#mau-in-quyet-dinh-gia-han-btn">
+                        @ViewText.LABEL_QUYETDINHGIAHAN
+                    </a>
+                </span>
+            </div>
+        }
+        <div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a data-loai="hoidong" class="ml-2 underline-custom mau-in-quyet-dinh-tam-hoan-btn" href="#mau-in-quyet-dinh-tam-hoan-hoi-dong-btn">
+                    @(ViewText.LABEL_QUYETDINHTAMHOAN + " " + ViewText.LABEL_HOIDONGXETXU)
+                </a>
+            </span>
+        </div>
+        <div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a data-loai="chanhan" class="ml-2 underline-custom mau-in-quyet-dinh-tam-hoan-btn" href="#mau-in-quyet-dinh-tam-hoan-chanh-an-btn">
+                    @(ViewText.LABEL_QUYETDINHTAMHOAN + " " + ViewText.LABEL_CHANHANTOAAN)
+                </a>
+            </span>
+        </div>
+        <div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a id="mau-in-lenh-trich-xuat-btn" class="ml-2 underline-custom" href="#mau-in-lenh-trich-xuat-btn">
+                    @ViewText.LABEL_LENHTRICHXUAT
+                </a>
+            </span>
+        </div>
+    }
+</div>

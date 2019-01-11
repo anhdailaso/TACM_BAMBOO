@@ -1,0 +1,166 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.Lib.TACM.KetQuaXetXu.Model.BanAnModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+@if (Model != null && Model.HoSoVuAnID!=0)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaBanAn" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#modelKetQuaXetXuBanAn" data-url="#"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownListFor(m => m.KQXXBanAnID, (SelectList)ViewBag.ddlNgayTao, new { @id = "selectNgayTaoBanAn", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.SoBanAn</span></li>
+                @if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                {
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYRABANAN</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", Model.NgayThangNamBanAn)</span></li>
+                }
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYMO_PHIENTOA</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayMoPhienToa)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAY_TUYENAN</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayTuyenAn)</span></li>
+                @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHIEUKIEN</span><span id="HoSoVuAn_QuanHePhapLuat" class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+                }
+                else if (maNhomAn != Setting.MANHOMAN_HINHSU)
+                {
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_QUANHE_PHAPLUAT</span><span class="font-weight-bold">@Model.QuanHePhapLuat</span></li>
+                }
+                <li id="ket-qua-xet-xu-label" class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KETQUA_XETXU</span><span class="font-weight-bold">@Model.KetQuaXetXu</span></li>
+                @if (maNhomAn != Setting.MANHOMAN_HINHSU)
+                {
+                    <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HIEULUC</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.HieuLuc)</span></li>
+                }
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>@ViewText.LABEL_DINHKEM_FILE</span><span class="font-weight-bold">
+                        @if (Model.DinhKemFile != null)
+                        {<a id="attackfile" target="_blank" href="~/Uploads/@Model.DinhKemFile">@Model.DinhKemFile</a>}
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active noi-dung-tuyen-xu-tab-title" data-toggle="tab" href="#KetQuaXetXuBanAnHoiDongXetXu" role="tab">@ViewText.LABEL_HOIDONGXETXU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuBanAnNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_TUYENXU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#KetQuaXetXuBanAnGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="KetQuaXetXuBanAnHoiDongXetXu" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 320px;">
+                            <div class="mb-3 border-bottom-custom">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN_CHUTOA</span><span class="font-weight-bold">@(Model.NhanVienThamPhan == null ? "" : Model.NhanVienThamPhan.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="tham-phan-1-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN1</span><span class="font-weight-bold">@(Model.NhanVienThamPhan1 == null ? "" : Model.NhanVienThamPhan1.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="tham-phan-2-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN2</span><span class="font-weight-bold">@(Model.NhanVienThamPhan2 == null ? "" : Model.NhanVienThamPhan2.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="tham-phan-khac-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN_KHAC</span><span class="font-weight-bold">@(Model.NhanVienThamPhanKhac == null ? "" : Model.NhanVienThamPhanKhac.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="hoi-tham-nhan-dan-1-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_1</span><span class="font-weight-bold">@(Model.NhanVienHoiThamNhanDan == null ? "" : Model.NhanVienHoiThamNhanDan.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="hoi-tham-nhan-dan-2-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_2</span><span class="font-weight-bold">@(Model.NhanVienHoiThamNhanDan2 == null ? "" : Model.NhanVienHoiThamNhanDan2.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom" id="hoi-tham-nhan-dan-3-lbl">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_HOITHAMNHANDAN_3</span><span class="font-weight-bold">@(Model.NhanVienHoiThamNhanDan3 == null ? "" : Model.NhanVienHoiThamNhanDan3.HoTenVaMaNV)</span></label>
+                            </div>
+                            <div class="mb-3 border-bottom-custom">
+                                <label class="d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@(Model.NhanVienThuKy == null ? "" : Model.NhanVienThuKy.HoTenVaMaNV)</span></label>
+                            </div>
+                            @if (Model.KiemSatVien != Setting.VALUE_KIEMSATVIEN_KHONG)
+                            {
+                                <div class="mb-3 border-bottom-custom" id="kiem-sat-vien-lbl">
+                                    <label class="d-flex justify-content-between"><span>@ViewText.LABEL_KIEMSATVIEN</span><span class="font-weight-bold">@(Model.KiemSatVien == Setting.VALUE_KIEMSATVIEN_VANGMAT ? Model.KiemSatVien : (Model.NhanVienKiemSatVien == null ? "" : Model.NhanVienKiemSatVien.HoTenVaMaNV))</span></label>
+                                </div>
+                            }                      
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="KetQuaXetXuBanAnNoiDung" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 320px; overflow: scroll">
+                            @Html.Raw(Server.HtmlDecode(@Model.NoiDungTuyenXu))
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="KetQuaXetXuBanAnGhiChu" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 320px; overflow: scroll">
+                            @Html.Raw(Server.HtmlDecode(@Model.GhiChu))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    if (maNhomAn == Setting.MANHOMAN_HINHSU)
+    {
+        <hr />
+        <div>
+            @Html.Partial("BanAn/ToiDanh/_KetQuaXetXuToiDanh")
+        </div>
+    }
+
+    <script type="text/javascript">
+        $(function() {
+            if ($("#giaiDoanHoSo").val() == 1) //so tham
+            {
+                $("#ket-qua-xet-xu-label").removeClass("d-flex").hide();
+                $("#tham-phan-1-lbl, #tham-phan-2-lbl").hide();
+        } else {
+                $('[href="#KetQuaXetXuBanAnNoiDung"]').closest('li').hide();
+                $("#hoi-tham-nhan-dan-1-lbl, #hoi-tham-nhan-dan-2-lbl, #hoi-tham-nhan-dan-3-lbl, #tham-phan-khac-lbl").hide();
+        //$('.nav-tabs a[href="#KetQuaXetXuBanAnGhiChu"]').tab('show');
+    }
+
+            if (@Model.HoiDong == 1 || @Model.HoiDong == 0) //hoi dong 3
+            {
+                $("#tham-phan-khac-lbl, #hoi-tham-nhan-dan-3-lbl").hide();
+            }
+        });
+    </script>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemBanAn" class="btn btn-sm btn-primary float-right mt-2" data-toggle="modal" data-target="#modelKetQuaXetXuBanAn"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+

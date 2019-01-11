@@ -1,0 +1,125 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.KetQuaXetXu.Model.QuyetDinhADBPXLHCModel
+
+@using (Html.BeginForm("EditKetQuaXetXuQuyetDinhADBPXLHC", "KetQuaXetXu", FormMethod.Post, new { @id = "formEditKetQuaXetXuQuyetDinhADBPXLHC" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <input type="hidden" id="SoQuyetDinhLienTuc" name="SoQuyetDinhLienTuc" value="@Model.SoQuyetDinh" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_QUYETDINH</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @*@{Model.SoQuyetDinh = ViewBag.SoQuyetDinh;}*@
+                        @Html.TextBoxFor(m => m.SoQuyetDinh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYRA_QUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayRaQuyetDinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayRaQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_THAMPHAN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_KIEMSATVIEN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.KiemSatVien, (SelectList)ViewBag.ddlKiemSatVien, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KiemSatVien)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.ddlThuKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThuKy)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_KETQUA_GIAIQUYET<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.KetQuaGiaiQuyet, (SelectList)ViewBag.ddlKetQuaGiaiQuyet, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KetQuaGiaiQuyet)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 pl-0">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tabLyDoModal" role="tab">@ViewText.LABEL_LYDO_CANCU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabKQXXGhiChuModal" role="tab">@ViewText.LABEL_GHICHU</a>
+                    </li>
+                </ul>
+                <div class="tab-content p-1">
+                    <div class="tab-pane active" id="tabLyDoModal" role="tabpanel">
+                        @Html.TextAreaFor(m => m.LyDo, new { @class = "form-control ckeditorClassQuyetDinh", id = "kqxx-quyet-dinh-ly-do-textarea", @style = "width:100%", @rows = "8" })
+                        @*<small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LyDo)</small>*@
+                    </div>
+                    <div class="tab-pane" id="tabKQXXGhiChuModal" role="tabpanel">
+                        @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control ckeditorClassQuyetDinh", id = "kqxx-quyet-dinh-ghi-chu-textarea", @style = "width:100%", @rows = "8" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        CKEDITOR.replaceAll('ckeditorClassQuyetDinh');
+
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $(document).on("change", '#ThamPhan', function () {
+            var maNV = $(this).val();
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: '/ChuanBiXetXu/GetThuKyTheoThamPhan',
+                data: {
+                    manv: maNV
+                },
+                success: function (response) {
+                    $('#ThuKy').html('');
+                    for (var i = 0; i < response.length; i++) {
+                        $('#ThuKy').append('<option value="' + response[i].MaNV + '">' + response[i].HoVaTenNV + ' (' + response[i].MaNV + ')' + '</option>');
+                    }
+
+                    $('#ThuKy').removeAttr('disabled');
+                    $('#ThuKy').next('input[name=ThuKy]').val('');
+                }
+            });
+        });
+    });
+
+</script>

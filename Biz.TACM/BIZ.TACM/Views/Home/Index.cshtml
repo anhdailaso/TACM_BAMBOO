@@ -1,0 +1,60 @@
+﻿@model Biz.TACM.Models.ViewModel.Home.HomeViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.TitleGiaiDoan = ViewText.TITLE_GIAIDOAN_SOTHAM;
+}
+
+@{
+    ViewBag.Title = ViewText.TITLE_TRANGCHU;
+}
+@if (Model.DSToaAn.Count() < 2)
+{
+    <div id="main-content" style="min-height: 431px;">
+        <div id="contentNhomAn">
+            @{Html.RenderAction("DanhSachNhomAn", "Home", new { toaAnId = ViewBag.toaAnActive });}
+        </div>
+        <hr class="border-0">
+        <div id="contentQuanTriNghiepVu">
+            @*@Html.Partial("_QuanTriNghiepVu", Model.NghiepVu)*@
+            @Html.Partial("_QuanTriNghiepVu")
+        </div>
+    </div>
+}
+else
+{
+    <div class="left-column">
+        <div class="list-group">
+            @foreach (var item in Model.DSToaAn)
+            {
+                if (item.ToaAnID == (int)ViewBag.toaAnActive)
+                {
+                    <a href="#" data-id="@item.ToaAnID" class="toa-an-btn list-group-item custom-active-toa-an">@item.TenToaAn</a>
+                }
+                else
+                {
+                    <a href="#" data-id="@item.ToaAnID" class="toa-an-btn list-group-item">@item.TenToaAn</a>
+                }
+            }
+        </div>
+    </div>
+    <div class="right-column">
+        <div id="main-content" style="min-height: 431px;">
+            <div id="contentNhomAn">
+                @{Html.RenderAction("DanhSachNhomAn", "Home", new { toaAnId = ViewBag.toaAnActive });}
+            </div>
+            <hr class="border-0">
+            <div id="contentQuanTriNghiepVu">
+                @Html.Partial("_QuanTriNghiepVu", Model.NghiepVu)
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/Home")
+    @Scripts.Render("~/bundles/MauIn")
+
+}
+
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Biz.TACM.Models.ViewModel.SoDoToChuc.ChucDanhViewModel>
+@using Biz.Lib.TACM.Resources.Resources
+
+@{ string classNameQLNV = ViewBag.loai != 2 ? "chucDanhQLNV" : "chucVuQLNV"; }
+
+@if (Model.Any())
+{
+    <a class="expand-all underline-custom" href="#">@ViewText.LABEL_XEMTATCA </a> <span>&nbsp;|&nbsp;</span> <a class="collapse-all underline-custom" href="#"> @ViewText.LABEL_THUGON</a>
+    <table class="tree table">
+        @foreach (var item in Model)
+        {
+            <tr class="treegrid-@item.SoDoToChucID @(item.ChucDanhChaID == 0 ? "" : "treegrid-parent-" + item.ChucDanhChaID)">
+                <td style="min-width: 250px">
+                    <a class="@classNameQLNV" data-selected="false" data-loai="@ViewBag.loai" data-chucdanh="@item.ChucDanh" href="#" id="treegrid-@item.SoDoToChucID" style="vertical-align: text-bottom; text-decoration: none; color: rgb(2, 117, 216);">
+                        @item.ChucDanh (@item.SoLuongNhanVienTheoChucDanh)
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="mt-5 text-center empty-data">
+        <blockquote>
+            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+        </blockquote>
+    </div>
+}

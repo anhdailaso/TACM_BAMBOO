@@ -1,0 +1,88 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.LuuKho.ThongTinLuuKhoViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.LABEL_LUUKHO</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("LuuKho", "SauXetXu", FormMethod.Post, new { id = "luu-kho-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-3">
+                <label>@ViewText.LABEL_NGAYLUU<span class="input-required">*</span></label>
+            </div>
+            <div class="col-9">
+                <div class="input-group" id="ngay-luu-kho-dtp">
+                    <input type="text" class="form-control" name="ngay-luu-kho-dtp" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text text-danger"><span for="ngay-luu-kho-dtp"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-3">
+                <label>@ViewText.LABEL_NGUOIGIAO<span class="input-required">*</span></label>
+            </div>
+            <div class="col-9">
+                @Html.DropDownListFor(m => m.NguoiGiao, (SelectList)ViewBag.danhSachNguoiGiao, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "nguoi-giao-dropdownlist" })
+                <small class="form-text text-danger"><span for="nguoi-giao-dropdownlist"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-3">
+                <label>@ViewText.LABEL_NGUOINHAN<span class="input-required">*</span></label>
+            </div>
+            <div class="col-9">
+                @Html.DropDownListFor(m => m.NguoiNhanLuu, (SelectList)ViewBag.danhSachNguoiNhanLuu, Setting.DDL_CHOOSE, new { @class = "form-control", @id = "nguoi-nhan-dropdownlist" })
+                <small class="form-text text-danger"><span for="nguoi-nhan-dropdownlist"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#modal-ghi-chu-tinh-trang-ho-so" role="tab">@ViewText.LABEL_GHICHU_TINHTRANGHOSO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#modal-ghi-chu" role="tab">@ViewText.LABEL_GHICHU</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="modal-ghi-chu-tinh-trang-ho-so" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                @Html.TextAreaFor(m => m.GhiChuTinhTrangHoSo, new { @class = "form-control", style = "width: 100%", id = "ghi-chu-tinh-trang-ho-so-textarea" })
+                                <small class="form-text text-danger"><span for="ghi-chu-tinh-trang-ho-so-textarea"></span></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="modal-ghi-chu" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", style = "width: 100%", id = "ghi-chu-textarea" })
+                                <small class="form-text text-danger"><span for="ghi-chu-textarea"></span></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="luu-kho-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        LuuKhoModalModule.init();
+    });
+</script>

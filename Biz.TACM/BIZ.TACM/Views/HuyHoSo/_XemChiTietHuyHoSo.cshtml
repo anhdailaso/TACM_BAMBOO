@@ -1,0 +1,71 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.HuyHoSo.HoSoVuAnViewModel
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_THONGTINHOSOHUY</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-information table-hover">
+                <tbody>
+                    <tr>
+                        <td>@ViewText.LABEL_SO</td>
+                        <td class="text-value-bold">@Model.SoHoSo</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_MAHOSO</td>
+                        <td class="text-value-bold">@Model.MaHoSo</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_TENVUAN</td>
+                        <td class="text-value-bold">@Model.TenVuAn</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_TOAAN</td>
+                        <td class="text-value-bold">@Model.ToaAn</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_NHOMAN</td>
+                        <td class="text-value-bold">@Model.NhomAn</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_GIAIDOAN</td>
+                        <td class="text-value-bold">@Model.GiaiDoan</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_CONGDOAN</td>
+                        <td class="text-value-bold">@Model.CongDoan</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_NGAYHUY</td>
+                        <td class="text-value-bold">@Model.NgayHuy</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_NGUOIHUY</td>
+                        <td class="text-value-bold">@Model.NguoiHuy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-md-5">
+                    <label>@ViewText.LABEL_LYDOHUY</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-block" style="height: 340px; overflow-y: scroll">
+                            @Html.Raw(Server.HtmlDecode(Model.LyDoHuy))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

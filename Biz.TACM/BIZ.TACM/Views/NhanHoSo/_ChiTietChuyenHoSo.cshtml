@@ -1,0 +1,18 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.NhanDon.Model.ChuyenDonModel
+
+<div class="col-12" style="margin-top: 48px">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TOAANCHUYENDEN</span><span class="font-weight-bold">@Model.ToaAnChuyenDi</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYCHUYEN</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayChuyenDon)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOICHUYEN</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LYDOCHUYEN_HOSO</span><span class="font-weight-bold">@Model.LyDoChuyenDon</span></li>
+    </ul>
+
+    <div class="mt-3"><label>@ViewText.LABEL_GHICHU_CHUYEN</label></div>
+    <div class="card">
+        <div class="card-block" style="height: 130px; overflow: scroll">
+            @Html.Raw(Model.GhiChu)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,223 @@
+--- LOG DATE: 21/04/2018 12:04:49 SA ---
+
+21/04/2018 12:04:49 SA-ERROR:CapNhatChucNang with error [System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'SP_NhanVien_DuLieuThuKyTheoThamPhan_CapNhat'.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585
+ClientConnectionId:e631ebf0-ea63-4708-9fe8-ad03ef041ae0
+Error Number:2812,State:1,Class:16]
+
+21/04/2018 12:06:49 SA-ERROR:CapNhatChucNang with error [System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'SP_NhanVien_DuLieuThuKyTheoThamPhan_CapNhat'.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585
+ClientConnectionId:e631ebf0-ea63-4708-9fe8-ad03ef041ae0
+Error Number:2812,State:1,Class:16]
+
+21/04/2018 12:16:30 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 12:17:19 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 12:21:43 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:13:26 SA-ERROR:System.ArgumentException: The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult Danhsachnhanvientheotoaan(Int32)' in 'Biz.TACM.Controllers.QuanLyNhanVienController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+21/04/2018 9:13:34 SA-ERROR:System.ArgumentException: The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult Danhsachnhanvientheotoaan(Int32)' in 'Biz.TACM.Controllers.QuanLyNhanVienController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+21/04/2018 9:21:13 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:21:43 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:22:54 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:23:56 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:24:06 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:24:19 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:25:03 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:25:17 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:25:44 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:28:42 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:34:38 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 585]
+
+21/04/2018 9:34:49 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:34:55 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:35:30 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:35:36 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:35:45 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:35:49 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:36:22 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatChucNangNhanVien(List`1 danhSachChucNang)
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatChucNangNhanVien(ChucNangViewModel danhSachChucNang) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 554]
+
+21/04/2018 9:49:21 SA-ERROR:System.ArgumentException: The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult Danhsachnhanvientheotoaan(Int32)' in 'Biz.TACM.Controllers.QuanLyNhanVienController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+
+21/04/2018 9:50:44 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 593]
+
+21/04/2018 9:54:13 SA-ERROR:CapNhatChucNang with error [System.ArgumentException: There are no records in the SqlDataRecord enumeration. To send a table-valued parameter with no rows, use a null reference for the value instead.
+   at Biz.Lib.TACM.QuanLyNhanVien.DataAccess.QuanLyNhanVienDataAccess.CapNhatThuKyThamPhan(List`1 danhsachthuky) in C:\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\DataAccess\QuanLyNhanVienDataAccess.cs:line 398
+   at Biz.TACM.Services.QuanLyNhanVienService.CapNhatThuKyThamPhan(NhanVienViewModel danhsachthuky) in C:\tacm2\TACM\Biz.TACM\BIZ.TACM\Services\QuanLyNhanVienService.cs:line 593]
+

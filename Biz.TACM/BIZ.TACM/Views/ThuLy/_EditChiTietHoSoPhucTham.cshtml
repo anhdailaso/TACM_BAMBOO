@@ -1,0 +1,118 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.TACM.Models.ViewModel.ThuLy.HoSoVuAnThuLyViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+}
+
+@using (Html.BeginForm("EditChiTietHoSo", "ThuLy", FormMethod.Post, new { @id = "formEditChiTietHoSo" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.LABEL_CAPNHATHOSO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label>@ViewText.LABEL_NGAYLAM_HOSO<span class="input-required">*</span></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group date" id="ngay-lam-don-dtp">
+                            @Html.TextBoxFor(x => x.NgayLamDon, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NgayLamDon)</small>
+                    </div>
+                </div>
+
+
+                @if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label>@ViewText.LABEL_LOAI_QUANHE<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-6">
+                            @Html.DropDownListFor(m => m.LoaiQuanHe, (SelectList)ViewBag.listLoaiQuanHe, null, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.LoaiQuanHe)</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label>@ViewText.LABEL_KHIEUKIEN<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-6">
+                            <input id="KhieuKienHidden" type="hidden" name="KhieuKienHidden" value="@Model.QuanHePhapLuat" />
+                            @Html.DropDownList("QuanHePhapLuat", (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control", id = "khieukienddl" })
+                            <div class="row option-hidden">
+                                <div class="col-2 d-inline-block">
+                                    <label>Khác</label>
+                                </div>
+                                <div class="col-9 d-inline-block">
+                                    @Html.TextBoxFor(m => m.QuanHePhapLuat, string.Empty, new { @class = "form-control", id = "KhieuKienTextbox", @style = "width:110%" })
+                                </div>
+                            </div>
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.QuanHePhapLuat)</small>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label>@ViewText.LABEL_LOAI_QUANHE<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-6">
+                            @Html.DropDownListFor(m => m.LoaiQuanHe, (SelectList)ViewBag.listLoaiQuanHe, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.LoaiQuanHe)</small>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label>@ViewText.LABEL_QUANHE_PHAPLUAT<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-6">
+                            @Html.DropDownListFor(m => m.QuanHePhapLuat, (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.QuanHePhapLuat)</small>
+                            <ul id="list-qhpl-tranh-chap" class="list-unstyled invisible hidden-xl-down">
+                                @foreach (var item in ViewBag.listQuanHePhapLuatTranhChap)
+                                {
+                                    <li><input value="@item.Value" /></li>
+                                }
+                            </ul>
+                            <ul id="list-qhpl-yeu-cau" class="list-unstyled invisible hidden-xl-down">
+                                @foreach (var item in ViewBag.listQuanHePhapLuatYeuCau)
+                                {
+                                    <li><input value="@item.Value" /></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="luu-chi-tiet-ho-so-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        EditChiTietHoSoModule.init();
+    });
+</script>
+
+
+

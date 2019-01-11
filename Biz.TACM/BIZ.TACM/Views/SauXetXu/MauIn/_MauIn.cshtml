@@ -1,0 +1,205 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@using Biz.Lib.Helpers
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+}
+
+<div class="mt-3">
+    <div class="mb-3">
+        <span>
+            <a id="mau-in-bia-ho-so-btn" class="ml-2" href="#mau-in-bia-ho-so-btn">
+                <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+            </a>
+            <a id="mau-in-bia-ho-so-btn_Doc" class="ml-2" href="#mau-in-bia-ho-so-btn_Doc">
+                <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+            </a>
+            @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+            {
+                if (giaiDoan == 1)
+                {
+                    @ViewText.LABEL_MAUIN_HC_BIAHOSOST
+                }
+                else
+                {
+                    @ViewText.LABEL_MAUIN_HC_BIAHOSOPT
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_HINHSU)
+            {
+                if (giaiDoan == 1)
+                {
+                    @ViewText.LABEL_MAUIN_HS_BIAHOSOSOTHAM
+                }
+                else
+                {
+                    @ViewText.LABEL_MAUIN_HS_BIAHOPHUCTHAM
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+            {
+                if (giaiDoan == 1)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_BIAHOSOST_VUAN : ViewText.LABEL_MAUIN_DS_BIAHOSOST_VUVIEC)
+                }
+                else
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_BIAHOSOPT_VUAN : ViewText.LABEL_MAUIN_DS_BIAHOSOPT_VUVIEC)
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+            {
+                if (giaiDoan == 1)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_BIAHOSOST_VUAN : ViewText.LABEL_MAUIN_HN_BIAHOSOST_VUVIEC)
+                }
+                else
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_BIAHOSOPT_VUAN : ViewText.LABEL_MAUIN_HN_BIAHOSOPT_VUVIEC)
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+            {
+                if (giaiDoan == 1)
+                {
+                    @ViewText.LABEL_MAUIN_KD_BIAHOSOSOTHAM
+                }
+                else
+                {
+                    @ViewText.LABEL_MAUIN_KD_BIAHOSOPHUCTHAM
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+            {
+                if (giaiDoan == 1)
+                {
+                    @ViewText.LABEL_MAUIN_AD_BIAHOSO_ST
+                }
+                else
+                {
+                    @ViewText.LABEL_MAUIN_AD_BIAHOSO_PT
+                }
+            }
+            else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+            {
+                if (giaiDoan == 1)
+                {
+                    @ViewText.LABEL_MAUIN_LD_BIAHOSOST
+                }
+                else
+                {
+                    @ViewText.LABEL_MAUIN_LD_BIAHOSOPT
+                }
+            }
+            else
+            {
+                @ViewText.TITLE_INBIA_HOSO
+            }
+
+        </span>
+    </div>
+    @*<div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a class="ml-2 underline-custom" href="#">@ViewText.TITLE_SONGHIEPVU</a>
+            </span>
+        </div>
+    *@
+    @if (giaiDoan == 1 && Model.NhomAn != "HS" && Model.NhomAn != "AD")
+    {
+        <div class="mb-3">
+            <span>
+                <a id="gxn-da-nhan-don-khang-cao-btn" class="ml-2" href="#gxn-da-nhan-don-khang-cao-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="gxn-da-nhan-don-khang-cao-btn_Doc" class="ml-2" href="#gxn-da-nhan-don-khang-cao-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+                    @ViewText.LABEL_MAUIN_HC_GIAYXACNHANDANHANDONKHANGCAO
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_GIAYXACNHANDANHANDONKHANGCAO : ViewText.LABEL_MAUIN_DS_GIAYXACNHANDANHANDONKHANGCAO_YC)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_GIAYXACNHANDANHANDONKHANGCAO : ViewText.LABEL_MAUIN_HN_GIAYXACNHANDANHANDONKHANGCAO_YC)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+                {
+                    @ViewText.LABEL_MAUIN_KD_GIAYXACNHANDANHANDONKHANGCAO
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+                {
+                    @ViewText.LABEL_MAUIN_LD_GIAYXACNHANDANHANDONKHANGCAO
+                }
+                else
+                {
+                    @ViewText.TITLE_GXNNHANNDONKHANGCAO
+                }
+            </span>
+        </div>
+    }
+    @if (Model.NhomAn != "HS" && Model.NhomAn != "AD")
+    {
+        <div class="mb-3">
+            <span>
+                <a id="mau-in-so-61-btn" class="ml-2" href="#mau-in-so-61-btn">
+                    <i class="fa fa-file-pdf-o fa-2x text-danger" aria-hidden="true"></i>
+                </a>
+                <a id="mau-in-so-61-btn_Doc" class="ml-2" href="#mau-in-so-61-btn_Doc">
+                    <i class="fa fa-file-word-o fa-2x" aria-hidden="true"></i>
+                </a>
+                @if (Model.NhomAn == Setting.MANHOMAN_HANHCHINH)
+                {
+                    @ViewText.LABEL_MAUIN_HC_THONGBAOTAMUNGANPHIPT
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_DANSU)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_DS_THONGBAOTAMUNGANPHIPT : ViewText.LABEL_MAUIN_DS_THONGBAOTAMUNGLEPHIPT)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_HONNHAN)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_HN_THONGBAOTAMUNGANPHIPT : ViewText.LABEL_MAUIN_HN_THONGBAOTAMUNGLEPHIPT)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_KINHTE)
+                {
+                    @(Model.LoaiQuanHe == Setting.LOAIQUANHE_TRANHCHAP ? ViewText.LABEL_MAUIN_KD_THONGBAOTAMUNGANPHIPT : ViewText.LABEL_MAUIN_KD_THONGBAOTAMUNGLEPHIPT)
+                }
+                else if (Model.NhomAn == Setting.MANHOMAN_LAODONG)
+                {
+                    @ViewText.LABEL_MAUIN_LD_THONGBAOTAMUNGANPHIPT
+                }
+                else
+                {
+                    if (Model.LoaiQuanHe == null || Model.LoaiQuanHe.Equals(ViewText.LABEL_LOAIQUANHE_TRANHCHAP))
+                    {
+                        <span>Mẫu 61: @NotifyMessage.THONGBAO_TAMUNGANPHI_PHUCTHAM</span>
+                    }
+                    else if (Model.LoaiQuanHe.Equals(ViewText.LABEL_LOAIQUANHE_YEUCAU))
+                    {
+                        <span>Mẫu 61: @NotifyMessage.THONGBAO_TAMUNGLEPHI_PHUCTHAM</span>
+                    }
+                }
+            </span>
+        </div>
+    }
+    @if (Model.NhomAn == "HS" && giaiDoan == 1)
+    {
+        <div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a id="bien-ban-khang-cao-btn" class="ml-2 underline-custom" href="#bien-ban-khang-cao">@ViewText.LABEL_BIENBANKHANGCAO</a>
+            </span>
+        </div>
+        <div class="mb-3">
+            <span>
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                <a id="thong-bao-khang-cao-btn" class="ml-2 underline-custom" href="#thong-bao-khang-cao-btn">@ViewText.LABEL_THONGBAOKHANGCAO</a>
+            </span>
+        </div>
+    }
+</div>

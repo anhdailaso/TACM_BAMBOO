@@ -1,0 +1,531 @@
+﻿@{
+    Layout = null;
+}
+
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@using Biz.TACM.Models.Model
+@model Biz.Lib.TACM.KetQuaXetXu.Model.QuyetDinhModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var maNhomAn = anSessionModel.MaNhomAn;
+    var giaiDoan = anSessionModel.GiaiDoanId;
+}
+
+@using (Html.BeginForm("EditKetQuaXetXuQuyetDinh", "KetQuaXetXu", FormMethod.Post, new { @id = "formEditKetQuaXetXuQuyetDinh" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <input type="hidden" name="HoiDong" value="@Model.HoiDong" />
+    <input type="hidden" id="SoQuyetDinhLienTuc" name="SoQuyetDinhLienTuc" value="@Model.SoQuyetDinh" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_QUYETDINH</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @*@{Model.SoQuyetDinh = ViewBag.SoQuyetDinh;}*@
+                        @Html.TextBoxFor(m => m.SoQuyetDinh, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoQuyetDinh)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYRA_QUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayRaQuyetDinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayRaQuyetDinh)</small>
+                    </div>
+                </div>
+                @if (maNhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+                {
+                    <div class="form-group row">
+                        <label class="col-5">@ViewText.LABEL_XEMXETQUYETDINH<span class="input-required">*</span></label>
+                        <div class="col-7">
+                            @Html.DropDownListFor(m => m.LyDo, (SelectList)ViewBag.xemxetQD, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LyDo)</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-5">@ViewText.LABEL_BIENPHAP_XLHC_DUOC_APDUNG</label>
+                        <div class="col-7">
+                            @Html.DropDownListFor(m => m.BienPhapXuLyHanhChinh, (SelectList)ViewBag.ddlBienPhapXLHC, Setting.DDL_CHOOSE, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-5">@ViewText.LABEL_THOIHAN_APDUNG</label>
+                        <div class="col-7">
+                            <div>
+                                @Html.DropDownListFor(m => m.ThoiHanApDung, (SelectList)ViewBag.ddlThoiHanApDung, Setting.DDL_CHOOSE, new { @class = "form-control col-8 d-inline-block" })
+                                <span class="ml-2">tháng</span>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                    if (maNhomAn == Setting.MANHOMAN_HANHCHINH)
+                    {
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_LOAIQUYETDINH<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                <input type="hidden" id="LoaiQuyetDinhHidden" value="@Model.LoaiQuyetDinh" />
+                                @Html.DropDownListFor(m => m.LoaiQuyetDinh, (SelectList)ViewBag.ddlLoaiQuyetDinh, Setting.DDL_CHOOSE, new { @class = "form-control LoaiQuyetDinhDDL", @id = "LoaiQuyetDinhDDL" })
+                                <div class="row option-hidden">
+                                    <div class="col-2 d-inline-block">
+                                        <label>Khác</label>
+                                    </div>
+                                    <div class="col-9 d-inline-block">
+                                        @Html.TextBoxFor(m => m.LoaiQuyetDinh, string.Empty, new { @class = "form-control", id = "LoaiQuyetDinhTextbox", @style = "width:110%" })
+                                    </div>
+                                </div>
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LoaiQuyetDinh)</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_LOAI_QUANHE<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.LoaiQuanHe, (SelectList)ViewBag.ddlLoaiQuanHe, null, new { @class = "form-control" })
+                                <small class="form-text text-danger"> @Html.ValidationMessageFor(m => m.LoaiQuanHe)</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_KHIEUKIEN<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                <input type="hidden" id="QuanHePhapLuatHidden" value="@Model.QuanHePhapLuat" />
+                                @Html.DropDownListFor(m => m.QuanHePhapLuat, (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control", id = "QuanHePhapLuatDDL" })
+                                <div class="row option-hidden">
+                                    <div class="col-2 d-inline-block">
+                                        <label>Khác</label>
+                                    </div>
+                                    <div class="col-9 d-inline-block">
+                                        @Html.TextBoxFor(m => m.QuanHePhapLuat, string.Empty, new { @class = "form-control", id = "QuanHePhapLuatTextbox", @style = "width:110%" })
+                                    </div>
+                                </div>
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.QuanHePhapLuat)</small>
+                            </div>
+                        </div>
+                    }
+                    else if (maNhomAn == Setting.MANHOMAN_HINHSU)
+                    {
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_LOAIQUYETDINH<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                <input type="hidden" id="LoaiQuyetDinhHidden" value="@Model.LoaiQuyetDinh" />
+                                @Html.DropDownListFor(m => m.LoaiQuyetDinh, (SelectList)ViewBag.ddlLoaiQuyetDinh, Setting.DDL_CHOOSE, new { @class = "form-control LoaiQuyetDinhDDL" })
+                                <div class="row option-hidden">
+                                    <div class="col-2 d-inline-block">
+                                        <label>Khác</label>
+                                    </div>
+                                    <div class="col-9 d-inline-block">
+                                        @Html.TextBoxFor(m => m.LoaiQuyetDinh, string.Empty, new { @class = "form-control", id = "LoaiQuyetDinhTextbox", @style = "width:110%" })
+                                    </div>
+                                </div>
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LoaiQuyetDinh)</small>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_LOAIQUYETDINH<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                <input type="hidden" id="LoaiQuyetDinhHidden" value="@Model.LoaiQuyetDinh" />
+                                @Html.DropDownListFor(m => m.LoaiQuyetDinh, (SelectList)ViewBag.ddlLoaiQuyetDinh, Setting.DDL_CHOOSE, new { @class = "form-control LoaiQuyetDinhDDL", @id = "LoaiQuyetDinhDDLvuan" })
+                                @Html.DropDownListFor(m => m.LoaiQuyetDinh, (SelectList)ViewBag.ddlLoaiQuyetDinhVuViec, Setting.DDL_CHOOSE, new { @class = "form-control LoaiQuyetDinhDDL", @id = "LoaiQuyetDinhDDLvuviec" })
+                                <div class="row option-hidden">
+                                    <div class="col-2 d-inline-block">
+                                        <label>Khác</label>
+                                    </div>
+                                    <div class="col-9 d-inline-block">
+                                        @Html.TextBoxFor(m => m.LoaiQuyetDinh, string.Empty, new { @class = "form-control", id = "LoaiQuyetDinhTextbox", @style = "width:110%" })
+                                    </div>
+                                </div>
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LoaiQuyetDinh)</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_LOAI_QUANHE<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                @Html.DropDownListFor(m => m.LoaiQuanHe, (SelectList)ViewBag.ddlLoaiQuanHe, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                <small class="form-text text-danger"> @Html.ValidationMessageFor(m => m.LoaiQuanHe)</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-5">@ViewText.LABEL_QUANHE_PHAPLUAT<span class="input-required">*</span></label>
+                            <div class="col-7">
+                                <input type="hidden" id="QuanHePhapLuatHidden" value="@Model.QuanHePhapLuat" />
+                                @Html.DropDownListFor(m => m.QuanHePhapLuat, (SelectList)ViewBag.listQuanHePhapLuat, Setting.DDL_CHOOSE, new { @class = "form-control", id = "QuanHePhapLuatDDL" })
+                                <ul id="list-qhpl-tranh-chap" class="list-unstyled invisible hidden-xl-down">
+                                    @foreach (var item in ViewBag.listQuanHePhapLuatTranhChap)
+                                    {
+                                        <li><input value="@item.Value" /></li>
+                                    }
+                                </ul>
+                                <ul id="list-qhpl-yeu-cau" class="list-unstyled invisible hidden-xl-down">
+                                    @foreach (var item in ViewBag.listQuanHePhapLuatYeuCau)
+                                    {
+                                        <li><input value="@item.Value" /></li>
+                                    }
+                                </ul>
+                                <div class="row option-hidden">
+                                    <div class="col-2 d-inline-block">
+                                        <label>Khác</label>
+                                    </div>
+                                    <div class="col-9 d-inline-block">
+                                        @Html.TextBoxFor(m => m.QuanHePhapLuat, string.Empty, new { @class = "form-control", id = "QuanHePhapLuatTextbox", @style = "width:110%" })
+                                    </div>
+                                </div>
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.QuanHePhapLuat)</small>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode() && maNhomAn != Setting.MANHOMAN_HINHSU)
+                {
+                    <div class="form-group row">
+                        <label class="col-5">@ViewText.LABEL_KETQUA_GIAIQUYET<span class="input-required">*</span></label>
+                        <div class="col-7">
+                            @Html.DropDownListFor(m => m.KetQuaGiaiQuyet, (SelectList)ViewBag.ddlKetQuaGiaiQuyet, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KetQuaGiaiQuyet)</small>
+                        </div>
+                    </div>
+                }
+
+                @*<div class="form-group row">
+                        <label class="col-5">@ViewText.LABEL_HIEULUC<span class="input-required">*</span></label>
+                        <div class="col-7">
+                            <div class="input-group date datepicker">
+                                @Html.TextBoxFor(m => m.HieuLuc, new { @class = "form-control" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HieuLuc)</small>
+                        </div>
+                    </div>*@
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_DINHKEM_FILE</label>
+                    <div class="col-7">
+                        <input id="file_upload" type="file" accept=".doc, .docx,.pdf" />
+                    </div>
+                    @Html.HiddenFor(m => m.DinhKemFile)
+                    <p class="col-12">@NotifyMessage.DUNGLUONG_FILE_TOIDA</p>
+                </div>
+            </div>
+            <div class="col-6 pl-0">
+                @if (maNhomAn == Setting.MANHOMAN_HINHSU || maNhomAn == Setting.MANHOMAN_APDUNG_BPXLHC)
+                {
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#ModalKetQuaXetXuQuyetDinhNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_QUYETDINH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ModalKetQuaXetXuQuyetDinhGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-1">
+                        <div class="tab-pane active" id="ModalKetQuaXetXuQuyetDinhNoiDung" role="tabpanel">
+                            @Html.TextAreaFor(m => m.NoiDungQuyetDinh, new { @class = "form-control ckeditorClassQuyetDinh tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                        <div class="tab-pane" id="ModalKetQuaXetXuQuyetDinhGhiChu" role="tabpanel">
+                            @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control ckeditorClassQuyetDinh tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <ul class="nav nav-tabs" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#ModalKetQuaXetXuHoiDongXetXu" role="tab">@ViewText.LABEL_HOIDONGXETXU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ModalKetQuaXetXuQuyetDinhNoiDung" role="tab">@ViewText.LABEL_NOIDUNG_TUYENXU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ModalKetQuaXetXuQuyetDinhGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content p-1">
+                        @if (ViewBag.giaidoan == 1)
+                        {
+                            <div class="tab-pane active" id="ModalKetQuaXetXuHoiDongXetXu" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THAMPHAN_CHUTOA<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan)</small>
+                                            </div>
+                                        </div>
+                                        @if (Model.HoiDong == 2)
+                                        {
+                                            <div class="row mb-3" id="tham-phan-khac-form-group">
+                                                <div class="col-6">
+                                                    <label>@ViewText.LABEL_THAMPHAN_KHAC<span class="input-required">*</span></label>
+                                                </div>
+                                                <div class="col-6">
+                                                    @Html.DropDownListFor(m => m.ThamPhanKhac, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                    <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhanKhac)</small>
+                                                </div>
+                                            </div>
+                                        }
+                                        <div class="row mb-3" id="hoi-tham-nhan-dan-1-form-group">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_HOITHAMNHANDAN_1<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.HoiThamNhanDan, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan)</small>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" id="hoi-tham-nhan-dan-2-form-group">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_HOITHAMNHANDAN_2<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.HoiThamNhanDan2, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan2)</small>
+                                            </div>
+                                        </div>
+                                        @if (Model.HoiDong == 2)
+                                        {
+                                            <div class="row mb-3" id="hoi-tham-nhan-dan-3-form-group">
+                                                <div class="col-6">
+                                                    <label>@ViewText.LABEL_HOITHAMNHANDAN_3<span class="input-required">*</span></label>
+                                                </div>
+                                                <div class="col-6">
+                                                    @Html.DropDownListFor(m => m.HoiThamNhanDan3, (SelectList)ViewBag.ddlHoiThamNhanDan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                    <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.HoiThamNhanDan3)</small>
+                                                </div>
+                                            </div>
+                                        }
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.ddlThuKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThuKy)</small>
+                                            </div>
+                                        </div>
+                                        @if (Model.KiemSatVien != Setting.VALUE_KIEMSATVIEN_KHONG)
+                                        {
+                                            <div class="row mb-3">
+                                                <div class="col-6">
+                                                    <label>@ViewText.LABEL_KIEMSATVIEN<span class="input-required">*</span></label>
+                                                </div>
+                                                <div class="col-6">
+                                                    @Html.DropDownListFor(m => m.KiemSatVien, (SelectList)ViewBag.ddlKiemSatVien, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                    <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KiemSatVien)</small>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            @Html.HiddenFor(m => m.KiemSatVien)
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="tab-pane active" id="ModalKetQuaXetXuHoiDongXetXu" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THAMPHAN_CHUTOA<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThamPhan, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan)</small>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" id="tham-phan-1">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THAMPHAN1<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThamPhan1, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan1)</small>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" id="tham-phan-2">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THAMPHAN2<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThamPhan2, (SelectList)ViewBag.ddlThamPhan, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThamPhan2)</small>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_THUKY<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.ThuKy, (SelectList)ViewBag.ddlThuKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThuKy)</small>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <label>@ViewText.LABEL_KIEMSATVIEN<span class="input-required">*</span></label>
+                                            </div>
+                                            <div class="col-6">
+                                                @Html.DropDownListFor(m => m.KiemSatVien, (SelectList)ViewBag.ddlKiemSatVien, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                                                <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KiemSatVien)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="tab-pane" id="ModalKetQuaXetXuQuyetDinhNoiDung" role="tabpanel">
+                            @Html.TextAreaFor(m => m.NoiDungQuyetDinh, new { @class = "form-control ckeditorClassQuyetDinh tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                        <div class="tab-pane" id="ModalKetQuaXetXuQuyetDinhGhiChu" role="tabpanel">
+                            @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control ckeditorClassQuyetDinh tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        EditKetQuaXetXuQuyetDinh.init();
+
+        if ($("#nhomAn").val() == "HC") {
+            $("#quan-he-phap-luat-lbl").html(ViewText.LABEL_KHIEUKIEN + "<span class=\"input-required\">*</span>");
+        }
+        if ($("#loaiQuanHe").val() == "Yêu cầu") {
+            $("#hoi-tham-nhan-dan-1-form-group,#hoi-tham-nhan-dan-2-form-group").hide();
+        }
+        if (@Model.HoiDong == 1 || @Model.HoiDong == 0)//hoi dong 3
+        {
+            $("#tham-phan-khac-form-group,#hoi-tham-nhan-dan-3-form-group").hide();
+        }
+
+        if ($("#giaiDoanHoSo").val() == 1) //so tham
+        {
+            if ($('#ThamPhanKhac').val() != '') {
+                $('#ThamPhan').find("option[value='" + $('#ThamPhanKhac').val() + "']").hide();
+            }
+            if ($('#ThamPhan').val() != '') {
+                $('#ThamPhanKhac').find("option[value='" + $('#ThamPhan').val() + "']").hide();
+            }
+            if ($('#HoiThamNhanDan').val() != '') {
+                $('#HoiThamNhanDan2, #HoiThamNhanDan3').find("option[value='" + $('#HoiThamNhanDan').val() + "']").hide();
+            }
+            if ($('#HoiThamNhanDan2').val() != '') {
+                $('#HoiThamNhanDan, #HoiThamNhanDan3').find("option[value='" + $('#HoiThamNhanDan2').val() + "']").hide();
+            }
+            if ($('#HoiThamNhanDan3').val() != '') {
+                $('#HoiThamNhanDan, #HoiThamNhanDan2').find("option[value='" + $('#HoiThamNhanDan3').val() + "']").hide();
+            }
+        } else {
+            if ($('#ThamPhan1').val() != '') {
+                $('#ThamPhan, #ThamPhan2').find("option[value='" + $('#ThamPhan1').val() + "']").hide();
+            }
+            if ($('#ThamPhan2').val() != '') {
+                $('#ThamPhan, #ThamPhan1').find("option[value='" + $('#ThamPhan2').val() + "']").hide();
+            }
+            if ($('#ThamPhan').val() != '') {
+                $('#ThamPhan1, #ThamPhan2').find("option[value='" + $('#ThamPhan').val() + "']").hide();
+            }
+        }
+
+        $('#ThamPhan,#ThamPhanKhac,#ThamPhan1,#ThamPhan2,#HoiThamNhanDan,#HoiThamNhanDan2,#HoiThamNhanDan3').on('change', function () {
+            var targetElement,
+                targetElement2,
+                $selectTarget,
+                $selectTarget2;
+            if ($("#giaiDoanHoSo").val() == 1) {
+                if (this.id == 'ThamPhan' || this.id == 'ThamPhanKhac') {
+                    //hide option select
+                    targetElement = this.id == 'ThamPhan' ? 'ThamPhanKhac' : 'ThamPhan';
+                    $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+                    $selectTarget.find('option').show();
+                    $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+                } else if (this.id == 'HoiThamNhanDan' || this.id == 'HoiThamNhanDan2' || this.id == 'HoiThamNhanDan3') {
+                    //hide option select
+                    if (this.id == 'HoiThamNhanDan') {
+                        targetElement = 'HoiThamNhanDan2';
+                        targetElement2 = 'HoiThamNhanDan3';
+                    } else if (this.id == 'HoiThamNhanDan2') {
+                        targetElement = 'HoiThamNhanDan';
+                        targetElement2 = 'HoiThamNhanDan3';
+                    } else {
+                        targetElement = 'HoiThamNhanDan';
+                        targetElement2 = 'HoiThamNhanDan2';
+                    }
+                    $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+                    $selectTarget.find('option').show();
+                    $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+
+                    $selectTarget2 = $(this).closest('.tab-pane').find('select#' + targetElement2);
+                    $selectTarget2.find('option').show();
+                    $selectTarget2.find("option[value='" + $(this).val() + "']").hide();
+                    $selectTarget2.find("option[value='" + $selectTarget.val() + "']").hide();
+                }
+            } else {
+                if (this.id == 'ThamPhan' || this.id == 'ThamPhan1' || this.id == 'ThamPhan2') {
+                    //hide option select
+                    if (this.id == 'ThamPhan') {
+                        targetElement = 'ThamPhan1';
+                        targetElement2 = 'ThamPhan2';
+                    } else if (this.id == 'ThamPhan1') {
+                        targetElement = 'ThamPhan';
+                        targetElement2 = 'ThamPhan2';
+                    } else {
+                        targetElement = 'ThamPhan';
+                        targetElement2 = 'ThamPhan1';
+                    }
+                    $selectTarget = $(this).closest('.tab-pane').find('select#' + targetElement);
+                    $selectTarget.find('option').show();
+                    $selectTarget.find("option[value='" + $(this).val() + "']").hide();
+
+                    $selectTarget2 = $(this).closest('.tab-pane').find('select#' + targetElement2);
+                    $selectTarget2.find('option').show();
+                    $selectTarget2.find("option[value='" + $(this).val() + "']").hide();
+                    $selectTarget2.find("option[value='" + $selectTarget.val() + "']").hide();
+                }
+            }
+        });
+    });
+    
+           
+</script>
+

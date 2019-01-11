@@ -1,0 +1,32 @@
+﻿@model Biz.TACM.Models.ViewModel.TaiKhoanNhanVien.ChucNangViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+<div class="row mb-2">
+    <div class="col-12">
+        <h3 class="text-uppercase mb-2">@ViewText.TITLE_DANHSACH_CHUCDANH</h3>
+    </div>
+</div>
+
+<div class="card p-4">
+    <table class="table table-hover table-bordered table-custom">
+        <thead>
+            <tr>
+                <td>@ViewText.TABLE_CHUCNANG</td>
+                <td class="text-center">@ViewText.TABLE_CHUCNANGCHINH</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.ListChucNang.Count; i++)
+            {
+                var chucNangId = string.Format("chucNang-{0}", Model.ListChucNang[i].MaChucNang);
+                var chucNangChinhId = string.Format("chucNangChinh-{0}", Model.ListChucNang[i].MaChucNang);
+                <tr>
+                    @Html.HiddenFor(m => Model.ListChucNang[i].MaChucNang)
+                    @Html.HiddenFor(m => Model.ListChucNang[i].TenChucNang)
+                    <td>@Html.CheckBoxFor(m => Model.ListChucNang[i].IsHaveChucNang, new { id = chucNangId, @disabled = "disabled" }) @Html.DisplayFor(m => Model.ListChucNang[i].TenChucNang)</td>
+                    <td class="text-center">@Html.RadioButtonFor(m => m.ChucNangChinh, Model.ListChucNang[i].MaChucNang, new { id = chucNangChinhId, @disabled = "disabled" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

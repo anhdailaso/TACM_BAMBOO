@@ -1,0 +1,85 @@
+﻿@model Biz.TACM.Models.ViewModel.NhanDon.DuongSuViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = "Mã Hóa Hồ Sơ Vụ Án";
+}
+
+
+<div class="float-left">
+    <h3 class="text-uppercase mb-2">@ViewText.TILTE_MAHOA_HOSO_VUAN</h3>
+</div>
+<div class="clearfix"></div>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <h4>@ViewText.TITLE_THONGTIN_DUONGSU</h4>
+
+                @using (Html.BeginForm("AddDuongSu", "MaHoaHoSoVuAn", FormMethod.Post, new { @class = "form-control" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-3">
+                            <label>@ViewText.LABEL_DUONGSU<span class="input-required">*</span></label>
+                            <br />
+                            @Html.DropDownList("TuCachThamGiaToTung", (SelectList)ViewBag.listTuCachThamGiaToTung, new { @style = "width:150px;", @class = "form-control" })
+                        </div>
+                        <div class="col-3">
+                            <label>@ViewText.LABEL_HOVATEN<span class="input-required">*</span></label>
+                            <br />
+                            @Html.TextBox("HoVaTen", "", new { @class = "form-control" })
+                        </div>
+                        <div class="col-4">
+                            <label>@ViewText.LABEL_DIACHI<span class="input-required">*</span></label>
+                            <br />
+                            @Html.TextBox("NoiDKHKTT", "", new { @style = "width:inherit;", @class = "form-control" })
+                        </div>
+                        <div class="col-2">
+                            <br />
+                            <button type="submit" class="btn btn-primary mt-2">@ViewText.BUTTON_THEM</button>
+                        </div>
+                    </div>
+                }
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="ma-hoa-ho-so-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>@ViewText.TABLE_STT</td>
+                            <td>@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                            <td>@ViewText.LABEL_HOVATEN</td>
+                            <td class="text-capitalize">@ViewText.LABEL_DIACHI</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-4">
+                @using (Html.BeginForm("Encrypted", "MaHoaHoSoVuAn", FormMethod.Post, new { @id = "formEncrypt" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-12">
+                            <label>@ViewText.LABEL_FILE_HOSO<span class="input-required">*</span></label>
+                        </div>
+                        <div class="col-12">
+                            <input id="file_upload" type="file" accept=".doc, .docx" />
+                        </div>
+                        @Html.Hidden("fileName")
+                        @Html.Hidden("folderPath")
+                        <p class="col-12">@NotifyMessage.DUNGLUONG_FILE_TOIDA</p> @*Maximum file size can be chage from Setting*@
+                    </div>
+                    <div>
+                        <button type="button" id="btnEncrypt" class="btn btn-primary">@ViewText.BUTTON_MAHOA_NOIDUNG</button>
+                    </div>
+                }
+                <div id="downloadContainer" class="mt-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/MaHoaHoSoVuAn")
+}

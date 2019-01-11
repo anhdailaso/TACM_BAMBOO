@@ -1,0 +1,43 @@
+﻿
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.NhanDon.NoiDungDonViewModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">            
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoNoiDungDon", @class = "custom-select mb-2" })
+            <button id="btnSuaNoiDungDon" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditNoiDungDon", "NhanDon", new{ hoSoVuAnId = Model.HoSoVuAnID , noiDungDonId = Model.NoiDungDonID})"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card">
+                        <div class="card-block" style="height: 150px; overflow-y: scroll">
+                            @Html.Raw(Model.NoiDungDon)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemNoiDungDon" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditNoiDungDon", "NhanDon", new{ ViewBag.hoSoVuAnId , noiDungDonId = 0})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

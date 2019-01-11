@@ -1,0 +1,342 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.NhanDon.DuongSuViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_THONGTIN_DUONGSU</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <input type="hidden" name="hoSoVuAnId" value="@Model.HoSoVuAnID" />
+            <input type="hidden" name="DuongSuID" value="@Model.DuongSuID" />
+            <input type="hidden" id="duong-su-la-hidden" value="@Model.DuongSuLa" />
+            <input type="hidden" id="TuCachThamGiaToTungHidden" value="@Model.TuCachThamGiaToTung" />
+            <input type="hidden" id="NguoiBaoChuaLaHidden" value="@Model.NguoiBaoChuaLa" />
+            <div class="row mb-2">
+                <div class="col-3 table-information-hinhsu">
+                    <label>@ViewText.LABEL_TUCACHTHAMGIA_TOTUNG</label>
+                </div>
+                <div class="col-3 table-information-hinhsu">
+                    <label class="font-weight-bold" id="TuCachThamGiaToTungDDL">@Model.TuCachThamGiaToTung</label>
+                </div>
+                <div class="col-3 DuongSuLaContent table-information-hinhsu">
+                    <label>@ViewText.LABEL_DUONGSULA</label>
+                </div>
+                <div class="col-3 DuongSuLaContent table-information-hinhsu">
+                    <label class="font-weight-bold" id="duong-su-la-ddl">@Model.DuongSuLa</label>
+                </div>
+                <div class="col-3 NguoiBaoChuaLaContent ContentHidden table-information-hinhsu">
+                    <label>@ViewText.LABEL_NGUOIBAOCHUALA</label>
+                </div>
+                <div class="col-3 NguoiBaoChuaLaContent ContentHidden table-information-hinhsu">
+                    <label class="font-weight-bold" id="NguoiBaoChuaLaDDL">@Model.NguoiBaoChuaLa</label>
+                </div>
+                <div class="col-3 NguoiDaiDienCuaContent ContentHidden table-information-hinhsu">
+                    <label>@ViewText.LABEL_NGUOIDAIDIENCUA</label>
+                </div>
+                <div class="col-3 NguoiDaiDienCuaContent ContentHidden table-information-hinhsu">
+                    <label class="font-weight-bold">@Model.HoTenNguoiDuocDaiDien</label>
+                </div>
+                <div class="col-3 NguoiBaoVeCuaContent ContentHidden table-information-hinhsu">
+                    <label>@ViewText.LABEL_NGUOIBAOVECUA</label>
+                </div>
+                <div class="col-3 NguoiBaoVeCuaContent ContentHidden table-information-hinhsu">
+                    <label class="font-weight-bold">@Model.HoTenNguoiDuocDaiDien</label>
+                </div>
+            </div>
+            <!-- form duong su la ca nhan -->
+            <div id="contentCaNhan">
+                <div class="row">
+                    <div class="col-3 mb-2 HoVaTenContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_HOVATEN</label>
+                    </div>
+                    <div class="col-3 mb-2 HoVaTenContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.HoVaTen</label>
+                    </div>
+                    <div class="col-3 mb-2 TenGoiKhacContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_TENGOIKHAC</label>
+                    </div>
+                    <div class="col-3 mb-2 TenGoiKhacContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.TenGoiKhac</label>
+                    </div>
+                    <div class="col-3 mb-2 NgayThangNamSinhContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_NGAYSINH</label>
+                    </div>
+                    <div class="col-3 mb-2 NgayThangNamSinhContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NgayThangNamSinh</label>
+                    </div>
+                    <div class="col-3 mb-2 NoiSinhContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_NOISINH</label>
+                    </div>
+                    <div class="col-3 mb-2 NoiSinhContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NoiSinh</label>
+                    </div>
+                    <div class="col-3 mb-2 GioiTinhContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_GIOITINH</label>
+                    </div>
+                    <div class="col-3 mb-2 GioiTinhContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.GioiTinh</label>
+                    </div>
+                    <div class="col-3 mb-2 QuocTichContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_QUOCTICH</label>
+                    </div>
+                    <div class="col-3 mb-2 QuocTichContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.QuocTich</label>
+                    </div>
+                    <div class="col-3 mb-2 DanTocContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_DANTOC</label>
+                    </div>
+                    <div class="col-3 mb-2 DanTocContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.DanToc</label>
+                    </div>
+                    <div class="col-3 mb-2 TonGiaoContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_TONGIAO</label>
+                    </div>
+                    <div class="col-3 mb-2 TonGiaoContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.TonGiao</label>
+                    </div>
+                    <div class="col-3 mb-2 SoDienThoaiContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_SODIENTHOAI</label>
+                    </div>
+                    <div class="col-3 mb-2 SoDienThoaiContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.SoDienThoai</label>
+                    </div>
+                    <div class="col-3 mb-2 NgheNghiepContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_NGHENGHIEP</label>
+                    </div>
+                    <div class="col-3 mb-2 NgheNghiepContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NgheNghiep</label>
+                    </div>
+                    <div class="col-3 mb-2 TrinhDoVanHoaContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_TRINHDOVANHOA</label>
+                    </div>
+                    <div class="col-3 mb-2 TrinhDoVanHoaContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.TrinhDoVanHoa</label>
+                    </div>
+                    <div class="col-3 mb-2 VanPhongLuatSuContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_VANPHONGLUATSU</label>
+                    </div>
+                    <div class="col-3 mb-2 VanPhongLuatSuContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.VanPhongLuatSu</label>
+                    </div>
+                    <div class="col-3 mb-2 DoanLuatSuContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_DOANLUATSU</label>
+                    </div>
+                    <div class="col-3 mb-2 DoanLuatSuContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.DoanLuatSu</label>
+                    </div>
+
+                    <div class="col-3 mb-2 ChucVuContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_CHUCVU</label>
+                    </div>
+                    <div class="col-3 mb-2 ChucVuContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.ChucVu</label>
+                    </div>
+                </div>
+                <div class="row mb-2 NoiCongTacContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_NOICONGTAC</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.NoiCongTac</label>
+                    </div>
+                </div>
+                <div class="row mb-2 NoiCuTruContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_NOICUTRU</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.NoiCuTru</label>
+                    </div>
+                </div>
+                <div class="row mb-2 QuanHeVoiNguoiThamGiaToTungContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_QUANHEVOINGUOITHAMGIATOTUNG</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.QuanHeVoiNguoiThamGiaToTung</label>
+                    </div>
+                </div>
+                <div class="row mb-2 TienAnContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_TIENAN</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.TienAn</label>
+                    </div>
+                </div>
+                <div class="row mb-2 TienSuContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_TIENSU</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.TienSu</label>
+                    </div>
+                </div>
+                <div class="row ConOngConBaContent ContentHidden">
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_CON_ONG_HOVATEN</label>
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.HoTenCha</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_NAMSINH</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NamSinhCha</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        @Html.CheckBoxFor(x => x.ChaDaChetHayChua, new { id = "a", @disabled = true }) @ViewText.LABEL_DACHET
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_CON_BA_HOVATEN</label>
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.HoTenMe</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_NAMSINH</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NamSinhMe</label>
+                    </div>
+                    <div class="col-2 mb-2 table-information-hinhsu">
+                        <label>@Html.CheckBoxFor(x => x.MeDaChetHayChua, new { @disabled = "disabled" }) @ViewText.LABEL_DACHET</label>
+                    </div>
+                </div>
+                <div class="row mb-2 DacDiemNhanThanBiHaiContent ContentHidden">
+                    <div class="col-12">
+                        <label class="mb-2">@ViewText.LABEL_DACDIEMNHANTHANBIHAI</label>
+                    </div>
+                    <div class="col-12">
+                        <div class="col-12">
+                            <div class="row" style="background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; display:flex;">
+                                @foreach (var item in (SelectList)ViewBag.listDacDiemNhanThanBiHai)
+                                {
+                                    <label class="col-4 mt-1 mb-1">
+                                        @Html.RadioButtonFor(x => x.DacDiemNhanThanBiHai, item.Text, new { @class = "chkDacDiemNhanThanBiHai" })
+                                        @item.Text
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row DacDiemNhanThanBiCaoContent ContentHidden">
+                    <div class="col-12">
+                        <label class="mb-2">@ViewText.LABEL_DACDIEMNHANTHANBICAO</label>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="col-12">
+                            <div class="row" style="background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; display:flex;">
+                                @foreach (var item in ViewBag.listDacDiemNhanThanBiCao)
+                                {
+                                    if (item.DacDiem.Equals(Setting.DDNT_BICAO_NGUOIDU18XUIGIUC))
+                                    {
+                                        <label class="col-4 mt-1 mb-1 pr-0 DacDiemNhanThanBiCaoNguoiDu18XuiGiucContent ContentHidden">
+                                            <input class="chkDacDiemNhanThanBiCao" name="ListDacDiemNhanThanBiCao[]" @(item.IsChecked ? "checked" : "") value="@item.DacDiem" type="checkbox" /> @item.DacDiem
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label class="col-4 mt-1 mb-1">
+                                            <input class="chkDacDiemNhanThanBiCao" name="ListDacDiemNhanThanBiCao[]" @(item.IsChecked ? "checked" : "") value="@item.DacDiem" type="checkbox" /> @item.DacDiem
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2 LuuYVeChucVuContent ContentHidden table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_LUUYVECHUCVU</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.LuuYVeChucVu</label>
+                    </div>
+                </div>
+                <div class="row mb-2 TinhTrangGiamGiuContent ContentHidden">
+                    <div class="col-3 table-information-hinhsu">
+                        <label>@ViewText.LABEL_TINHTRANGGIAMGIU</label>
+                    </div>
+                    <div class="col-3 table-information-hinhsu">
+                        <label class="font-weight-bold" id="TinhTrangGiamGiuDDL">@Model.TinhTrangGiamGiu</label>
+                    </div>
+                    <div class="col-3 NgayBatTamGiamContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_NGAYBATTAMGIAM</label>
+                    </div>
+                    <div class="col-3 NgayBatTamGiamContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.NgayBatTamGiam</label>
+                    </div>
+                </div>
+            </div>
+            <!-- form duong su la ca nhan -->
+            <!-- form duong su la co qua to chuc -->
+            <div id="contentCoQuanToChuc">
+                <div class="row mb-2 table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_COQUAN_TOCHUC</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.TenCoQuanToChuc</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_TEN_NGUOIDAIDIEN</label>
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.HoVaTen</label>
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label>@ViewText.LABEL_SODIENTHOAI</label>
+                    </div>
+                    <div class="col-3 mb-2 table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.SoDienThoai</label>
+                    </div>
+                    <div class="col-3 mb-2 GioiTinhNguoiDaiDienContent ContentHidden table-information-hinhsu">
+                        <label>@ViewText.LABEL_GIOITINHNGUOIDAIDIEN</label>
+                    </div>
+                    <div class="col-3 mb-2 GioiTinhNguoiDaiDienContent ContentHidden table-information-hinhsu">
+                        <label class="font-weight-bold">@Model.GioiTinh</label>
+                    </div>
+                </div>
+                <div class="row mb-2 table-information-hinhsu">
+                    <div class="col-3">
+                        <label>@ViewText.LABEL_DIACHITRUSO</label>
+                    </div>
+                    <div class="col-9">
+                        <label class="font-weight-bold">@Model.DiaChiTruSo</label>
+                    </div>
+                </div>
+            </div>
+            <!-- form duong su la co quan to chuc -->
+
+            <div class="row mb-2 TruyToContent ContentHidden">
+                <div class="col-3">
+                    <label>@ViewText.LABEL_DIEULUATTRUYTO</label>
+                </div>
+                <div class="col-3 table-information-hinhsu">
+                    <label class="font-weight-bold">@Model.DieuLuatTruyTo</label>
+                </div>
+                <div class="col-3 table-information-hinhsu">
+                    <label>@ViewText.LABEL_TOIDANHTRUYTO</label>
+                </div>
+                <div class="col-3 table-information-hinhsu">
+                    <label class="font-weight-bold">@Model.ToiDanhTruyTo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        TaoSuaDuongSuHinhSuModule.initViewing();
+    });
+</script>

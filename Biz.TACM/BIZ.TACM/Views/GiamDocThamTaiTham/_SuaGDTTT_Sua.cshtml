@@ -1,0 +1,153 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.GiamDocThamTaiTham.GiamDocThamTaiThamViewModel
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_GDTTT</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("SuaGDTTT", "GiamDocThamTaiTham", FormMethod.Post, new { id = "formSuaGDTTT" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.GiamDocThamTaiThamID)
+    @Html.HiddenFor(x => x.So)
+    @Html.HiddenFor(x => x.HoSoVuAnID)
+    @Html.HiddenFor(x => x.MaHoSo)
+    @Html.HiddenFor(x => x.NhomAn)
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NHOMAN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownList("NhomAn", (SelectList)ViewBag.NhomAnddl, Setting.DDL_CHOOSE, new { @class = "form-control", @disabled=true})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NhomAn)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_MAHOSO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownList("MaHoSo", (SelectList)ViewBag.MaHoSoddl, Setting.DDL_CHOOSE, new { @class = "form-control", @disabled = true })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.MaHoSo)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_LOAIQUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownList("Nhom", (SelectList)ViewBag.Nhomddl, null, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Nhom)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SOQUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.SoQuyetDinh, new { @class = "form-control", @maxlength = "20" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.SoQuyetDinh)</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYQUYETDINH<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date" id="ngay-quyet-dinh">
+                            @Html.TextBoxFor(m => m.NgayRaQuyetDinh, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NgayRaQuyetDinh)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>@ViewText.LABEL_GHICHU</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @Html.TextArea("GhiChu", Html.Raw(Model.GhiChu).ToString(), new { @class = "form-control", @maxlength = 2000, id = "ghi-chu-gdttt" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-12">@ViewText.LABEL_NOIDUNG_QUYETDINH<span class="input-required">*</span></label>
+            <small class="form-text text-danger col-12 ">@Html.ValidationMessageFor(x => x.NoiDungQuyetDinh)</small>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12">
+                    <div class="row" style="background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; display:flex;padding-top:5px;padding-bottom:5px">
+                        <div id="tab-gdt">
+                            @foreach (var item in (SelectList)ViewBag.GiamDocTham)
+                            {
+                                <div class="col-12 mt-1 mb-1">
+                                    <label style="margin-top:1px;display:inline-block;padding-right:10px;vertical-align:top">
+                                        @Html.RadioButtonFor(x => x.NoiDungQuyetDinh, item.Text, new { @class = "noi-dung-qd", @id = item.Text })
+                                    </label>
+                                    <label for="@item.Text" style="margin-top:1px;display:inline-block;width:700px">
+                                        @item.Text
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                        <div id="tab-tt">
+                            @foreach (var item in (SelectList)ViewBag.TaiTham)
+                            {
+                                <div class="col-12 mt-1 mb-1">
+                                    <label style="margin-top:1px;display:inline-block;padding-right:10px;vertical-align:top">
+                                        @Html.RadioButtonFor(x => x.NoiDungQuyetDinh, item.Text, new { @class = "noi-dung-qd", @id = item.Text })
+                                    </label>
+                                    <label for="@item.Text" style="margin-top:1px;display:inline-block;width:700px">
+                                        @item.Text
+                                    </label>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row col-12 mt-1 mb-1" id="huy-sua-an">
+                            <label class="col-3">@ViewText.LABEL_NOIDUNGHUYSUAAN<span class="input-required">*</span></label>
+                            <div class="col-9">
+                                @Html.TextBoxFor(m => m.NoiDungHuySuaAn, new { @class = "form-control" })
+                                <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.NoiDungHuySuaAn)</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3 mt-1" style="color:red">
+                    @Html.CheckBoxFor(x => x.HuySuaSoTham) @Html.LabelFor(x => x.HuySuaSoTham, ViewText.LABEL_HUYSOTHAM)
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3 mt-1" style="color:red">
+                    @Html.CheckBoxFor(x => x.HuySuaPhucTham) @Html.LabelFor(x => x.HuySuaPhucTham, ViewText.LABEL_HUYPHUCTHAM)
+                </div>
+            </div>
+        </div>
+        <div id="hoso-partial">
+            @Html.Partial("_HoSo", Model)
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="Luu-gdttt-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+
+}
+<script>
+    $(function () {
+        SuaGDTTTModule.init();
+    });
+</script>

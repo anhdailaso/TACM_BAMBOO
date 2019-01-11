@@ -1,0 +1,34 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model int
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@(nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC) ? ViewText.TITLE_XOAKHIEUNAI_KIENNGHI : ViewText.TITLE_XOAKHANGCAO)</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("XoaKhangCao", "SauXetXu", FormMethod.Post, new { id = "xoa-khang-cao-form" }))
+{
+    @Html.Hidden("khang-cao-id-hidden", Model)
+    <div class="modal-body">
+        <div class="alert alert-danger" role="alert">
+            @(nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC) ? string.Format(NotifyMessage.BANCO_MUONXOA, "khiếu nại / kiến nghị") : string.Format(NotifyMessage.BANCO_MUONXOA, "kháng cáo") )
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="xoa-khang-cao-btn">@ViewText.BUTTON_XOA</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        XoaKhangCaoModalModule.init();
+    });
+</script>
+

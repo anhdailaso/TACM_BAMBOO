@@ -1,0 +1,115 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.NhanDon.Model.ToiDanhTruyToModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.LABEL_TOIDANHTRUYTO</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("ThemToiDanhTruyTo", "NhanDon", FormMethod.Post, new { id = "formThemToiDanhTruyTo" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.HoSoVuAnID)
+<div class="modal-body">
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group row">
+                <div class="col-5">
+                    <label>@ViewText.LABEL_DIEULUAT<span class="input-required">*</span></label>
+                </div>
+                <div class="col-7">
+                    @Html.DropDownListFor(x => x.Dieu, (SelectList)ViewBag.ddlDieu, Setting.DDL_CHOOSE, new { @class = "form-control", id = "dieu-ddl" })
+                    <small id="dieu-dll-val" class="form-text">@Html.ValidationMessageFor(x => x.Dieu)</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>@ViewText.LABEL_TOIDANH<span class="input-required">*</span></label>
+                </div>
+                <div class="col-8">
+                    @Html.TextBoxFor(x => x.ToiDanh, new { @class = "form-control", id = "toidanhtb" })
+                    <small class="form-text">@Html.ValidationMessageFor(x => x.ToiDanh)</small>
+                    @Html.DropDownList("ToiDanhHidden", (SelectList)ViewBag.ToiDanhHiddenList, null, new { @class = "d-none" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-none" id="dieu-khac">
+        <div class="col-5">
+            <div class="form-group row">
+                <div class="col-5">
+                    <label>@ViewText.LABEL_KHAC</label>
+                </div>
+                <div class="col-7">
+                    @Html.TextBoxFor(x => x.Dieu, new { @class = "form-control", id = "dieu-textbox", disabled="true" })
+                    <small class="form-text">@Html.ValidationMessageFor(x => x.Dieu)</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>@ViewText.LABEL_BLHS</label>
+                </div>
+                <div class="col-8">
+                    @Html.TextBoxFor(x => x.BoLuatHinhSu, new { @class = "form-control"})
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row khoandiem" id="khoanDiem_0">
+        <div class="col-5">
+            <div class="form-group row">
+                <input type="hidden" name="KhoanDiem[0].check" value="1" id="check_0" />
+                <div class="col-5">
+                    <label>@ViewText.LABEL_KHOAN</label>
+                </div>
+                <div class="col-7">
+                    @Html.DropDownListFor(x => x.KhoanDiem[0].Khoan, (SelectList)ViewBag.ddlKhoan, Setting.DDL_CHOOSE, new { @class = "form-control", id = "khoan_0" })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label>@ViewText.LABEL_DIEM</label>
+                </div>
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.KhoanDiem[0].Diem, new { @class = "form-control", id = "diem_0" })
+                </div>
+                <div class="col-2" style="font-size:18pt">
+                    <i id="tkd_0" class="fa fa-plus-circle button-edit" aria-hidden="true"></i>
+                    <i id="xkd_0" class="fa fa-minus-circle d-none button-edit" aria-hidden="true"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label>@ViewText.LABEL_NOIDUNG</label>
+        </div>
+        <div class="col-12">
+            @Html.TextAreaFor(m => m.NoiDungDieuLuat, new { @class = "form-control", id = "noi-dung-dieu-luat-textarea", style = "width: 100%" })
+            <small class="form-text text-danger"><span for="noi-dung-dieu-luat-textarea"></span></small>
+        </div>
+    </div>
+</div>
+} 
+<div class="modal-footer">
+    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+    <button type="button" class="btn btn-danger text-uppercase pull-right" id="them-toi-danh-btn">@ViewText.BUTTON_LUU</button>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        ThemToiDanhTruyToModule.init();
+    });
+</script>

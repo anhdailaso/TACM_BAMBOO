@@ -1,0 +1,125 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+
+@model Biz.Lib.TACM.XetXu.Model.TrieuTapModel
+
+@using (Html.BeginForm("EditXetXuTrieuTap", "XetXu", FormMethod.Post, new { @id = "formEditXetXuTrieuTap" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_CAPNHAT_NOIDUNG_TRIEUTAP</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <!-- left -->
+            <div class="col-8">
+                <div class="form-group row">
+                    <label class="col-5 text-nowrap ngay-gio-mo-phien-toa-lbl">@ViewText.LABEL_NGAYGIO_MOPHIENTOA<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker mb-3">
+                            @Html.TextBoxFor(m => m.ThoiGianMoPhienToa, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <div class="row text-vertical-align-center">
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("GioMoPhienToa", (SelectList)ViewBag.GioMoPhienToaDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                giờ
+                            </label>
+                            <div class="cus-col-hourmin">
+                                @Html.DropDownList("PhutMoPhienToa", (SelectList)ViewBag.PhutMoPhienToaDDL, null, new { @class = "form-control" })
+                            </div>
+                            <label class="mb-0">
+                                phút
+                            </label>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ThoiGianMoPhienToa)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_DIADIEM<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.DiaDiemMoPhienToa, new { @class = "form-control" })
+                        <small>@Html.ValidationMessageFor(m => m.DiaDiemMoPhienToa)</small>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_LANTHU<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.LanThu, (SelectList)ViewBag.ddlLanThu, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LanThu)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGUOIKY<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.NguoiKy, (SelectList)ViewBag.ddlNguoiKy, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small>@Html.ValidationMessageFor(m => m.NguoiKy)</small>
+                    </div>
+
+                </div>
+            </div>
+            <!-- right -->
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="d-block">@ViewText.LABEL_DUONGSU<span class="input-required">*</span></label>
+                    <small>@Html.ValidationMessageFor(m => m.DuongSuID)</small>
+                    <ul class="list-unstyled">
+                        @if (ViewBag.listDuongSu.Count != 0)
+                        {
+                             foreach (var item in ViewBag.listDuongSu)
+                             {
+                                 <li><label><input class="align-middle" name="DuongSuID[]" @(item.Checked ? "checked" : "") value="@item.DuongSuID" type="checkbox"/> @item.HoVaTen</label></li>
+                             }
+                        }
+                        else
+                        {
+                            <li><small class="form-text text-danger mb-2"><span>@NotifyMessage.CHUACO_DULIEU</span></small></li>
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        if ($("#loaiQuanHe").val() === "Yêu cầu" || $("#nhomAn").val() === "AD") {
+            $(".ngay-gio-mo-phien-toa-lbl").html("@ViewText.LABEL_NGAYGIO_MOPHIENHOP<span class=\"input-required\">*</span>");
+        }
+
+        $('.datepicker').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        //$('.datetimepicker').datetimepicker({
+        //    format: 'DD/MM/YYYY HH:mm:ss'
+        //});
+
+        $(document).ready(function () {
+            $("#lanthu-textbox").on("keypress keyup blur", function (event) {
+                $(this).val($(this).val().replace(/[^\d].+/, ""));
+                if ((event.which < 48 || event.which > 57)) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+</script>

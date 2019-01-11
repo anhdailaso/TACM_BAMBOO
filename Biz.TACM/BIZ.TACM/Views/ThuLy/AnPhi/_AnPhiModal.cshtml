@@ -1,0 +1,289 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.ThuLy.AnPhiViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase" id="popup-an-phi-title">@ViewText.TITLE_ANPHI</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<input type="hidden" id="nop-an-phi-hidden" value="@Model.NopAnPhi" />
+
+    @using (Html.BeginForm("SuaMienDuNopAnPhi", "ThuLy", FormMethod.Post, new { @id = "formEditMienDuNop" }))
+    {
+        <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+        <div id="contentMienDuNop">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="nop-an-phi-lbl">@ViewText.LABEL_NOPANPHI<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.DropDownListFor(x => x.MienDuNopViewModel.NopAnPhi, (SelectList)ViewBag.listNopAnPhi, null, new { @class = "form-control", id = "nop-an-phi-ddl-form1" })
+                                <small class="form-text text-danger">
+                                    @Html.ValidationMessageFor(x => x.MienDuNopViewModel.NopAnPhi)
+                                </small>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right" id="mien-du-nop-btn">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    }
+
+    @using (Html.BeginForm("SuaYeuCauDuNopAnPhi", "ThuLy", FormMethod.Post, new { @id = "formEditPhaiDuNop" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+        <div id="contentPhaiDuNop">
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tab-yeu-cau-du-nop" role="tab">@ViewText.LABEL_YEUCAU_DUNOP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab-ket-qua-du-nop" role="tab">@ViewText.LABEL_KETQUA_DUNOP</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                    <div class="tab-pane active" id="tab-yeu-cau-du-nop" role="tabpanel">
+                        <div class="row mb-3">
+                            <div class="col-12 text-right">
+                                <label>@ViewText.LABEL_DONVITINH</label>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="nguoi-du-nop-lbl">@ViewText.LABEL_NGUOIDUNOP<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.DropDownListFor(x => x.YeuCauDuNopViewModel.NguoiDuNop, (SelectList)ViewBag.duongsuddl, Setting.DDL_CHOOSE, new { @class = "form-control", id = "nguoi-du-nop-ddl-form2" })
+                                <small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.NguoiDuNop)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="nop-an-phi-lbl">@ViewText.LABEL_NOPANPHI<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.DropDownListFor(x => x.YeuCauDuNopViewModel.NopAnPhi, (SelectList)ViewBag.listNopAnPhi, null, new { @class = "form-control", id = "nop-an-phi-ddl-form2" })
+                                <small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.NopAnPhi)
+                                </small>
+                            </div>
+                        </div>
+                        @if (ViewBag.NhomAn != Setting.MANHOMAN_HANHCHINH)
+                        {
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <label>@ViewText.LABEL_GIATRITRANHCHAP<span class="input-required">*</span></label>
+                                </div>
+                                <div class="col-6">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.GiaTriTranhChap, new { @class = "form-control text-right", id = "gia-tri-tranh-chap-txt", @maxlength = "23" })
+                                    <small class="form-text">
+                                        @Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.GiaTriTranhChap)
+                                    </small>
+                                </div>
+                            </div>
+                        }
+                        
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="tong-an-phi-lbl">@ViewText.LABEL_TONGANPHI</label>
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.TongAnPhi, new { @class = "form-control text-danger text-right input-border-readonly", id = "tong-an-phi-txt", @*@readonly = "readonly"*@ })
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_PHANTRAM_DUNOP<span class="input-required">*</span></label>
+                            </div>
+                            @if (ViewBag.NhomAn == Setting.MANHOMAN_HANHCHINH)
+                            {
+                                <div class="col-6">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.PhanTramDuNop, new { @class = "form-control text-danger text-right input-border-readonly", id = "phan-tram-du-nop-txt", @maxlength = "5", @*@readonly = "readonly"*@ })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-6">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.PhanTramDuNop,
+                                        new { @class = "form-control text-danger text-right", @Value = (Model.YeuCauDuNopViewModel == null || Model.YeuCauDuNopViewModel.PhanTramDuNop==null) ? "50,0" : Model.YeuCauDuNopViewModel.PhanTramDuNop, id = "phan-tram-du-nop-txt", @maxlength = "5" })
+                                    <small class="form-text">@Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.PhanTramDuNop, "", new { id = "phan-tram-du-nop-validate" })</small>
+                                </div>
+                            }
+                            
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_TRIGIA_DUNOP</label>
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.GiaTriDuNop, new { @class = "form-control text-danger text-right input-border-readonly", id = "gia-tri-du-nop-txt", @*@readonly = "readonly"*@ })
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_NGAYRATHONGBAO<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group date" id="ngay-ra-thong-bao-dtp">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.NgayRaThongBao, new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.NgayRaThongBao)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_NGAYGIAO_THONGBAO</label>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group date" id="ngay-giao-thong-bao-dtp">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.NgayGiaoThongBao, new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="han-nop-an-phi-lbl">@ViewText.LABEL_HANNOP_ANPHI</label>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group date" id="han-nop-an-phi-dtp">
+                                    @Html.TextBoxFor(x => x.YeuCauDuNopViewModel.HanNopAnPhi, new { @class = "form-control actual_range", id="han-nop-an-phi-input" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <small class="form-text text-danger"><span for="han-nop-an-phi-input"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_COQUAN_THIHANHANTHU<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.DropDownListFor(x => x.YeuCauDuNopViewModel.CoQuanThiHanhAnThu, (SelectList)ViewBag.listCoQuanThiHanhAnThu, null, new { @class = "form-control", id = "co-quan-thi-hanh-an-thu-ddl" })
+                                <small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.YeuCauDuNopViewModel.CoQuanThiHanhAnThu)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6 offset-6">
+                                @Html.HiddenFor(x => Model.YeuCauDuNopViewModel.DiaChiCoQuanThiHanhAnThu, new { id = "dia-chi-co-quan-thi-hanh-an-hidden" })
+                                <div id="dia-chi-co-quan-thi-hanh-an-thu-lbl"></div>
+                                <ul id="list-dia-chi-co-quan-thi-hanh-an" class="list-unstyled invisible hidden-xl-down">
+                                    @foreach (var item in ViewBag.listDiaChiCoQuanThiHanhAnThu)
+                                    {
+                                        <li><input value="@item.Value" />@item.Text</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tab-ket-qua-du-nop" role="tabpanel">
+                        @*@using (Html.BeginForm("SuaKetQuaNopAnPhi", "ThuLy", FormMethod.Post, new { @id = "formEditKetQuaDuNopAnPhi" }))
+                                                    {*@
+                        @*@Html.AntiForgeryToken()*@
+                        <input type="hidden" name="hoSoVuAnId" value="@Model.HoSoVuAnID" />
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="ngay-nop-an-phi-lbl">@ViewText.LABEL_NGAYNOP_TAMUNGANPHI<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group date" id="ngay-nop-an-phi-dtp">
+                                    @Html.TextBoxFor(x => x.KetQuaNopViewModel.NgayNopAnPhi, new { @class = "form-control", id = "ket-qua-nop-an-phi-txt" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <small class="form-text">@Html.ValidationMessageFor(x => x.KetQuaNopViewModel.NgayNopAnPhi)</small>
+                                <small class="form-text text-danger"><span for="ket-qua-nop-an-phi-txt"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_SOBIENLAI<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.KetQuaNopViewModel.SoBienLai, new { @class = "form-control", @maxlength = 100 })
+                                <small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.KetQuaNopViewModel.SoBienLai)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_NGAYNOP_BIENLAI_TOAAN<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group date" id="ngay-nop-bien-lai-cho-toa-an-dtp">
+                                    @Html.TextBoxFor(x => x.KetQuaNopViewModel.NgayNopBienLaiChoToaAn, new { @class = "form-control", id="ngay-nop-bien-lai-input" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <small class="form-text">@Html.ValidationMessageFor(x => x.KetQuaNopViewModel.NgayNopBienLaiChoToaAn)</small>
+                                <small class="form-text text-danger"><span for="ngay-nop-bien-lai-input"></span></small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label>@ViewText.LABEL_NGUOINHAN_BIENLAI<span class="input-required">*</span></label>
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(m => m.KetQuaNopViewModel.NhanVienNguoiNhanBienLai.HoTenVaMaNV, new { @class = "form-control", id="nguoi-nhan-bien-lai-textarea", disabled = "disabled" })
+                                @*@Html.DropDownListFor(x => x.KetQuaNopViewModel.NguoiNhanBienLai, (SelectList)ViewBag.listNguoiNhanBienLai, Setting.DDL_CHOOSE, new { @class = "form-control", disabled = "disabled" })*@
+                                @*<small class="form-text">
+                                    @Html.ValidationMessageFor(x => x.KetQuaNopViewModel.NguoiNhanBienLai)
+                                </small>*@
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right" id="phai-du-nop-btn">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    }
+
+<script type="text/javascript">
+    $(function () {
+        if ($("#loaiQuanHe").val() === "Yêu cầu") {
+            $("#popup-an-phi-title").html("@ViewText.TITLE_LEPHI");
+            $(".nop-an-phi-lbl").html("@ViewText.LABEL_NOPLEPHI");
+            $(".tong-an-phi-lbl").html("@ViewText.LABEL_TONGLEPHI");
+            $(".han-nop-an-phi-lbl").html("@ViewText.LABEL_HANNOP_LEPHI");
+            $(".ngay-nop-an-phi-lbl").html("@ViewText.LABEL_NGAYNOP_TAMUNGLEPHI");
+        } 
+
+        AnPhiModalModule.init();
+        
+    });
+</script>

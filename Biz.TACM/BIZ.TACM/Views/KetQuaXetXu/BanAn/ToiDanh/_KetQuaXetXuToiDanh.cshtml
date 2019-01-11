@@ -1,0 +1,27 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="row">
+    <div class="col-4 text-uppercase">
+        <strong>@ViewText.LABEL_KETQUA_XETXU</strong>
+    </div>
+    <div class="col-8 text-right">
+        <button id="btnTaoKetQuaXetXuToiDanh" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="#modalLarge" data-url="#"><i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.BUTTON_THEMTOIDANH</button>
+    </div>
+</div>
+<div class="row">
+    <div id="ket-qua-xet-xu-container" style="width: 100%">
+        <table class="table table-hover table-bordered table-custom" cellspacing="0" id="ket-qua-xet-xu-table" style="width: 100%">
+            <thead class="thead-default">
+                <tr>
+                    <td>@ViewText.TABLE_STT</td>
+                    <td class="text-capitalize">@ViewText.LABEL_BICAO</td>
+                    <td class="text-capitalize">@ViewText.LABEL_KETQUA_XETXU</td>
+                    <td class="text-capitalize">@ViewText.LABEL_DIEULUATAPDUNG</td>
+                    <td class="text-capitalize">@ViewText.LABEL_HINHPHAT</td>
+                    <td class="text-capitalize">@ViewText.LABEL_BIENPHAPTUPHAP</td>
+                    <td style="min-width:140px"></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

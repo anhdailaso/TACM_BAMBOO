@@ -1,0 +1,51 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangNghi.ThongTinKhangNghiViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+@Html.HiddenFor(m => m.KhangNghiId, new { id = "khang-nghi-id-hidden" })
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_VIENKIEMSAT_KHANGNGHI</span><span class="font-weight-bold">@Model.VienKiemSatKhangNghi</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_VANBAN_KHANGNGHI</span><span class="font-weight-bold">@Model.VanBanKhangNghi</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TOAAN_NHAN_VANBANKHANGNGHI</span><span class="font-weight-bold">@Model.NgayToaAnNhanVanBan</span></li>
+        @if (nhomAn.Equals(Setting.MANHOMAN_HINHSU))
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@ViewText.LABEL_BICAO_BI_KHANGNGHI</span>
+                <span class="font-weight-bold">
+                    @foreach (var item in Model.DanhSachNguoiBiKhangNghi)
+                    {
+                        if (item != Model.DanhSachNguoiBiKhangNghi.Last())
+                        {
+                            @(item + ", ")
+                        }
+                        else
+                        {
+                            @item
+                        }
+                    }
+                </span>
+            </li>
+        }        
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HINHTHUC</span><span class="font-weight-bold">@Model.HinhThuc</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p><strong>@ViewText.LABEL_NOIDUNG_KHANGNGHI:</strong></p>
+            <div class="card">
+                <div class="card-block" style="height: 186px; overflow: scroll">
+                    @Html.Raw(Model.NoiDungKhangNghi)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

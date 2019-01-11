@@ -1,0 +1,229 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.GiamDocThamTaiTham.GiamDocThamTaiThamViewModel
+
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.TITLE_XEMCHITIET_GDTTT</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-information table-hover">
+                <tbody>
+                    <tr>
+                        <td>@ViewText.LABEL_NHOMAN</td>
+                        <td class="text-value-bold">@Model.NhomAn</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_MAHOSO</td>
+                        <td class="text-value-bold">@Model.MaHoSo</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_LOAIQUYETDINH</td>
+                        <td class="text-value-bold">@Model.Nhom</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_SOQUYETDINH</td>
+                        <td class="text-value-bold">@Model.SoQuyetDinh</td>
+                    </tr>
+                    <tr>
+                        <td>@ViewText.LABEL_NGAYQUYETDINH</td>
+                        <td class="text-value-bold">@Model.NgayRaQuyetDinh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-md-5">
+                    <label>@ViewText.LABEL_GHICHU</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-block" style="height: 150px; overflow-y: scroll">
+                            @Html.Raw(Server.HtmlDecode(Model.GhiChu))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-12">@ViewText.LABEL_NOIDUNG_QUYETDINH</label>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="col-12">
+                <div id="noi-dung-quyet-dinh" class="row" style="background-color: #fff; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; display:flex;padding-top:5px;padding-bottom:5px">
+                    <div id="tab-noidungqd">
+                        @foreach (var item in (SelectList)ViewBag.noidung)
+                        {
+                            <div class="col-12 mt-1 mb-1">
+                                <label style="margin-top:1px;display:inline-block;padding-right:10px;vertical-align:top">
+                                    @Html.RadioButtonFor(x => x.NoiDungQuyetDinh, item.Text, new { @class = "noi-dung-qd", @disabled = "disabled" })
+                                </label>
+                                <label style="margin-top:1px;display:inline-block;width:700px">
+                                    @item.Text
+                                </label>
+                            </div>
+                        }
+                    </div>
+                    <div class="row col-12 mt-1 mb-1" id="huy-sua-an">
+                        <label class="col-3">@ViewText.LABEL_NOIDUNGHUYSUAAN</label>
+                        <label class="col-9">@Model.NoiDungHuySuaAn</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3 mt-1" style="color:red">
+                @Html.CheckBoxFor(x => x.HuySuaSoTham, new { @disabled = "disabled" }) @Html.LabelFor(x => x.HuySuaSoTham, ViewText.LABEL_HUYSOTHAM)
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3 mt-1" style="color:red">
+                @Html.CheckBoxFor(x => x.HuySuaPhucTham, new { @disabled = "disabled" }) @Html.LabelFor(x => x.HuySuaPhucTham, ViewText.LABEL_HUYPHUCTHAM)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            
+            <div>
+                <table class="table table-hover table-custom table-bordered">
+                    <thead>
+                        <tr>
+                            <td width="5%"></td>
+                            <td width="15%" class="text-center">
+                                @ViewText.TABLE_NHOM
+                            </td>
+                            <td width="80%" class="text-center">
+                                @ViewText.TABLE_NOIDUNG
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(x => x.QuyetDinhSoTham, new { @disabled = "disabled" })
+                            </td>
+                            <td>
+                                @ViewText.LABEL_QUYETDINH
+                            </td>
+                            <td style="white-space:normal">
+                                <label id="qdst">@Html.Raw(Model.Hoso.NoiDungQuyetDinhST ?? "")</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(x => x.BanAnSoTham, new { @disabled = "disabled" })
+                            </td>
+                            <td>
+                                @ViewText.TITLE_BANAN
+                            </td>
+                            <td style="white-space:normal">
+                                <label id="bast">@Html.Raw(Model.Hoso.NoiDungBanAnST ?? "")</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-2" style="overflow-x: scroll; height:290px;border:solid 1px rgba(0, 0, 0, 0.125);border-radius: 0.25rem">
+                @if (Model.Hoso.HoiDongSoTham != null && Model.Hoso.HoiDongSoTham.Any())
+                {
+                    @Html.Partial("_HoiDongItem", Model.Hoso.HoiDongSoTham)
+                }
+                else
+                {
+                    <div class="mt-5 text-center empty-data">
+                        <blockquote>
+                            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                        </blockquote>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class=" col-6">
+            @if (Model.Hoso.GiaiDoan == 2)
+            {
+                
+                <div>
+                    <table class="table table-hover table-custom table-bordered">
+                        <thead>
+                            <tr>
+                                <td width="5%"></td>
+                                <td width="15%" class="text-center">
+                                    @ViewText.TABLE_NHOM
+                                </td>
+                                <td width="80%" class="text-center">
+                                    @ViewText.TABLE_NOIDUNG
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(x => x.QuyetDinhPhucTham, new { @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    @ViewText.LABEL_QUYETDINH
+                                </td>
+                                <td style="white-space:normal">
+                                    <label id="qdst">@Html.Raw(Model.Hoso.NoiDungQuyetDinhPT ?? "")</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(x => x.BanAnPhucTham, new { @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    @ViewText.TITLE_BANAN
+                                </td>
+                                <td style="white-space:normal">
+                                    <label id="bapt">@Html.Raw(Model.Hoso.NoiDungBanAnPT ?? "")</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-2" style="overflow-x: scroll; height:290px;border:solid 1px rgba(0, 0, 0, 0.125);border-radius: 0.25rem">
+                    @if (Model.Hoso.HoiDongPhucTham != null && Model.Hoso.HoiDongPhucTham.Any())
+                    {
+                        @Html.Partial("_HoiDongItem", Model.Hoso.HoiDongPhucTham)
+                    }
+                    else
+                    {
+                        <div class="mt-5 text-center empty-data">
+                            <blockquote>
+                                <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                            </blockquote>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="mt-5 text-center empty-data">
+                    <blockquote>
+                        <strong>@(NotifyMessage.CHUACO_DULIEU.Replace(".", "") + " phúc thẩm.")</strong>
+                    </blockquote>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        XemGDTTTModule.init();
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿@using Biz.Lib.Authentication
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model List<Biz.Lib.SettingData.Model.SettingItemModel>
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject");
+    var idGiaiDoanSession = anSessionModel.GiaiDoanId == 0 ? 1 : anSessionModel.GiaiDoanId;
+}
+
+<h3 class="text-uppercase pb-4">@ViewBag.TenToaAn</h3>
+<div class="row">
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-3">
+                <div class="card text-center mb-3 card-hover">
+                    <div class="card-block pt-0 pb-0">
+                        <p class="card-title text-uppercase mb-0">
+                            <a href="@Url.Action("Index", "NhanDon", new { nhomAn = item.ItemRemark, maNv = AccountUtils.CurrentUsername() })" class="d-block pt-3 pb-3">
+                                <img class="icon-block" src="@Url.Content(string.Format(Setting.ICON_HOME,item.ItemRemark))" alt="">
+                                <span class="d-block text-gray-dark">@item.ItemText</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class=" mt-5 col-12 empty-data text-center">
+
+            <blockquote>
+                <strong>Toà án chưa được cài đặt nhóm án. Vui lòng liên lạc quản trị hệ thống!</strong>
+            </blockquote>
+        </div>
+    }
+</div>

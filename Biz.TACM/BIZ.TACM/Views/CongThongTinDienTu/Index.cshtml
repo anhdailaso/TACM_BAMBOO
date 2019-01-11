@@ -1,0 +1,78 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = ViewText.TITLE_TRACUU;
+    Layout = "~/Views/Shared/_TraCuuLayout.cshtml";
+}
+
+<div class="tracuu-frame">
+    @Html.Partial("_TraCuu")
+</div>
+@section Scripts{
+<script type="text/javascript">
+    $(function () {
+        var keyword;
+
+        $("#btn-refresh-captcha").on("click", function () {
+            $("#CaptchaContent").load('@Url.Action("ReloadCaptcha", "Account")');
+        });
+
+        $("#traCuuForm").on("submit",
+            function () {
+                if ($("#traCuuForm").valid()) {
+                    $.ajax({
+                        type: $("#traCuuForm").prop("method"),
+                        url: $("#traCuuForm").prop("action"),
+                        data: $("#traCuuForm").serialize(),
+                        success: function (response) {
+                            if (!response.IsSuccess) {
+                                $.notify({ message: response.Messages[0] }, { type: "danger" });
+                                $("#CaptchaContent").load('@Url.Action("ReloadCaptcha", "Account")');
+                                $("#traCuuForm").get(0).reset();
+                            }
+                            else {
+                                keyword = $("#txtKeyword").val();
+                                $(".tracuu-frame").load("/CongThongTinDienTu/KetQuaTraCuu?keyword=" + keyword);
+                            }
+                        }
+                    });
+                }
+                return false;
+        });
+
+        $("#traCuuForm").validate({
+            ignore: '',
+            rules: {
+                "keyword": {
+                    required: true
+                },
+                "captcha": {
+                    required: true,
+                    maxlength: 20
+                }
+            },
+            messages:
+            {
+                "keyword": {
+                    required: "@string.Format(ValidationMessages.VALIDATION_KIEMTRARONG, ViewText.LABEL_MAHOSO)"
+                },
+                "captcha": {
+                    required: "@string.Format(ValidationMessages.VALIDATION_KIEMTRARONG, ViewText.LABEL_MAXACNHAN)",
+                    maxlength: "@string.Format(ValidationMessages.VALIDATION_SOLUONGKYTUTOIDA, ViewText.LABEL_MAXACNHAN, 20)"
+                }
+            },
+            errorPlacement: function (error) {
+                //console.log(error);
+                var htmlFor = error[0].htmlFor;
+
+                $('span[for="' + htmlFor + '"]').each(function () {
+                    $(this).append(error);
+                });
+            },
+            success: function (error) {
+                error.remove();
+            }
+        });
+    });
+</script>
+}

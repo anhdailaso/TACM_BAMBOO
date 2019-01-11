@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.NhanDon.Model.TraLaiDonModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaTraLaiDon"  class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#popupEditTraLaiDon"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoTraLaiDon", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.TraLaiDonID</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTRADON</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayTraDon)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LYDO_TRADON</span><span class="font-weight-bold">@Model.LyDoTraDon</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-block">
+                    <p><strong>@ViewText.LABEL_GHICHU</strong></p>
+                    <div class="card">
+                        <div class="card-block" style="height: 143px; overflow-y: scroll">
+                            @Html.Raw(Model.GhiChu)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemTraLaiDon" href="#" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-toggle="modal" data-id="0" data-target="#popupEditTraLaiDon"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,35 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+
+<div id="contentKetQuaXetXuBanAn">
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modelKetQuaXetXuBanAn" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-banan-custom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase">@ViewText.TITLE_BANAN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height: 300px">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Width Custom -->
+<style type="text/css">
+    .modal-banan-custom {
+        max-width: 900px;
+    }
+</style>

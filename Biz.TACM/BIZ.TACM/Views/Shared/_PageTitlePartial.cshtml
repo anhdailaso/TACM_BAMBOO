@@ -1,0 +1,71 @@
+﻿@using Biz.Lib.Authentication
+@using Biz.TACM.Enums
+@using Biz.Lib.Helpers
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var toaAn = anSessionModel.ToaAnId;
+    var nhomAn = anSessionModel.MaNhomAn;
+    var giaiDoan = anSessionModel.GiaiDoanId;
+}
+
+@switch (nhomAn)
+{
+    case "DS":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_DANSU;
+        break;
+    case "KT":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_KINHTE;
+        break;
+    case "HS":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_HINHSU;
+        break;
+    case "HN":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_HONNHAN;
+        break;
+    case "HC":
+        ViewBag.TitleNhomAn = ViewText.NHONAN_HANHCHINH;
+        break;
+    case "LD":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_LAODONG;
+        break;
+    case "AD":
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_APDUNG_BPXLHC;
+        break;
+    default:
+        ViewBag.TitleNhomAn = ViewText.NHOMAN_DANSU;
+        break;
+}
+
+@switch (giaiDoan)
+{
+    case 1:
+        ViewBag.TitleGiaiDoan = ViewText.TITLE_GIAIDOAN_SOTHAM;
+        break;
+    case 2:
+        ViewBag.TitleGiaiDoan = ViewText.TITLE_GIAIDOAN_PHUCTHAM;
+        break;
+    default:
+        ViewBag.TitleGiaiDoan = ViewText.TITLE_GIAIDOAN_SOTHAM;
+        break;
+}
+
+<input id="nhomAn" type="hidden" value="@nhomAn" />
+<input id="giaiDoanHoSo" type="hidden" value="@giaiDoan"/>
+<div class="float-left">
+    <h4 class="text-uppercase mb-3 ml-3">
+        @if (toaAn == ToaAn.TinhCaMau.GetHashCode() && !nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+        {
+            <a id="btnChuyenGiaiDoan"><i class="fa fa-retweet"></i></a>
+        }
+        <a href="@Url.Action("Index", "Home", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = CongDoan.NhanDon.GetHashCode(), maNv = AccountUtils.CurrentUsername()})" style="color: #1565c0">
+            @ViewBag.TitleNhomAn
+        </a>
+        -
+        <a href="@Url.Action("Index", "NhanDon", new {nhomAn = anSessionModel.MaNhomAn, CongDoanHoSo = CongDoan.NhanDon.GetHashCode(), maNv = AccountUtils.CurrentUsername()})" style="color: #1565c0">
+           @ViewBag.TitleGiaiDoan
+        </a>
+        - @ViewBag.Title
+    </h4>
+</div>

@@ -1,0 +1,5 @@
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.HuyHoSo.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\references\Biz.Lib.TACM.HuyHoSo.pdb
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.HuyHoSo\obj\Debug\Biz.Lib.TACM.HuyHoSo.csproj.CoreCompileInputs.cache
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.HuyHoSo\obj\Debug\Biz.Lib.TACM.HuyHoSo.dll
+C:\Bizcell\TACM\tacm2\TACM\Biz.TACM\Biz.Libs\Biz.Lib.TACM.HuyHoSo\obj\Debug\Biz.Lib.TACM.HuyHoSo.pdb

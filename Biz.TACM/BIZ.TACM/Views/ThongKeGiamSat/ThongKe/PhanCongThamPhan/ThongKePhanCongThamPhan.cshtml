@@ -1,0 +1,132 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.LocDuLieuThongKeModel
+
+@{
+    ViewBag.Title = @ViewText.TITLE_THONGKE_PHANCONGTHAMPHAN.ToUpper();
+}
+
+<div class="float-left">
+    <h4 class="text-uppercase mb-2">@ViewText.TITLE_THONGKE_PHANCONGTHAMPHAN</h4>
+</div>
+<div class="clearfix"></div>
+<div id="main-content">
+    <div class="container-fluid row mb-5">
+        <div class="col-12">
+            <div id="contentLocDuLieu" class="mb-5 d-none">
+                <div class="card">
+                    <div class="card-block">
+                        <form>
+                            <div class="row">
+                                <div class="col-1">
+                                    <label>@ViewText.LABEL_TUNGAY<span class="input-required">*</span></label>
+                                </div>
+                                <div class="col-2">
+                                    @Html.HiddenFor(m => m.TuNgay)
+                                    <div class="input-group date datepicker">
+                                        @Html.TextBoxFor(x => x.TuNgay, "{0:dd/MM/yyyy}", new { @class = "form-control", @disabled = "disabled" })
+                                        <span class="input-group-addon">
+                                            <span class="fa fa-calendar"></span>
+                                        </span>
+                                    </div>
+                                    <small class="form-text">@Html.ValidationMessageFor(x => x.TuNgay)</small>
+                                </div>
+                                <div class="col-1">
+                                    <label>@ViewText.LABEL_DENNGAY<span class="input-required">*</span></label>
+                                </div>
+                                <div class="col-2">
+                                    @Html.HiddenFor(m => m.DenNgay)
+                                    <div class="input-group date datepicker">
+                                        @Html.TextBoxFor(x => x.DenNgay, "{0:dd/MM/yyyy}", new { @class = "form-control", @disabled = "disabled" })
+                                        <span class="input-group-addon">
+                                            <span class="fa fa-calendar"></span>
+                                        </span>
+                                    </div>
+                                    <small class="form-text">@Html.ValidationMessageFor(x => x.DenNgay)</small>
+                                </div>
+                                @*<div class="col-1 text-right">
+                                        <label>@ViewText.LABEL_TOAAN<span class="input-required">*</span></label>
+                                    </div>
+                                    <div class="col-3">
+                                        @Html.DropDownListFor(x => x.ToaAnID, (SelectList) ViewBag.ddlToaAn, null, new {@class = "form-control", @style = "width: 85% !important;" })
+                                    </div>*@
+                                <div class="">
+                                    <button id="xem-pctp-btn" type="button" class="btn btn-danger text-uppercase pull-left mr-2" style="width: 100px; margin-left: -15px;"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_XEM</button>
+                                    <button type="reset" class="btn btn-default text-uppercase pull-right"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_LAMLAI</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <h5 class="col-9 text-uppercase mt-3">@ViewText.TITLE_HOSO_CHUAPHANCONGTHAMPHAN</h5>
+                <div class="col-3">
+                    @Html.DropDownListFor(x => x.ToaAnID, (SelectList)ViewBag.ddlToaAn, null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-3" id="contentHoSoChuaPhanCong">
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="ho-so-chua-phan-cong-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td class="text-center">@ViewText.TABLE_STT</td>
+                            <td class="text-center">@ViewText.TABLE_SO</td>
+                            <td>@ViewText.TABLE_MAHOSO</td>
+                            <td>@ViewText.TABLE_NHOMAN</td>
+                            <td>@ViewText.TABLE_GIAIDOAN</td>
+                            <td>@ViewText.TABLE_QUANHEPHAPLUAT_TOI</td>
+                            <td style="min-width:140px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row mb-2">
+                <h5 class="col-6 text-uppercase mt-3">@ViewText.TITLE_THONGKETRUCTUYEN</h5>
+                <div class="col-6 text-right">
+                    <button class="btn btn-info" id="tai-du-lieu-btn"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;@ViewText.BUTTON_TAIDULIEU</button>
+                </div>
+            </div>
+        </div>
+        <div id="contentThongKeTrucTuyen" class="col-12">
+            <div class="card">
+                <div class="card-block text-center">
+                    @ViewText.TEXT_TAIDULIEU_THONGKETRUCTUYEN
+                </div>
+            </div>
+            <div class="text-center"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPhanCongThamPhan" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-thamphan-custom">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    @@media (min-width: 576px) {
+        .modal-thamphan-custom {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+    }
+</style>
+@section Scripts {
+    @Scripts.Render("~/bundles/ThongKePhanCongThamPhan")
+    @*@Scripts.Render("~/bundles/ThuLy")*@
+
+    @*<script src="~/Scripts/Custom/ThuLy/Biz.PhanCongThamPhan.js"></script>*@
+    <script type="text/javascript">
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY',
+            defaultDate: new Date()
+        });
+        $(".table-custom tbody td").css("white-space", "normal");
+    </script>
+}

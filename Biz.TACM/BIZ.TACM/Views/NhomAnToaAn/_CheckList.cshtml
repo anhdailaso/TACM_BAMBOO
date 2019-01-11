@@ -1,0 +1,11 @@
+﻿@model List<Biz.TACM.Models.ViewModel.NhomAnToaAn.NhomAnViewModel>
+
+@for (var i = 0; i < Model.Count(); i++)
+{
+    <div class="checkbox" id="checkbox_@i">
+        @Html.HiddenFor(m => Model[i].Stt)
+        @Html.HiddenFor(m => Model[i].ma)
+        @Html.HiddenFor(m => Model[i].text)
+        @Html.CheckBoxFor(m => Model[i].ischeck) @Html.DisplayFor(m => Model[i].text)
+    </div>
+}

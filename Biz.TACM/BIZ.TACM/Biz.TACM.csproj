@@ -1,0 +1,1654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7ECB7D49-C583-4182-8807-B6C671C2C4A3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Biz.TACM</RootNamespace>
+    <AssemblyName>Biz.TACM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Biz.Lib.AccessValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Biz.Lib.AccessValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Biz.Lib.Authentication, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Biz.Lib.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Biz.Lib.CaptchaImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Biz.Lib.CaptchaImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Biz.Lib.Helpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Biz.Lib.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Biz.Lib.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\references\Biz.Lib.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.93.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.93.0\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.8.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.8.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.3.0\lib\net45\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.12\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenXmlPowerTools, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenXmlPowerTools.4.5.3.2\lib\net45\OpenXmlPowerTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfReportGenerator">
+      <HintPath>..\references\PdfReportGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=6.3.0.41040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.6.3\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.6.3\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=4.3.5.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.6.3\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET">
+      <HintPath>..\packages\DocX.1.1.0\lib\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityWebActivator.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BizController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
+    <Compile Include="Controllers\ChuanBiXetXuController.cs" />
+    <Compile Include="Controllers\CongThongTinDienTuController.cs" />
+    <Compile Include="Controllers\HuyHoSoController.cs" />
+    <Compile Include="Controllers\GiamDocThamTaiThamController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KetQuaXetXuController.cs" />
+    <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\MaHoaHoSoVuAnController.cs" />
+    <Compile Include="Controllers\MauInController.cs" />
+    <Compile Include="Controllers\NhanDonController.cs" />
+    <Compile Include="Controllers\NhanHoSoController.cs" />
+    <Compile Include="Controllers\NhomAnToaAnController.cs" />
+    <Compile Include="Controllers\QuanLyNhanVienController.cs" />
+    <Compile Include="Controllers\SauXetXuController.cs" />
+    <Compile Include="Controllers\SoDoToChucController.cs" />
+    <Compile Include="Controllers\TaiKhoanNhanVienController.cs" />
+    <Compile Include="Controllers\ThongKeGiamSatController.cs" />
+    <Compile Include="Controllers\ThuLyController.cs" />
+    <Compile Include="Controllers\XetXuController.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Exceptions\TacmServiceException.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExcelUtils.cs" />
+    <Compile Include="Helpers\FileUtils.cs" />
+    <Compile Include="Infrastructure\Attributes\CaptchaValidationAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\NoCache.cs" />
+    <Compile Include="Infrastructure\Extensions\ControllerExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ExceptionExtensions.cs" />
+    <Compile Include="IServices\IHuyHoSoService.cs" />
+    <Compile Include="IServices\IMaHoaHoSoVuAnService.cs" />
+    <Compile Include="IServices\IGiamDocThamTaiThamService.cs" />
+    <Compile Include="IServices\INhomAnToaAnService.cs" />
+    <Compile Include="IServices\IQuanLyNhanVienService.cs" />
+    <Compile Include="IServices\IChuanBiXetXuService.cs" />
+    <Compile Include="IServices\IKetQuaXetXuService.cs" />
+    <Compile Include="IServices\IMauInService.cs" />
+    <Compile Include="IServices\INhanDonService.cs" />
+    <Compile Include="IServices\ISauXetXuService.cs" />
+    <Compile Include="IServices\ISettingDataService.cs" />
+    <Compile Include="IServices\ISoDoToChucService.cs" />
+    <Compile Include="IServices\ITaiKhoanNhanVienService.cs" />
+    <Compile Include="IServices\IThongKeGiamSatService.cs" />
+    <Compile Include="IServices\IThuLyService.cs" />
+    <Compile Include="Infrastructure\Attributes\WorkFlow.cs" />
+    <Compile Include="Infrastructure\Attributes\WorkFlowAttribute.cs" />
+    <Compile Include="Infrastructure\Caching\CacheKeys.cs" />
+    <Compile Include="Infrastructure\Caching\ICacheProvider.cs" />
+    <Compile Include="Infrastructure\Caching\MemoryCacheProvider.cs" />
+    <Compile Include="Infrastructure\Configuration\ITacmConfiguration.cs" />
+    <Compile Include="Infrastructure\Extensions\HtmlExtensions.cs" />
+    <Compile Include="IServices\IHoSoService.cs" />
+    <Compile Include="IServices\ITraCuuThongTinService.cs" />
+    <Compile Include="IServices\ITrangThaiService.cs" />
+    <Compile Include="IServices\IXetXuService.cs" />
+    <Compile Include="IServices\ServiceBase.cs" />
+    <Compile Include="Models\Model\AnSessionModel.cs" />
+    <Compile Include="Models\Model\NhanVienSessionModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangCao\KhangCaoModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangCaoQuaHan\NgayKhangCaoQuaHanModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangCaoQuaHan\ThongTinKhangCaoQuaHanModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangCao\ThongTinKhangCaoModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangNghi\NgayKhangNghiModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\KhangNghi\ThongTinKhangNghiModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\LuuKho\NgayLuuKhoModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\LuuKho\ThongTinLuuKhoModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\PhatHanhBanAn\NgayPhatHanhBanAnModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\PhatHanhBanAn\ThongTinPhatHanhBanAnModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\SuaChuaBanAn\NgaySuaChuaBanAnModel.cs" />
+    <Compile Include="Models\Model\SauXetXu\SuaChuaBanAn\ThongTinSuaChuaBanAnModel.cs" />
+    <Compile Include="Models\ViewModel\ChuanBiXetXu\ChuyenHoSoViewModel.cs" />
+    <Compile Include="Models\ViewModel\CongThongTinDienTu\TraCuuHoSoVuAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\GiamDocThamTaiTham\GiamDocThamTaiThamViewModel.cs" />
+    <Compile Include="Models\ViewModel\GiamDocThamTaiTham\HoSoVuAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\Home\HomeViewModel.cs" />
+    <Compile Include="Models\ViewModel\HoSo\CreateHoSoViewModel.cs" />
+    <Compile Include="Models\ViewModel\HoSo\HoSoVuAnSummaryViewModel.cs" />
+    <Compile Include="Models\ViewModel\HoSo\TruyVanHoSoViewModel.cs" />
+    <Compile Include="Models\ViewModel\HuyHoSo\HoSoVuAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\LichSuInViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInBiaHoSoNhanDonViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInBiaHoSoViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInGiayTrieuTapViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInQuyetDinhDinhChiViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInQuyetDinhTamHoanViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInQuyetDinhGiaHanCBXXModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInQuyetDinhPCTPViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo24ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo29ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInLenhTrichXuatViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo30ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo47PTViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInQDTamGiamViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo47ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInGXNKhangCaoViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo65ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInSo61ViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\MauInViewModel.cs" />
+    <Compile Include="Models\ViewModel\MauIn\NhomAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\NhanDon\ChuyenDonViewModel.cs" />
+    <Compile Include="Models\ViewModel\NhanDon\DuongSuViewModel.cs" />
+    <Compile Include="Models\ViewModel\NhanDon\NhanHoSoPhucThamViewModel.cs" />
+    <Compile Include="Models\ViewModel\NhanDon\NoiDungDonViewModel.cs" />
+    <Compile Include="Models\ViewModel\NhanDon\ThamPhanViewModel.cs" />
+    <Compile Include="Models\ViewModel\QuanLyNhanVien\NhanVienToaAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\QuanLyNhanVien\NhanVienViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\ChuyenHoSo\ChuyenHoSoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCaoQuaHan\KhangCaoQuaHanViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCaoQuaHan\Request\KhangCaoQuaHanRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCaoQuaHan\ThongTinKhangCaoQuaHanViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\SuaKhangCaoModalViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\KhangCaoModalViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\KhangCaoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\Request\KhangCaoRequestBase.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\Request\SuaKhangCaoRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\Request\TaoKhangCaoRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangCao\ThongTinKhangCaoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangNghi\KhangNghiModalViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangNghi\KhangNghiViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangNghi\Request\KhangNghiRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\KhangNghi\ThongTinKhangNghiViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\LuuKho\LuuKhoModalViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\LuuKho\LuuKhoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\LuuKho\Request\LuuKhoRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\LuuKho\ThongTinLuuKhoViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\Shared\DuongSuViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\PhatHanhBanAn\NgayPhatHanhBanAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\PhatHanhBanAn\PhatHanhBanAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\PhatHanhBanAn\ThongTinPhatHanhBanAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\SuaChuaBanAn\SuaChuaBanAnModalViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\SuaChuaBanAn\Request\SuaChuaBanAnRequest.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\SuaChuaBanAn\SuaChuaBanAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\SuaChuaBanAn\ThongTinSuaChuaBanAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\SauXetXu\TamUngAnPhi\TamUngAnPhiViewModel.cs" />
+    <Compile Include="Models\ViewModel\Shared\JsonResponseViewModel.cs" />
+    <Compile Include="Models\ViewModel\SoDoToChuc\ChucDanhViewModel.cs" />
+    <Compile Include="Models\ViewModel\TaiKhoanNhanVien\ChucNangViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThongKeGiamSat\ChartViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThongKeGiamSat\GiamSatDuLieuBieuDoViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThongKeGiamSat\GiamSatHoSoVuAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThongKeGiamSat\GiamSatLocDuLieuViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThuLy\AnPhiViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThuLy\HoSoVuAnThuLyViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThuLy\PhanCongThamPhanViewModel.cs" />
+    <Compile Include="Models\ViewModel\ThuLy\ThongTinThuLyViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HuyHoSoService.cs" />
+    <Compile Include="Services\TraCuuThongTinService.cs" />
+    <Compile Include="Services\MaHoaHoSoVuAnService.cs" />
+    <Compile Include="Services\NhomAnToaAnService.cs" />
+    <Compile Include="Services\GiamDocThamTaiThamService.cs" />
+    <Compile Include="Services\QuanLyNhanVienService.cs" />
+    <Compile Include="Services\ChuanBiXetXuService.cs" />
+    <Compile Include="Services\KetQuaXetXuService.cs" />
+    <Compile Include="Services\MauInService.cs" />
+    <Compile Include="Services\NhanDonService.cs" />
+    <Compile Include="Services\SauXetXuService.cs" />
+    <Compile Include="Services\SettingDataService.cs" />
+    <Compile Include="Services\SoDoToChucService.cs" />
+    <Compile Include="Services\TaiKhoanNhanVienService.cs" />
+    <Compile Include="Services\ThongKeGiamSatService.cs" />
+    <Compile Include="Services\ThuLyService.cs" />
+    <Compile Include="Services\HoSoService.cs" />
+    <Compile Include="Services\TrangThaiService.cs" />
+    <Compile Include="Services\XetXuService.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Models\ViewModel\QuanLyNhanVien\NhanVienExcelModel.cs" />
+    <Compile Include="Models\ViewModel\QuanLyNhanVien\ImportNhanVienViewModel.cs" />
+    <Compile Include="UtilityHelpers\DropzoneOptions.cs" />
+    <Compile Include="Models\ViewModel\NhomAnToaAn\NhomAnViewModel.cs" />
+    <Compile Include="IServices\IPhanCongNhanVienService.cs" />
+    <Compile Include="Services\PhanCongNhanVienService.cs" />
+    <Compile Include="Controllers\PhanCongNhanVienController.cs" />
+    <Compile Include="Models\ViewModel\PhanCongNhanVien\NhanVienNhomAnViewModel.cs" />
+    <Compile Include="Models\ViewModel\PhanCongNhanVien\PhanCongViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\XMLData.xml" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css" />
+    <Content Include="Content\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\dropzone-basic.css" />
+    <Content Include="Content\dropzone.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\clear.png" />
+    <Content Include="Content\Images\fnIcons\bao_cao_thong_ke.png" />
+    <Content Include="Content\Images\fnIcons\cau_hinh.png" />
+    <Content Include="Content\Images\fnIcons\giam_sat_thuc_hien.png" />
+    <Content Include="Content\Images\fnIcons\ma_hoa_ho_so.png" />
+    <Content Include="Content\Images\fnIcons\nhan_vien_nhom_an.png" />
+    <Content Include="Content\Images\fnIcons\nhom_an_toa_an.png" />
+    <Content Include="Content\Images\fnIcons\nv_nhom_an_toa_an.png" />
+    <Content Include="Content\Images\fnIcons\phan_cong_tham_phan.png" />
+    <Content Include="Content\Images\fnIcons\quan_ly_nv.png" />
+    <Content Include="Content\Images\fnIcons\so_do_to_chuc.png" />
+    <Content Include="Content\Images\fnIcons\huy_ho_so.png" />
+    <Content Include="Content\Images\fnIcons\thong_ke_an_huy_sua.png" />
+    <Content Include="Content\Images\fnIcons\thong_ke_luu_kho.png" />
+    <Content Include="Content\Images\fnIcons\tra_cuu_ho_so.png" />
+    <Content Include="Content\Images\Icons\avatar_default_large.png" />
+    <Content Include="Content\Images\Icons\avatar_default_small.png" />
+    <Content Include="Content\Images\Icons\avatar_default_white.png" />
+    <Content Include="Content\Images\Icons\AD.png" />
+    <Content Include="Content\Images\Icons\DS.png" />
+    <Content Include="Content\Images\Icons\HC.png" />
+    <Content Include="Content\Images\Icons\HN.png" />
+    <Content Include="Content\Images\Icons\HS.png" />
+    <Content Include="Content\Images\Icons\KT.png" />
+    <Content Include="Content\Images\Icons\LD.png" />
+    <Content Include="Content\Images\Icons\avatar_default.png" />
+    <Content Include="Content\Images\Icons\cau_hinh.png" />
+    <Content Include="Content\Images\Icons\nhan_vien.png" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\tacm\ChuKyChanhAn_HTH.png" />
+    <Content Include="Content\Images\tacm\SlideShow\1.jpg" />
+    <Content Include="Content\Images\tacm\SlideShow\2.jpg" />
+    <Content Include="Content\Images\tacm\SlideShow\3.jpg" />
+    <Content Include="Content\Images\tacm\SlideShow\4.jpg" />
+    <Content Include="Content\Images\tacm\SlideShow\5.jpg" />
+    <Content Include="Content\Images\tacm\default_image_200x200.png" />
+    <Content Include="Content\Images\tacm\ic_gavel_black_24dp_2x.png" />
+    <Content Include="Content\Images\tacm\logo-small.png" />
+    <Content Include="Content\Images\tacm\logo.JPG" />
+    <Content Include="Content\Images\tacm\logo.png" />
+    <Content Include="Content\Images\tacm\strong_bg.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.jqplot.css" />
+    <Content Include="Content\jquery.treegrid.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BIZ.Application.js" />
+    <Content Include="Scripts\BIZ.UploadDocuments.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-notify.min.js" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\mauin\TIMES.TTF" />
+    <Content Include="Content\fonts\mauin\TIMESBD.TTF" />
+    <Content Include="Content\fonts\mauin\TIMESBI.TTF" />
+    <Content Include="Content\fonts\mauin\TIMESI.TTF" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <None Include="Properties\PublishProfiles\BizSecurity.pubxml" />
+    <Content Include="Scripts\ckeditor\adapters\jquery.js" />
+    <Content Include="Scripts\ckeditor\build-config.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\config.js" />
+    <Content Include="Scripts\ckeditor\contents.css" />
+    <Content Include="Scripts\ckeditor\lang\en.js" />
+    <Content Include="Scripts\ckeditor\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Scripts\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Scripts\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Scripts\ckeditor\plugins\colordialog\dialogs\colordialog.css" />
+    <Content Include="Scripts\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Scripts\ckeditor\plugins\copyformatting\cursors\cursor-disabled.svg" />
+    <Content Include="Scripts\ckeditor\plugins\copyformatting\cursors\cursor.svg" />
+    <Content Include="Scripts\ckeditor\plugins\copyformatting\styles\copyformatting.css" />
+    <Content Include="Scripts\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Scripts\ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="Scripts\ckeditor\plugins\icons.png" />
+    <Content Include="Scripts\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Scripts\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Scripts\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Scripts\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="Scripts\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Scripts\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="Scripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Scripts\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Scripts\ckeditor\samples\css\samples.css" />
+    <Content Include="Scripts\ckeditor\samples\img\github-top.png" />
+    <Content Include="Scripts\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Scripts\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Scripts\ckeditor\samples\img\logo.png" />
+    <Content Include="Scripts\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Scripts\ckeditor\samples\index.html" />
+    <Content Include="Scripts\ckeditor\samples\js\sample.js" />
+    <Content Include="Scripts\ckeditor\samples\js\sf.js" />
+    <Content Include="Scripts\ckeditor\samples\old\ajax.html" />
+    <Content Include="Scripts\ckeditor\samples\old\api.html" />
+    <Content Include="Scripts\ckeditor\samples\old\appendto.html" />
+    <Content Include="Scripts\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Scripts\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Scripts\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Scripts\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Scripts\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Scripts\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Scripts\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Scripts\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Scripts\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Scripts\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Scripts\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Scripts\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Scripts\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="Scripts\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Scripts\ckeditor\samples\old\index.html" />
+    <Content Include="Scripts\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Scripts\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Scripts\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Scripts\ckeditor\samples\old\jquery.html" />
+    <Content Include="Scripts\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Scripts\ckeditor\samples\old\readonly.html" />
+    <Content Include="Scripts\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Scripts\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Scripts\ckeditor\samples\old\sample.css" />
+    <Content Include="Scripts\ckeditor\samples\old\sample.js" />
+    <Content Include="Scripts\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Scripts\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Scripts\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Scripts\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Scripts\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Scripts\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Scripts\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\Custom\Account\BIZ.Account.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.ChuanBiXetXu.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.ChuanBiXetXuHoaGiai.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.ChuanBiXetXuQuyetDinh.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.DinhChiVuAn.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.DinhChiXetXuPhucTham.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.PhucHoiVuAn.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.TamDinhChiVuAn.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.TraHoSoDieuTraBoSung.js" />
+    <Content Include="Scripts\Custom\ChuanBiXetXu\BIZ.ChuyenHoSo.js" />
+    <Content Include="Scripts\Custom\GiamDocThamTaiTham\Biz.GDTTT.js" />
+    <Content Include="Scripts\Custom\Home\Biz.Home.js" />
+    <Content Include="Scripts\Custom\HuyHoSo\Biz.HuyHoSo.js" />
+    <Content Include="Scripts\Custom\KetQuaXetXu\BIZ.KetQuaXetXu.js" />
+    <Content Include="Scripts\Custom\KetQuaXetXu\BIZ.KetQuaXetXuQuyetDinhADBPXLHC.js" />
+    <Content Include="Scripts\Custom\MauIn\Biz.TimKiemMauIn.js" />
+    <Content Include="Scripts\Custom\MaHoaHoSoVuAn\Biz.MaHoaHoSoVuAn.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.DuongSu.js" />
+    <Content Include="Scripts\Custom\MauIn\Biz.MauInChiTiet.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.ToiDanhTruyTo.js" />
+    <Content Include="Scripts\Custom\NhanHoSo\Biz.NhanHoSo.js" />
+    <Content Include="Scripts\Custom\QuanLyNhanVien\Biz.NhanVien.js" />
+    <Content Include="Scripts\Custom\QuanLyNhanVien\Biz.TimKiemNhanVien.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.ChuyenHoSo.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.TimKiemOnHeader.js" />
+    <Content Include="Scripts\Custom\QuanLyNhanVien\Biz.TaiKhoanNhanVien.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.NhanHoSoPhucTham.js" />
+    <Content Include="Scripts\ckeditor\CHANGES.md" />
+    <Content Include="Scripts\ckeditor\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\README.md" />
+    <Content Include="Scripts\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Scripts\Custom\ThongKeGiamSat\Biz.ThongKeAnHuySua.js" />
+    <Content Include="Scripts\Custom\ThongKeGiamSat\Biz.ThongKePhanCongThamPhan.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\box-slider-all.jquery.min.js" />
+    <Content Include="Scripts\Custom\KetQuaXetXu\BIZ.KetQuaXetXuBanAn.js" />
+    <Content Include="Scripts\Custom\KetQuaXetXu\BIZ.KetQuaXetXuQuyetDinh.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.ChuyenDon.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.KhieuNaiTraLaiDon.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.Nhandon.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.NhandonChiTiet.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.NoiDungDon.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.SuaDoiBoSungDon.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.ThamPhan.js" />
+    <Content Include="Scripts\Custom\NhanDon\Biz.TraLaiDon.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.KhangCaoQuaHan.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.KhangCao.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.LuuKho.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.KhangNghi.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.PhatHanhBanAn.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.SauXetXu.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.SuaChuaBanAn.js" />
+    <Content Include="Scripts\Custom\SauXetXu\BIZ.TamUngAnPhi.js" />
+    <Content Include="Scripts\Custom\SauXetXu\Biz.TraLaiDonKhangCao.js" />
+    <Content Include="Scripts\Custom\Shared\BIZ.ChuyenCongDoan.js" />
+    <Content Include="Scripts\Custom\SoDoToChuc\Biz.SoDoToChucTreeView.js" />
+    <Content Include="Scripts\Custom\ThongKeGiamSat\Biz.BaoCaoThongKe.js" />
+    <Content Include="Scripts\Custom\ThongKeGiamSat\Biz.GiamSatThucHien.js" />
+    <Content Include="Scripts\Custom\ThongKeGiamSat\Biz.ThongKeLuuKho.js" />
+    <Content Include="Scripts\Custom\ThuLy\Biz.AnPhi.js" />
+    <Content Include="Scripts\Custom\ThuLy\Biz.GhiChuPhanCong.js" />
+    <Content Include="Scripts\Custom\ThuLy\Biz.PhanCongThamPhan.js" />
+    <Content Include="Scripts\Custom\ThuLy\Biz.ThongTinThuLy.js" />
+    <Content Include="Scripts\Custom\ThuLy\Biz.ThuLy.js" />
+    <Content Include="Scripts\Custom\XetXu\Biz.XetXu.js" />
+    <Content Include="Scripts\Custom\XetXu\Biz.XetXuNoiDung.js" />
+    <Content Include="Scripts\Custom\XetXu\Biz.XetXuTrieuTap.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\dropzone.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.jqplot\excanvas.js" />
+    <Content Include="Scripts\jquery.jqplot\jquery.jqplot.1.0.9.js" />
+    <Content Include="Scripts\jquery.jqplot\MIT-LICENSE.txt" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.barRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.ciParser.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.cursor.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.dragable.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.enhancedPieLegendRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.highlighter.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.json2.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.mobile.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.pointLabels.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\jquery.jqplot\plugins\jqplot.trendline.js" />
+    <Content Include="Scripts\jquery.stickytabs.js" />
+    <Content Include="Scripts\jquery.treegrid.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\loadingoverlay.min.js" />
+    <Content Include="Scripts\loadingoverlay_progress.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\tether.min.js" />
+    <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Scripts\tinymce\license.txt" />
+    <Content Include="Scripts\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Scripts\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\help\img\logo.png" />
+    <Content Include="Scripts\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Scripts\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.mobile.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.mobile.min.css" />
+    <Content Include="Scripts\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Scripts\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\underscore-min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\MauIn\HC\_MauInSo24.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInSo29.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\UnAuthorize.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\NhanDon\Index.cshtml" />
+    <Content Include="Views\Shared\_PageTitlePartial.cshtml" />
+    <Content Include="Views\Shared\_VerticalMenuPartial.cshtml" />
+    <Content Include="Views\NhanDon\_NhanHoSoMoi.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\NhanDon\ChuyenDon\Detail.cshtml" />
+    <Content Include="Views\NhanDon\ChuyenDon\Edit.cshtml" />
+    <Content Include="Views\NhanDon\ChuyenDon\TabContentChuyenDon.cshtml" />
+    <Content Include="Views\ThuLy\Index.cshtml" />
+    <Content Include="Views\ThuLy\ThongTinThuLy\_ThongTinThuLyModal.cshtml" />
+    <Content Include="Views\ThuLy\ThongTinThuLy\_ThongTinThuLy.cshtml" />
+    <Content Include="Views\SauXetXu\Index.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSo.cshtml" />
+    <Content Include="Views\ThuLy\PhanCongThamPhan\_PhanCongThamPhan.cshtml" />
+    <Content Include="Views\ThuLy\PhanCongThamPhan\_PhanCongThamPhanModal.cshtml" />
+    <Content Include="Views\NhanDon\KhieuNaiTraDon\_EditKhieuNaiTraDon.cshtml" />
+    <Content Include="Views\NhanDon\KhieuNaiTraDon\TabContentKhieuNaiTraDon.cshtml" />
+    <Content Include="Views\NhanDon\SuaDoiBoSungDon\Detail.cshtml" />
+    <Content Include="Views\NhanDon\SuaDoiBoSungDon\Edit.cshtml" />
+    <Content Include="Views\NhanDon\SuaDoiBoSungDon\TabContentSuaDoiBoSungDon.cshtml" />
+    <Content Include="Views\NhanDon\TraLaiDon\Detail.cshtml" />
+    <Content Include="Views\NhanDon\TraLaiDon\Edit.cshtml" />
+    <Content Include="Views\NhanDon\TraLaiDon\TabContentTraLaiDon.cshtml" />
+    <Content Include="Views\SauXetXu\KhangNghi\_KhangNghi.cshtml" />
+    <Content Include="Views\SauXetXu\KhangNghi\_KhangNghiModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangNghi\_ThongTinKhangNghi.cshtml" />
+    <Content Include="Views\SauXetXu\PhatHanhBanAn\_PhatHanhBanAn.cshtml" />
+    <Content Include="Views\SauXetXu\PhatHanhBanAn\_PhatHanhBanAnModal.cshtml" />
+    <Content Include="Views\SauXetXu\PhatHanhBanAn\_ThongTinPhatHanhBanAn.cshtml" />
+    <Content Include="Views\SauXetXu\SuaChuaBanAn\_SuaChuaBanAn.cshtml" />
+    <Content Include="Views\SauXetXu\SuaChuaBanAn\_SuaChuaBanAnModal.cshtml" />
+    <Content Include="Views\SauXetXu\SuaChuaBanAn\_ThongTinSuaChuaBanAn.cshtml" />
+    <Content Include="Views\SauXetXu\ChuyenHoSo\_ChuyenHoSo.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\_KhangCao.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCaoQuaHan\_KhangCaoQuaHan.cshtml" />
+    <Content Include="Views\SauXetXu\LuuKho\_LuuKho.cshtml" />
+    <Content Include="Views\SauXetXu\MauIn\_MauIn.cshtml" />
+    <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Views\SauXetXu\KhangCaoQuaHan\_KhangCaoQuaHanModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCaoQuaHan\_ThongTinKhangCaoQuaHan.cshtml" />
+    <Content Include="Views\SauXetXu\LuuKho\_ThongTinLuuKho.cshtml" />
+    <Content Include="Views\SauXetXu\LuuKho\_LuuKhoModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\_TaoKhangCaoModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\_SuaKhangCaoModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\_XoaKhangCaoModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\_ThongTinKhangCaoModal.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\NhanDon\ThamPhan\TabContentThamPhan.cshtml" />
+    <Content Include="Views\NhanDon\ThamPhan\Edit.cshtml" />
+    <Content Include="Views\NhanDon\ThamPhan\Detail.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_NoiDung.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_NoiDungModel.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_ThongTinNoiDung.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TrieuTap\_ThongTinTrieuTap.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TrieuTap\_TrieuTap.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TrieuTap\_TrieuTapModel.cshtml" />
+    <Content Include="Views\ThuLy\_ThongTinChiTietHoSo.cshtml" />
+    <Content Include="Views\ThuLy\_EditChiTietHoSo.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\_BanAn.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\_BanAnModel.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\_ThongTinBanAn.cshtml" />
+    <Content Include="Views\KetQuaXetXu\Index.cshtml" />
+    <Content Include="Views\KetQuaXetXu\QuyetDinh\_QuyetDinh.cshtml" />
+    <Content Include="Views\KetQuaXetXu\QuyetDinh\_QuyetDinhModel.cshtml" />
+    <Content Include="Views\KetQuaXetXu\QuyetDinh\_ThongTinQuyetDinh.cshtml" />
+    <Content Include="Views\ThuLy\AnPhi\_AnPhi.cshtml" />
+    <Content Include="Views\NhanDon\NoiDungDon\TabContentNoiDungDon.cshtml" />
+    <Content Include="Views\NhanDon\NoiDungDon\Edit.cshtml" />
+    <Content Include="Views\NhanDon\NoiDungDon\Detail.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\TabContentDuongSu.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\_TaoDuongSu.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\_SuaDuongSu.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\_XoaDuongSu.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\_ThongTinDuongSu.cshtml" />
+    <Content Include="Views\ThuLy\AnPhi\_AnPhiModal.cshtml" />
+    <Content Include="Views\SauXetXu\TamUngAnPhi\_TamUngAnPhiModal.cshtml" />
+    <Content Include="Views\SauXetXu\TamUngAnPhi\_ThongTinTamUngAnPhi.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo24.cshtml" />
+    <Content Include="Views\NhanDon\MauIn\_MauIn.cshtml" />
+    <Content Include="Views\Shared\_LandingLayout.cshtml" />
+    <Content Include="Views\Landing\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\HoaGiai\_HoaGiai.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\HoaGiai\_HoaGiaiModel.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\HoaGiai\_ThongTinHoaGiai.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\Index.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\QuyetDinh\_QuyetDinh.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\QuyetDinh\_QuyetDinhModel.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\QuyetDinh\_ThongTinQuyetDinh.cshtml" />
+    <Content Include="Views\SauXetXu\ChuyenHoSo\_ChiTietChuyenHoSo.cshtml" />
+    <Content Include="Views\SauXetXu\ChuyenHoSo\_SuaDoiChuyenHoSo.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo30.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo29.cshtml" />
+    <Content Include="Views\ThuLy\MauIn\_MauIn.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo47.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\MauIn\_MauIn.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo61.cshtml" />
+    <Content Include="Views\KetQuaXetXu\MauIn\_MauIn.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_XoaNhanVien.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\Index.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_ThemNhanVien.cshtml" />
+    <Content Include="Scripts\Custom\QuanLyNhanVien\BIZ.QLNhanVien.js" />
+    <Content Include="Views\QuanLyNhanVien\_NhanvienItem.cshtml" />
+    <Content Include="Views\SoDoToChuc\Index.cshtml" />
+    <Content Include="Views\SoDoToChuc\_ThongTinChucDanh.cshtml" />
+    <Content Include="Views\SoDoToChuc\_SoDoToChucTreeView.cshtml" />
+    <Content Include="Views\SoDoToChuc\_ThemChucVu.cshtml" />
+    <Content Include="Views\SoDoToChuc\_SuaChucDanh.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_SoDoToChucTreeViewQLNV.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_ImportNhanVien.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\Index.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\_DanhSachChucNang.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\_DoiMatKhau.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\_CapNhatHinhDaiDien.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\_ThongTinNhanVien.cshtml" />
+    <Content Include="Views\TaiKhoanNhanVien\_CapNhatThongTinNhanVien.cshtml" />
+    <Content Include="Views\NhanDon\TimKiemOnHeader\_AutoCompleteTemplate.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSoLog.cshtml" />
+    <Content Include="Views\Home\_CacLoaiAn.cshtml" />
+    <Content Include="Views\Home\_QuanTriNghiepVu.cshtml" />
+    <Content Include="Views\NhomAnToaAn\Index.cshtml" />
+    <Content Include="Views\NhomAnToaAn\_CheckList.cshtml" />
+    <Content Include="Views\Shared\_UploadDocument.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_CapNhatChucNang.cshtml" />
+    <Content Include="Scripts\Custom\NhomAnToaAn\Biz.NhomAnToaAn.js" />
+    <Content Include="Views\SoDoToChuc\_XoaChucDanh.cshtml" />
+    <Content Include="Views\NhanDon\KhieuNaiTraDon\_EditKienNghiTraDon.cshtml" />
+    <Content Include="Views\Shared\_MauInPartial.cshtml" />
+    <Content Include="Views\NhanDon\KhieuNaiTraDon\_ChiTietKhieuNaiTraDon.cshtml" />
+    <Content Include="Views\NhanDon\KhieuNaiTraDon\_ChiTietKienNghiTraDon.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_ChiTietNhanVien.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_CapNhatNhanVien.cshtml" />
+    <Content Include="Views\ThuLy\ThongTinThuLy\_MessageThongBao.cshtml" />
+    <Content Include="Views\Shared\_MauInItem.cshtml" />
+    <Content Include="Scripts\Custom\PhanCongNhanVien\Biz.PhanCong.js" />
+    <Content Include="Views\PhanCongNhanVien\_DSNhomAn.cshtml" />
+    <Content Include="Views\PhanCongNhanVien\_NhanVienChucDanh.cshtml" />
+    <Content Include="Views\PhanCongNhanVien\Index.cshtml" />
+    <Content Include="Views\MaHoaHoSoVuAn\Index.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\ChuyenHoSo\Detail.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\ChuyenHoSo\Edit.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\ChuyenHoSo\TabContentChuyenHoSo.cshtml" />
+    <Content Include="Views\Shared\_SearchOnHeaderPartial.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_NhanVienToaAn.cshtml" />
+    <Content Include="Views\NhanDon\NhanHoSoPhucTham\NhanHoSoPhucTham.cshtml" />
+    <Content Include="Views\NhanDon\NhanHoSoPhucTham\_XacNhanHoSoPhucTham.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\_ThongTinDuongSuLaToChuc.cshtml" />
+    <Content Include="Views\SauXetXu\TraLaiDon\Detail.cshtml" />
+    <Content Include="Views\SauXetXu\TraLaiDon\Edit.cshtml" />
+    <Content Include="Views\SauXetXu\TraLaiDon\TabContentTraLaiDon.cshtml" />
+    <Content Include="Views\Account\ChangeForgotPassword.cshtml" />
+    <Content Include="Views\Shared\ConvertResourcesToJavascript.cshtml" />
+    <Content Include="Views\NhanHoSo\_NhanHoSo.cshtml" />
+    <Content Include="Views\NhanHoSo\_ChiTietNhanHoSo.cshtml" />
+    <Content Include="Views\NhanHoSo\_NhanHoSoModal.cshtml" />
+    <Content Include="Views\NhanHoSo\Index.cshtml" />
+    <Content Include="Views\NhanHoSo\_ChiTietChuyenHoSo.cshtml" />
+    <Content Include="Views\ThuLy\_ThongTinChiTietHoSoPhucTham.cshtml" />
+    <Content Include="Views\ThuLy\_EditChiTietHoSoPhucTham.cshtml" />
+    <Content Include="Views\NhanDon\NhanHoSoPhucTham\_ThongTinChiTietHoSoChoNhanPhucTham.cshtml" />
+    <Content Include="Views\ThuLy\PhanCongThamPhan\_PhanCongThamPhanPhucTham.cshtml" />
+    <Content Include="Views\ThuLy\PhanCongThamPhan\_PhanCongThamPhanPhucThamModal.cshtml" />
+    <Content Include="Views\Shared\_PageTitleHeader.cshtml" />
+    <Content Include="Views\MauIn\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\MauIn\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\MauIn\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_NoiDungPhucThamModel.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_ThongTinNoiDungPhucTham.cshtml" />
+    <Content Include="Views\MauIn\_MauInSo65.cshtml" />
+    <Content Include="Uploads\Templates\Them_NV_Tu_File.xlsx" />
+    <Content Include="Uploads\ImportNhanVien\2018\2\6\Import_NhanVien_040523486.xlsx" />
+    <Content Include="Views\MauIn\HC\_MauInSo30.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInSo30.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInSo65.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\MauIn\_MauInGXNKhangCao.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInSo30.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInSo65.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInSo30.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\_MauInQuyetDinhPCTPGiaiQuyetDon.cshtml" />
+    <Content Include="Views\MauIn\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInSo65.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInSo65.cshtml" />
+    <Content Include="Views\MauIn\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HN\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\KT\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\LD\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInSo61.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\MauIn\_MauInBiaHoSoNhanDon.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInBiaHoSoNhanDon.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\MauIn\HC\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInSo30.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\QuyetDinh\_ChiTietQuyetDinh.cshtml" />
+    <Content Include="Views\NhanDon\_NhanHoSoMoiApDungBPXLHC.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSoApDungBPXLHC.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSoLogApDungBPXLHC.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInBiaHoSo.cshtml" />
+    <Content Include="Views\SoDoToChuc\_SuaChucVu.cshtml" />
+    <Content Include="Views\SoDoToChuc\_ThongTinChucVu.cshtml" />
+    <Content Include="Views\SoDoToChuc\_ThemChucDanh.cshtml" />
+    <Content Include="Views\SoDoToChuc\_XoaChucVu.cshtml" />
+    <Content Include="Views\SoDoToChuc\_SoDoToChucTreeViewChucVu.cshtml" />
+    <Content Include="Views\ThuLy\ThongTinThuLy\_ThongTinThuLyADBPXLHC.cshtml" />
+    <Content Include="Views\ThuLy\ThongTinThuLy\_ThongTinThuLyModalADBPXLHC.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\AD\_TaoDuongSuNhomAnAD.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\AD\_SuaDuongSuNhomAnAD.cshtml" />
+    <Content Include="Views\QuanLyNhanVien\_CapNhatThuKyChoThamPhan.cshtml" />
+    <Content Include="Views\SauXetXu\ChuyenHoSo\_MessageThongBao.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhPCHT_HS.cshtml" />
+    <Content Include="Views\KetQuaXetXu\QuyetDinh\_ThongTinQuyetDinhADBPXLHC.cshtml" />
+    <Content Include="Views\KetQuaXetXu\QuyetDinh\_QuyetDinhADBPXLHCModel.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhPCTP_HS.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhPCTK_HS.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSoHinhSu.cshtml" />
+    <Content Include="Views\NhanDon\_NhanHoSoMoiHinhSu.cshtml" />
+    <Content Include="Views\NhanDon\ChiTietHoSoLogHinhSu.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInBiaHoSoSoTham.cshtml" />
+    <Content Include="Views\NhanDon\MauIn\_MauInADBPXLHC.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInSo47.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInGiayTrieuTapBiCao.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhTamGiam.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInBiaHoSoPhucTham.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhGiaHanCBXX.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhTamHoanHD.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_MoPhienHopHanhChinhPhucThamModal.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_MoPhienHopHanhChinhPhucThamThongTin.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\NoiDung\_MoPhienHopHanhChinhPhucTham.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TraHoSoDieuTraBoSung\_TraHoSoDieuTraBoSung.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TraHoSoDieuTraBoSung\_TraHoSoDieuTraBoSungModal.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TraHoSoDieuTraBoSung\_ThongTinTraHoSoDieuTraBoSung.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInQuyetDinhTamHoanCA.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\HS\_SuaDuongSuNhomAnHS.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\HS\_TaoDuongSuNhomAnHS.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TamDinhChiVuAn\_TamDinhChiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TamDinhChiVuAn\_TamDinhChiVuAnModal.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\TamDinhChiVuAn\_ThongTinTamDinhChiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiVuAn\_DinhChiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiVuAn\_DinhChiVuAnModal.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiVuAn\_ThongTinDinhChiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\PhucHoiVuAn\_PhucHoiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\PhucHoiVuAn\_ThongTinPhucHoiVuAn.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\PhucHoiVuAn\_PhucHoiVuAnModal.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInLenhTrichXuat.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_ToiDanhTruyTo.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_ThemToiDanhTruyTo.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_SuaToiDanhTruyTo.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_ThongTinToiDanhTruyTo.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_XoaToiDanhTruyTo.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInBienBanGiaoNhan.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\HinhSu\_TaoKhangCaoHinhSuModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\HinhSu\_SuaKhangCaoHinhSuModal.cshtml" />
+    <Content Include="Views\SauXetXu\KhangCao\HinhSu\_ThongTinKhangCaoHinhSuModal.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\ToiDanh\_KetQuaXetXuToiDanh.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\ToiDanh\_TaoToiDanh.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\ToiDanh\_SuaToiDanh.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\ToiDanh\_XoaToiDanh.cshtml" />
+    <Content Include="Views\KetQuaXetXu\BanAn\ToiDanh\_ThongTinToiDanh.cshtml" />
+    <Content Include="Views\SauXetXu\KhangNghi\HinhSu\_KhangNghiHinhSuModal.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInBienBanKhangCao.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiXetXuPhucTham\_DinhChi.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiXetXuPhucTham\_DinhChiModal.cshtml" />
+    <Content Include="Views\ChuanBiXetXu\DinhChiXetXuPhucTham\_ThongTinDinhChi.cshtml" />
+    <Content Include="Views\MauIn\HS\_MauInThongBaoKhangCao.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\GiamSat\_HoSoVuAnGiamSatTable.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\GiamSat\GiamSatIndex.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\GiamSat\_LocDuLieu.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\BaoCaoThongKe.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_ThongKeTongHop.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_ThongKeNhomAn.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_ThongKeThamPhan.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_ThongKeThuKy.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_DanhSachHoSo.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\GiamSat\_BieuDoGiamSat.cshtml" />
+    <Content Include="Uploads\Templates\HoSoBaoCaoThongKe.xlsx" />
+    <Content Include="Views\MauIn\HS\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_HoSoChuaPCTPTable.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\PhanCongThamPhan\_DuLieuThamPhanOnline.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\PhanCongThamPhan\ThongKePhanCongThamPhan.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\Index.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeLuuKho\ThongKeLuuKho.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeLuuKho\_BieuDoThongKeLuuKho.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeLuuKho\_DanhSachHoSo.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\_LocDuLieu.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInQDXXPhucTham.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInQuyetDinhDinhChi.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInGiayTrieuTap.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_XoaGDTTT.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_SuaGDTTT.cshtml" />
+    <Content Include="Views\Shared\_Captcha.cshtml" />
+    <Content Include="Views\Shared\_TraCuuLayout.cshtml" />
+    <Content Include="Views\CongThongTinDienTu\Index.cshtml" />
+    <Content Include="Views\CongThongTinDienTu\_KetQua.cshtml" />
+    <Content Include="Views\CongThongTinDienTu\_TraCuu.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeAnHuySua\ThongKeAnHuySua.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeAnHuySua\_BieuDo.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\ThongKeAnHuySua\_DanhSach.cshtml" />
+    <Content Include="Views\NhanDon\DuongSu\HS\_ThongTinDuongSuNhomAnHS.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_HoiDongItem.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_HoSo.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_XemChiTietGDTTT.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInQuyetDinhPCTPThuLySoTham.cshtml" />
+    <Content Include="Views\MauIn\AD\_MauInQuyetDinhPCTPThuLyPhucTham.cshtml" />
+    <Content Include="Views\HuyHoSo\Index.cshtml" />
+    <Content Include="Views\HuyHoSo\_TimHoSo.cshtml" />
+    <Content Include="Views\HuyHoSo\_XemChiTietHuyHoSo.cshtml" />
+    <Content Include="Views\HuyHoSo\_SuaHuyHoSo.cshtml" />
+    <Content Include="Views\HuyHoSo\_XacNhanHuy.cshtml" />
+    <Content Include="Views\ThongKeGiamSat\ThongKe\PhanCongThamPhan\_DuLieuThamPhanOnlineSoTham.cshtml" />
+    <Content Include="Views\NhanDon\ToiDanhTruyTo\_KhoanDiemItem.cshtml" />
+    <Content Include="Views\GiamDocThamTaiTham\_SuaGDTTT_Sua.cshtml" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 02 HC-Giay xac nhan da nhan đon khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 04 HC-Thong bao nop tien tam ung an phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 06 HC-Thong bao ve viec thu ly vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Quyet dinh phan cong Tham phan, Hoi tham giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Giay trieu tap duong su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 16 HC-Quyet dinh dua vu an ra xet xu so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 17 HC-Quyet dinh dua vu an ra giai quyet so tham theo thu tuc rut gon.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 25 HC-Giay xac nhan da nhan don khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 31 HC-Thong bao nop tien tam ung an phi phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Quyet dinh phan cong Tham phan giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 36 HC-Quyet dinh dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 35 HC-Thong bao ve viec thu ly vu an de xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 37 HC-Quyet dinh dua vu an ra xet xu phuc tham theo thu tuc rut gon.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Bia ho so nhan don.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HC-Bia ho so so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 01 - HS Quyet dinh phan cong Hoi tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 01 - HS Quyet dinh phan cong Tham phan.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 02 - HS Quyet dinh phan cong Thu ky.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HS-Giay trieu tap bi cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HS-Giay trieu tap nguoi tham gia to tung.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HS-Lenh trich xuat.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 20 - HS Quyet dinh dua vu an ra xet xu so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HS-Bia Ho so Hinh su phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau HS-Bia Ho so Hinh su so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 21 - HS Quyet dinh dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 01-Bia ho so khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 02-Giay xac nhan đa nhan don khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 03-QD Phan cong giai quyet don khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 04-Thong bao nop tien tam ung an phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 05-Thong bao ve viec thu ly vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 06-QD Phan cong giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 08-QD dua vu an ra xet xu.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 09-Giay trieu tap so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 07-Bia ho so vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 10-Giay xac nhan da nhan đon khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 11-Thong bao nop tien tam ung an phi phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 12-Thong bao thu ly phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 13-QD phan cong phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 14-QD dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 16-Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 01-Bia ho so khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 05-Thong bao ve viec thu ly vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 06-QD Phan cong giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 07-Bia ho so vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 08-QD dua vu an ra xet xu.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 10-Giay xac nhan da nhan don khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 12-Thong bao thu ly phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 13-QD phan cong phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 14-QD dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 16-Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Bia ho so so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Giay trieu tap duong su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Quyet dinh mo phien hop xem xet khieu nai kien nghi khang nghi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Quyet dinh phan cong Tham phan giai quyet ho so de nghi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-AD Quyet dinh phan cong Tham phan giai quyet khieu nai kien nghi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 01-AD Thong bao ve viec thu ly ho so de nghi xem xet quyet dinh.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 03-AD Quyet dinh mo phien hop, xem xet, quyet dinh ADBPXLHC.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 05-AD Quyet dinh dinh chi xem xet quyet dinh ADBPXLHC.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 06-AD Quyet dinh tam dinh chi xem xet quyet dinh ADBPXLHC.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-TC-Mau so 14A-QD mo phien hop phuc tham xem xet QD bi khang cao khang nghi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-TC-Mau so 14A-QD mo phien hop phuc tham xem xet QD bi khang cao khang nghi.docx" />
+    <Content Include="Views\ThuLy\GhiChuPhanCong\_ChiTietGhiChuPhanCong.cshtml" />
+    <Content Include="Views\ThuLy\GhiChuPhanCong\_ThemGhiChuPhanCong.cshtml" />
+    <Content Include="Views\ThuLy\GhiChuPhanCong\_GhiChuPhanCong.cshtml" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 24-KDTM Giay xac nhan da nhan don khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 29-KDTM Thong bao nop tien tam ung an phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Giay trieu tap duong su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Quyet dinh phan cong Tham phan Hoi tham giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 30-KDTM Thong bao ve viec thu ly vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 47-KDTM Quyet dinh dua vu an ra xet xu so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 55-KDTM Giay xac nhan da nhan dnn khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 65-KDTM Thong bao ve viec thu ly vu an de xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 66-KDTM Quyet dinh dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Quyet dinh phan cong Tham phan giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Bia ho so so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Quyet dinh phan cong Tham phan Hoi tham giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 24-LD Giay xac nhan da nhan don khoi kien.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 29-LD Thong bao nop tien tam ung an phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 30-LD Thong bao ve viec thu ly vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 47-LD Quyet dinh dua vu an ra xet xu so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 55-LD Giay xac nhan da nhan dnn khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 65-LD Thong bao ve viec thu ly vu an de xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Giay trieu tap duong su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 66-LD Quyet dinh dua vu an ra xet xu phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Quyet dinh phan cong Tham phan giai quyet vu an.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Bia ho so so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 01-Bia ho so yeu cau.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 02-Giay xac nhan da nhan don yeu cau.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 03-QD phan cong giai quyet don.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 04-Thong bao nop tien tam ung le phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 05-Thong bao thu ly viec dan su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 06-Bia ho so vu viec so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 07-QD Phan cong Tham phan so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 08-QD mo phien hop so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 09-Giay trieu tap so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 10-Giay xac nhan da nhan don khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 11-Thong bao nop tien tam ung le phi phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 12-Thong bao thu ly phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 13-QD phan cong giai quyet phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 14- QD Mo phien hop phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 15-Giay trieu tap phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\DS-YC-Mau so 16-Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 01-Bia ho so yeu cau.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 03-QD phan cong giai quyet don.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 04-Thong bao nop tien tam ung le phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 02-Giay xac nhan da nhan don yeu cau.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 05-Thong bao thu ly viec dan su.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 06-Bia ho so vu viec so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 07-QD Phan cong Tham phan so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 08-QD mo phien hop so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 09-Giay trieu tap so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 10-Giay xac nhan da nhan don khang cao.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 12-Thong bao thu ly phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 13-QD phan cong giai quyet phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 14- QD Mo phien hop phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\HN-YC-Mau so 16-Bia ho so phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 24-KDTM Giay xac nhan da nhan don yeu cau.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 29-KDTM Thong bao nop tien tam ung le phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 30-KDTM Thong bao ve viec thu ly viec KDTM.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 47-KDTM Quyet dinh mo phien hop so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Bia ho so viec phuc tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-KDTM Bia ho so viec so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 29-LD Thong bao nop tien tam ung le phi.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 30-LD Thong bao ve viec thu ly viec LD.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau so 47-LD Quyet dinh mo phien hop so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Bia ho so viec so tham.docx" />
+    <Content Include="Uploads\Templates\MauInFileDoc\Mau-LD Bia ho so viec phuc tham.docx" />
+    <Content Include="Views\KetQuaXetXu\DinhChiVuAn\_DinhChiVuAn.cshtml" />
+    <Content Include="Views\KetQuaXetXu\DinhChiVuAn\_DinhChiVuAnModal.cshtml" />
+    <Content Include="Views\KetQuaXetXu\DinhChiVuAn\_ThongTinDinhChiVuAn.cshtml" />
+    <Content Include="Views\KetQuaXetXu\TraHoSoDieuTraBoSung\_ThongTinTraHoSoDieuTraBoSung.cshtml" />
+    <Content Include="Views\KetQuaXetXu\TraHoSoDieuTraBoSung\_TraHoSoDieuTraBoSung.cshtml" />
+    <Content Include="Views\KetQuaXetXu\TraHoSoDieuTraBoSung\_TraHoSoDieuTraBoSungModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Images\menuIcons\" />
+    <Folder Include="FileManagement\HoSoVuAn\" />
+    <Folder Include="FileManagement\MauIn\" />
+    <Folder Include="Infrastructure\Modules\" />
+    <Folder Include="Models\ViewModel\MaHoaHoSoVuAn\" />
+    <Folder Include="Uploads\Export\" />
+    <Folder Include="Uploads\NhanVienImages\" />
+    <Folder Include="Views\Management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.CongThongTinDienTu\Biz.Lib.TACM.CongThongTinDienTu.csproj">
+      <Project>{95bf4e40-1fdb-4539-8a0b-6e2ebf08868c}</Project>
+      <Name>Biz.Lib.TACM.CongThongTinDienTu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.GiamDocThamTaiTham\Biz.Lib.TACM.GiamDocThamTaiTham.csproj">
+      <Project>{a08b8de1-25ec-4088-84d1-8a5ca7592e1e}</Project>
+      <Name>Biz.Lib.TACM.GiamDocThamTaiTham</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.HuyHoSo\Biz.Lib.TACM.HuyHoSo.csproj">
+      <Project>{be76f238-55f5-4ef7-8598-712a228e0f04}</Project>
+      <Name>Biz.Lib.TACM.HuyHoSo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.ThongKeGiamSat\Biz.Lib.TACM.ThongKeGiamSat.csproj">
+      <Project>{154DBE1A-E70E-4F06-BC02-8AD197CD28DC}</Project>
+      <Name>Biz.Lib.TACM.ThongKeGiamSat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.NhomAnToaAn\Biz.Lib.TACM.NhomAnToaAn.csproj">
+      <Project>{741d8263-0106-48ff-abd5-03d2f52d6809}</Project>
+      <Name>Biz.Lib.TACM.NhomAnToaAn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.PhanCongNhanVien\Biz.Lib.TACM.PhanCongNhanVien.csproj">
+      <Project>{4638723d-3d01-4251-a710-36c5cae0e0e8}</Project>
+      <Name>Biz.Lib.TACM.PhanCongNhanVien</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.QuanLyNhanVien\Biz.Lib.TACM.QuanLyNhanVien.csproj">
+      <Project>{ec6be8ac-cce8-4827-aad7-80bd1d9b3b42}</Project>
+      <Name>Biz.Lib.TACM.QuanLyNhanVien</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.Resources\Biz.Lib.TACM.Resources.csproj">
+      <Project>{4e9dc7fd-35cf-4e1d-ab5b-aefa64d8a0c1}</Project>
+      <Name>Biz.Lib.TACM.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.XetXu\Biz.Lib.TACM.XetXu.csproj">
+      <Project>{BD2F5440-D698-49C9-9897-F4E1B735A957}</Project>
+      <Name>Biz.Lib.TACM.XetXu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.SoDoToChuc\Biz.Lib.TACM.SoDoToChuc.csproj">
+      <Project>{7e016199-fa55-40e6-8023-869c42bfdeb3}</Project>
+      <Name>Biz.Lib.TACM.SoDoToChuc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.SettingData\Biz.Lib.SettingData.csproj">
+      <Project>{3544660A-F79F-4504-AC59-1CCC71C1FB44}</Project>
+      <Name>Biz.Lib.SettingData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.ChuanBiXetXu\Biz.Lib.TACM.ChuanBiXetXu.csproj">
+      <Project>{A6B40C32-9437-4055-B6DD-4DDC22DD9343}</Project>
+      <Name>Biz.Lib.TACM.ChuanBiXetXu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.KetQuaXetXu\Biz.Lib.TACM.KetQuaXetXu.csproj">
+      <Project>{D2EDDFE4-5D77-4F8F-A357-A19F2FE65361}</Project>
+      <Name>Biz.Lib.TACM.KetQuaXetXu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.MauIn\Biz.Lib.TACM.MauIn.csproj">
+      <Project>{D6868EC7-FAAB-439E-A437-A2F842739719}</Project>
+      <Name>Biz.Lib.TACM.MauIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.NhanDon\Biz.Lib.TACM.NhanDon.csproj">
+      <Project>{3B2FD764-DA4C-4F26-BB85-6E85C75207DD}</Project>
+      <Name>Biz.Lib.TACM.NhanDon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.SauXetXu\Biz.Lib.TACM.SauXetXu.csproj">
+      <Project>{AC740A07-7501-474E-ABD4-D4D383DB0DD0}</Project>
+      <Name>Biz.Lib.TACM.SauXetXu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.ThuLy\Biz.Lib.TACM.ThuLy.csproj">
+      <Project>{EF1E9C19-CBF2-444E-97A5-8DF75241E626}</Project>
+      <Name>Biz.Lib.TACM.ThuLy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Biz.Libs\Biz.Lib.TACM.PhanCongNhanVien\Biz.Lib.TACM.PhanCongNhanVien.csproj">
+      <Project>{741D8263-0106-48FF-ABD5-03D2F52D6809}</Project>
+      <Name>Biz.Lib.TACM.PhanCongNhanVien</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5787</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5790/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

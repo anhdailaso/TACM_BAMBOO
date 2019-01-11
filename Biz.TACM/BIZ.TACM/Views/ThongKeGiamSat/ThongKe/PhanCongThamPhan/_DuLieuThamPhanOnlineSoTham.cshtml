@@ -1,0 +1,128 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.DuLieuThongKeTrucTuyenModel
+
+<table class="table table-bordered table-custom text-center" cellspacing="0" id="thong-ke-truc-tuyen-table" style="width: 100%;">
+    <thead class="text-uppercase">
+        <tr>
+            <td rowspan="2" class="text-uppercase">@ViewText.TABLE_STT</td>
+            <td rowspan="2" class="text-uppercase">@ViewText.TABLE_THAMPHAN</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_HINHSU</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_DANSU</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_HNGD</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_KDTM</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_HANHCHINH</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">@ViewText.TABLE_NHOMAN_LAODONG</td>
+            <td colspan="2" class="text-uppercase border-bottom-0">ADBPXLHC</td>
+            <td colspan="3" class="text-uppercase border-bottom-0">@ViewText.TABLE_TONGTHULY_VAGIAIQUYET</td>
+        </tr>
+        <tr>
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_TL</td>
+            <td class="col-nhoman-st">@ViewText.TABLE_GQ</td>
+
+            <td class="col-nhoman-st">@ViewText.TABLE_CL</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.ListData.Any())
+        {
+
+            foreach (var item in Model.ListData)
+            {
+        <tr class="@(int.Parse(item.STT) % 2 == 0 ? "row-dark-color":"")">
+            <td>@item.STT</td>
+            <td class="text-left" style="padding-left: 10px;">@item.ThamPhan</td>
+            <td>@(item.HSSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HSSTTL))</td>
+            <td>@(item.HSSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HSSTGQ))</td>
+
+            <td>@(item.DSSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.DSSTTL))</td>
+            <td>@(item.DSSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.DSSTGQ))</td>
+
+            <td>@(item.HNSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HNSTTL))</td>
+            <td>@(item.HNSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HNSTGQ))</td>
+
+            <td>@(item.KTSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.KTSTTL))</td>
+            <td>@(item.KTSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.KTSTGQ))</td>
+
+            <td>@(item.HCSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HCSTTL))</td>
+            <td>@(item.HCSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.HCSTGQ))</td>
+
+            <td>@(item.LDSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.LDSTTL))</td>
+            <td>@(item.LDSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.LDSTGQ))</td>
+
+            <td>@(item.ADTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.ADTL))</td>
+            <td>@(item.ADGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.ADGQ))</td>
+
+            <td class="column-tong">@(item.TONGTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.TONGTL))</td>
+            <td class="column-tong">@(item.TONGGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.TONGGQ))</td>
+            <td class="column-tong">@(item.TONGCL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, item.TONGCL))</td>
+        </tr>
+            }
+            <tr id="tong-cong-td" class="tong-cong-dark-color">
+                <td colspan="2" class="text-center"><strong>Tổng cộng</strong></td>
+                <td>@(Model.TONG_HSSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HSSTTL))</td>
+                <td>@(Model.TONG_HSSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HSSTGQ))</td>
+
+                <td>@(Model.TONG_DSSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_DSSTTL))</td>
+                <td>@(Model.TONG_DSSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_DSSTGQ))</td>
+
+                <td>@(Model.TONG_HNSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HNSTTL))</td>
+                <td>@(Model.TONG_HNSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HNSTGQ))</td>
+
+                <td>@(Model.TONG_KTSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_KTSTTL))</td>
+                <td>@(Model.TONG_KTSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_KTSTGQ))</td>
+
+                <td>@(Model.TONG_HCSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HCSTTL))</td>
+                <td>@(Model.TONG_HCSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_HCSTGQ))</td>
+
+                <td>@(Model.TONG_LDSTTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_LDSTTL))</td>
+                <td>@(Model.TONG_LDSTGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_LDSTGQ))</td>
+
+                <td>@(Model.TONG_ADTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_ADTL))</td>
+                <td>@(Model.TONG_ADGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_ADGQ))</td>
+
+                <td class="column-tong">@(Model.TONG_TONGTL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_TONGTL))</td>
+                <td class="column-tong">@(Model.TONG_TONGGQ == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_TONGGQ))</td>
+                <td class="column-tong">@(Model.TONG_TONGCL == 0 ? "" : string.Format(Setting.FORMAT_NUMBER_THOUSANDS, Model.TONG_TONGCL))</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="19" class="dataTables_empty">@NotifyMessage.CHUACO_DULIEU</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(function () {
+        if ($("#tong-cong-td").prev().hasClass("row-dark-color")) {
+            $("#tong-cong-td").removeClass("tong-cong-dark-color");
+        } else {
+            $(this).addClass("tong-cong-dark-color");
+        }
+    });
+</script>

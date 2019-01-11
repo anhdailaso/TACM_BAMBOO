@@ -1,0 +1,40 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SOTHULY</span><span class="font-weight-bold">@Model.SoThuLy</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYNHAN_HOSO</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayNopDonTaiToaAn)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HINHTHUC_NHANHOSO</span><span class="font-weight-bold">@Model.HinhThucGoiDon</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_CANBO_NHANDON</span><span class="font-weight-bold">@(Model.NhanVienCanBoNhanDon == null ? "" : Model.NhanVienCanBoNhanDon.HoTenVaMaNV)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TENCOQUAN_DENGHI</span><span class="font-weight-bold">@Model.TenCoQuanDeNghi</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_HOSO_DENGHI</span><span class="font-weight-bold">@Model.HoSoDeNghi</span></li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span>
+                Người bị đề nghị
+            </span>
+            <span id="HoSoVuAn_NguyenDon" class="font-weight-bold">
+                @if (Model.DuongSu != null)
+                {
+                    foreach (var duongSu in @Model.DuongSu)
+                    {
+                        @duongSu.HoVaTen
+                    }
+                }
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_BIENPHAP_XLHC_DUOC_DENGHI</span><span class="font-weight-bold">@Model.BienPhapXuLyHanhChinh</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THOIHAN_APDUNG_DENGHI</span><span class="font-weight-bold">@(string.IsNullOrEmpty(Model.ThoiHanApDung) ? "" : Model.ThoiHanApDung + " tháng")</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p><strong>@ViewText.LABEL_GHICHU</strong></p>
+            <div class="card">
+                <div class="card-block" style="height: 313px; overflow: scroll">
+                    @Html.Raw(Model.GhiChu)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

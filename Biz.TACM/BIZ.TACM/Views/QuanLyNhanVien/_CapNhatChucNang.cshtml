@@ -1,0 +1,65 @@
+﻿@model Biz.TACM.Models.ViewModel.TaiKhoanNhanVien.ChucNangViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@using (Html.BeginForm("CapNhatChucNang", "QuanLyNhanVien", FormMethod.Post, new { id = "formCapNhatChucNang" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center">@ViewText.TITLE_CHUCNANG_NHANVIEN</h5>
+        <button type="button" class="close" data-dismiss="modal">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-hover table-custom table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        <input class="checkboxAll" type="checkbox" />
+                    </td>
+                    <td>
+                        @ViewText.TABLE_CHUCNANG
+                    </td>
+                    <td class="text-center">
+                        @ViewText.TABLE_CHUCNANGCHINH
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.ListChucNang.Count; i++)
+            {
+                var chucNangId = string.Format("chucNang-{0}", Model.ListChucNang[i].MaChucNang);
+                var chucNangChinhId = string.Format("chucNangChinh-{0}", Model.ListChucNang[i].MaChucNang);
+                <tr>
+
+                    <td>
+                        @Html.CheckBoxFor(m => Model.ListChucNang[i].IsHaveChucNang, new { id = chucNangId, @class = "cb-chucnang" })
+                        @Html.HiddenFor(m => Model.ListChucNang[i].NhanVienID)
+                        @Html.HiddenFor(m => Model.ListChucNang[i].MaChucNang)
+                        @Html.HiddenFor(m => Model.ListChucNang[i].TenChucNang)
+                    </td>
+                    <td>@Html.DisplayFor(m => Model.ListChucNang[i].TenChucNang)</td>
+                    <td class="text-center">@Html.RadioButtonFor(m => m.ChucNangChinh, Model.ListChucNang[i].MaChucNang, new { @id = chucNangChinhId, @class = "radio-btn" })</td>
+                </tr>
+        }
+            </tbody>
+        </table>
+        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.ChucNangChinh)</small>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btnCapNhatChucNang">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        CheckAllModule.init();
+    });
+    $(function () {
+        CheckRadioModule.init();
+    });
+    $(function () {
+        ChucnangNhanVienModule.init();
+    });
+</script>

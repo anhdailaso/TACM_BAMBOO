@@ -1,0 +1,63 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    ViewBag.Title = ViewText.LABEL_HUYHOSO;
+}
+
+<div class="float-left">
+    <h3 class="text-uppercase mb-2">@ViewText.LABEL_HUYHOSO</h3>
+</div>
+<div class="clearfix"></div>
+<div id="main-content">
+    <div class="container-fluid">
+
+        <div class="row mb-3">
+            <div class="search-box pl-4">
+                @using (Html.BeginForm("TimHoSo", "HuyHoSo", FormMethod.Get, new { @id = "formTimHoSo" }))
+                {
+
+                    @Html.TextBox("hoso-search", @Request.QueryString["MaHoSo"], new { @class = "form-control", placeholder = "Mã hồ sơ", @maxlength = "20" })
+                    <button type="button" class="search-button" id="tim-huy-btn"><i class="material-icons">@ViewText.LABEL_SEARCH</i></button>
+                }
+            </div>
+
+        </div>
+        <div id="ho-so-tim-duoc" style="width:95%;margin: auto">
+
+        </div>
+        <div class="container-fluid row pt-1">
+            <div id="huy-ho-so-container" style="width: 100%">
+                <table class="table table-hover table-bordered table-custom" cellspacing="0" id="huy-ho-so-table" style="width: 100%">
+                    <thead class="thead-default">
+                        <tr>
+                            <td>@ViewText.TABLE_SO</td>
+                            <td>@ViewText.TABLE_MAHOSO</td>
+                            <td>@ViewText.TABLE_TENVUAN</td>
+                            <td>@ViewText.TABLE_TOAAN</td>
+                            <td>@ViewText.TABLE_NGAYHUY</td>
+                            <td>@ViewText.TABLE_GIAIDOAN</td>
+                            <td style="min-width:140px"></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modelChiTiet" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/HuyHoSo")
+    <script>
+        $(function () {
+            ThemHuyHoSoModule.init();
+        });
+    </script>
+
+}

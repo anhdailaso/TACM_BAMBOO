@@ -1,0 +1,85 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.NhanDon.Model.KienNghiTraDonModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaKienNghiTraDon" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#popupEditKienNghiTraDon"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownList("ddlNgayTaoKienNghi", (SelectList)ViewBag.listNgayTaoKienNghi, null, new { @id = "selectNgayTaoKienNghiTraDon", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LANTHU</span><span class="font-weight-bold">@Model.LanThu</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_VIENKIEMSAT_KIENNGHI</span><span class="font-weight-bold">@Model.VKSKienNghi</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYKIENNGHI</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayKienNghi)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#KienNghiTraDonNoiDung" role="tab">@ViewText.LABEL_NOIDUNG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#KienNghiTraDonKetQuaGiaiQuyet" role="tab">@ViewText.LABEL_KETQUA_GIAIQUYET</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#KienNghiTraDonGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="KienNghiTraDonNoiDung" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 190px; overflow: scroll">
+                            @Html.Raw(Server.HtmlDecode(@Model.NoiDungKienNghi))
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="KienNghiTraDonKetQuaGiaiQuyet" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 190px; overflow: scroll">
+                            @Html.Raw(Server.HtmlDecode(@Model.KetQuaGiaiQuyet))
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="KienNghiTraDonGhiChu" role="tabpanel">
+                    <div class="card">
+                        <div class="card-block" style="height: 190px; overflow: scroll">
+                            @Html.Raw(Server.HtmlDecode(@Model.GhiChu))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-block">
+            <div class="container-fluid row">
+                <div class="col-12">
+                    <div class="container-fluid row">
+                        <p class="text-uppercase font-weight-bold">@ViewText.LABEL_KIENNGHI</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button id="btnThemKienNghiTraDon" href="#" class="btn btn-sm btn-primary float-right mb-2" data-toggle="modal" data-id="0" data-target="#popupEditKienNghiTraDon"><i class="fa fa-plus btn-icon-size"></i></button>
+                        </div>
+                    </div>
+                    <div class="mb-1 text-center empty-data">
+                        <blockquote>
+                            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

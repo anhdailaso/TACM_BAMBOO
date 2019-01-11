@@ -1,0 +1,39 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{ 
+    int i = ViewBag.count;
+}
+<div class="row khoandiem" id="khoanDiem_@i">
+    <div class="col-5">
+        <div class="form-group row">
+            <input type="hidden" name="KhoanDiem[@i].check" value="1" id="check_@i" />
+            <div class="col-5">
+                <label>@ViewText.LABEL_KHOAN</label>
+            </div>
+            <div class="col-7">
+                @Html.DropDownList("KhoanDiem[" + i + "].Khoan", (SelectList)ViewBag.ddlKhoan, Setting.DDL_CHOOSE, new { @class = "form-control", id = "khoan_" + i })
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7">
+        <div class="form-group row">
+            <div class="col-4">
+                <label>@ViewText.LABEL_DIEM</label>
+            </div>
+            <div class="col-6">
+                @Html.TextBox("KhoanDiem[" + i + "].Diem", null, new { @class = "form-control", id = "diem_" + i })                
+            </div>
+            <div class="col-2" style="font-size:18pt">
+                <i id="tkd_@i" class="fa fa-plus-circle button-edit-partial" aria-hidden="true"></i>
+                <i id="xkd_@i" class="fa fa-minus-circle d-none button-edit-partial" aria-hidden="true"></i>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function () {
+        ThemToiDanhTruyToModule.AddKhoanDiemPartial();
+    });
+</script>

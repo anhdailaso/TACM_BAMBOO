@@ -1,0 +1,42 @@
+﻿@using Biz.Lib.Authentication
+@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    List<MenuModel> menus = Sessions.GetObject<List<MenuModel>>(SessionKeyList.UserMenuData);
+    if (menus == null || !menus.Any())
+    {
+        menus = AuthenDataAccess.GetUserMenu(AccountUtils.CurrentUsername(), AccountUtils.ApplicationId());
+        Sessions.AddObject<List<MenuModel>>(SessionKeyList.UserMenuData, menus);
+    }
+
+    var subList = menus != null ? menus.ToList() : new List<MenuModel>();
+}
+@*@if (AccountUtils.IsAuthenticated())
+{*@
+    <h3 class="text-uppercase pb-4 pt-3">@ViewText.TITLE_QUANTRI_NGHIEPVU</h3>
+    <div class="row">
+        @foreach (var sub in subList)
+        {
+            string goUrl = sub.Action_Name.Contains("http") ? sub.Action_Name : Url.Action(sub.Action_Name, sub.Controller_Name);
+            string openType = sub.Action_Name.Contains("http") ? "target='_blank'" : "";
+            <div class="col-3">
+                <div class="card text-center mb-3 card-hover">
+                    <div class="card-block pt-0 pb-0">
+                        <p class="card-title text-uppercase mb-0">
+                            <a href="@goUrl" @openType class="d-block pt-3 pb-3">
+                                <img class="icon-block" src="@Url.Content("~/Content/Images/fnIcons/" + sub.Menu_Icon+"")">
+                                <span class="d-block text-gray-dark">@sub.Action_Title</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+   
+@*}*@

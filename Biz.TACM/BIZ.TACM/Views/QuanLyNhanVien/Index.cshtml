@@ -1,0 +1,107 @@
+@model IEnumerable<Biz.Lib.TACM.QuanLyNhanVien.Model.NhanVienModel>
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    ViewBag.Title = ViewText.TITLE_QUANLY_NHANVIEN;
+    int id = ViewBag.ToaAnID;
+}
+
+<div class="float-left">
+    <h3 class="text-uppercase mb-2">@ViewText.TITLE_QUANLY_NHANVIEN_TOAAN</h3>
+</div>
+<div class="clearfix"></div>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-4">
+                <span style="font-size: 16px; display: inline-block">@ViewText.LABEL_TOAAN  </span>
+                @Html.DropDownList("ToaAnID", (SelectList)ViewBag.listToaAn, null, new { @class = "form-control float-rigrt", @style = "display: inline-block; width:80%", @id = "toaAn-ddl" })
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-3">
+                <i class="fa fa-sitemap darkbluesky" aria-hidden="true"></i>
+                <h3 style="display: inline-block;padding-left:5px;">@ViewText.TITLE_SODOTOCHUC</h3>
+
+            </div>
+            <div class="col-4">
+                <i class="fa fa-users darkbluesky" aria-hidden="true"></i>
+                <h3 style="display: inline-block;padding-left:5px">@ViewText.TITLE_THONGTINNHANVIEN.ToUpper()</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <div class="row">
+                    <h4 class="text-uppercase text-center" style="padding-top:10px;padding-bottom:10px">@ViewText.LABEL_CHUCDANH</h4>
+                </div>
+                <div class="row" id="soDoToChucTreeViewQLNV" style="overflow-x: scroll; height:300px">
+
+                </div>
+                <div class="row mt-3">
+                    <h4 class="text-uppercase text-center" style="padding-top:10px;padding-bottom:10px">@ViewText.LABEL_TENCHUCVU</h4>
+                </div>
+                <div class="row" id="soDoToChucTreeViewQLNVChucVu" style="overflow-x: scroll; height:300px">
+
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="row">
+                    <div class="search-box col-5">
+                        @Html.TextBox("keywordNhanVien", @Request.QueryString["keywordNhanVien"], new { @class = "form-control", @placeholder = "Mã NV, Họ tên, Email, Chức danh, Chức vụ", @maxlength = "20" })
+                        <i class="search-button material-icons pr-4" style="cursor: default;">@ViewText.LABEL_SEARCH</i>
+                    </div>
+                    <div class="col-3">
+                        <span style="color:white"></span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 float-right">
+                        <button id="import-modal" class="btn btn-primary" style="width: 150px"
+                                data-trigger="modal"
+                                data-target="#modal"
+                                data-url="@Url.Action("ImportNhanVien", "QuanLyNhanVien")">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i> @ViewText.BUTTON_THEMMOI_TUFILE
+                        </button>
+                    </div>
+                    <div class="col-lg-2 col-md-2 float-right">
+                        <button class="btn btn-primary" style="width: 110px"
+                                id="btnthemnhanvien"
+                                data-toggle="modal"
+                                data-target="#modalThemNhanVien">
+                            <i class="fa fa-plus" aria-hidden="true"></i> @ViewText.BUTTON_THEMMOI
+                        </button>
+                    </div>
+                </div>
+                <div class="row" id="nhanviencontent">
+                    @Html.Partial("_NhanvienItem", Model)
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+<div class="modal fade" id="modalThemNhanVien" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/QuanLyNhanVien")
+    @Scripts.Render("~/bundles/treeview")
+    @Scripts.Render("~/bundles/MauIn")
+    <script>
+
+        $(function () {
+            SoDoToChucQLNVTreeViewModule.loadSoDoToChucQLNV();
+            SoDoToChucQLNVTreeViewModule.loadSoDoToChucQLNVChucVu();
+            SoDoToChucQLNVTreeViewModule.reloadSoDoToChucQLNV();
+            SoDoToChucQLNVTreeViewModule.reloadSoDoToChucQLNVChucVu();
+        });
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+
+<div id="contentChuanBiXetXuHoaGiai">
+
+</div>
+
+<!-- Modal HÒA GIẢI, CÔNG KHAI CHỨNG CỨ -->
+<div class="modal fade" id="modelChuanBiXetXuHoaGiai" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if (Model.NhomAn.Equals("HC"))
+                {
+                    <h5 class="modal-title text-uppercase">@ViewText.TITLE_CONGKHAICHUNGCUDOITHOAI.ToLower() </h5>
+                }
+                else
+                {
+                    <h5 class="modal-title text-uppercase">@ViewText.TITLE_HOAGIAI_CONGKHAI.ToLower() </h5>
+                }
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height: 200px">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    </div>
+</div>

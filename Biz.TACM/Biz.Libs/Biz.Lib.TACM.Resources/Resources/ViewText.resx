@@ -1,0 +1,2606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BUTTON_HUY" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="BUTTON_DOIMATKHAU" xml:space="preserve">
+    <value>Đổi Mật Khẩu</value>
+  </data>
+  <data name="BUTTON_XOA" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="BUTTON_QUENMATKHAU" xml:space="preserve">
+    <value>Quên Mật Khẩu</value>
+  </data>
+  <data name="BUTTON_DANGNHAP" xml:space="preserve">
+    <value>Đăng Nhập</value>
+  </data>
+  <data name="BUTTON_LUU" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="COMPANY_NAME" xml:space="preserve">
+    <value>Bizcell</value>
+  </data>
+  <data name="COMPANY_URL" xml:space="preserve">
+    <value>http://bizcellsoft.com/</value>
+  </data>
+  <data name="FOOTER_COPYRIGHT" xml:space="preserve">
+    <value>Bản quyền thuộc về Công ty TNHH Phần mềm &lt;a href="{0}" target="_blank" class="text-uppercase" style="color: aqua;"&gt;{1}&lt;/a&gt;.</value>
+  </data>
+  <data name="FOOTER_VERSION" xml:space="preserve">
+    <value>© {0} - TÒA ÁN NHÂN DÂN TỈNH CÀ MAU - Phiên bản 1.2.1</value>
+  </data>
+  <data name="HOSOVUAN_NUMBER" xml:space="preserve">
+    <value>Hồ Sơ: &lt;strong class="text-danger"&gt;{0}&lt;/strong&gt; | Số: &lt;strong class="text-danger"&gt;{1}&lt;/strong&gt;</value>
+  </data>
+  <data name="LABEL_TENCHUCDANH" xml:space="preserve">
+    <value>Tên chức danh</value>
+  </data>
+  <data name="PLACEHOLDER_CONFIRMPASSWORD" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="PLACEHOLDER_CURRENTPASSWORD" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="PLACEHOLDER_EMAIL" xml:space="preserve">
+    <value>Địa chỉ thư điện tử</value>
+  </data>
+  <data name="PLACEHOLDER_NEWPASSWORD" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="PLACEHOLDER_PASSWORD" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="PLACEHOLDER_USERNAME" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="TABLE_FULLNAME" xml:space="preserve">
+    <value>Họ Và Tên</value>
+  </data>
+  <data name="TABLE_MAHOSO" xml:space="preserve">
+    <value>Mã Hồ Sơ</value>
+  </data>
+  <data name="TABLE_NGAYCHUYEN" xml:space="preserve">
+    <value>Ngày Chuyển</value>
+  </data>
+  <data name="TABLE_NGUOICHUYEN" xml:space="preserve">
+    <value>Người Chuyển</value>
+  </data>
+  <data name="LABEL_NGAYNHANPHATHANH_BANAN" xml:space="preserve">
+    <value>Ngày nhận phát hành bản án</value>
+  </data>
+  <data name="LABEL_NGAYNHANPHATHANH_QUYETDINH" xml:space="preserve">
+    <value>Ngày nhận phát hành quyết định</value>
+  </data>
+  <data name="TABLE_STT" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="TABLE_TOAANCHUYENDEN" xml:space="preserve">
+    <value>Tòa Án Chuyển Đến</value>
+  </data>
+  <data name="TABLE_TOAANTRUCTHUOC" xml:space="preserve">
+    <value>Tòa Án Trực Thuộc</value>
+  </data>
+  <data name="TABLE_TRUONGHOPCHUYEN" xml:space="preserve">
+    <value>Trường Hợp Chuyển</value>
+  </data>
+  <data name="TABLE_TUCACHTHAMGIATOTUNG" xml:space="preserve">
+    <value>Tư Cách Tham Gia Tố Tụng</value>
+  </data>
+  <data name="TABLE_XEMCHITIET" xml:space="preserve">
+    <value>Xem Chi Tiết</value>
+  </data>
+  <data name="TAB_TITLE_PHATHANHBANAN" xml:space="preserve">
+    <value>Phát hành bản án / quyết định</value>
+  </data>
+  <data name="TAB_TITLE_PHATHANHQUYETDINH" xml:space="preserve">
+    <value>Phát hành quyết định</value>
+  </data>
+  <data name="TAB_TITLE_SUACHUABANAN" xml:space="preserve">
+    <value>Sửa chữa bản án / quyết định</value>
+  </data>
+  <data name="TAB_TITLE_SUACHUAQUYETDINH" xml:space="preserve">
+    <value>Sửa chữa quyết định</value>
+  </data>
+  <data name="TEXT_ATTACHEDFILE" xml:space="preserve">
+    <value>Tập tin đính kèm</value>
+  </data>
+  <data name="TEXT_CHANGEPASSWORD_LENGTH" xml:space="preserve">
+    <value>Mật khẩu mới có độ dài từ 6 đến 15 ký tự.</value>
+  </data>
+  <data name="LABEL_NGUOITAO" xml:space="preserve">
+    <value>Người tạo</value>
+  </data>
+  <data name="LABEL_NGAYTAO" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="TEXT_FORGOTPASSWORD" xml:space="preserve">
+    <value>Để tìm lại mật khẩu đăng nhập, vui lòng nhập địa chỉ thư điện tử đã sử dụng cho tài khoản của bạn.</value>
+  </data>
+  <data name="LABEL_DUONGSU_NHANPHATHANH_BANAN" xml:space="preserve">
+    <value>Đương sự nhận phát hành bản án</value>
+  </data>
+  <data name="LABEL_DUONGSU_NHANPHATHANH_QUYETDINH" xml:space="preserve">
+    <value>Đương sự nhận phát hành quyết định</value>
+  </data>
+  <data name="TEXT_SAUXETXU_LYDOSUACHUABOSUNG" xml:space="preserve">
+    <value>Lý do sửa chữa, bổ sung</value>
+  </data>
+  <data name="TEXT_SAUXETXU_NGAYHANPHATHANH" xml:space="preserve">
+    <value>Thời hạn phát hành (Sau ngày tuyên án {0} ngày)</value>
+  </data>
+  <data name="LABEL_NGAYPHATHANH" xml:space="preserve">
+    <value>Ngày phát hành</value>
+  </data>
+  <data name="TEXT_SAUXETXU_NGAYSUACHUABOSUNG" xml:space="preserve">
+    <value>Ngày sửa chữa, bổ sung</value>
+  </data>
+  <data name="TEXT_SAUXETXU_NOIDUNGSUACHUABOSUNG" xml:space="preserve">
+    <value>Nội dung sửa chữa, bổ sung</value>
+  </data>
+  <data name="LABEL_NGUOIKY" xml:space="preserve">
+    <value>Người ký</value>
+  </data>
+  <data name="TEXT_SUPPORTEDFILES" xml:space="preserve">
+    <value>Hỗ trợ {0}.</value>
+  </data>
+  <data name="TEXT_SUPPORTESIZE" xml:space="preserve">
+    <value>Dung lượng tối đa {0} MB.</value>
+  </data>
+  <data name="LABEL_TOAAN" xml:space="preserve">
+    <value>Tòa án</value>
+  </data>
+  <data name="TEXT_UPLOADPROFILEPICTURE" xml:space="preserve">
+    <value>Kéo và thả hình vào đây.&lt;br /&gt;
+Hoặc nhấn vào đây để tải hình lên từ máy tính.</value>
+  </data>
+  <data name="TITLE_DOIMATKHAU" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="TITLE_THONGTINNHANVIEN" xml:space="preserve">
+    <value>Thông tin nhân viên</value>
+  </data>
+  <data name="TITLE_FORGOTPASSWORD" xml:space="preserve">
+    <value>Quên Mật Khẩu</value>
+  </data>
+  <data name="TITLE_TRANGCHU" xml:space="preserve">
+    <value>TRANG CHỦ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_DANHSACH_CHUCDANH" xml:space="preserve">
+    <value>Danh sách chức năng</value>
+  </data>
+  <data name="TITLE_DANGNHAP" xml:space="preserve">
+    <value>ĐĂNG NHẬP</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_DANGXUAT" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="TITLE_MODAL_PHATHANHBANAN" xml:space="preserve">
+    <value>Phát hành bản án</value>
+  </data>
+  <data name="TITLE_MODAL_PHATHANHQUYETDINH" xml:space="preserve">
+    <value>Phát hành quyết định</value>
+  </data>
+  <data name="TITLE_MODAL_SUACHUABOSUNGBANAN" xml:space="preserve">
+    <value>Sửa chữa, bổ sung bản án</value>
+  </data>
+  <data name="TITLE_MODAL_SUACHUABOSUNGQUYETDINH" xml:space="preserve">
+    <value>Sửa chữa, bổ sung quyết định</value>
+  </data>
+  <data name="TITLE_NHANHOSOPHUCTHAM" xml:space="preserve">
+    <value>NHẬN HỒ SƠ PHÚC THẨM</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_SODOTOCHUC" xml:space="preserve">
+    <value>SƠ ĐỒ TỔ CHỨC</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_CHUANBIXETXU" xml:space="preserve">
+    <value>CHUẨN BỊ XÉT XỬ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_KETQUAGIAIQUYET" xml:space="preserve">
+    <value>KẾT QUẢ GIẢI QUYẾT</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_LUUKHO" xml:space="preserve">
+    <value>LƯU KHO</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_NHANDON" xml:space="preserve">
+    <value>NHẬN ĐƠN</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_NHANHOSOPHUCTHAM" xml:space="preserve">
+    <value>NHẬN HỒ SƠ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_SAUXETXU" xml:space="preserve">
+    <value>SAU XÉT XỬ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_CONGDOAN_THULY" xml:space="preserve">
+    <value>THỤ LÝ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_TAIKHOANNHANVIEN" xml:space="preserve">
+    <value>TÀI KHOẢN NHÂN VIÊN</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_TOAANCAMAU" xml:space="preserve">
+    <value>TÒA ÁN CÀ MAU</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_TRUYCAPTHEOTOAAN" xml:space="preserve">
+    <value>Truy cập theo tòa án</value>
+  </data>
+  <data name="TITLE_UPDATEPROFILEPICTURE" xml:space="preserve">
+    <value>Cập nhật hình đại diện</value>
+  </data>
+  <data name="TOOLTIP_SEARCHONHEADER" xml:space="preserve">
+    <value>Nhập ít nhất 2 kí tự để tìm hồ sơ liên quan theo:&lt;br/&gt;Số hồ sơ, Mã hồ sơ, Đương sự, Thẩm phán,&lt;br/&gt;Công đoạn, Trạng thái công đoạn (tab)</value>
+  </data>
+  <data name="TOOLTIP_UPDATEPROFILEPICTURE" xml:space="preserve">
+    <value>Nhấn vào đây để cập nhật hình đại diện.</value>
+  </data>
+  <data name="TITLE_GIAIDOAN_PHUCTHAM" xml:space="preserve">
+    <value>PHÚC THẨM</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_GIAIDOAN_SOTHAM" xml:space="preserve">
+    <value>SƠ THẨM</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_HETHONGPHANMEMTOAAN" xml:space="preserve">
+    <value>HỆ THỐNG PHẦN MỀM QUẢN LÝ NGHIỆP VỤ&lt;br&gt;TÒA ÁN NHÂN DÂN HAI CẤP TỈNH CÀ MAU</value>
+  </data>
+  <data name="LABEL_LYDOCHUYEN_HOSO" xml:space="preserve">
+    <value>Lý do chuyển hồ sơ</value>
+  </data>
+  <data name="LABEL_NGAYCHUYENHOSO" xml:space="preserve">
+    <value>Ngày chuyển hồ sơ</value>
+  </data>
+  <data name="LABEL_NGAYRATHONGBAO" xml:space="preserve">
+    <value>Ngày ra thông báo</value>
+  </data>
+  <data name="LABEL_SO" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="TILTE_TUCHOITRUYCAP" xml:space="preserve">
+    <value>TỪ CHỐI TRUY CẬP</value>
+  </data>
+  <data name="TITLE_CHUYENHOSO" xml:space="preserve">
+    <value>CHUYỂN HỒ SƠ</value>
+  </data>
+  <data name="TITLE_HOAGIAI_CONGKHAI" xml:space="preserve">
+    <value>HÒA GIẢI, CÔNG KHAI CHỨNG CỨ</value>
+  </data>
+  <data name="LABEL_DIADIEM_MOPHIENHOP" xml:space="preserve">
+    <value>Địa điểm mở phiên họp</value>
+  </data>
+  <data name="LABEL_DIADIEM_MOPHIENTOA" xml:space="preserve">
+    <value>Địa điểm mở phiên tòa</value>
+  </data>
+  <data name="LABEL_HOITHAMNHANDAN" xml:space="preserve">
+    <value>Hội thẩm nhân dân</value>
+  </data>
+  <data name="LABEL_HOITHAMNHANDAN_DUKHUYET" xml:space="preserve">
+    <value>Hội thẩm nhân dân dự khuyết</value>
+  </data>
+  <data name="LABEL_HOITHAMPHAN_NHANDAN" xml:space="preserve">
+    <value>Hội thẩm nhân dân {0}</value>
+  </data>
+  <data name="LABEL_KIEMSATVIEN" xml:space="preserve">
+    <value>Kiểm sát viên</value>
+  </data>
+  <data name="LABEL_KIEMSATVIEN_DUKHUYET" xml:space="preserve">
+    <value>Kiểm sát viên dự khuyết</value>
+  </data>
+  <data name="LABEL_NGAYMO_PHIENHOP" xml:space="preserve">
+    <value>Ngày mở phiên họp</value>
+  </data>
+  <data name="LABEL_NGAYTHANG_RAQUYETDINH" xml:space="preserve">
+    <value>Ngày tháng năm ra quyết định</value>
+  </data>
+  <data name="LABEL_NOIDUNG_PHIENHOP" xml:space="preserve">
+    <value>Nội dung phiên họp</value>
+  </data>
+  <data name="LABEL_THAMPHAN" xml:space="preserve">
+    <value>Thẩm phán</value>
+  </data>
+  <data name="LABEL_THAMPHAN_CHUTOA" xml:space="preserve">
+    <value>Thẩm phán chủ tọa</value>
+  </data>
+  <data name="LABEL_THAMPHAN_KHAC" xml:space="preserve">
+    <value>Thẩm phán khác</value>
+  </data>
+  <data name="LABEL_THOIGIAN_MOPHIENHOP" xml:space="preserve">
+    <value>Thời gian mở phiên họp</value>
+  </data>
+  <data name="LABEL_THOIGIAN_MOPHIENTOA" xml:space="preserve">
+    <value>Thời gian mở phiên tòa</value>
+  </data>
+  <data name="LABEL_THUKY" xml:space="preserve">
+    <value>Thư ký</value>
+  </data>
+  <data name="LABEL_THUKY_DUKHUYET" xml:space="preserve">
+    <value>Thư ký dự khuyết</value>
+  </data>
+  <data name="LABEL_THUTUC" xml:space="preserve">
+    <value>Thủ tục</value>
+  </data>
+  <data name="LABEL_VUAN_DUOCXETXU" xml:space="preserve">
+    <value>Vụ án được xét xử</value>
+  </data>
+  <data name="TEXT_CAPNHATNOIDUNG_XETXU" xml:space="preserve">
+    <value>Cập nhật nội dung xét xử</value>
+  </data>
+  <data name="TEXT_GIAY_TRIEUTAP" xml:space="preserve">
+    <value>Giấy triệu tập</value>
+  </data>
+  <data name="TEXT_QUYETDINH_MOPHIENHOP" xml:space="preserve">
+    <value>Quyết định mở phiên họp</value>
+  </data>
+  <data name="TEXT_QUYETDINH_XETXU" xml:space="preserve">
+    <value>Quyết định đưa vụ án ra xét xử</value>
+  </data>
+  <data name="BUTTON_MAHOA_NOIDUNG" xml:space="preserve">
+    <value>MÃ HÓA NỘI DUNG</value>
+  </data>
+  <data name="BUTTON_THEM" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="LABEL_BIDON" xml:space="preserve">
+    <value>Bị đơn</value>
+  </data>
+  <data name="LABEL_CANBO_NHANDON" xml:space="preserve">
+    <value>Cán bộ nhận đơn</value>
+  </data>
+  <data name="LABEL_CAPNHATHOSO" xml:space="preserve">
+    <value>Cập nhật hồ sơ</value>
+  </data>
+  <data name="LABEL_CAPNHAT_CONGDOAN" xml:space="preserve">
+    <value>Cập nhật công đoạn</value>
+  </data>
+  <data name="LABEL_CMND" xml:space="preserve">
+    <value>Số CMND</value>
+  </data>
+  <data name="LABEL_CONGDOAN" xml:space="preserve">
+    <value>Công đoạn</value>
+  </data>
+  <data name="LABEL_CONGDOAN_CHUYENDEN" xml:space="preserve">
+    <value>Công đoạn chuyển đến</value>
+  </data>
+  <data name="LABEL_COQUAN_TOCHUC" xml:space="preserve">
+    <value>Cơ quan, tổ chức</value>
+  </data>
+  <data name="LABEL_DANTOC" xml:space="preserve">
+    <value>Dân tộc</value>
+  </data>
+  <data name="LABEL_DIACHI" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="LABEL_DIADIEM" xml:space="preserve">
+    <value>Địa điểm</value>
+  </data>
+  <data name="LABEL_DINHKEM_FILE" xml:space="preserve">
+    <value>Đính kèm file</value>
+  </data>
+  <data name="LABEL_DUARA_VUAN_XETXU" xml:space="preserve">
+    <value>Đưa vụ án ra xét xử</value>
+  </data>
+  <data name="LABEL_DUONGSU" xml:space="preserve">
+    <value>Đương sự</value>
+  </data>
+  <data name="LABEL_DUONGSULA" xml:space="preserve">
+    <value>Đương sự là</value>
+  </data>
+  <data name="LABEL_FILE_HOSO" xml:space="preserve">
+    <value>File hồ sơ</value>
+  </data>
+  <data name="LABEL_GHICHU" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="LABEL_GIAYXACNHAN_NHANDON" xml:space="preserve">
+    <value>Giấy xác nhận đã nhận đơn</value>
+  </data>
+  <data name="LABEL_GIOITINH" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="LABEL_HIEULUC" xml:space="preserve">
+    <value>Hiệu lực</value>
+  </data>
+  <data name="LABEL_HINHTHUC_GUIDON" xml:space="preserve">
+    <value>Hình thức gửi đơn</value>
+  </data>
+  <data name="LABEL_HOVATEN" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="LABEL_KETQUA_GIAIQUYET" xml:space="preserve">
+    <value>Kết quả giải quyết</value>
+  </data>
+  <data name="LABEL_KHIEUNAI" xml:space="preserve">
+    <value>Khiếu nại</value>
+  </data>
+  <data name="LABEL_KHOIKIEN" xml:space="preserve">
+    <value>khởi kiện</value>
+  </data>
+  <data name="LABEL_KIENNGHI" xml:space="preserve">
+    <value>Kiến nghị</value>
+  </data>
+  <data name="LABEL_LANTHU" xml:space="preserve">
+    <value>Lần thứ</value>
+  </data>
+  <data name="LABEL_LOAIDON" xml:space="preserve">
+    <value>Loại đơn</value>
+  </data>
+  <data name="LABEL_LOAIQUYETDINH" xml:space="preserve">
+    <value>Loại quyết định</value>
+  </data>
+  <data name="LABEL_LOAI_QUANHE" xml:space="preserve">
+    <value>Loại quan hệ</value>
+  </data>
+  <data name="LABEL_LYDO_CHUYENDON" xml:space="preserve">
+    <value>Lý do chuyển đơn</value>
+  </data>
+  <data name="LABEL_LYDO_TRADON" xml:space="preserve">
+    <value>Lý do trả đơn</value>
+  </data>
+  <data name="LABEL_MAUIN" xml:space="preserve">
+    <value>Mẫu in</value>
+  </data>
+  <data name="LABEL_NGAY" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="LABEL_NGAYCHUYENDON" xml:space="preserve">
+    <value>Ngày chuyển đơn</value>
+  </data>
+  <data name="LABEL_NGAYKIENNGHI" xml:space="preserve">
+    <value>Ngày kiến nghị</value>
+  </data>
+  <data name="LABEL_NGAYLAMDON" xml:space="preserve">
+    <value>Ngày làm đơn</value>
+  </data>
+  <data name="LABEL_NGAYMO_PHIENTOA" xml:space="preserve">
+    <value>Ngày mở phiên tòa</value>
+  </data>
+  <data name="LABEL_NGAYMO_PHIENTOA_PHIENHOP" xml:space="preserve">
+    <value>Ngày giờ mở phiên tòa/phiên họp</value>
+  </data>
+  <data name="LABEL_NGAYNHAN" xml:space="preserve">
+    <value>Ngày nhận</value>
+  </data>
+  <data name="LABEL_NGAYNOPDON_TOAAN" xml:space="preserve">
+    <value>Ngày nộp đơn tại tòa án</value>
+  </data>
+  <data name="LABEL_NGAYPHANCONG" xml:space="preserve">
+    <value>Ngày phân công</value>
+  </data>
+  <data name="LABEL_NGAYRAQUYETDINH_THONGBAO" xml:space="preserve">
+    <value>Ngày ra quyết định / thông báo</value>
+  </data>
+  <data name="LABEL_NGAYRA_QUYETDINH" xml:space="preserve">
+    <value>Ngày ra quyết định</value>
+  </data>
+  <data name="LABEL_NGAYSINH" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="LABEL_NGAYTRADON" xml:space="preserve">
+    <value>Ngày trả đơn</value>
+  </data>
+  <data name="LABEL_NGAY_KHIEUNAI" xml:space="preserve">
+    <value>Ngày khiếu nại</value>
+  </data>
+  <data name="LABEL_NGAY_TUYENAN" xml:space="preserve">
+    <value>Ngày tuyên án</value>
+  </data>
+  <data name="LABEL_NGUOIKY_XACNHAN" xml:space="preserve">
+    <value>Người ký xác nhận đã nhận đơn</value>
+  </data>
+  <data name="LABEL_NGUOILAPDON" xml:space="preserve">
+    <value>Người lập đơn</value>
+  </data>
+  <data name="LABEL_NGUOINHAN" xml:space="preserve">
+    <value>Người nhận</value>
+  </data>
+  <data name="LABEL_NGUOIPHANCONG" xml:space="preserve">
+    <value>Người phân công</value>
+  </data>
+  <data name="LABEL_NGUOI_KHIEUNAI" xml:space="preserve">
+    <value>Người khiếu nại</value>
+  </data>
+  <data name="LABEL_NGUYENDON" xml:space="preserve">
+    <value>Nguyên đơn</value>
+  </data>
+  <data name="LABEL_NOIDKKTT" xml:space="preserve">
+    <value>Nơi ĐKHKTT</value>
+  </data>
+  <data name="LABEL_NOIDUNG" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="LABEL_NOIDUNGSUADOI_BOSUNG" xml:space="preserve">
+    <value> Nội dung yêu cầu sửa đổi / bổ sung</value>
+  </data>
+  <data name="LABEL_NOIDUNG_QUYETDINH" xml:space="preserve">
+    <value>Nội dung quyết định</value>
+  </data>
+  <data name="LABEL_NOIDUNG_TUYENXU" xml:space="preserve">
+    <value>Nội dung tuyên xử</value>
+  </data>
+  <data name="LABEL_QUANHE_PHAPLUAT" xml:space="preserve">
+    <value>Quan hệ pháp luật</value>
+  </data>
+  <data name="LABEL_QUOCTICH" xml:space="preserve">
+    <value>Quốc tịch</value>
+  </data>
+  <data name="LABEL_SODIENTHOAI" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="LABEL_TAMTRU_NEUCO" xml:space="preserve">
+    <value>Nơi tạm trú (nếu có)</value>
+  </data>
+  <data name="LABEL_TEN_NGUOIDAIDIEN" xml:space="preserve">
+    <value>Người đại diện</value>
+  </data>
+  <data name="LABEL_THOIHANSUADOI_BOSUNG" xml:space="preserve">
+    <value>Thời hạn sửa đổi / bổ sung</value>
+  </data>
+  <data name="LABEL_TRANGTHAI" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="LABEL_TRIEUTAP" xml:space="preserve">
+    <value>Triệu tập</value>
+  </data>
+  <data name="LABEL_YEUCAU" xml:space="preserve">
+    <value>yêu cầu</value>
+  </data>
+  <data name="LABEL_YEUCAUSUADOI_BOSUNG" xml:space="preserve">
+    <value>Yêu cầu sửa đổi / bổ sung đơn</value>
+  </data>
+  <data name="LABEL_YEUTO_NUOCNGOAI" xml:space="preserve">
+    <value>Yếu tố nước ngoài</value>
+  </data>
+  <data name="LALBLE_NGAYLAPDON" xml:space="preserve">
+    <value>Ngày lập đơn</value>
+  </data>
+  <data name="TEXT_SUADOI_BOSUNGDON" xml:space="preserve">
+    <value>Sửa đổi / bổ sung đơn</value>
+  </data>
+  <data name="TILTE_CAUHINH_HETHONG" xml:space="preserve">
+    <value>Cấu Hình Hệ Thống</value>
+  </data>
+  <data name="TILTE_MAHOA_HOSO_VUAN" xml:space="preserve">
+    <value>MÃ HÓA HỒ SƠ VỤ ÁN</value>
+  </data>
+  <data name="TITLE_BANAN" xml:space="preserve">
+    <value>Bản án</value>
+  </data>
+  <data name="TITLE_CAPNHAT_NOIDUNG_TRIEUTAP" xml:space="preserve">
+    <value>Cập nhật nội dung triệu tập</value>
+  </data>
+  <data name="TITLE_CHUYENDON" xml:space="preserve">
+    <value>CHUYỂN ĐƠN</value>
+  </data>
+  <data name="TITLE_DANHSACH_DUONGSU_CANHAN" xml:space="preserve">
+    <value>DANH SÁCH ĐƯƠNG SỰ CÁ NHÂN</value>
+  </data>
+  <data name="TITLE_DANHSACH_DUONGSU_COQUAN" xml:space="preserve">
+    <value>DANH SÁCH ĐƯƠNG SỰ CƠ QUAN, TỔ CHỨC</value>
+  </data>
+  <data name="TITLE_HANHDONG_QUYETDINH" xml:space="preserve">
+    <value>{0} Quyết định</value>
+  </data>
+  <data name="TITLE_INBIA_HOSO" xml:space="preserve">
+    <value>In bìa hồ sơ</value>
+  </data>
+  <data name="TITLE_KHIEUNAI_TRALAIDON" xml:space="preserve">
+    <value>Khiếu nại việc trả đơn</value>
+  </data>
+  <data name="TITLE_KIENNGHI_TRALAIDON" xml:space="preserve">
+    <value>Kiến nghị việc trả đơn</value>
+  </data>
+  <data name="TITLE_NOIDUNGDON" xml:space="preserve">
+    <value>NỘI DUNG ĐƠN</value>
+  </data>
+  <data name="TITLE_PHANCONG_THAMPHAN" xml:space="preserve">
+    <value>PHÂN CÔNG THẨM PHÁN</value>
+  </data>
+  <data name="TITLE_QUANTRI_NGHIEPVU" xml:space="preserve">
+    <value>Quản Trị Nghiệp vụ</value>
+  </data>
+  <data name="TITLE_QUYETDINH_PHANCONG_THAMPHAN" xml:space="preserve">
+    <value>Quyết định phân công Thẩm phán</value>
+  </data>
+  <data name="TITLE_SONGHIEPVU" xml:space="preserve">
+    <value>Sổ nghiệp vụ</value>
+  </data>
+  <data name="TITLE_SUA_THONGTIN_DUONGSU" xml:space="preserve">
+    <value>Sửa thông tin đương sự</value>
+  </data>
+  <data name="TITLE_THEM_DUONGSU" xml:space="preserve">
+    <value>Thêm thông tin đương sự</value>
+  </data>
+  <data name="TITLE_THONGTIN_DUONGSU" xml:space="preserve">
+    <value>THÔNG TIN ĐƯƠNG SỰ</value>
+  </data>
+  <data name="TITLE_TOAAN_NHANDAN" xml:space="preserve">
+    <value>TÒA ÁN NHÂN DÂN</value>
+  </data>
+  <data name="TITLE_TRALAIDON" xml:space="preserve">
+    <value>Trả lại đơn</value>
+  </data>
+  <data name="TITLE_XOADUONGSU" xml:space="preserve">
+    <value>Xóa đương sự</value>
+  </data>
+  <data name="BUTTON_LUUTHAYDOI" xml:space="preserve">
+    <value>Lưu thay đổi</value>
+  </data>
+  <data name="BUTTON_MACDINH" xml:space="preserve">
+    <value>Mặc Định</value>
+  </data>
+  <data name="BUTTON_THEMMOI" xml:space="preserve">
+    <value>Thêm Mới</value>
+  </data>
+  <data name="BUTTON_THEMMOI_TUFILE" xml:space="preserve">
+    <value>Thêm Mới Từ File</value>
+  </data>
+  <data name="BUTTON_TIMKIEM" xml:space="preserve">
+    <value>Tìm Kiếm</value>
+  </data>
+  <data name="LABEL_CHON_FILE" xml:space="preserve">
+    <value>Chọn file</value>
+  </data>
+  <data name="LABEL_EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LABEL_GHICHU_CHUYEN" xml:space="preserve">
+    <value>Ghi chú chuyển hồ sơ</value>
+  </data>
+  <data name="LABEL_GHICHU_NHAN" xml:space="preserve">
+    <value>Ghi chú nhận hồ sơ</value>
+  </data>
+  <data name="LABEL_HO" xml:space="preserve">
+    <value>Họ</value>
+  </data>
+  <data name="LABEL_KHANGCAO" xml:space="preserve">
+    <value>Kháng cáo</value>
+  </data>
+  <data name="LABEL_KHONGCOKETQUA" xml:space="preserve">
+    <value>Không có kết quả</value>
+  </data>
+  <data name="LABEL_MANV" xml:space="preserve">
+    <value>Mã NV</value>
+  </data>
+  <data name="LABEL_NGAYCAPNHAT" xml:space="preserve">
+    <value>Ngày cập nhật</value>
+  </data>
+  <data name="LABEL_NGAYNHANDON" xml:space="preserve">
+    <value>Người nhận đơn</value>
+  </data>
+  <data name="LABEL_NGAYNHANDON_DEN" xml:space="preserve">
+    <value>Ngày nhận đơn (đến)</value>
+  </data>
+  <data name="LABEL_NGAYNHANDON_TU" xml:space="preserve">
+    <value>Ngày nhận đơn (từ)</value>
+  </data>
+  <data name="LABEL_NGAYRA_PHIEUCHUYEN" xml:space="preserve">
+    <value>Ngày ra phiếu chuyển</value>
+  </data>
+  <data name="LABEL_NGUOICAPNHAT" xml:space="preserve">
+    <value>Người cập nhật</value>
+  </data>
+  <data name="LABEL_SEARCH" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="LABEL_TAIDAY" xml:space="preserve">
+    <value>tại đây</value>
+  </data>
+  <data name="LABEL_TAI_FILEEXEL_MAU" xml:space="preserve">
+    <value>Tải file Excel mẫu</value>
+  </data>
+  <data name="LABEL_TAOTAIKHOAN_NHANVIEN" xml:space="preserve">
+    <value>Tạo Tài Khoản cho NV</value>
+  </data>
+  <data name="LABEL_TEN" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="LABEL_TENLOT" xml:space="preserve">
+    <value>Tên lót</value>
+  </data>
+  <data name="LABEL_THUGON" xml:space="preserve">
+    <value>Thu gọn</value>
+  </data>
+  <data name="LABEL_TIMKIEM_MORONG" xml:space="preserve">
+    <value>Tìm Kiếm Mở Rộng</value>
+  </data>
+  <data name="LABEL_XEMTATCA" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
+  <data name="TABLE_CHUCDANH" xml:space="preserve">
+    <value>Chức Danh</value>
+  </data>
+  <data name="TABLE_CHUCNANG" xml:space="preserve">
+    <value>Chức Năng</value>
+  </data>
+  <data name="TABLE_CHUCNANGCHINH" xml:space="preserve">
+    <value>Chức Năng Chính</value>
+  </data>
+  <data name="TABLE_HINHTHUCNOP" xml:space="preserve">
+    <value>Hình Thức Nộp</value>
+  </data>
+  <data name="TABLE_NGUOIKHANGCAO" xml:space="preserve">
+    <value>Người Kháng Cáo</value>
+  </data>
+  <data name="TABLE_NGUOINOPDON" xml:space="preserve">
+    <value>Ngày Nộp Đơn</value>
+  </data>
+  <data name="TABLE_TENNHANVIEN" xml:space="preserve">
+    <value>Tên Nhân Viên</value>
+  </data>
+  <data name="TABLE_TINHTRANG" xml:space="preserve">
+    <value>Tình Trạng</value>
+  </data>
+  <data name="TALBLE_NHOMAN" xml:space="preserve">
+    <value>Nhóm Án</value>
+  </data>
+  <data name="TALBLE_SL_NHANVIEN" xml:space="preserve">
+    <value>SL Nhân Viên</value>
+  </data>
+  <data name="TITLE_CAPNHAT_THONGTIN_NHANVIEN" xml:space="preserve">
+    <value>Cập Nhật Thông Tin Nhân Viên</value>
+  </data>
+  <data name="TITLE_CHUCNANG_NHANVIEN" xml:space="preserve">
+    <value>Chức Năng Nhân Viên</value>
+  </data>
+  <data name="TITLE_DANHSACH_NGUOIKHANGCAO" xml:space="preserve">
+    <value>DANH SÁCH NGƯỜI KHÁNG CÁO</value>
+  </data>
+  <data name="TITLE_NHOMTOAAN" xml:space="preserve">
+    <value>Nhóm Án Tòa Án</value>
+  </data>
+  <data name="TITLE_QUANLY_NHANVIEN" xml:space="preserve">
+    <value>Quản Lý Nhân Viên</value>
+  </data>
+  <data name="TITLE_QUANLY_NHANVIEN_TOAAN" xml:space="preserve">
+    <value>QUẢN LÝ NHÂN VIÊN TÒA ÁN</value>
+  </data>
+  <data name="TITLE_TAOHOSO_MOI" xml:space="preserve">
+    <value>Tạo hồ sơ mới</value>
+  </data>
+  <data name="TITLE_THEMCHUCNANG_NHANVIEN" xml:space="preserve">
+    <value>Thêm chức năng nhân viên</value>
+  </data>
+  <data name="TITLE_THEMDANHSACH_EXEL" xml:space="preserve">
+    <value>Thêm Danh Sách Nhân Viên Từ Excel</value>
+  </data>
+  <data name="TITLE_THEM_THONGTIN_NHANVIEN" xml:space="preserve">
+    <value>Thêm Thông Tin Nhân Viên Mới</value>
+  </data>
+  <data name="TITLE_XOA_THONGTINNHANVIEN" xml:space="preserve">
+    <value>Xóa Thông Tin Nhân Viên</value>
+  </data>
+  <data name="TRANGTHAI_HOATDONG" xml:space="preserve">
+    <value>Đang hoạt động</value>
+  </data>
+  <data name="TRANGTHAI_KHONGHOATDONG" xml:space="preserve">
+    <value>Không hoạt động</value>
+  </data>
+  <data name="TABLE_CMND" xml:space="preserve">
+    <value>Số CMND</value>
+  </data>
+  <data name="TABLE_CONGDOAN" xml:space="preserve">
+    <value>Công Đoạn</value>
+  </data>
+  <data name="TABLE_DUONGSU" xml:space="preserve">
+    <value>Đương Sự</value>
+  </data>
+  <data name="TABLE_DUONGSULA" xml:space="preserve">
+    <value>Đương Sự Là</value>
+  </data>
+  <data name="TABLE_HOVATEN" xml:space="preserve">
+    <value>Họ Và Tên</value>
+  </data>
+  <data name="TABLE_NGAYLAMDON" xml:space="preserve">
+    <value>Ngày Làm Đơn</value>
+  </data>
+  <data name="TABLE_NGAYNHAN" xml:space="preserve">
+    <value>Ngày Nhận</value>
+  </data>
+  <data name="TABLE_NGAYSINH" xml:space="preserve">
+    <value>Ngày Sinh</value>
+  </data>
+  <data name="TABLE_QUOCTICH" xml:space="preserve">
+    <value>Quốc Tịch</value>
+  </data>
+  <data name="TABLE_SO" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="TABLE_THAMPHAN" xml:space="preserve">
+    <value>Thẩm Phán</value>
+  </data>
+  <data name="LABEL_HINHTHUCNOP" xml:space="preserve">
+    <value>Hình thức nộp</value>
+  </data>
+  <data name="LABEL_KETQUA" xml:space="preserve">
+    <value>Kết quả</value>
+  </data>
+  <data name="LABEL_LYDO" xml:space="preserve">
+    <value>Lý do</value>
+  </data>
+  <data name="LABEL_NGAYLAMDON_KHANGCAO" xml:space="preserve">
+    <value>Ngày làm đơn kháng cáo</value>
+  </data>
+  <data name="LABEL_NGAYNOPDON_KHANGCAO" xml:space="preserve">
+    <value>Ngày nộp đơn kháng cáo</value>
+  </data>
+  <data name="LABEL_NGUOIKHANGCAO" xml:space="preserve">
+    <value>Người kháng cáo</value>
+  </data>
+  <data name="LABEL_NOIDUNG_KHANGCAO" xml:space="preserve">
+    <value>Nội dung kháng cáo</value>
+  </data>
+  <data name="LABEL_TINHTRANG_KHANGCAO" xml:space="preserve">
+    <value>Tình trạng kháng cáo</value>
+  </data>
+  <data name="LABEL_QUAHAN" xml:space="preserve">
+    <value>quá hạn</value>
+  </data>
+  <data name="TITLE_XOAKHANGCAO" xml:space="preserve">
+    <value>Xóa kháng cáo</value>
+  </data>
+  <data name="NHOMAN_APDUNG_BPXLHC" xml:space="preserve">
+    <value>ÁP DỤNG BIỆN PHÁP XỬ LÝ HÀNH CHÍNH TẠI TÒA ÁN</value>
+  </data>
+  <data name="LABEL_CACMAUIN" xml:space="preserve">
+    <value>Các mẫu in</value>
+  </data>
+  <data name="LABEL_CHINHSUA" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="LABEL_CHUCDANHCHA" xml:space="preserve">
+    <value>Chức danh cha</value>
+  </data>
+  <data name="LABEL_CHUYENHOSO" xml:space="preserve">
+    <value>Chuyển hồ sơ</value>
+  </data>
+  <data name="LABEL_COQUAN_THIHANHANTHU" xml:space="preserve">
+    <value>Cơ quan thi hành án thu</value>
+  </data>
+  <data name="LABEL_DIACHI_COQUANTHIHANHAN" xml:space="preserve">
+    <value>Địa chỉ cơ quan thi hành án thu</value>
+  </data>
+  <data name="LABEL_DIENDAINGHIEPVU" xml:space="preserve">
+    <value>Diễn giải nghiệp vụ</value>
+  </data>
+  <data name="LABEL_DIENDAI_CHUCDANH" xml:space="preserve">
+    <value>Diễn giải nghiệp vụ của chức danh</value>
+  </data>
+  <data name="LABEL_DONVITINH" xml:space="preserve">
+    <value>Đơn vị tính: VND</value>
+  </data>
+  <data name="LABEL_GHICHU_TINHTRANGHOSO" xml:space="preserve">
+    <value>Ghi chú tình trạng hồ sơ</value>
+  </data>
+  <data name="LABEL_GIAIDOAN" xml:space="preserve">
+    <value>Giai đoạn</value>
+  </data>
+  <data name="LABEL_HINHTHUC" xml:space="preserve">
+    <value>Hình thức</value>
+  </data>
+  <data name="LABEL_KHANGCAO_KHANGNGHI_QUAHAN" xml:space="preserve">
+    <value>Kháng cáo / Kháng nghị quá hạn</value>
+  </data>
+  <data name="LABEL_KHANGNGHI" xml:space="preserve">
+    <value>Kháng nghị</value>
+  </data>
+  <data name="LABEL_KHONGCO" xml:space="preserve">
+    <value>Không có</value>
+  </data>
+  <data name="LABEL_LOAIQUANHE_TRANHCHAP" xml:space="preserve">
+    <value>Tranh chấp</value>
+  </data>
+  <data name="LABEL_LOAIQUANHE_YEUCAU" xml:space="preserve">
+    <value>Yêu cầu</value>
+  </data>
+  <data name="LABEL_LUUKHO" xml:space="preserve">
+    <value>Lưu kho</value>
+  </data>
+  <data name="LABEL_MENU" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="LABEL_NGAYGIAO_THONGBAO" xml:space="preserve">
+    <value>Ngày giao thông báo</value>
+  </data>
+  <data name="LABEL_NGAYLUU" xml:space="preserve">
+    <value>Ngày lưu</value>
+  </data>
+  <data name="LABEL_NGAYNOP_BIENLAI_TOAAN" xml:space="preserve">
+    <value>Ngày nộp biên lai cho tòa án</value>
+  </data>
+  <data name="LABEL_NGUOIGIAO" xml:space="preserve">
+    <value>Người giao</value>
+  </data>
+  <data name="LABEL_NGUOINHAN_BIENLAI" xml:space="preserve">
+    <value>Người nhận biên lai</value>
+  </data>
+  <data name="LABEL_NHOMAN" xml:space="preserve">
+    <value>Nhóm án</value>
+  </data>
+  <data name="LABEL_NOIDUNG_KHANGNGHI" xml:space="preserve">
+    <value>Nội dung kháng nghị</value>
+  </data>
+  <data name="LABEL_PHANTRAM_DUNOP" xml:space="preserve">
+    <value>% Dự nộp</value>
+  </data>
+  <data name="LABEL_SOBIENLAI" xml:space="preserve">
+    <value>Số biên lai</value>
+  </data>
+  <data name="LABEL_TAMUNG_ANPHI" xml:space="preserve">
+    <value>Tạm ứng án phí</value>
+  </data>
+  <data name="LABEL_THEMMOI" xml:space="preserve">
+    <value>Thêm mới</value>
+  </data>
+  <data name="LABEL_TOAAN_NHAN_VANBANKHANGNGHI" xml:space="preserve">
+    <value>Ngày tòa án nhận văn bản kháng nghị</value>
+  </data>
+  <data name="LABEL_TRALAIDON_KHANGCAO" xml:space="preserve">
+    <value>Trả lại đơn kháng cáo</value>
+  </data>
+  <data name="LABEL_TRIGIA_DUNOP" xml:space="preserve">
+    <value>Trị giá dự nộp</value>
+  </data>
+  <data name="LABEL_VANBAN_KHANGNGHI" xml:space="preserve">
+    <value>Văn bản kháng nghị</value>
+  </data>
+  <data name="LABEL_VIENKIEMSAT_KHANGNGHI" xml:space="preserve">
+    <value>Viện kiểm sát kháng nghị</value>
+  </data>
+  <data name="LABEL_XOACHUCDANH" xml:space="preserve">
+    <value>Xóa chức danh</value>
+  </data>
+  <data name="NHOMAN_DANHSU" xml:space="preserve">
+    <value>DÂN SỰ</value>
+  </data>
+  <data name="NHOMAN_DANSU" xml:space="preserve">
+    <value>DÂN SỰ</value>
+  </data>
+  <data name="NHOMAN_HINHSU" xml:space="preserve">
+    <value>HÌNH SỰ</value>
+  </data>
+  <data name="NHOMAN_HONNHAN" xml:space="preserve">
+    <value>HÔN NHÂN VÀ GIA ĐÌNH</value>
+  </data>
+  <data name="NHOMAN_KINHTE" xml:space="preserve">
+    <value>KINH DOANH THƯƠNG MẠI</value>
+  </data>
+  <data name="NHOMAN_LAODONG" xml:space="preserve">
+    <value>LAO ĐỘNG</value>
+  </data>
+  <data name="NHONAN_HANHCHINH" xml:space="preserve">
+    <value>HÀNH CHÍNH</value>
+  </data>
+  <data name="TABLE_CACMAUIN" xml:space="preserve">
+    <value>Các Mẫu In</value>
+  </data>
+  <data name="TABLE_PHUCTHAM" xml:space="preserve">
+    <value>Phúc Thẩm</value>
+  </data>
+  <data name="TABLE_TAITHAM" xml:space="preserve">
+    <value>GĐ Thẩm, Tái Thẩm</value>
+  </data>
+  <data name="TABLE_TENMAUIN" xml:space="preserve">
+    <value>Tên Mẫu In</value>
+  </data>
+  <data name="TITLE_CHITIET" xml:space="preserve">
+    <value>Chi Tiết</value>
+  </data>
+  <data name="TITLE_THEMCHUCDANH" xml:space="preserve">
+    <value>Thêm Chức Danh</value>
+  </data>
+  <data name="LABEL_CHUCDANH" xml:space="preserve">
+    <value>Chức danh</value>
+  </data>
+  <data name="LABEL_GIATRITRANHCHAP" xml:space="preserve">
+    <value>Giá trị tranh chấp</value>
+  </data>
+  <data name="LABEL_HOVATEN_NV" xml:space="preserve">
+    <value>Họ và tên NV</value>
+  </data>
+  <data name="LABEL_KETQUA_DUNOP" xml:space="preserve">
+    <value>Kết quả dự nộp</value>
+  </data>
+  <data name="LABEL_YEUCAU_DUNOP" xml:space="preserve">
+    <value>Yêu cầu dự nộp</value>
+  </data>
+  <data name="BUTTON_XACNHAN" xml:space="preserve">
+    <value>Xác Nhận</value>
+  </data>
+  <data name="LABEL_NGAYTHULY" xml:space="preserve">
+    <value>Ngày thụ lý</value>
+  </data>
+  <data name="LABEL_SOTHULY" xml:space="preserve">
+    <value>Số thụ lý</value>
+  </data>
+  <data name="LABEL_TAILIEU_KEMTHEO" xml:space="preserve">
+    <value>Tài liệu chứng từ kèm theo</value>
+  </data>
+  <data name="LABEL_THAMPHAN_DUKHUYET" xml:space="preserve">
+    <value>Thẩm phán dự khuyết</value>
+  </data>
+  <data name="LABEL_THOIHAN_GIAIQUYET" xml:space="preserve">
+    <value>Thời hạn giải quyết</value>
+  </data>
+  <data name="LABEL_THULY_THUTUC" xml:space="preserve">
+    <value>Thụ lý theo thủ tục</value>
+  </data>
+  <data name="LABEL_TRUONGHOP_THULY" xml:space="preserve">
+    <value>Trường hợp thụ lý</value>
+  </data>
+  <data name="TITLE_THONGTIN_THULY" xml:space="preserve">
+    <value>Thông tin thụ lý</value>
+  </data>
+  <data name="LABEL_ANPHI" xml:space="preserve">
+    <value>Án phí</value>
+  </data>
+  <data name="LABEL_CANBONHAN_HOSO" xml:space="preserve">
+    <value>Cán bộ nhận hồ sơ</value>
+  </data>
+  <data name="LABEL_DENNGAY" xml:space="preserve">
+    <value>Đến ngày</value>
+  </data>
+  <data name="LABEL_GIATRINOP" xml:space="preserve">
+    <value>Giá trị dự nộp</value>
+  </data>
+  <data name="LABEL_NGAYLAM_HOSO" xml:space="preserve">
+    <value>Ngày làm hồ sơ</value>
+  </data>
+  <data name="LABEL_NOIDUNGYEUCAU_TOAAN_GIAIQUYET" xml:space="preserve">
+    <value>Nội dung yêu cầu tòa án giải quyết</value>
+  </data>
+  <data name="LABEL_PHANCONG_THAMPHAN" xml:space="preserve">
+    <value>Phân công thẩm phán</value>
+  </data>
+  <data name="LABEL_THONGTIN_DUONGSU" xml:space="preserve">
+    <value>Thông tin đương sự</value>
+  </data>
+  <data name="LABEL_THONGTIN_THULY" xml:space="preserve">
+    <value>Thông tin thụ lý</value>
+  </data>
+  <data name="LABEL_TUNGAY" xml:space="preserve">
+    <value>Từ ngày</value>
+  </data>
+  <data name="LABLE_CACTAILIEU_KEMTHEO" xml:space="preserve">
+    <value>Các tài liệu chứng từ kèm theo</value>
+  </data>
+  <data name="TAB_TITLE_NOIDUNG_KHANGCAO" xml:space="preserve">
+    <value>Nội dung kháng cáo</value>
+  </data>
+  <data name="TAB_TITLE_NOIDUNG_YEUCAUTOAAN_GIAIQUYET" xml:space="preserve">
+    <value>Nội dung yêu cầu tòa án giải quyết</value>
+  </data>
+  <data name="LABEL_CHUYENDON" xml:space="preserve">
+    <value>Chuyển đơn</value>
+  </data>
+  <data name="LABEL_NOIDUNGDON" xml:space="preserve">
+    <value>Nội dung đơn</value>
+  </data>
+  <data name="LABEL_TUCACHTHAMGIA_TOTUNG" xml:space="preserve">
+    <value>Tư cách tham gia tố tụng</value>
+  </data>
+  <data name="TAB_TITLE_HOAGIA_CONGKHAI_CHUNGCU" xml:space="preserve">
+    <value>Hòa giải, công khai chứng cứ</value>
+  </data>
+  <data name="LABEL_NHANHOSO" xml:space="preserve">
+    <value>Nhận hồ sơ</value>
+  </data>
+  <data name="TABLE_KHANGCAO" xml:space="preserve">
+    <value>Kháng Cáo</value>
+  </data>
+  <data name="TITLE_CHUCNANG_NGHIEPVU" xml:space="preserve">
+    <value>Ký Sửa Chữa / Bổ Sung Bản Án / Quyết Định</value>
+  </data>
+  <data name="LABEL_KETQUA_XETXU" xml:space="preserve">
+    <value>Kết quả xét xử</value>
+  </data>
+  <data name="LABEL_NOTAMTRU" xml:space="preserve">
+    <value>Nơi tạm trú</value>
+  </data>
+  <data name="LABEL_SOQUYETDINH" xml:space="preserve">
+    <value>Số quyết định</value>
+  </data>
+  <data name="LABEL_TENNGUOI_PHANCONG" xml:space="preserve">
+    <value>Tên người phân công</value>
+  </data>
+  <data name="LABEL_TENQUYETDINH" xml:space="preserve">
+    <value>Tên quyết định</value>
+  </data>
+  <data name="LABEL_NGAYYEUCAU" xml:space="preserve">
+    <value>Ngày yêu cầu</value>
+  </data>
+  <data name="LABEL_NOIDUNGYEUCAU" xml:space="preserve">
+    <value>Nội dung yêu cầu</value>
+  </data>
+  <data name="LABEL_THOIHANSUADOI" xml:space="preserve">
+    <value>Thời hạn sửa đổi</value>
+  </data>
+  <data name="LABEL_NGUOILIENQUAN" xml:space="preserve">
+    <value>Người có quyền lợi, nghĩa vụ liên quan</value>
+  </data>
+  <data name="LABEL_NGUOIYEUCAU" xml:space="preserve">
+    <value>Người yêu cầu</value>
+  </data>
+  <data name="LABEL_QUYETDINH" xml:space="preserve">
+    <value>Quyết định</value>
+  </data>
+  <data name="LABEL_NGAYCHUYEN" xml:space="preserve">
+    <value>Ngày chuyển</value>
+  </data>
+  <data name="LABEL_NGUOICHUYEN" xml:space="preserve">
+    <value>Người chuyển</value>
+  </data>
+  <data name="LABEL_TRUONGHOPCHUYEN" xml:space="preserve">
+    <value>Trường hợp chuyển</value>
+  </data>
+  <data name="LABEL_THAMPHAN1" xml:space="preserve">
+    <value>Thẩm phán 1</value>
+  </data>
+  <data name="LABEL_THAMPHAN2" xml:space="preserve">
+    <value>Thẩm phán 2</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENCAINUOC" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Cái Nước</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENDAMDOI" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Đầm Dơi</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENNAMCAN" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Năm Căn</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENNGOCHIEN" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Ngọc Hiển</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENPHUTAN" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Phú Tân</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENTHOIBINH" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Thới Bình</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENTRANVANTHOI" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện Trần Văn Thời</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_HUYENUMINH" xml:space="preserve">
+    <value>Tòa án nhân dân Huyện U Minh</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_THANHPHOCAMAU" xml:space="preserve">
+    <value>Tòa án nhân dân Thành phố Cà Mau</value>
+  </data>
+  <data name="TITLE_HEADER_TOAAN_TINHCAMAU" xml:space="preserve">
+    <value>Tòa án nhân dân Tỉnh Cà Mau</value>
+  </data>
+  <data name="LABEL_TOAANCHUYENDEN" xml:space="preserve">
+    <value>Tòa án chuyển đến</value>
+  </data>
+  <data name="LABEL_DUAVUAN_RAXETXU" xml:space="preserve">
+    <value>Đưa vụ án ra xét xử</value>
+  </data>
+  <data name="LABEL_HANNOP_ANPHI" xml:space="preserve">
+    <value>Hạn nộp án phí</value>
+  </data>
+  <data name="LABEL_HANNOP_LEPHI" xml:space="preserve">
+    <value>Hạn nộp lệ phí</value>
+  </data>
+  <data name="LABEL_HANNOP_TAMUNGANPHI" xml:space="preserve">
+    <value>Hạn nộp tạm ứng án phí</value>
+  </data>
+  <data name="LABEL_HANNOP_TAMUNGLEPHI" xml:space="preserve">
+    <value>Hạn nộp tạm ứng lệ phí</value>
+  </data>
+  <data name="LABEL_NGAYGIO_MOPHIENHOP" xml:space="preserve">
+    <value>Ngày giờ mở phiên họp</value>
+  </data>
+  <data name="LABEL_NGAYGIO_MOPHIENTOA" xml:space="preserve">
+    <value>Ngày giờ mở phiên tòa</value>
+  </data>
+  <data name="LABEL_NGAYNOP_TAMUNGANPHI" xml:space="preserve">
+    <value>Ngày nộp tạm ứng án phí</value>
+  </data>
+  <data name="LABEL_NGAYNOP_TAMUNGLEPHI" xml:space="preserve">
+    <value>Ngày nộp tạm ứng lệ phí</value>
+  </data>
+  <data name="LABEL_NOPANPHI" xml:space="preserve">
+    <value>Nộp án phí</value>
+  </data>
+  <data name="LABEL_NOPLEPHI" xml:space="preserve">
+    <value>Nộp lệ phí</value>
+  </data>
+  <data name="LABEL_TONGANPHI" xml:space="preserve">
+    <value>Tổng án phí</value>
+  </data>
+  <data name="LABEL_TONGLEPHI" xml:space="preserve">
+    <value>Tổng lệ phí</value>
+  </data>
+  <data name="TITLE_ANPHI" xml:space="preserve">
+    <value>Án phí</value>
+  </data>
+  <data name="TITLE_LEPHI" xml:space="preserve">
+    <value>Lệ phí</value>
+  </data>
+  <data name="TITLE_NOIDUNG_DUAVUANRAXETXU" xml:space="preserve">
+    <value>Cập nhật nội dung đưa vụ án ra xét xử</value>
+  </data>
+  <data name="TITLE_NOIDUNG_MOPHIENHOP" xml:space="preserve">
+    <value>Cập nhật nội dung mở phiên họp</value>
+  </data>
+  <data name="TITLE_TAMUNGANPHI" xml:space="preserve">
+    <value>Tạm ứng án phí</value>
+  </data>
+  <data name="TITLE_TAMUNGLEPHI" xml:space="preserve">
+    <value>Tạm  ứng lệ phí</value>
+  </data>
+  <data name="LABEL_THOIHAN_GIAHAN" xml:space="preserve">
+    <value>Thời hạn gia hạn</value>
+  </data>
+  <data name="LABEL_VIENKIEMSAT_KIENNGHI" xml:space="preserve">
+    <value>Viện kiểm sát kiến nghị</value>
+  </data>
+  <data name="TABLE_LOAIQUYETDINH" xml:space="preserve">
+    <value>Loại Quyết Định</value>
+  </data>
+  <data name="TABLE_NGAYRAQUYETDINH" xml:space="preserve">
+    <value>Ngày Ra Quyết Định</value>
+  </data>
+  <data name="TABLE_TENQUYETDINH" xml:space="preserve">
+    <value>Tên Quyết Định</value>
+  </data>
+  <data name="TABLE_THOIHANGIAHAN" xml:space="preserve">
+    <value>Thời Hạn Gia Hạn</value>
+  </data>
+  <data name="TEXT_NGAY" xml:space="preserve">
+    <value>ngày</value>
+  </data>
+  <data name="TITLE_QUYETDINH" xml:space="preserve">
+    <value>Quyết định</value>
+  </data>
+  <data name="TITLE_SUAQUYETDINH" xml:space="preserve">
+    <value>Chỉnh sửa quyết định</value>
+  </data>
+  <data name="TITLE_THEMQUYETDINH" xml:space="preserve">
+    <value>Thêm quyết định</value>
+  </data>
+  <data name="TITLE_XOAQUYETDINH" xml:space="preserve">
+    <value>Xóa quyết định</value>
+  </data>
+  <data name="LABEL_KHIEUKIEN" xml:space="preserve">
+    <value>Khiếu kiện</value>
+  </data>
+  <data name="LABEL_NGUOIBIKIEN_HOAC_DAIDIEN" xml:space="preserve">
+    <value>Người bị kiện hoặc đại diện</value>
+  </data>
+  <data name="LABEL_NGUOIKHOIKIEN_HOAC_DAIDIEN" xml:space="preserve">
+    <value>Người khởi kiện hoặc đại diện</value>
+  </data>
+  <data name="LABEL_HOIDONGXETXU" xml:space="preserve">
+    <value>Hội đồng xét xử</value>
+  </data>
+  <data name="LABEL_HOITHAMNHANDAN_1" xml:space="preserve">
+    <value>Hội thẩm nhân dân 1</value>
+  </data>
+  <data name="LABEL_HOITHAMNHANDAN_2" xml:space="preserve">
+    <value>Hội thẩm nhân dân 2</value>
+  </data>
+  <data name="LABEL_THOIHANPHATHANH" xml:space="preserve">
+    <value>Thời hạn phát hành</value>
+  </data>
+  <data name="LABEL_HOITHAMNHANDAN_3" xml:space="preserve">
+    <value>Hội thẩm nhân dân 3</value>
+  </data>
+  <data name="LABEL_HOIDONG_3" xml:space="preserve">
+    <value>Hội đồng 3</value>
+  </data>
+  <data name="LABEL_HOIDONG_5" xml:space="preserve">
+    <value>Hội đồng 5</value>
+  </data>
+  <data name="TITLE_GXNNHANNDONKHANGCAO" xml:space="preserve">
+    <value>Giấy xác nhận đã nhận đơn kháng cáo</value>
+  </data>
+  <data name="LABEL_NGAYRAQUYETDINH" xml:space="preserve">
+    <value>Ngày ra quyết định</value>
+  </data>
+  <data name="LABEL_QUYETDINH_THONGBAO" xml:space="preserve">
+    <value>Quyết định / Thông báo</value>
+  </data>
+  <data name="LABEL_TENTHONGBAO" xml:space="preserve">
+    <value>Tên thông báo</value>
+  </data>
+  <data name="LABEL_THONGBAO" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
+  <data name="TABLE_NGAYRAQUYETDINH_THONGBAO" xml:space="preserve">
+    <value>Ngày Ra Quyết Định / Thông Báo</value>
+  </data>
+  <data name="TABLE_QUYETDINH_THONGBAO" xml:space="preserve">
+    <value>Quyết Định / Thông Báo</value>
+  </data>
+  <data name="TABLE_TENQUYETDINH_THONGBAO" xml:space="preserve">
+    <value>Tên Quyết Định / Thông Báo</value>
+  </data>
+  <data name="TITLE_SUATHONGBAO" xml:space="preserve">
+    <value>Chỉnh sửa thông báo</value>
+  </data>
+  <data name="TITLE_THEMTHONGBAO" xml:space="preserve">
+    <value>Thêm thông báo</value>
+  </data>
+  <data name="BUTTON_THEMQUYETDINH" xml:space="preserve">
+    <value>Thêm Quyết Định</value>
+  </data>
+  <data name="TAB_TITLE_CONGKHAICHUNGCUDOITHOAI" xml:space="preserve">
+    <value>Công khai chứng cứ và đối thoại</value>
+  </data>
+  <data name="TITLE_CONGKHAICHUNGCUDOITHOAI" xml:space="preserve">
+    <value>Công khai chứng cứ và đối thoại</value>
+  </data>
+  <data name="TITLE_THONGTIN_QUYETDINH" xml:space="preserve">
+    <value>Thông tin quyết định</value>
+  </data>
+  <data name="TITLE_THONGTIN_THONGBAO" xml:space="preserve">
+    <value>Thông tin thông báo</value>
+  </data>
+  <data name="LABEL_CHUCVUCHA" xml:space="preserve">
+    <value>Chức vụ cha</value>
+  </data>
+  <data name="LABEL_TENCHUCVU" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="LABEL_BIENPHAP_XLHC_DUOC_DENGHI" xml:space="preserve">
+    <value>Biện pháp xử lý hành chính được đề nghị</value>
+  </data>
+  <data name="LABEL_HINHTHUC_NHANHOSO" xml:space="preserve">
+    <value>Hình thức nhận hồ sơ</value>
+  </data>
+  <data name="LABEL_HOSO_DENGHI" xml:space="preserve">
+    <value>Hồ sơ đề nghị</value>
+  </data>
+  <data name="LABEL_NGAYNHAN_HOSO" xml:space="preserve">
+    <value>Ngày nhận hồ sơ</value>
+  </data>
+  <data name="LABEL_NGUOINHAN_HOSO" xml:space="preserve">
+    <value>Người nhận hồ sơ</value>
+  </data>
+  <data name="LABEL_TENCOQUAN_DENGHI" xml:space="preserve">
+    <value>Tên cơ quan đề nghị</value>
+  </data>
+  <data name="LABEL_THOIHAN_APDUNG_DENGHI" xml:space="preserve">
+    <value>Thời hạn được đề nghị áp dụng</value>
+  </data>
+  <data name="TITLE_THEMCHUCVU" xml:space="preserve">
+    <value>Thêm Chức Vụ</value>
+  </data>
+  <data name="LABEL_XOACHUCVU" xml:space="preserve">
+    <value>Xoá chức vụ</value>
+  </data>
+  <data name="LABEL_BIENPHAP_XLHC_DUOC_APDUNG" xml:space="preserve">
+    <value>Biện pháp xử lý hành chính được áp dụng</value>
+  </data>
+  <data name="LABEL_LYDO_CANCU" xml:space="preserve">
+    <value>Lý do / Căn cứ</value>
+  </data>
+  <data name="LABEL_THOIHAN_APDUNG" xml:space="preserve">
+    <value>Thời hạn áp dụng</value>
+  </data>
+  <data name="LABEL_DIENDAI_CHUCVU" xml:space="preserve">
+    <value>Diễn giải nghiệp vụ của chức vụ</value>
+  </data>
+  <data name="TABLE_SODIENTHOAI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LABEL_KHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_NGAYNHAN_KHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Ngày nhận khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_NGAY_KHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Ngày khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_NGUOIKHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Người khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_NOIDUNG_KHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Nội dung khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_NGUOINHAN_KHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Người nhận khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_QUYETDINH_BIKHIEUNAI_KN_KC" xml:space="preserve">
+    <value>Quyết định bị khiếu nại/kiến nghị/kháng nghị</value>
+  </data>
+  <data name="LABEL_CON_BA_HOVATEN" xml:space="preserve">
+    <value>Con bà (Họ và tên)</value>
+  </data>
+  <data name="LABEL_CON_ONG_HOVATEN" xml:space="preserve">
+    <value>Con ông (Họ và tên)</value>
+  </data>
+  <data name="LABEL_HOVATENNGUOIBIDENGHI" xml:space="preserve">
+    <value>Họ tên người bị đề nghị</value>
+  </data>
+  <data name="LABEL_NGAYCAPCMND" xml:space="preserve">
+    <value>Ngày cấp CMND</value>
+  </data>
+  <data name="LABEL_NGHENGHIEP" xml:space="preserve">
+    <value>Nghề nghiệp</value>
+  </data>
+  <data name="LABEL_NGUOIGIAMHOHOTEN" xml:space="preserve">
+    <value>Người giám hộ (Họ tên)</value>
+  </data>
+  <data name="LABEL_NOICAPCMND" xml:space="preserve">
+    <value>Nơi cấp CMND</value>
+  </data>
+  <data name="LABEL_TONGIAO" xml:space="preserve">
+    <value>Tôn giáo</value>
+  </data>
+  <data name="LABEL_TRINHDOVANHOA" xml:space="preserve">
+    <value>Trình độ văn hóa học vấn</value>
+  </data>
+  <data name="TITLE_DANHSACH_DUONGSU_NGUOIBIDENGHI" xml:space="preserve">
+    <value>Danh sách đương sự người bị đề nghị</value>
+  </data>
+  <data name="TITLE_THUKY_THAMPHAN" xml:space="preserve">
+    <value>Cập Nhật Thư Ký / Thẩm Tra Viên Cho Thẩm Phán</value>
+  </data>
+  <data name="TABLE_TENVUAN" xml:space="preserve">
+    <value>Tên Vụ Án</value>
+  </data>
+  <data name="LABEL_KHONGCO_CAC_BUTLUC" xml:space="preserve">
+    <value>Không có các bút lục</value>
+  </data>
+  <data name="LABEL_NGAYTHANGNAM" xml:space="preserve">
+    <value>Ngày tháng năm</value>
+  </data>
+  <data name="LABEL_SOBICAN" xml:space="preserve">
+    <value>Số bị can</value>
+  </data>
+  <data name="LABEL_TENVUAN" xml:space="preserve">
+    <value>Tên vụ án</value>
+  </data>
+  <data name="LABEL_TONGSOBUTLUC" xml:space="preserve">
+    <value>Tổng số bút lục</value>
+  </data>
+  <data name="LABEL_TRUYTOBANG" xml:space="preserve">
+    <value>Truy tố bằng</value>
+  </data>
+  <data name="LABEL_VKS_TRUYTO" xml:space="preserve">
+    <value>VKS truy tố</value>
+  </data>
+  <data name="LABEL_VKS_TRUYTO_KHAC" xml:space="preserve">
+    <value>VKS truy tố (khác)</value>
+  </data>
+  <data name="TITLE_CAPNHATHOSO" xml:space="preserve">
+    <value>Cập nhật hồ sơ</value>
+  </data>
+  <data name="LABEL_CHUCVU" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="LABEL_DACDIEMNHANTHANBICAO" xml:space="preserve">
+    <value>Đặc điểm nhân thân bị cáo</value>
+  </data>
+  <data name="LABEL_DACDIEMNHANTHANBIHAI" xml:space="preserve">
+    <value>Đặc điểm nhân thân bị hại</value>
+  </data>
+  <data name="LABEL_DACHET" xml:space="preserve">
+    <value>Đã chết</value>
+  </data>
+  <data name="LABEL_DIEULUATTRUYTO" xml:space="preserve">
+    <value>Điều luật truy tố</value>
+  </data>
+  <data name="LABEL_DOANLUATSU" xml:space="preserve">
+    <value>Đoàn luật sư</value>
+  </data>
+  <data name="LABEL_LUUYVECHUCVU" xml:space="preserve">
+    <value>Lưu ý về chức vụ trong Đảng hoặc chính quyền</value>
+  </data>
+  <data name="LABEL_NOICONGTAC" xml:space="preserve">
+    <value>Nơi công tác</value>
+  </data>
+  <data name="LABEL_QUANHEVOINGUOITHAMGIATOTUNG" xml:space="preserve">
+    <value>Quan hệ với người tham gia tố tụng</value>
+  </data>
+  <data name="LABEL_TENGOIKHAC" xml:space="preserve">
+    <value>Tên gọi khác</value>
+  </data>
+  <data name="LABEL_TIENAN" xml:space="preserve">
+    <value>Tiền án</value>
+  </data>
+  <data name="LABEL_TIENSU" xml:space="preserve">
+    <value>Tiền sự</value>
+  </data>
+  <data name="LABEL_TINHTRANGGIAMGIU" xml:space="preserve">
+    <value>Tình trạng giam giữ</value>
+  </data>
+  <data name="LABEL_TOIDANHTRUYTO" xml:space="preserve">
+    <value>Tội danh truy tố</value>
+  </data>
+  <data name="LABEL_VANPHONGLUATSU" xml:space="preserve">
+    <value>Văn phòng Luật sư/Công ty luật</value>
+  </data>
+  <data name="TITLE_QUYETDINH_PHANCONG_HOITHAM" xml:space="preserve">
+    <value>Quyết định phân công Hội thẩm</value>
+  </data>
+  <data name="TITLE_QUYETDINH_PHANCONG_THUKY" xml:space="preserve">
+    <value>Quyết định phân công Thư ký</value>
+  </data>
+  <data name="LABEL_BICAO" xml:space="preserve">
+    <value>Bị cáo</value>
+  </data>
+  <data name="LABEL_PHANCONG_HOIDONGXETXU" xml:space="preserve">
+    <value>Phân công Hội đồng xét xử và Thư ký</value>
+  </data>
+  <data name="LABEL_QUYETDINHGIAHAN" xml:space="preserve">
+    <value>Quyết định gia hạn chuẩn bị xét xử</value>
+  </data>
+  <data name="LABEL_DUONGSU_NHANPHATHANH" xml:space="preserve">
+    <value>Đương sự nhận phát hành</value>
+  </data>
+  <data name="LABEL_NGAYNHANPHATHANH" xml:space="preserve">
+    <value>Ngày nhận phát hành</value>
+  </data>
+  <data name="LABEL_PHATHANHBANAN_QUYETDINH" xml:space="preserve">
+    <value>Phát hành bản án / quyết định</value>
+  </data>
+  <data name="TITLE_MODAL_PHATHANHBANAN_QUYETDINH" xml:space="preserve">
+    <value>Phát hành bản án/ quyết định</value>
+  </data>
+  <data name="TITLE_MODAL_SUACHUABOSUNGBANAN_QUYETDINH" xml:space="preserve">
+    <value>Sửa chữa, bổ sung bản án/ quyết định</value>
+  </data>
+  <data name="LABEL_MOPHIENHOP" xml:space="preserve">
+    <value>Mở phiên họp</value>
+  </data>
+  <data name="LABEL_SO_QD" xml:space="preserve">
+    <value>Số QĐ</value>
+  </data>
+  <data name="LABEL_TRAHOSO_DIEUTRABOSUNG" xml:space="preserve">
+    <value>Trả hồ sơ điều tra bổ sung</value>
+  </data>
+  <data name="BUTTON_THEMNGUOIKHANGCAO" xml:space="preserve">
+    <value>Thêm Người Kháng Cáo</value>
+  </data>
+  <data name="BUTTON_THEMNGUOIKHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Thêm Người Khiếu Nại / Kiến Nghị</value>
+  </data>
+  <data name="LABEL_THOIGIAN" xml:space="preserve">
+    <value>Thời gian</value>
+  </data>
+  <data name="LABEL_QUYETDINHTAMHOAN" xml:space="preserve">
+    <value>Quyết định hoãn phiên toà </value>
+  </data>
+  <data name="LABEL_CHANHANTOAAN" xml:space="preserve">
+    <value>Chánh án Toà án</value>
+  </data>
+  <data name="LABEL_NAMSINH" xml:space="preserve">
+    <value>Năm sinh</value>
+  </data>
+  <data name="LABEL_NGAYBATTAMGIAM" xml:space="preserve">
+    <value>Ngày bắt, tạm giam</value>
+  </data>
+  <data name="LABEL_DIACHITRUSO" xml:space="preserve">
+    <value>Địa chỉ trụ sở</value>
+  </data>
+  <data name="LABEL_GIOITINHNGUOIDAIDIEN" xml:space="preserve">
+    <value>Giới tính người đại diện</value>
+  </data>
+  <data name="LABEL_NGUOIBAOCHUALA" xml:space="preserve">
+    <value>Người bào chữa là</value>
+  </data>
+  <data name="LABEL_NGUOIDAIDIENCUA" xml:space="preserve">
+    <value>Người đại diện của</value>
+  </data>
+  <data name="LABEL_NOICUTRU" xml:space="preserve">
+    <value>Nơi cư trú</value>
+  </data>
+  <data name="LABEL_NOISINH" xml:space="preserve">
+    <value>Nơi sinh</value>
+  </data>
+  <data name="LABEL_DINHCHI_VUAN" xml:space="preserve">
+    <value>Đình chỉ vụ án</value>
+  </data>
+  <data name="LABEL_PHUCHOI_VUAN" xml:space="preserve">
+    <value>Phục hồi vụ án</value>
+  </data>
+  <data name="LABEL_TAMDINHCHI_VUAN" xml:space="preserve">
+    <value>Tạm đình chỉ vụ án</value>
+  </data>
+  <data name="LABEL_LENHTRICHXUAT" xml:space="preserve">
+    <value>Lệnh trích xuất</value>
+  </data>
+  <data name="LABEL_TOIDANH" xml:space="preserve">
+    <value>Tội danh</value>
+  </data>
+  <data name="BUTTON_THEMDUONGSU" xml:space="preserve">
+    <value>Thêm Đương Sự</value>
+  </data>
+  <data name="BUTTON_THEMTOIDANH" xml:space="preserve">
+    <value>Thêm Tội Danh</value>
+  </data>
+  <data name="LABEL_NOIDUNGDIEULUAT" xml:space="preserve">
+    <value>Nội dung điều luật</value>
+  </data>
+  <data name="LABEL_BIENBANGIAONHAN" xml:space="preserve">
+    <value>Biên bản về việc giao, nhận hồ sơ vụ án và bản cáo trạng</value>
+  </data>
+  <data name="LABEL_BICAO_BI_KHANGCAO" xml:space="preserve">
+    <value>Bị cáo bị kháng cáo</value>
+  </data>
+  <data name="LABEL_BIENPHAPTUPHAP" xml:space="preserve">
+    <value>Biện pháp tư pháp</value>
+  </data>
+  <data name="LABEL_HINHPHAT" xml:space="preserve">
+    <value>Hình phạt</value>
+  </data>
+  <data name="LABEL_NGAYRABANAN" xml:space="preserve">
+    <value>Ngày ra bản án</value>
+  </data>
+  <data name="LABEL_BIENPHAPGIAMSAT" xml:space="preserve">
+    <value>Biện pháp giám sát, giáo dục</value>
+  </data>
+  <data name="LABEL_DIEULUATAPDUNG" xml:space="preserve">
+    <value>Điều luật áp dụng</value>
+  </data>
+  <data name="LABEL_TRACHNHIEMDANSU" xml:space="preserve">
+    <value>Trách nhiệm dân sự</value>
+  </data>
+  <data name="LABEL_XULYVATCHUNG" xml:space="preserve">
+    <value>Xử lý vật chứng</value>
+  </data>
+  <data name="TITLE_TOIDANH" xml:space="preserve">
+    <value>Tội danh</value>
+  </data>
+  <data name="LABEL_DIEULUAT" xml:space="preserve">
+    <value>Điều luật</value>
+  </data>
+  <data name="LABEL_KHAC" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="TITLE_XOATOIDANH" xml:space="preserve">
+    <value>Xóa tội danh</value>
+  </data>
+  <data name="LABEL_BICAO_BI_KHANGNGHI" xml:space="preserve">
+    <value>Bị cáo bị kháng nghị</value>
+  </data>
+  <data name="LABEL_BIENBANKHANGCAO" xml:space="preserve">
+    <value>Biên bản về việc kháng cáo</value>
+  </data>
+  <data name="TITLE_DANHSACH_NGUOIKHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Danh sách người khiếu nại / kiến nghị</value>
+  </data>
+  <data name="TITLE_XOAKHIEUNAI_KIENNGHI" xml:space="preserve">
+    <value>Xóa khiếu nại / kiến nghị</value>
+  </data>
+  <data name="LABEL_DINHCHI" xml:space="preserve">
+    <value>Đình chỉ</value>
+  </data>
+  <data name="LABEL_NGAYRUTHOSO" xml:space="preserve">
+    <value>Ngày rút hồ sơ</value>
+  </data>
+  <data name="LABEL_KHANGCAO_VA_KHANGNGHI" xml:space="preserve">
+    <value>Kháng cáo và Kháng nghị</value>
+  </data>
+  <data name="LABEL_CAHAI" xml:space="preserve">
+    <value>Cả hai</value>
+  </data>
+  <data name="LABEL_NGUOIBAOVECUA" xml:space="preserve">
+    <value>Người bảo vệ của</value>
+  </data>
+  <data name="LABEL_BICAN_BICAO" xml:space="preserve">
+    <value>Bị can / Bị cáo</value>
+  </data>
+  <data name="LABEL_LOCDULIEU" xml:space="preserve">
+    <value>Lọc dữ liệu</value>
+  </data>
+  <data name="TABLE_GIAIDOAN" xml:space="preserve">
+    <value>Giai Đoạn</value>
+  </data>
+  <data name="TABLE_TOAAN" xml:space="preserve">
+    <value>Tòa Án</value>
+  </data>
+  <data name="LABEL_QUYETDINH_TAMGIAM" xml:space="preserve">
+    <value>Quyết định tạm giam</value>
+  </data>
+  <data name="LABEL_THONGBAOKHANGCAO" xml:space="preserve">
+    <value>Thông báo về việc kháng cáo</value>
+  </data>
+  <data name="BUTTON_NHANHOSOMOI" xml:space="preserve">
+    <value>Nhận Hồ Sơ Mới</value>
+  </data>
+  <data name="LABEL_GUI_EMAIL" xml:space="preserve">
+    <value>Gửi email</value>
+  </data>
+  <data name="LABEL_THONGTIN_NGUOI_TGTT" xml:space="preserve">
+    <value>Thông tin người tham gia tố tụng</value>
+  </data>
+  <data name="TABLE_NHOMAN" xml:space="preserve">
+    <value>Nhóm Án</value>
+  </data>
+  <data name="TABLE_QUANHEPHAPLUAT_TOI" xml:space="preserve">
+    <value>Quan Hệ Pháp Luật / Tội</value>
+  </data>
+  <data name="BUTTON_TAIDULIEU" xml:space="preserve">
+    <value>Tải dữ liệu</value>
+  </data>
+  <data name="TABLE_SOHOSO" xml:space="preserve">
+    <value>Số Hồ Sơ</value>
+  </data>
+  <data name="TEXT_TAIDULIEU_THONGKETRUCTUYEN" xml:space="preserve">
+    <value>Nhấn vào nút Tải dữ liệu để xem thống kê phân công Thẩm phán trực tuyến.</value>
+  </data>
+  <data name="TITLE_HOSO_CHUAPHANCONGTHAMPHAN" xml:space="preserve">
+    <value>Hồ sơ chưa phân công thẩm phán</value>
+  </data>
+  <data name="TITLE_THONGKETRUCTUYEN" xml:space="preserve">
+    <value>Thống kê trực tuyến</value>
+  </data>
+  <data name="TITLE_THONGKE_PHANCONGTHAMPHAN" xml:space="preserve">
+    <value>Thống kê tổng hợp phân công thẩm phán</value>
+  </data>
+  <data name="BUTTON_LAMLAI" xml:space="preserve">
+    <value>Làm lại</value>
+  </data>
+  <data name="BUTTON_XEM" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="TABLE_CL" xml:space="preserve">
+    <value>CL</value>
+  </data>
+  <data name="TABLE_GQ" xml:space="preserve">
+    <value>GQ</value>
+  </data>
+  <data name="TABLE_NHOMAN_DANSU" xml:space="preserve">
+    <value>Dân Sự</value>
+  </data>
+  <data name="TABLE_NHOMAN_HANHCHINH" xml:space="preserve">
+    <value>Hành Chính</value>
+  </data>
+  <data name="TABLE_NHOMAN_HINHSU" xml:space="preserve">
+    <value>Hình Sự</value>
+  </data>
+  <data name="TABLE_NHOMAN_HNGD" xml:space="preserve">
+    <value>HN&amp;GĐ</value>
+  </data>
+  <data name="TABLE_NHOMAN_KDTM" xml:space="preserve">
+    <value>KDTM</value>
+  </data>
+  <data name="TABLE_NHOMAN_LAODONG" xml:space="preserve">
+    <value>Lao Động</value>
+  </data>
+  <data name="TABLE_PT" xml:space="preserve">
+    <value>PT</value>
+  </data>
+  <data name="TABLE_ST" xml:space="preserve">
+    <value>ST</value>
+  </data>
+  <data name="TABLE_TL" xml:space="preserve">
+    <value>TL</value>
+  </data>
+  <data name="TABLE_TONG" xml:space="preserve">
+    <value>TỔNG</value>
+  </data>
+  <data name="TABLE_TONGTHULY_VAGIAIQUYET" xml:space="preserve">
+    <value>Tổng thụ lý và giải quyết</value>
+  </data>
+  <data name="TITLE_GIAMDOCTHAMTAITHAM" xml:space="preserve">
+    <value>GIÁM ĐỐC THẨM, TÁI THẨM</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TABLE_NHOM" xml:space="preserve">
+    <value>Nhóm</value>
+  </data>
+  <data name="BUTTON_TRACUU" xml:space="preserve">
+    <value>Tra cứu</value>
+  </data>
+  <data name="LABEL_MAHOSO" xml:space="preserve">
+    <value>Mã hồ sơ</value>
+  </data>
+  <data name="LABEL_MAXACNHAN" xml:space="preserve">
+    <value>Mã xác nhận</value>
+  </data>
+  <data name="PLACEHOLDER_CAPTCHA" xml:space="preserve">
+    <value>Nhập mã xác nhận bên dưới</value>
+  </data>
+  <data name="PLACEHOLDER_KEYWORD_TRACUU" xml:space="preserve">
+    <value>Mã hồ sơ, tên hồ sơ, số bản án</value>
+  </data>
+  <data name="TITLE_CONGTHONGTINDIENTU" xml:space="preserve">
+    <value>CỔNG THÔNG TIN ĐIỆN TỬ&lt;br&gt;TÒA ÁN NHÂN DÂN HAI CẤP TỈNH CÀ MAU</value>
+  </data>
+  <data name="TITLE_TRACUU" xml:space="preserve">
+    <value>TRA CỨU</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="TITLE_TRACUUHOSOVUVIEC" xml:space="preserve">
+    <value>Tra cứu hồ sơ vụ việc</value>
+  </data>
+  <data name="TEXT_HUONGDAN_CONGTHONGTINDIENTU" xml:space="preserve">
+    <value>&lt;p class="mb-2"&gt;Hướng dẫn:&lt;/p&gt;
+            &lt;ol class="pl-4 mb-2"&gt;
+                &lt;li&gt;Nhập mã hồ sơ vụ việc do tòa án cung cấp. (*)&lt;/li&gt;
+                &lt;li&gt;Nhập mã xác nhận dãy số trong hình.&lt;/li&gt;
+                &lt;li&gt;Nhấn nút TRA CỨU để bắt đầu tìm hồ sơ.&lt;/li&gt;
+                &lt;li&gt;Xem thông tin hồ sơ vụ việc ở màn hình tiếp theo.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p class="mt-0"&gt;(*) Có thể nhập mã hồ sơ, tên hồ sơ hoặc số bản án.&lt;/p&gt;</value>
+  </data>
+  <data name="BUTTON_QUAYLAI" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="LABEL_KETQUA_GIAIQUYET_PHUCTHAM" xml:space="preserve">
+    <value>Kết quả giải quyết phúc thẩm</value>
+  </data>
+  <data name="LABEL_KETQUA_GIAIQUYET_SOTHAM" xml:space="preserve">
+    <value>Kết quả giải quyết sơ thẩm</value>
+  </data>
+  <data name="LABEL_KHANGCAO_KHANGNGHI" xml:space="preserve">
+    <value>Kháng cáo/kháng nghị</value>
+  </data>
+  <data name="LABEL_QUATRINHGIAIQUYET" xml:space="preserve">
+    <value>Quá trình giải quyết</value>
+  </data>
+  <data name="LABEL_TENVUVIEC" xml:space="preserve">
+    <value>Tên vụ việc</value>
+  </data>
+  <data name="LABEL_THAMPHAN_DUOCPHANCONG" xml:space="preserve">
+    <value>Thẩm phán được phân công</value>
+  </data>
+  <data name="LABEL_THONGTINVUVIEC" xml:space="preserve">
+    <value>Thông tin vụ việc</value>
+  </data>
+  <data name="LABEL_THULY_PHUCTHAM_SO" xml:space="preserve">
+    <value>Thụ lý phúc thẩm số</value>
+  </data>
+  <data name="LABEL_THULY_SOTHAM_SO" xml:space="preserve">
+    <value>Thụ lý sơ thẩm số</value>
+  </data>
+  <data name="TITLE_KETQUA" xml:space="preserve">
+    <value>KẾT QUẢ</value>
+    <comment>Viết in hoa vì title của trang html cần viết in hoa.</comment>
+  </data>
+  <data name="LABEL_PHUCTHAM" xml:space="preserve">
+    <value>Phúc thẩm</value>
+  </data>
+  <data name="LABEL_SOTHAM" xml:space="preserve">
+    <value>Sơ thẩm</value>
+  </data>
+  <data name="LABEL_QUYETDINHDINHCHI" xml:space="preserve">
+    <value>Quyết định đình chỉ xem xét, quyết định ADBPXLHC</value>
+  </data>
+  <data name="LABEL_QUYETDINHTAMDINHCHI" xml:space="preserve">
+    <value>Quyết định tạm đình chỉ xem xét, quyết định ADBPXLHC</value>
+  </data>
+  <data name="LABEL_MAUVANBANTOTUNG" xml:space="preserve">
+    <value>Các mẫu văn bản tố tụng</value>
+  </data>
+  <data name="LABEL_XOAGDTTT" xml:space="preserve">
+    <value>Xoá giám đốc thẩm, tái thẩm</value>
+  </data>
+  <data name="TITLE_GDTTT" xml:space="preserve">
+    <value>Giám Đốc Thẩm / Tái Thẩm</value>
+  </data>
+  <data name="LABEL_NOIDUNGHUYSUAAN" xml:space="preserve">
+    <value>Nội dung huỷ sửa án</value>
+  </data>
+  <data name="LABEL_NGAYQUYETDINH" xml:space="preserve">
+    <value>Ngày quyết định</value>
+  </data>
+  <data name="TABLE_SO_QUYETDINH" xml:space="preserve">
+    <value>Số Quyết Định</value>
+  </data>
+  <data name="TABLE_NGAY_QUYETDINH" xml:space="preserve">
+    <value>Ngày Quyết Định</value>
+  </data>
+  <data name="LABEL_HUYPHUCTHAM" xml:space="preserve">
+    <value>Huỷ / sửa phúc thẩm</value>
+  </data>
+  <data name="LABEL_HUYSOTHAM" xml:space="preserve">
+    <value>Huỷ / sửa sơ thẩm</value>
+  </data>
+  <data name="TABLE_NOIDUNG" xml:space="preserve">
+    <value>Nội Dung</value>
+  </data>
+  <data name="LABEL_CHUCNANGCHINH" xml:space="preserve">
+    <value>Chức năng chính</value>
+  </data>
+  <data name="BUTTON_BIEUDO" xml:space="preserve">
+    <value>Biểu đồ</value>
+  </data>
+  <data name="BUTTON_DANHSACH" xml:space="preserve">
+    <value>Danh sách</value>
+  </data>
+  <data name="BUTTON_THONGKE_NHOMAN" xml:space="preserve">
+    <value>Nhóm án</value>
+  </data>
+  <data name="BUTTON_THONGKE_THAMPHAN" xml:space="preserve">
+    <value>Thẩm phán</value>
+  </data>
+  <data name="BUTTON_THONGKE_THUKY" xml:space="preserve">
+    <value>Thư ký</value>
+  </data>
+  <data name="BUTTON_THONGKE_TONGHOP" xml:space="preserve">
+    <value>Tổng hợp</value>
+  </data>
+  <data name="TABLE_CANGIAIQUYET" xml:space="preserve">
+    <value>Cần Giải Quyết</value>
+  </data>
+  <data name="TABLE_CONLAI" xml:space="preserve">
+    <value>Còn Lại</value>
+  </data>
+  <data name="TABLE_DAGIAIQUYET" xml:space="preserve">
+    <value>Đã Giải Quyết</value>
+  </data>
+  <data name="TABLE_HOATDONG" xml:space="preserve">
+    <value>Hoạt Động</value>
+  </data>
+  <data name="TABLE_NGAYTHULY" xml:space="preserve">
+    <value>Ngày Thụ Lý</value>
+  </data>
+  <data name="TABLE_QUAHAN" xml:space="preserve">
+    <value>Quá Hạn</value>
+  </data>
+  <data name="TABLE_SOANHUY" xml:space="preserve">
+    <value>Số Án Hủy</value>
+  </data>
+  <data name="TABLE_SOANSUA" xml:space="preserve">
+    <value>Số Án Sửa</value>
+  </data>
+  <data name="TABLE_SOTHULY" xml:space="preserve">
+    <value>Số Thụ Lý</value>
+  </data>
+  <data name="TABLE_SO_BANAN_QUYETDINH" xml:space="preserve">
+    <value>Số Bản Án/QĐ</value>
+  </data>
+  <data name="TABLE_SO_BANAN_QUYETDINH_CAPTREN" xml:space="preserve">
+    <value>Số Bản Án/QĐ Cấp Trên</value>
+  </data>
+  <data name="TABLE_TAMDINHCHI" xml:space="preserve">
+    <value>Tạm Đình Chỉ</value>
+  </data>
+  <data name="TABLE_THUKY" xml:space="preserve">
+    <value>Thư Ký</value>
+  </data>
+  <data name="TABLE_THULY" xml:space="preserve">
+    <value>Thụ Lý</value>
+  </data>
+  <data name="TITLE_BAOCAOTHONGKE" xml:space="preserve">
+    <value>Báo cáo thống kê</value>
+  </data>
+  <data name="TITLE_DANHSACHHOSO" xml:space="preserve">
+    <value>Danh sách hồ sơ</value>
+  </data>
+  <data name="TITLE_GIAMSATTHUCHIEN" xml:space="preserve">
+    <value>Giám sát thực hiện</value>
+  </data>
+  <data name="TITLE_THONGKELUUKHO" xml:space="preserve">
+    <value>Thống kê lưu kho</value>
+  </data>
+  <data name="TITLE_THONGKE_ANHUYSUA" xml:space="preserve">
+    <value>Thống kê án hủy sửa</value>
+  </data>
+  <data name="TITLE_XEMCHITIET_GDTTT" xml:space="preserve">
+    <value>Thông tin giám đốc thẩm, tái thẩm</value>
+  </data>
+  <data name="LABEL_XEMXETQUYETDINH" xml:space="preserve">
+    <value>Xem xét quyết định</value>
+  </data>
+  <data name="LABEL_THAMTRAVIEN" xml:space="preserve">
+    <value>Thẩm tra viên</value>
+  </data>
+  <data name="LABEL_NGUOIDUNOP" xml:space="preserve">
+    <value>Người dự nộp</value>
+  </data>
+  <data name="LABEL_HUYHOSO" xml:space="preserve">
+    <value>Huỷ hồ sơ</value>
+  </data>
+  <data name="LABEL_NGAYHUY" xml:space="preserve">
+    <value>Ngày huỷ</value>
+  </data>
+  <data name="TABLE_NGAYHUY" xml:space="preserve">
+    <value>Ngày Huỷ</value>
+  </data>
+  <data name="LABEL_LYDOHUY" xml:space="preserve">
+    <value>Lý do huỷ hồ sơ</value>
+  </data>
+  <data name="LABEL_NGUOIHUY" xml:space="preserve">
+    <value>Người huỷ</value>
+  </data>
+  <data name="TITLE_CAPNHATHOSOHUY" xml:space="preserve">
+    <value>Cập nhật hồ sơ huỷ</value>
+  </data>
+  <data name="TITLE_THONGTINHOSOHUY" xml:space="preserve">
+    <value>Thông tin hồ sơ huỷ</value>
+  </data>
+  <data name="TAB_TITLE_NOIDUNG_KHANGCAO_KHANGNGHI" xml:space="preserve">
+    <value>Nội dung  kháng cáo, kháng nghị</value>
+  </data>
+  <data name="LABEL_DIEM" xml:space="preserve">
+    <value>Điểm</value>
+  </data>
+  <data name="LABEL_KHOAN" xml:space="preserve">
+    <value>Khoản</value>
+  </data>
+  <data name="TABLE_KHOANDIEM" xml:space="preserve">
+    <value>Khoản, điểm</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mẫu số 02-HC: Giấy xác nhận đã nhận đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_THONGBAONOPTIENTAMUNGANPHI" xml:space="preserve">
+    <value>Mẫu số 04-HC: Thông báo nộp tiền tạm ứng án phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mẫu số 06-HC: Thông báo về việc thụ lý vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHPHANCONGTHAMPHANHOITHAM" xml:space="preserve">
+    <value>Mẫu-HC: Quyết định phân công Thẩm phán, Hội thẩm giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mẫu-HC:  Giấy triệu tập đương sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_GIAYXACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mẫu số 25-HC: Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHXETXUSOTHAM" xml:space="preserve">
+    <value>Mẫu số 16-HC: Quyết định đưa vụ án ra xét xử sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHXETXUSOTHAMRUTGON" xml:space="preserve">
+    <value>Mẫu số 17-HC: Quyết định đưa vụ án ra giải quyết sơ thẩm theo thủ tục rút gọn.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>Mẫu số 31-HC: Thông báo nộp tiền tạm ứng án phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHPHANCONGTHAMPHAN_PT" xml:space="preserve">
+    <value>Mẫu-HC: Quyết định phân công Thẩm phán giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHXETXUPHUCTHAM" xml:space="preserve">
+    <value>Mẫu số 36-HC: Quyết định đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_QUYETDINHXETXUPHUCTHAMRUTGON" xml:space="preserve">
+    <value>Mẫu số 37-HC: Quyết định đưa vụ án ra xét xử phúc thẩm theo thủ tục rút gọn.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_THONGBAOTHULYVUAN_PT" xml:space="preserve">
+    <value>Mẫu số 35-HC: Thông báo về việc thụ lý vụ án để xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_BIAHOSONHANDON" xml:space="preserve">
+    <value>Mẫu-HC:  Bìa hồ sơ nhận đơn.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_BIAHOSOPT" xml:space="preserve">
+    <value>Mẫu-HC:  Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HC_BIAHOSOST" xml:space="preserve">
+    <value>Mẫu-HC:  Bìa hồ sơ sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_QUYETDINHPHANCONGHOITHAM" xml:space="preserve">
+    <value>Mẫu số 01 – HS: Quyết định phân công Hội thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_QUYETDINHPHANCONGTHAMPHAN" xml:space="preserve">
+    <value>Mẫu số 01 – HS: Quyết định phân công Thẩm phán.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_QUYETDINHPHANCONGTHUKY" xml:space="preserve">
+    <value>Mẫu số 02 – HS: Quyết định phân công Thư ký.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>Mẫu số 20 – HS: Quyết định đưa vụ án ra xét xử sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_GIAYTRIEUTAPNGUOITHAMGIATOTUNG" xml:space="preserve">
+    <value>Mẫu HS: Giấy triệu tập người tham gia tố tụng.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_GIAYTRIEUTAPBICAO" xml:space="preserve">
+    <value>Mẫu HS: Giấy triệu tập bị cáo.</value>
+  </data>
+  <data name="TABLE_HOTEN_HOAC_COQUAN" xml:space="preserve">
+    <value>Họ Tên / Cơ Quan, Tổ chức</value>
+  </data>
+  <data name="TITLE_DANHSACH_NGUOITGTT_CANHAN" xml:space="preserve">
+    <value>DANH SÁCH NGƯỜI THAM GIA TỐ TỤNG LÀ CÁ NHÂN</value>
+  </data>
+  <data name="TITLE_DANHSACH_NGUOITGTT_COQUAN" xml:space="preserve">
+    <value>DANH SÁCH NGƯỜI THAM GIA TỐ TỤNG LÀ CƠ QUAN TỔ CHỨC</value>
+  </data>
+  <data name="BUTTON_THEMNGUOITGTT" xml:space="preserve">
+    <value>Thêm người tham gia tố tụng</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>Mẫu số 21 – HS: Quyết định đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_BIAHOPHUCTHAM" xml:space="preserve">
+    <value>Mẫu HS: Bìa Hồ sơ Hình sự phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HS_BIAHOSOSOTHAM" xml:space="preserve">
+    <value>Mẫu HS: Bìa Hồ sơ Hình sự sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSONHANDON" xml:space="preserve">
+    <value>DS-TC-Mẫu số 01-Bìa hồ sơ khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>DS-TC-Mẫu số 02-Giấy xác nhận đã nhận đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDONKHOIKIEN" xml:space="preserve">
+    <value>DS-TC-Mẫu số 03-QĐ Phân công giải quyết đơn khởi kiện.</value>
+  </data>
+  <data name="TABLE_NGAYGIAIQUYET" xml:space="preserve">
+    <value>Ngày Giải Quyết</value>
+  </data>
+  <data name="BUTTON_XUATFILE_EXCELL" xml:space="preserve">
+    <value>Xuất File Excel</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM" xml:space="preserve">
+    <value>DS-TC-Mẫu số 06-QĐ Phân công giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAONOPTIENTAMUNGANPHI" xml:space="preserve">
+    <value>DS-TC-Mẫu số 04-Thông báo nộp tiền tạm ứng án phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>DS-TC-Mẫu số 05-Thông báo về việc thụ lý vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYTRIEUTAP_TC" xml:space="preserve">
+    <value>DS-TC-Mẫu số 09-Giấy triệu tập sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHXETXUSOTHAM" xml:space="preserve">
+    <value>DS-TC-Mẫu số 08-QĐ đưa vụ án ra xét xử.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSOST_VUAN" xml:space="preserve">
+    <value>DS-TC-Mẫu số 07-Bìa hồ sơ vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYXACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>DS-TC-Mẫu số 10-Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 11-Thông báo nộp tiền tạm ứng án phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETAN_PT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 13-QĐ phân công phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTHULYVUAN_PT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 12-Thông báo thụ lý phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSOPT_VUAN" xml:space="preserve">
+    <value>DS-TC-Mẫu số 16-Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 14-QĐ đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYTRIEUTAP_TC_PT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 15-Giấy triệu tập phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSONHANDON" xml:space="preserve">
+    <value>HN-TC-Mẫu số 01-Bìa hồ sơ khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSOPT_VUAN" xml:space="preserve">
+    <value>HN-TC-Mẫu số 16-Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSOST_VUAN" xml:space="preserve">
+    <value>HN-TC-Mẫu số 07-Bìa hồ sơ vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYTRIEUTAP_TC" xml:space="preserve">
+    <value>HN-TC-Mẫu số 09-Giấy triệu tập sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYTRIEUTAP_TC_PT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 15-Giấy triệu tập phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYXACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>HN-TC-Mẫu số 10-Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>HN-TC-Mẫu số 02-Giấy xác nhận đã nhận đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 14-QĐ đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETAN_PT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 13-QĐ phân công phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDONKHOIKIEN" xml:space="preserve">
+    <value>HN-TC-Mẫu số 03-QĐ Phân công giải quyết đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM" xml:space="preserve">
+    <value>HN-TC-Mẫu số 06-QĐ Phân công giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHXETXUSOTHAM" xml:space="preserve">
+    <value>HN-TC-Mẫu số 08-QĐ đưa vụ án ra xét xử.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAONOPTIENTAMUNGANPHI" xml:space="preserve">
+    <value>HN-TC-Mẫu số 04-Thông báo nộp tiền tạm ứng án phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 11-Thông báo nộp tiền tạm ứng án phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>HN-TC-Mẫu số 05-Thông báo về việc thụ lý vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTHULYVUAN_PT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 12-Thông báo thụ lý phúc thẩm.</value>
+  </data>
+  <data name="TOAAN_CHUYENPHUCTHAM" xml:space="preserve">
+    <value>Toà án nhân dân cấp cao tại Thành phố Hồ Chí Minh</value>
+  </data>
+  <data name="LABEL_LOAIDENGHI" xml:space="preserve">
+    <value>Loại đề nghị</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_BIAHOSO_PT" xml:space="preserve">
+    <value>Mẫu-AD: Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_BIAHOSO_ST" xml:space="preserve">
+    <value>Mẫu-AD: Bìa hồ sơ sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mẫu-AD: Giấy triệu tập đương sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHDINHCHI" xml:space="preserve">
+    <value>Mẫu số 05-AD: Quyết định đình chỉ xem xét, quyết định ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHQUYETDINHMOPHIENHOP_PT" xml:space="preserve">
+    <value>Mẫu-AD: Quyết định mở phiên họp xem xét khiếu nại/ kiến nghị/ kháng nghị ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHQUYETDINHMOPHIENHOP_ST" xml:space="preserve">
+    <value>Mẫu số 03-AD: Quyết định mở phiên họp, xem xét, quyết định ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHQUYETDINHPHANCONGTHAMPHAN_PT" xml:space="preserve">
+    <value>Mẫu-AD: Quyết định phân công Thẩm phán giải quyết khiếu nại/ kiến nghị/ kháng nghị ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHQUYETDINHPHANCONGTHAMPHAN_ST" xml:space="preserve">
+    <value>Mẫu-AD: Quyết định phân công Thẩm phán giải quyết hồ sơ đề nghị ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_QUYETDINHTAMDINHCHI" xml:space="preserve">
+    <value>Mẫu số 06-AD: Quyết định tạm đình chỉ xem xét, quyết định ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_AD_THONGBAOTHULY_ST" xml:space="preserve">
+    <value>Mẫu số 01-AD: Thông báo về việc thụ lý hồ sơ đề nghị, xem xét, quyết định ADBPXLHC.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHMOPHIENHOP_TC_PT" xml:space="preserve">
+    <value>DS-TC-Mẫu số 14A-QĐ mở phiên họp phúc thẩm xem xét QĐ bị kháng cáo, kháng nghị.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHMOPHIENHOP_TC_PT" xml:space="preserve">
+    <value>HN-TC-Mẫu số 14A-QĐ mở phiên họp phúc thẩm xem xét QĐ bị kháng cáo, kháng nghị.</value>
+  </data>
+  <data name="LABEL_GHICHUPHANCONG" xml:space="preserve">
+    <value>Ghi chú phân công</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mẫu-KDTM: Giấy triệu tập đương sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_GIAYXACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mẫu số 55-KDTM: Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mẫu số 24-KDTM: Giấy xác nhận đã nhận đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>Mẫu số 66-KDTM: Quyết định đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHHOANPHIENTOA" xml:space="preserve">
+    <value>Mẫu số 49-KDTM: Quyết định hoãn phiên tòa.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHHOANPHIENTOA_PT" xml:space="preserve">
+    <value>Mẫu số 74-KDTM: Quyết định hoãn phiên toà phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHPHANCONGTHAMPHANGIAIQUYETAN_PT" xml:space="preserve">
+    <value>Mẫu-KDTM: Quyết định phân công Thẩm phán giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM" xml:space="preserve">
+    <value>Mẫu-KDTM: Quyết định phân công Thẩm phán, Hội thẩm giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHXETXUSOTHAM" xml:space="preserve">
+    <value>Mẫu số 47-KDTM: Quyết định đưa vụ án ra xét xử sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAONOPTIENTAMUNGANPHI" xml:space="preserve">
+    <value>Mẫu số 29-KDTM: Thông báo nộp tiền tạm ứng án phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>Mẫu số 61-KDTM: Thông báo nộp tiền tạm ứng án phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mẫu số 30-KDTM: Thông báo về việc thụ lý vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAOTHULYVUAN_PT" xml:space="preserve">
+    <value>Mẫu số 65-KDTM: Thông báo về việc thụ lý vụ án để xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_BIAHOSOPHUCTHAM" xml:space="preserve">
+    <value>Mẫu-KDTM: Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_BIAHOSOSOTHAM" xml:space="preserve">
+    <value>Mẫu-KDTM: Bìa hồ sơ sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mẫu-LĐ: Giấy triệu tập đương sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_GIAYXACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mẫu số 55-LĐ: Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mẫu số 24-LĐ: Giấy xác nhận đã nhận đơn khởi kiện.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>Mẫu số 66-LĐ: Quyết định đưa vụ án ra xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_QUYETDINHPHANCONGTHAMPHANGIAIQUYETAN_PT" xml:space="preserve">
+    <value>Mẫu-LĐ: Quyết định phân công Thẩm phán giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM" xml:space="preserve">
+    <value>Mẫu-LĐ: Quyết định phân công Thẩm phán, Hội thẩm giải quyết vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_QUYETDINHXETXUSOTHAM" xml:space="preserve">
+    <value>Mẫu số 47-LĐ: Quyết định đưa vụ án ra xét xử sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAONOPTIENTAMUNGANPHI" xml:space="preserve">
+    <value>Mẫu số 29-LĐ: Thông báo nộp tiền tạm ứng án phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>Mẫu số 61-LĐ: Thông báo nộp tiền tạm ứng án phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mẫu số 30-LĐ: Thông báo về việc thụ lý vụ án.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAOTHULYVUAN_PT" xml:space="preserve">
+    <value>Mẫu số 65-LĐ: Thông báo về việc thụ lý vụ án để xét xử phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_BIAHOSOPT" xml:space="preserve">
+    <value>Mẫu-LĐ:  Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_BIAHOSOST" xml:space="preserve">
+    <value>Mẫu-LĐ:  Bìa hồ sơ sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSONHANDON_YC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 01-Bìa hồ sơ yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSOPT_VUVIEC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 16-Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_BIAHOSOST_VUVIEC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 06-Bìa hồ sơ vụ việc sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYXACNHANDANHANDONKHANGCAO_YC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 10-Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>DS-YC-Mẫu số 02-Giấy xác nhận đã nhận đơn yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHMOPHIENHOPPT" xml:space="preserve">
+    <value>DS-YC-Mẫu số 14-QĐ Mở phiên họp phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHMOPHIENHOPSOTHAM" xml:space="preserve">
+    <value>DS-YC-Mẫu số 08-QĐ mở phiên họp sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDONYEUCAU" xml:space="preserve">
+    <value>DS-YC-Mẫu số 03-QĐ phân công giải quyết đơn.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVIEC_PT" xml:space="preserve">
+    <value>DS-YC-Mẫu số 13-QĐ phân công giải quyết phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM_YC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 07-QĐ Phân công Thẩm phán sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAONOPTIENTAMUNGLEPHI" xml:space="preserve">
+    <value>DS-YC-Mẫu số 04-Thông báo nộp tiền tạm ứng lệ phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTAMUNGLEPHIPT" xml:space="preserve">
+    <value>DS-YC-Mẫu số 11-Thông báo nộp tiền tạm ứng lệ phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 05-Thông báo thụ lý việc dân sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYTRIEUTAP_YC" xml:space="preserve">
+    <value>DS-YC-Mẫu số 09-Giấy triệu tập sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_GIAYTRIEUTAP_YC_PT" xml:space="preserve">
+    <value>DS-YC-Mẫu số 15-Giấy triệu tập phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_DS_THONGBAOTHULYVUVIEC_PT" xml:space="preserve">
+    <value>DS-YC-Mẫu số 12-Thông báo thụ lý phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSONHANDON_YC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 01-Bìa hồ sơ yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSOPT_VUVIEC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 16-Bìa hồ sơ phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_BIAHOSOST_VUVIEC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 06-Bìa hồ sơ vụ việc sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYTRIEUTAP_YC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 09-Giấy triệu tập sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYTRIEUTAP_YC_PT" xml:space="preserve">
+    <value>HN-YC-Mẫu số 15-Giấy triệu tập phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYXACNHANDANHANDONKHANGCAO_YC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 10-Giấy xác nhận đã nhận đơn kháng cáo.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>HN-YC-Mẫu số 02-Giấy xác nhận đã nhận đơn yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHMOPHIENHOPPT" xml:space="preserve">
+    <value>HN-YC-Mẫu số 14-QĐ Mở phiên họp phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHMOPHIENHOPSOTHAM" xml:space="preserve">
+    <value>HN-YC-Mẫu số 08-QĐ mở phiên họp sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDONYEUCAU" xml:space="preserve">
+    <value>HN-YC-Mẫu số 03-QĐ phân công giải quyết đơn.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVIEC_PT" xml:space="preserve">
+    <value>HN-YC-Mẫu số 13-QĐ phân công giải quyết phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_QUYETDINHQUYETDINHPHANCONGTHAMPHANSOTHAM_YC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 07-QĐ Phân công Thẩm phán sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAONOPTIENTAMUNGLEPHI" xml:space="preserve">
+    <value>HN-YC-Mẫu số 04-Thông báo nộp tiền tạm ứng lệ phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTAMUNGLEPHIPT" xml:space="preserve">
+    <value>HN-YC-Mẫu số 11-Thông báo nộp tiền tạm ứng lệ phí phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>HN-YC-Mẫu số 05-Thông báo thụ lý việc dân sự.</value>
+  </data>
+  <data name="LABEL_MAUIN_HN_THONGBAOTHULYVUVIEC_PT" xml:space="preserve">
+    <value>HN-YC-Mẫu số 12-Thông báo thụ lý phúc thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>Mẫu số 24-KDTM: Giấy xác nhận đã nhận đơn yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAONOPTIENTAMUNGLEPHI" xml:space="preserve">
+    <value>Mẫu số 29-KDTM: Thông báo nộp tiền tạm ứng lệ phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>Mẫu số 30-KDTM: Thông báo về việc thụ lý việc KDTM.</value>
+  </data>
+  <data name="LABEL_BLHS" xml:space="preserve">
+    <value>BLHS</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_QUYETDINHMOPHIENHOPSOTHAM" xml:space="preserve">
+    <value>Mẫu số 47-KDTM: Quyết định mở phiên họp sơ thẩm.</value>
+  </data>
+  <data name="LABEL_MAUIN_KD_THONGBAOTAMUNGLEPHIPT" xml:space="preserve">
+    <value>Mẫu số 61-KDTM: Thông báo nộp tiền tạm ứng lệ phí phúc thẩm.</value>
+  </data>
+  <data name="TABLE_SO_BAQD_BIHUYSUA" xml:space="preserve">
+    <value>Số BA/QĐ bị huỷ/sửa</value>
+  </data>
+  <data name="TABLE_SO_BAQD_HUYSUA" xml:space="preserve">
+    <value>Số BA/QĐ huỷ/sửa</value>
+  </data>
+  <data name="TABLE_THAMPHAN_BAQD_BIHUYSUA" xml:space="preserve">
+    <value>Thẩm phán có BA/QĐ bị huỷ/sửa</value>
+  </data>
+  <data name="TABLE_THAMPHAN_COBAQD_HUYSUA" xml:space="preserve">
+    <value>Thẩm phán có BA/QĐ huỷ/sửa</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>Mẫu số 24-LĐ: Giấy xác nhận đã nhận đơn yêu cầu.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAONOPTIENTAMUNGLEPHI" xml:space="preserve">
+    <value>Mẫu số 29-LĐ: Thông báo nộp tiền tạm ứng lệ phí.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>Mẫu số 30-LĐ: Thông báo về việc thụ lý việc LĐ.</value>
+  </data>
+  <data name="LABEL_MAUIN_LD_QUYETDINHMOPHIENHOPSOTHAM" xml:space="preserve">
+    <value>Mẫu số 47-LĐ: Quyết định mở phiên họp sơ thẩm.</value>
+  </data>
+</root>

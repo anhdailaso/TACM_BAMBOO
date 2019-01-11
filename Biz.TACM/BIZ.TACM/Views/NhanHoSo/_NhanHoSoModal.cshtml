@@ -1,0 +1,57 @@
+﻿@model Biz.Lib.TACM.NhanDon.Model.NhanHoSoModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("EditChiTietNhanHoSo", "NhanHoSo", FormMethod.Post, new { @id = "formEditChiTietNhanHoSo" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <input type="hidden" name="NhanHoSoID" value="@Model.NhanHoSoID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYNHAN<span class="input-required">*</span></label>
+                    <div class="col-7 input-group date">
+                        @Html.TextBox("NgayNhanHoSo", null, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                    <small class="form-text text-danger"><span for="NgayNhanHoSo"></span></small>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGUOINHAN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.NguoiNhanHoSo, new { @class = "form-control", @readonly = true })
+                    </div>
+                    <small class="form-text text-danger"><span for="NguoiNhanHoSo"></span></small>
+                </div>
+                <div class="form-group">
+                    <label class="">@ViewText.LABEL_GHICHU</label>
+                    @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", @id = "ghi-chu-nhan-ho-so-textarea" , @style = "width:100%", @rows = "8" })
+                    <small class="form-text text-danger"><span for="GhiChu"></span></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase pull-right" id="btnLuuNhanHoSo">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        EditNhanHoSoModule.init();
+    });
+</script>

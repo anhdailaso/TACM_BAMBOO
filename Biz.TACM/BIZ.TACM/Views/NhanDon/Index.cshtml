@@ -1,0 +1,409 @@
+﻿@model PagedList.IPagedList<Biz.Lib.TACM.NhanDon.Model.HoSoVuAnModel>
+@using Biz.TACM.Enums
+@using Biz.Lib.Helpers
+@using PagedList.Mvc;
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+@{
+    var congDoanHoSo = 1;
+    if (Request.QueryString["CongDoanHoSo"] != null)
+    {
+        congDoanHoSo = Int32.Parse(Request.QueryString["CongDoanHoSo"]);
+    }
+}
+
+@switch (congDoanHoSo)
+{
+    case (int)CongDoan.NhanDon:
+        ViewBag.Title = giaiDoan==2 || nhomAn == "HS" ? ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM : ViewText.TITLE_CONGDOAN_NHANDON;
+        break;
+    case (int)CongDoan.ThuLy:
+        ViewBag.Title = ViewText.TITLE_CONGDOAN_THULY;
+        break;
+    case (int)CongDoan.ChuanBiXetXu:
+        ViewBag.Title = ViewText.TITLE_CONGDOAN_CHUANBIXETXU;
+        break;
+    case (int)CongDoan.KetQuaXetXu:
+        ViewBag.Title = ViewText.TITLE_CONGDOAN_KETQUAGIAIQUYET;
+        break;
+    case (int)CongDoan.SauXetXu:
+        ViewBag.Title = ViewText.TITLE_CONGDOAN_SAUXETXU;
+        break;
+    case (int)CongDoan.LuuKho:
+        ViewBag.Title = ViewText.TITLE_CONGDOAN_LUUKHO;
+        break;
+    default:
+        ViewBag.Title = giaiDoan == 2 ? ViewText.TITLE_CONGDOAN_NHANHOSOPHUCTHAM : ViewText.TITLE_CONGDOAN_NHANDON;
+        break;
+}
+
+@section Title
+{
+    @{ Html.RenderPartial("_PageTitlePartial");}
+}
+
+@section VerticalMenu
+{
+    @{ Html.RenderPartial("_VerticalMenuPartial");}
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col-9">
+                <div class="search-box">
+                    @using (Html.BeginForm("Index", "NhanDon", FormMethod.Get, new { @id = "formTimKiem" }))
+                    {
+                        if (nhomAn == Setting.MANHOMAN_HINHSU)
+                        {
+                            @Html.TextBox("MaHoSo", @Request.QueryString["MaHoSo"], new { @class = "form-control", placeholder = "Số, Mã hồ sơ, Tên vụ án, Thẩm phán" })
+                        }
+                        else
+                        {
+                            @Html.TextBox("MaHoSo", @Request.QueryString["MaHoSo"], new { @class = "form-control", placeholder = "Số, Mã hồ sơ, Đương sự, Thẩm phán" })
+                        }
+                        
+                        @Html.Hidden("CongDoanHoSo", Request.QueryString["CongDoanHoSo"] ?? "1")
+                        <button type="submit" class="search-button"><i class="material-icons">search</i></button>
+                    }
+                </div>
+                <a href="#" class="btn-link d-inline-block ml-2" data-toggle="modal" data-target="#searchExpandModal">@ViewText.LABEL_TIMKIEM_MORONG</a>
+            </div>
+            <div class="col-3 text-right">
+                @if (ViewBag.GiaiDoan == GiaiDoan.SoTham.GetHashCode())
+                {
+                    <a id="btnTaoHoSo" href="#" class="btn btn-primary" data-toggle="modal" data-target="#modelNhanHoSoMoi"><i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.TITLE_TAOHOSO_MOI</a>
+                }
+                else if (ViewBag.GiaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    if (ViewBag.SoLuongHoSoChoPhucTham == 0)
+                    {
+                        <button id="btnNhanHoSoPhucTham" class="btn btn-primary add-disabled" href="/NhanDon/NhanHoSoPhucTham">@ViewText.BUTTON_NHANHOSOMOI</button>
+                    }
+                    else
+                    {
+                        <a id="btnNhanHoSoPhucTham" class="btn btn-primary" href="/NhanDon/NhanHoSoPhucTham">@ViewText.BUTTON_NHANHOSOMOI (@ViewBag.SoLuongHoSoChoPhucTham)</a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="grid">
+            <table class="table table-hover table-bordered table-custom dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="@HtmlExtensions.ClassSortOrder("SoHoSo", Request.QueryString["sortOrder"])">
+                            <a href="@Url.Action("Index", new
+                                 {
+                                     maNv = Request.Params["maNv"],
+                                     nhomAn = Request.Params["nhomAn"],
+                                     //giaiDoan = Request.Params["giaiDoan"],
+                                     CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                                     keyword = Request.Params["keyword"],
+                                     NgayTao = Request.Params["NgayTao"],
+                                     NgayCapNhat = Request.Params["NgayCapNhat"],
+                                     NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                                     HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                                     TrangThai = Request.Params["TrangThai"],
+                                     LoaiDon = Request.Params["LoaiDon"],
+                                     LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                                     YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                                     sortOrder = ViewBag.SoHoSoSortParm
+                                 })@(ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")">
+                                @ViewText.TABLE_SO
+                            </a>
+                        </th>
+                        <th class="@HtmlExtensions.ClassSortOrder("MaHoSo", Request.QueryString["sortOrder"])">
+                            <a href="@Url.Action("Index", new
+                                 {
+                                     maNv = Request.Params["maNv"],
+                                     nhomAn = Request.Params["nhomAn"],
+                                     //giaiDoan = Request.Params["giaiDoan"],
+                                     CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                                     keyword = Request.Params["keyword"],
+                                     NgayTao = Request.Params["NgayTao"],
+                                     NgayCapNhat = Request.Params["NgayCapNhat"],
+                                     NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                                     HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                                     TrangThai = Request.Params["TrangThai"],
+                                     LoaiDon = Request.Params["LoaiDon"],
+                                     LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                                     YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                                     sortOrder = ViewBag.MaHoSoSortParm
+                                 })@(ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")">
+                                @ViewText.TABLE_MAHOSO
+                            </a>
+                        </th>
+                        <th class="text-capitalize">
+                            @(nhomAn.Equals(Setting.MANHOMAN_HINHSU) ? ViewText.LABEL_TENVUAN : ViewText.TABLE_DUONGSU)
+                        </th>
+                        <th class="@HtmlExtensions.ClassSortOrder("ThamPhan", Request.QueryString["sortOrder"])">
+                            <a href="@Url.Action("Index", new
+                                 {
+                                     maNv = Request.Params["maNv"],
+                                     nhomAn = Request.Params["nhomAn"],
+                                     //giaiDoan = Request.Params["giaiDoan"],
+                                     CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                                     keyword = Request.Params["keyword"],
+                                     NgayTao = Request.Params["NgayTao"],
+                                     NgayCapNhat = Request.Params["NgayCapNhat"],
+                                     NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                                     HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                                     TrangThai = Request.Params["TrangThai"],
+                                     LoaiDon = Request.Params["LoaiDon"],
+                                     LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                                     YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                                     sortOrder = ViewBag.ThamPhanSortParm
+                                 })@(ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")">
+                                @ViewText.TABLE_THAMPHAN
+                            </a>
+                        </th>
+                        <th class="@HtmlExtensions.ClassSortOrder("NgayTao", Request.QueryString["sortOrder"])">
+                            <a href="@Url.Action("Index", new
+                                 {
+                                     maNv = Request.Params["maNv"],
+                                     nhomAn = Request.Params["nhomAn"],
+                                     //giaiDoan = Request.Params["giaiDoan"],
+                                     CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                                     keyword = Request.Params["keyword"],
+                                     NgayTao = Request.Params["NgayTao"],
+                                     NgayCapNhat = Request.Params["NgayCapNhat"],
+                                     NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                                     HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                                     TrangThai = Request.Params["TrangThai"],
+                                     LoaiDon = Request.Params["LoaiDon"],
+                                     LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                                     YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                                     sortOrder = ViewBag.NgayTaoSortParm
+                                 })@(ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")">
+                                @ViewText.TABLE_NGAYNHAN
+                            </a>
+                        </th>
+                        <th class="@HtmlExtensions.ClassSortOrder("CongDoanHoSo", Request.QueryString["sortOrder"])">
+                            <a href="@Url.Action("Index", new
+                                 {
+                                     maNv = Request.Params["maNv"],
+                                     nhomAn = Request.Params["nhomAn"],
+                                     //giaiDoan = Request.Params["giaiDoan"],
+                                     CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                                     keyword = Request.Params["keyword"],
+                                     NgayTao = Request.Params["NgayTao"],
+                                     NgayCapNhat = Request.Params["NgayCapNhat"],
+                                     NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                                     HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                                     TrangThai = Request.Params["TrangThai"],
+                                     LoaiDon = Request.Params["LoaiDon"],
+                                     LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                                     YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                                     sortOrder = ViewBag.CongDoanHoSoSortParm
+                                 })@(ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")">
+                                @ViewText.TABLE_CONGDOAN
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var entry in Model)
+                        {
+                            <tr>
+                                <td>@entry.SoHoSo</td>
+                                <td>
+                                    <a href="@HtmlExtensions.UrlCongDoanHoSo(Convert.ToInt32(Request.QueryString["CongDoanHoSo"]), entry.HoSoVuAnID)">@entry.MaHoSo</a>
+                                </td>
+                                <td class="custom-wrap">
+                                    @if (nhomAn.Equals(Setting.MANHOMAN_HINHSU))
+                                    {
+                                        @entry.TenVuAn
+                                    }
+                                    else
+                                    {
+                                        var ten = new List<String>(); 
+                                        foreach (var duongSu in @entry.DuongSu)
+                                        {
+                                            ten.Add(@duongSu.HoVaTen);
+                                        }
+                                        @String.Join(" - ", ten)
+                                    }
+                                   
+                                </td>
+                                <td>@entry.NhanVienThamPhan.HoVaTenNV</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", @entry.NgayTao)</td>
+                                <td><a href="#" data-toggle="modal" data-target="#modelChuyenTrangThai" data-hosovuanid="@entry.HoSoVuAnID" data-trangthai="@entry.CongDoanHoSo"><span class="btn-cong-doan-size badge badge-pill @Html.GetColorStateAsString(@entry.CongDoanHoSo)">@Html.GetCongDoanHoSoAsString(@entry.CongDoanHoSo, nhomAn, giaiDoan) &nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></span></a> </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="10" class="dataTables_empty">@ViewText.LABEL_KHONGCOKETQUA</td></tr>
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new
+                    {
+                        maNv = Request.Params["maNv"],
+                        nhomAn = Request.Params["nhomAn"],
+                        CongDoanHoSo = Request.Params["CongDoanHoSo"],
+                        keyword = Request.Params["keyword"],
+                        NgayTao = Request.Params["NgayTao"],
+                        NgayCapNhat = Request.Params["NgayCapNhat"],
+                        NguoiKyXacNhanDaNhanDon = Request.Params["NguoiKyXacNhanDaNhanDon"],
+                        HinhThucGoiDon = Request.Params["HinhThucGoiDon"],
+                        TrangThai = Request.Params["TrangThai"],
+                        LoaiDon = Request.Params["LoaiDon"],
+                        LoaiQuanHe = Request.Params["LoaiQuanHe"],
+                        YeuToNuocNgoai = Request.Params["YeuToNuocNgoai"],
+                        sortOrder = ViewBag.CurrentSort,
+                        page
+                    }) + (ViewBag.IsKeywordEmpty ? "&keyword=" + Request.Params["keyword"] : "")
+                )
+        </div>
+    </div>
+</div>
+
+<!-- Modal chuyen trang thai -->
+<div class="modal fade" id="modelChuyenTrangThai" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("ChuyenCongDoan", "NhanDon", FormMethod.Post, new { @id = "formChuyenTrangThai" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="HoSoVuAnID" value="" />
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase">@ViewText.LABEL_CAPNHAT_CONGDOAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_CONGDOAN_CHUYENDEN</label>
+                                @Html.DropDownList("CongDoanHoSo", (SelectList)ViewBag.ddlTrangThai, new { @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                    <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="searchExpandModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("Index", "NhanDon", FormMethod.Get, new { @id = "formTimKiem" }))
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase">@ViewText.LABEL_TIMKIEM_MORONG</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_NGAYNHANDON_TU</label>
+                                <div class="input-group date datepicker" id="ngay-nhan-don-tu-dtp">
+                                    @Html.TextBox("NgayTao", "", "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_NGAYNHANDON_DEN</label>
+                                <div class="input-group date datepicker" id="ngay-nhan-don-den-dtp">
+                                    @Html.TextBox("NgayCapNhat", "", "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_NGAYNHANDON</label>
+                                @Html.DropDownList("NguoiKyXacNhanDaNhanDon", (SelectList)ViewBag.ddlNguoiKyXacNhanDaNhanDon, "--Tất cả--", new { @class = "custom-select w-100" })
+                            </div>
+                            <div class="form-group mb-0">
+                                <label>@ViewText.LABEL_DUONGSU</label>
+                                @Html.DropDownList("HinhThucGoiDon", (SelectList)ViewBag.ddlDuongSu, "--Tất cả--", new { @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_TRANGTHAI</label>
+                                @Html.DropDownList("CongDoanHoSo", (SelectList)ViewBag.ddlTrangThaiAll, new { @class = "custom-select w-100" })
+                            </div>
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_LOAIDON</label>
+                                @Html.DropDownList("LoaiDon", (SelectList)ViewBag.ddlLoaiDon, "--Tất cả--", new { @class = "custom-select w-100" })
+                            </div>
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_LOAI_QUANHE</label>
+                                @Html.DropDownList("LoaiQuanHe", (SelectList)ViewBag.ddlLoaiQuanHe, "--Tất cả--", new { @class = "custom-select w-100" })
+                            </div>
+                            <div class="form-group mb-0">
+                                <label>@ViewText.LABEL_YEUTO_NUOCNGOAI</label>
+                                @Html.DropDownList("YeuToNuocNgoai", (SelectList)ViewBag.ddlYeuToNuocNgoai, "--Tất cả--", new { @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default text-uppercase pull-left" id="btnSearchReset">@ViewText.BUTTON_MACDINH</button>
+                    <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_TIMKIEM</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal nhanHoSoMoi -->
+<div class="modal fade" id="modelNhanHoSoMoi" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog @(nhomAn == Setting.MANHOMAN_HINHSU ? "" : "modal-lg")" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase">@ViewText.TITLE_TAOHOSO_MOI</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height: 300px">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                <button type="button" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/NhanDon")
+    <script>
+
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿@model Biz.Lib.TACM.NhanDon.Model.NhanHoSoModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@if (Model != null)
+{
+    <div class="row border-group">
+        <div class="col-6">
+            <div class="row" id="contentThongTinChuyenHoSo">
+                @*@{ Html.RenderPartial("_ChiTietChuyenHoSo");}*@
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12 mt-2">
+                    @Html.DropDownList("ddlNgayTao", (SelectList)ViewBag.listNgayTao, null, new { @id = "selectNgayTaoNhanHoSo", @class = "custom-select mb-2" })
+                    <button id="btnSuaNhanHoSo" class="btn btn-sm btn-outline-primary btn-custom-size float-right mb-1" data-trigger="modal" data-target="#modal" data-url="@Url.Action("EditChiTietNhanHoSo", "NhanHoSo", new {hoSoVuAnId = Model.HoSoVuAnID, nhanHoSoId = Model.NhanHoSoID})"><i class="fa fa-pencil-square-o"></i></button>
+                </div>
+            </div>
+            <div class="row" id="contentChiTietNhanHoSo">
+                @{ Html.RenderPartial("_ChiTietNhanHoSo", Model);}
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="mt-4 mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

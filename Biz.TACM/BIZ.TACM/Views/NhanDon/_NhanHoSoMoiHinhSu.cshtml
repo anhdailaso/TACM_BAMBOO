@@ -1,0 +1,129 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Enums
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@{
+    Layout = null;
+}
+
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnHinhSuModel
+
+
+@using (Html.BeginForm("ThemHoSoVuAnHinhSu", "NhanDon", FormMethod.Post, new { @id = "formThemHoSoVuAnHinhSu" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.ToaAnID)
+    <input type="hidden" name="HoSoVuAnID" id="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@(Model.HoSoVuAnID == 0 ? ViewText.TITLE_TAOHOSO_MOI : ViewText.TITLE_CAPNHATHOSO)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_TENVUAN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.TenVuAn, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.TenVuAn)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SOBICAN<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.SoBiCan, new { @class = "form-control intText", @maxlength = "20" , min="1"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoBiCan)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_TONGSOBUTLUC<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.TongSoButLuc, new { @class = "form-control intText", @maxlength = "20" , min = "1" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.TongSoButLuc)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_KHONGCO_CAC_BUTLUC</label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.KhongCoCacButLuc, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.KhongCoCacButLuc)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-5">
+                        @ViewText.LABEL_TRUYTOBANG<span class="input-required">*</span>
+                    </div>
+                    <div class="col-7">
+                        @Html.DropDownListFor(m => m.TruyToBang, (SelectList)ViewBag.ddlTruyToBang, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.TruyToBang)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_SO<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        @Html.TextBoxFor(m => m.SoTruyTo, new {@class = "form-control"})
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.SoTruyTo)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-5">@ViewText.LABEL_NGAYTHANGNAM<span class="input-required">*</span></label>
+                    <div class="col-7">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayTruyTo, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayTruyTo)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-5">
+                        @ViewText.LABEL_VKS_TRUYTO<span class="input-required">*</span>
+                    </div>
+                    <div class="col-7">
+                        <input type="hidden" id="vks-truy-to-hidden" value="@Model.VienKiemSatTruyTo" />
+                        @Html.DropDownListFor(m => m.VienKiemSatTruyTo, (SelectList) ViewBag.ddlVKSTruyTo, Setting.DDL_CHOOSE, new {@class = "form-control", id= "vks-truy-to-ddl" })
+
+                        <div class="row option-hidden">
+                            <div class="col-2 d-inline-block">
+                                <label>@ViewText.LABEL_KHAC</label>
+                            </div>
+                            <div class="col-9 d-inline-block">
+                                @Html.TextBoxFor(m => m.VienKiemSatTruyTo, string.Empty, new {@class = "form-control", id = "vks-truy-to-textbox", @style = "width:110%"})
+                            </div>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.VienKiemSatTruyTo)</small>
+                    </div>
+                </div>
+
+                @*<div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_VKS_TRUYTO_KHAC</label>
+                    <div class="col-6">
+                        @Html.TextBoxFor(m => m.VienKiemSatTruyToKhac, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.VienKiemSatTruyToKhac)</small>
+                    </div>
+                </div>*@              
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script>
+
+    $(function () {
+
+        EditNhanDonHinhSu.init();
+
+        $(".datepicker").datetimepicker({
+            maxDate: moment(),
+            format: 'DD/MM/YYYY'
+        });
+    });
+
+</script>

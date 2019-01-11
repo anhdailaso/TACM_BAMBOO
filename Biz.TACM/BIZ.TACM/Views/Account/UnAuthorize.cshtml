@@ -1,0 +1,22 @@
+﻿@using Biz.Lib.Helpers;
+@using Biz.Lib.TACM.Resources.Resources
+@{
+    ViewBag.Title =ViewText.TILTE_TUCHOITRUYCAP;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TỪ CHỐI TRUY CẬP</h2>
+<div id="main-content">
+    @{
+        string message = Sessions.GetMessage(SessionKeyList.MessageUnAuthorize);
+        Sessions.Remove(SessionKeyList.MessageUnAuthorize);
+
+        if (!string.IsNullOrEmpty(message))
+        {
+            <p class="alert-danger">
+                @Html.Raw(message)
+            </p>
+        }
+    }
+</div>
+

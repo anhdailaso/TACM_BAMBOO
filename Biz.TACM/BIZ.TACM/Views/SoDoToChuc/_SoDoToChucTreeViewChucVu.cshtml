@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Biz.TACM.Models.ViewModel.SoDoToChuc.ChucDanhViewModel>
+
+@using Biz.Lib.TACM.Resources.Resources
+
+@if (Model.Any())
+{
+    <a class="expand-all underline-custom" href="#">@ViewText.LABEL_XEMTATCA</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span><a class="collapse-all underline-custom" href="#">Thu gọn</a>
+    <table class="tree table table-hover">
+        @foreach (var item in Model)
+        {
+            <tr id="node-@item.SoDoToChucID" data-id="node-@item.SoDoToChucID" class="treegrid-@item.SoDoToChucID @((item.ChucDanhChaID == 0 || item.ChucDanhChaID == null) ? "" : "treegrid-parent-" + item.ChucDanhChaID)">
+                <td class="w-100">
+                    <span style="vertical-align: text-bottom">
+                        <a class="chucDanhSoDoToChuc" href="#" id="treegrid-@item.SoDoToChucID" style="text-decoration: none; color: rgb(2, 117, 216);">
+                            @item.ChucDanh
+                        </a>
+                    </span>
+                </td>
+                <td class="pr-5" style="white-space: nowrap;">
+                    <span data-toggle="tooltip" data-placement="top">
+                        <a class="active" data-trigger="modal" data-target="#modal" data-url="/SoDoToChuc/ThemChucVu?id=@item.SoDoToChucID&toaAnID=@item.ToaAnID">
+                            <i class="btn btn-sm btn-outline-info fa fa-plus-square-o btn-treeview" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                    <span data-toggle="tooltip" data-placement="top">
+                        <a class="active" data-trigger="modal" data-target="#modal" data-url="/SoDoToChuc/ChiTietChucDanh?id=@item.SoDoToChucID">
+                            <i class="btn btn-sm btn-outline-success fa fa-search btn-treeview" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                    <span data-toggle="tooltip" data-placement="top">
+                        <a class="active" data-trigger="modal" data-target="#modal" data-url="/SoDoToChuc/SuaChucVu?id=@item.SoDoToChucID&toaAnID=@item.ToaAnID">
+                            <i class="btn btn-sm btn-outline-primary fa fa-pencil-square-o btn-treeview" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                    <span data-toggle="tooltip" data-placement="top" title="Xóa chức danh">
+                        <a class="active" data-trigger="modal" data-target="#modal" data-url="@Url.Action("XoaChucDanh","SoDoToChuc",new { id = @item.SoDoToChucID})">
+                            <i class="btn btn-sm btn-outline-danger fa fa-trash-o btn-treeview" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="col mt-5 text-center empty-data">
+        <blockquote>
+            <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+        </blockquote>
+    </div>
+    <div class="col-2 mt-4">
+        <button id="btnThemChucDanh" class="btn btn-primary mb-2 mt-2" data-trigger="modal" data-target="#modal" data-url="/SoDoToChuc/ThemChucVu?toaAnID=@ViewBag.ToaAnID">
+            @* toaAnID of combo box Tòa Án *@
+            <i class="fa fa-plus btn-icon-word-size"></i>&nbsp;@ViewText.TITLE_THEMCHUCVU
+        </button>
+    </div>
+}

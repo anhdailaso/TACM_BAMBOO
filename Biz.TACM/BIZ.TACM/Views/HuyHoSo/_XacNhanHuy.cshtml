@@ -1,0 +1,25 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model string
+<div class="modal-header">
+    <h5 class="modal-title text-uppercase">@ViewText.LABEL_HUYHOSO</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert-danger alert" role="alert">
+                @string.Format(NotifyMessage.XACNHANHUYHOSO, Model)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-danger text-uppercase float-right" id="Luu-HuyHoSo-btn">@ViewText.BUTTON_XACNHAN</button>
+</div>
+<script>
+    $(function () {
+        ThemHuyHoSoModule.bindFormActions();
+    });
+</script>

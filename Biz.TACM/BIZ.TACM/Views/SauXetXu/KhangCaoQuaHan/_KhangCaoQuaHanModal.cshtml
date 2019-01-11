@@ -1,0 +1,51 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangCaoQuaHan.ThongTinKhangCaoQuaHanViewModel
+<div class="modal-header">
+    <h5 id="khangCaoQuaHanTitle" class="modal-title text-uppercase">@(Model.KhangCaoHayKhangNghi.Equals("Kháng Cáo") ? "Kháng cáo" : "Kháng nghị")  @ViewText.LABEL_QUAHAN</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("KhangCaoQuaHan", "SauXetXu", FormMethod.Post, new { id = "khang-cao-qua-han-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="offset-6">
+            </div>
+            <div class="col-6">
+                @Html.DropDownList("khang-cao-hay-khang-nghi", (SelectList)ViewBag.KhangCaoHayKhangNghi, null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label id="lyDoKhangCaoQuaHanLabel">@ViewText.LABEL_LYDO @(Model.KhangCaoHayKhangNghi.Equals("Kháng Cáo") ? "kháng cáo" : "kháng nghị") @ViewText.LABEL_QUAHAN</label>@*<span class="input-required">*</span>*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @Html.TextArea("ly-do-khang-cao-qua-han-textarea", @Model.LyDo, new { @class = "form-control", style = "width: 100%", })
+                @*<small class="form-text text-danger"><span for="ly-do-khang-cao-qua-han-textarea"></span></small>*@
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <label id="ketQuaKhangCaoQuaHanLabel">@ViewText.LABEL_KETQUA @(Model.KhangCaoHayKhangNghi.Equals("Kháng Cáo") ? "kháng cáo" : "kháng nghị") @ViewText.LABEL_QUAHAN</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @Html.TextArea("ket-qua-khang-cao-qua-han-textarea", Model.KetQua, new { @class = "form-control", style = "width: 100%", @value = @ViewBag.ketqua })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="khang-cao-qua-han-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        KhangCaoQuaHanModalModule.init();
+    });
+</script>

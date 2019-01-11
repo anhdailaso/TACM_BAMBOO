@@ -1,0 +1,19 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TENVUAN</span><span class="font-weight-bold">@Model.TenVuAn</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SOBICAN</span><span class="font-weight-bold">@Model.SoBiCan</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TONGSOBUTLUC</span><span class="font-weight-bold">@Model.TongSoButLuc</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_KHONGCO_CAC_BUTLUC</span><span class="font-weight-bold">@Model.KhongCoCacButLuc</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_TRUYTOBANG</span><span class="font-weight-bold">@Model.TruyToBang</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_SO</span><span class="font-weight-bold">@Model.SoTruyTo</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTHANGNAM</span><span class="font-weight-bold">@string.Format("{0:dd/MM/yyyy}", @Model.NgayTruyTo)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_VKS_TRUYTO</span><span class="font-weight-bold">@Model.VienKiemSatTruyTo</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+    </ul>
+</div>

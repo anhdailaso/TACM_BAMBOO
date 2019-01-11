@@ -1,0 +1,26 @@
+﻿@model Biz.TACM.Models.ViewModel.SauXetXu.SuaChuaBanAn.ThongTinSuaChuaBanAnViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+@Html.HiddenFor(m => m.SuaChuaBanAnId, new {id = "sua-chua-ban-an-id-hidden"})
+<div class="col-6">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.TEXT_SAUXETXU_NGAYSUACHUABOSUNG</span><span class="font-weight-bold">@Model.NgaySuaChua</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.TEXT_SAUXETXU_LYDOSUACHUABOSUNG</span><span class="font-weight-bold">@Model.LyDo</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.TEXT_ATTACHEDFILE</span><span class="font-weight-bold">@if (Model.DinhKemFile != null){<a target="_blank" href="~/Uploads/@Model.DinhKemFile">@Model.DinhKemFile</a>}</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOIKY</span><span class="font-weight-bold">@Model.NguoiKy</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+        <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@Model.NgayTao</span></li>
+    </ul>
+</div>
+<div class="col-6">
+    <div class="card">
+        <div class="card-block">
+            <p class="font-weight-bold">@ViewText.TEXT_SAUXETXU_NOIDUNGSUACHUABOSUNG</p>
+            <div class="card">
+                <div class="card-block" style="height: 185px; overflow: scroll">
+                    @Html.Raw(Model.NoiDung)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

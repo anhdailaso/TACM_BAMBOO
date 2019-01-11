@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ChuanBiXetXu.Model.HoaGiaiModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaHoaGiai" class="btn btn-sm btn-outline-primary btn-custom-size float-right mb-2" data-toggle="modal" data-target="#modelChuanBiXetXuHoaGiai"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownListFor(m => m.HoaGiaiID, (SelectList)ViewBag.ddlNgayTao, new { @id = "selectNgayTaoHoaGiai", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYMO_PHIENHOP</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.NgayMoPhienHop)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NOIDUNG_PHIENHOP</span><span class="font-weight-bold">@Html.Raw(Model.NoiDungPhienHop)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THAMPHAN</span><span class="font-weight-bold">@Model.TenThamPhan</span></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_THUKY</span><span class="font-weight-bold">@Model.TenThuKy</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemHoaGiai" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-toggle="modal" data-target="#modelChuanBiXetXuHoaGiai"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

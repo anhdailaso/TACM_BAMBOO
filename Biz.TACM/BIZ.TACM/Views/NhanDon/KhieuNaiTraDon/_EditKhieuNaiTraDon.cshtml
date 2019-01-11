@@ -1,0 +1,83 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@{
+    Layout = null;
+}
+@model Biz.Lib.TACM.NhanDon.Model.KhieuNaiTraDonModel
+
+@using (Html.BeginForm("EditKhieuNaiTraDon", "NhanDon", FormMethod.Post, new { @id = "formEditKhieuNaiTraDon" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+    <div class="modal-header">
+        <h5 class="modal-title text-uppercase">@ViewText.TITLE_KHIEUNAI_TRALAIDON</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_LANTHU<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.DropDownListFor(m => m.LanThu, (SelectList)ViewBag.ddlLanThu, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.LanThu)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGUOI_KHIEUNAI<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        @Html.DropDownListFor(m => m.NguoiKhieuNai, (SelectList)ViewBag.ddlNguoiKhieuNai, Setting.DDL_CHOOSE, new { @class = "form-control" })
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NguoiKhieuNai)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6">@ViewText.LABEL_NGAY_KHIEUNAI<span class="input-required">*</span></label>
+                    <div class="col-6">
+                        <div class="input-group date datepicker">
+                            @Html.TextBoxFor(m => m.NgayKhieuNai, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <small class="form-text text-danger">@Html.ValidationMessageFor(m => m.NgayKhieuNai)</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ul class="nav nav-tabs mt-4" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#ModalKhieuNaiTraDonNoiDung" role="tab">@ViewText.LABEL_NOIDUNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ModalKhieuNaiTraDonKetQuaGiaiQuyet" role="tab">@ViewText.LABEL_KETQUA_GIAIQUYET</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#ModalKhieuNaiTraDonGhiChu" role="tab">@ViewText.LABEL_GHICHU</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="ModalKhieuNaiTraDonNoiDung" role="tabpanel">
+                            @Html.TextAreaFor(m => m.NoiDungKhieuNai, new { @class = "form-control ckeditorClassKhieuNai tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                        <div class="tab-pane" id="ModalKhieuNaiTraDonKetQuaGiaiQuyet" role="tabpanel">
+                            @Html.TextAreaFor(m => m.KetQuaGiaiQuyet, new { @class = "form-control ckeditorClassKhieuNai tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                        <div class="tab-pane" id="ModalKhieuNaiTraDonGhiChu" role="tabpanel">
+                            @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control ckeditorClassKhieuNai tinymce-editor", @style = "width:100%", @rows = "8" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="submit" class="btn btn-danger text-uppercase pull-right">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+
+<script>
+    $(function () {
+        EditKhieuNaiTraDon.init();
+    });
+</script>

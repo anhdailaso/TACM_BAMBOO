@@ -1,0 +1,56 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.ThongKeGiamSat.Models.LocDuLieuThongKeModel
+
+@{
+    ViewBag.Title = @ViewText.TITLE_BAOCAOTHONGKE.ToUpper();
+}
+
+<div class="float-left">
+    <h4 class="text-uppercase mb-2">@ViewText.TITLE_BAOCAOTHONGKE</h4>
+</div>
+<div class="clearfix"></div>
+<div id="main-content">
+    <div class="container-fluid row">
+        <div class="col-9">
+            <div class="row">
+                @*<h4 class="col-5 text-uppercase">@ViewText.TITLE_BAOCAOTHONGKE</h4>*@
+                <div class="col-12 float-right text-right">
+                    <div id="menu-thongke-btn" class="btn-group">
+                        <button id="thong-ke-tong-hop-btn" type="button" class="btn btn-outline-primary active">@ViewText.BUTTON_THONGKE_TONGHOP</button>
+                        <button id="thong-ke-nhom-an-btn" type="button" class="btn btn-outline-primary">@ViewText.BUTTON_THONGKE_NHOMAN</button>
+                        <button id="thong-ke-tham-phan-btn" type="button" class="btn btn-outline-primary">@ViewText.BUTTON_THONGKE_THAMPHAN</button>
+                        <button id="thong-ke-thu-ky-btn" type="button" class="btn btn-outline-primary">@ViewText.BUTTON_THONGKE_THUKY</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentBaoCaoThongKe" style="width: 100%">
+
+            </div>
+        </div>
+
+        <div class="col-3">
+            @Html.Partial("ThongKe/_LocDuLieu")
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalHoSoThongKe" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ThongKeGiamSat")
+    <script type="text/javascript">
+        $(".datepicker").datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        $('#menu-thongke-btn button').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    </script>
+}

@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="APP_NAME" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="CHANH_AN_TINH" xml:space="preserve">
+    <value>Hà Thanh Hùng</value>
+  </data>
+  <data name="CHUCDANH_CHANHAN" xml:space="preserve">
+    <value>Chánh Án</value>
+    <comment>chức danh nhân viên</comment>
+  </data>
+  <data name="CHUCDANH_HOITHAMNHANDAN" xml:space="preserve">
+    <value>Hội Thẩm Nhân Dân</value>
+    <comment>chức danh nhân viên</comment>
+  </data>
+  <data name="CHUCDANH_KIEMSATVIEN" xml:space="preserve">
+    <value>Kiểm Sát Viên</value>
+    <comment>chức danh nhân viên</comment>
+  </data>
+  <data name="CHUCDANH_THAMPHAN" xml:space="preserve">
+    <value>Thẩm Phán</value>
+    <comment>chức danh nhân viên</comment>
+  </data>
+  <data name="CHUCDANH_THUKY" xml:space="preserve">
+    <value>Thư Ký</value>
+    <comment>chức danh nhân viên</comment>
+  </data>
+  <data name="CHUCNANG_KYXACNHAN_NHANDON" xml:space="preserve">
+    <value>Ký Xác Nhận Đã Nhận Đơn</value>
+    <comment>chức năng nhân viên</comment>
+  </data>
+  <data name="CHUCNANG_NHANBIENLAI" xml:space="preserve">
+    <value>Nhận Biên Lai</value>
+    <comment>chức năng nhân viên</comment>
+  </data>
+  <data name="CHUKY_CHANH_AN_TINH" xml:space="preserve">
+    <value>~/Content/Images/tacm/ChuKyChanhAn_HTH.png</value>
+  </data>
+  <data name="DDL_CHOOSE" xml:space="preserve">
+    <value>--Chọn--</value>
+  </data>
+  <data name="DDL_TATCA" xml:space="preserve">
+    <value>--Tất cả--</value>
+  </data>
+  <data name="DDNT_BICAO_NGUOIDU18XUIGIUC" xml:space="preserve">
+    <value>Có người đủ 18 tuổi trở lên xúi giục</value>
+  </data>
+  <data name="DEFAULT_ICON_WHITE" xml:space="preserve">
+    <value>avatar_default_white.png</value>
+  </data>
+  <data name="DEFAULT_IMAGE_200x200" xml:space="preserve">
+    <value>avatar_default.png</value>
+  </data>
+  <data name="DEFAULT_IMAGE_LARGE" xml:space="preserve">
+    <value>avatar_default_large.png</value>
+  </data>
+  <data name="DEFAULT_IMAGE_SMALL" xml:space="preserve">
+    <value>avatar_default_small.png</value>
+  </data>
+  <data name="DINHDANG_NGAY" xml:space="preserve">
+    <value>dd/MM/yyyy</value>
+  </data>
+  <data name="DINHDANG_NGAYGIO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DINHDANG_NGAY_DANHSACHNGAYSUADOI" xml:space="preserve">
+    <value>{0:dd/MM/yyyy HH:mm:ss}</value>
+  </data>
+  <data name="DS_TAMUNGANPHI_GIATRIDUNOP" xml:space="preserve">
+    <value>300.000</value>
+  </data>
+  <data name="DS_TAMUNGANPHI_PHANTRAMDUNOP" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="DS_TAMUNGANPHI_TONGANPHI" xml:space="preserve">
+    <value>300.000</value>
+  </data>
+  <data name="DUNGLUONGTOIDA" xml:space="preserve">
+    <value>Dung lượng tối đa 5MB</value>
+  </data>
+  <data name="DUONGSULA_CANHAN" xml:space="preserve">
+    <value>Cá nhân</value>
+  </data>
+  <data name="DUONGSULA_TOCHUC" xml:space="preserve">
+    <value>Cơ quan, tổ chức</value>
+  </data>
+  <data name="EMPLOYEE_IMAGE_FOLDER" xml:space="preserve">
+    <value>~/Uploads/NhanVienImages/{0}</value>
+  </data>
+  <data name="ENCRYPT_SECRET_STRING" xml:space="preserve">
+    <value>secret</value>
+  </data>
+  <data name="FILEHOTRO" xml:space="preserve">
+    <value>Chỉ hỗ trợ file *.PDF, *.DOC, *.DOCX</value>
+  </data>
+  <data name="FOLDER_SLIDESHOW_TOAANCAMAU" xml:space="preserve">
+    <value>~/Content/Images/tacm/SlideShow/</value>
+  </data>
+  <data name="FOLDER_TEMPLATES" xml:space="preserve">
+    <value>~/Uploads/Templates/</value>
+  </data>
+  <data name="FORMAT_NUMBER_THOUSANDS" xml:space="preserve">
+    <value>{0:n0}</value>
+  </data>
+  <data name="HC_ANPHI_GIATRIDUNOP" xml:space="preserve">
+    <value>300.000</value>
+  </data>
+  <data name="HC_ANPHI_PHANTRAMDUNOP" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="HC_ANPHI_TONGANPHI" xml:space="preserve">
+    <value>300.000</value>
+  </data>
+  <data name="HS_DACDIEMNHANTHANBICAO_1416" xml:space="preserve">
+    <value>Từ đủ 14 đến dưới 16 tuổi</value>
+  </data>
+  <data name="HS_DACDIEMNHANTHANBICAO_1618" xml:space="preserve">
+    <value>Từ đủ 16 đến dưới 18 tuổi</value>
+  </data>
+  <data name="HS_DACDIEMNHANTHANBICAO_CANBO" xml:space="preserve">
+    <value>Cán bộ, công chức</value>
+  </data>
+  <data name="HS_DACDIEMNHANTHANBICAO_DANGVIEN" xml:space="preserve">
+    <value>Đảng viên</value>
+  </data>
+  <data name="HS_NGUOIBAOCHUALA_KHONGPHAILUATSU" xml:space="preserve">
+    <value>Không phải luật sư</value>
+  </data>
+  <data name="HS_NGUOIBAOCHUALA_LUATSU" xml:space="preserve">
+    <value>Luật sư</value>
+  </data>
+  <data name="HS_TINHTRANGGIAMGIU_CHAPHANHBANANKHAC" xml:space="preserve">
+    <value>Đang chấp hành bản án khác</value>
+  </data>
+  <data name="HS_TINHTRANGGIAMGIU_TAINGOAI" xml:space="preserve">
+    <value>Đang tại ngoại</value>
+  </data>
+  <data name="HS_TINHTRANGGIAMGIU_TAMGIAM" xml:space="preserve">
+    <value>Đang tạm giam</value>
+  </data>
+  <data name="HS_TINHTRANGGIAMGIU_TAMGIAMVUANKHAC" xml:space="preserve">
+    <value>Đang tạm giam trong vụ án khác</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_BICAN" xml:space="preserve">
+    <value>Bị can</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_BICAO" xml:space="preserve">
+    <value>Bị cáo</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_BIDON" xml:space="preserve">
+    <value>Bị đơn dân sự</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_BIHAI" xml:space="preserve">
+    <value>Bị hại</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIBAOCHUA" xml:space="preserve">
+    <value>Người bào chữa</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIBAOVEQUYENLOIICH" xml:space="preserve">
+    <value>Người bảo vệ quyền và lợi ích hợp pháp</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIDAIDIEN" xml:space="preserve">
+    <value>Người đại diện hợp pháp của người tham gia tố tụng</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIDICHTHUAT" xml:space="preserve">
+    <value>Người dịch thuật</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIDINHGIA" xml:space="preserve">
+    <value>Người định giá tài sản</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIGIAMDINH" xml:space="preserve">
+    <value>Người giám định</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOILAMCHUNG" xml:space="preserve">
+    <value>Người làm chứng</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOILIENQUAN" xml:space="preserve">
+    <value>Người có quyền lợi, nghĩa vụ liên quan đến vụ án</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUOIPHIENDICH" xml:space="preserve">
+    <value>Người phiên dịch</value>
+  </data>
+  <data name="HS_TUCACHTOTUNG_NGUYENDON" xml:space="preserve">
+    <value>Nguyên đơn dân sự</value>
+  </data>
+  <data name="ICON_HOME" xml:space="preserve">
+    <value>~/Content/Images/Icons/{0}.png</value>
+  </data>
+  <data name="KT_TAMUNGANPHI_GIATRIDUNOP" xml:space="preserve">
+    <value>2.000.000</value>
+  </data>
+  <data name="KT_TAMUNGANPHI_PHANTRAMDUNOP" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="KT_TAMUNGANPHI_TONGANPHI" xml:space="preserve">
+    <value>2.000.000</value>
+  </data>
+  <data name="LOAIQUANHE_TRANHCHAP" xml:space="preserve">
+    <value>Tranh chấp</value>
+  </data>
+  <data name="LOAIQUANHE_YEUCAU" xml:space="preserve">
+    <value>Yêu cầu</value>
+  </data>
+  <data name="MANHOMAN_APDUNG_BPXLHC" xml:space="preserve">
+    <value>AD</value>
+  </data>
+  <data name="MANHOMAN_DANSU" xml:space="preserve">
+    <value>DS</value>
+  </data>
+  <data name="MANHOMAN_HANHCHINH" xml:space="preserve">
+    <value>HC</value>
+  </data>
+  <data name="MANHOMAN_HINHSU" xml:space="preserve">
+    <value>HS</value>
+  </data>
+  <data name="MANHOMAN_HONNHAN" xml:space="preserve">
+    <value>HN</value>
+  </data>
+  <data name="MANHOMAN_KINHTE" xml:space="preserve">
+    <value>KT</value>
+  </data>
+  <data name="MANHOMAN_LAODONG" xml:space="preserve">
+    <value>LD</value>
+  </data>
+  <data name="MAU" xml:space="preserve">
+    <value>Mẫu {0} :</value>
+  </data>
+  <data name="MAU_IN" xml:space="preserve">
+    <value>~/FileManagement/MauIn/{0}/{1}</value>
+  </data>
+  <data name="MAU_IN_DOC" xml:space="preserve">
+    <value>~/FileManagement/MauInDoc/{0}/{1}</value>
+  </data>
+  <data name="NHANVIEN_HINH_TACM" xml:space="preserve">
+    <value>/Content/Images/Icons/{0}</value>
+  </data>
+  <data name="NHANVIEN_IMPORT_NHANVIEN_FILE_FOLDER" xml:space="preserve">
+    <value>~/Uploads/ImportNhanVien/{0}/{1}/{2}</value>
+  </data>
+  <data name="NHANVIEN_IMPORT_NHANVIEN_FILE_NAME" xml:space="preserve">
+    <value>Import_NhanVien_{0}.xlsx</value>
+  </data>
+  <data name="QUYETDINH_GIAHANTHOIHAN" xml:space="preserve">
+    <value>gia hạn thời hạn chuẩn bị xét xử</value>
+  </data>
+  <data name="SOLAN_DANGNHAP_SAI" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TACM_SYSTEM" xml:space="preserve">
+    <value>TACM System</value>
+  </data>
+  <data name="TEMPLATES_MAUIN_FOLDER" xml:space="preserve">
+    <value>~/Uploads/Templates/MauInFileDoc/</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_BIAHOSOPHUCTHAM" xml:space="preserve">
+    <value>Mau-AD Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_BIAHOSOSOTHAM" xml:space="preserve">
+    <value>Mau-AD Bia ho so so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mau-AD Giay trieu tap duong su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QDPHANCONGTHAMPHAN_PT" xml:space="preserve">
+    <value>Mau-AD Quyet dinh phan cong Tham phan giai quyet khieu nai kien nghi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QDPHANCONGTHAMPHAN_ST" xml:space="preserve">
+    <value>Mau-AD Quyet dinh phan cong Tham phan giai quyet ho so de nghi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QUYETDINHDINHCHI" xml:space="preserve">
+    <value>Mau so 05-AD Quyet dinh dinh chi xem xet quyet dinh ADBPXLHC.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QUYETDINHMOPHIENHOP_PT" xml:space="preserve">
+    <value>Mau-AD Quyet dinh mo phien hop xem xet khieu nai kien nghi khang nghi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QUYETDINHMOPHIENHOP_ST" xml:space="preserve">
+    <value>Mau so 03-AD Quyet dinh mo phien hop, xem xet, quyet dinh ADBPXLHC.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_QUYETDINHTAMDINHCHI" xml:space="preserve">
+    <value>Mau so 06-AD Quyet dinh tam dinh chi xem xet quyet dinh ADBPXLHC.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_AD_SOTHAM_THONGBAOTHULY_ST" xml:space="preserve">
+    <value>Mau so 01-AD Thong bao ve viec thu ly ho so de nghi xem xet quyet dinh.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_BIAHOSOPHUCTHAM_VUAN" xml:space="preserve">
+    <value>DS-TC-Mau so 16-Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_BIAHOSOPHUCTHAM_VUVIEC" xml:space="preserve">
+    <value>DS-YC-Mau so 16-Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_BIAHOSOSOTHAM_VUAN" xml:space="preserve">
+    <value>DS-TC-Mau so 07-Bia ho so vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_BIAHOSOSOTHAM_VUVIEC" xml:space="preserve">
+    <value>DS-YC-Mau so 06-Bia ho so vu viec so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_GIAYTRIEUTAP_PT_TC" xml:space="preserve">
+    <value>DS-TC-Mau so 15-Giay trieu tap phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_GIAYTRIEUTAP_TC" xml:space="preserve">
+    <value>DS-TC-Mau so 09-Giay trieu tap so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_GIAYTRIEUTAP_YC" xml:space="preserve">
+    <value>DS-YC-Mau so 09-Giay trieu tap so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_GIAYTRIEUTAP_YC_PT" xml:space="preserve">
+    <value>DS-YC-Mau so 15-Giay trieu tap phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_PHUCTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>DS-TC-Mau so 14-QD dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_PHUCTHAM_QDMOPHIENHOP" xml:space="preserve">
+    <value>DS-YC-Mau so 14- QD Mo phien hop phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_PHUCTHAM_QDMOPHIENHOP_TC" xml:space="preserve">
+    <value>DS-TC-Mau so 14A-QD mo phien hop phuc tham xem xet QD bi khang cao khang nghi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_PHUCTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>DS-TC-Mau so 12-Thong bao thu ly phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_PHUCTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>DS-YC-Mau so 12-Thong bao thu ly phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QDPHANCONGTHAMPHANGIAIQUYETVUANPT" xml:space="preserve">
+    <value>DS-TC-Mau so 13-QD phan cong phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QDPHANCONGTHAMPHANGIAIQUYETVUVIECPT" xml:space="preserve">
+    <value>DS-YC-Mau so 13-QD phan cong giai quyet phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>DS-TC-Mau so 08-QD dua vu an ra xet xu.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QUYETDINHMOPHIENHOPST" xml:space="preserve">
+    <value>DS-YC-Mau so 08-QD mo phien hop so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUANST" xml:space="preserve">
+    <value>DS-TC-Mau so 06-QD Phan cong giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUVIECST" xml:space="preserve">
+    <value>DS-YC-Mau so 07-QD Phan cong Tham phan so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_BIAHOSONHANDON" xml:space="preserve">
+    <value>DS-TC-Mau so 01-Bia ho so khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_BIAHOSONHANDON_YC" xml:space="preserve">
+    <value>DS-YC-Mau so 01-Bia ho so yeu cau.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>DS-TC-Mau so 02-Giay xac nhan đa nhan don khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>DS-YC-Mau so 02-Giay xac nhan da nhan don yeu cau.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDON" xml:space="preserve">
+    <value>DS-TC-Mau so 03-QD Phan cong giai quyet don khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDON_YC" xml:space="preserve">
+    <value>DS-YC-Mau so 03-QD phan cong giai quyet don.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTAMUNGANPHI" xml:space="preserve">
+    <value>DS-TC-Mau so 04-Thong bao nop tien tam ung an phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>DS-TC-Mau so 11-Thong bao nop tien tam ung an phi phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTAMUNGLEPHI" xml:space="preserve">
+    <value>DS-YC-Mau so 04-Thong bao nop tien tam ung le phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTAMUNGLEPHIPT" xml:space="preserve">
+    <value>DS-YC-Mau so 11-Thong bao nop tien tam ung le phi phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>DS-TC-Mau so 05-Thong bao ve viec thu ly vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>DS-YC-Mau so 05-Thong bao thu ly viec dan su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_XACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>DS-TC-Mau so 10-Giay xac nhan da nhan đon khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_DS_SOTHAM_XACNHANDANHANDONKHANGCAO_YC" xml:space="preserve">
+    <value>DS-YC-Mau so 10-Giay xac nhan da nhan don khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_GIAYTRIEUTAP" xml:space="preserve">
+    <value>Mau HC-Giay trieu tap duong su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_PHUCTHAM_BIAHOSO" xml:space="preserve">
+    <value>Mau HC-Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_PHUCTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>Mau so 36 HC-Quyet dinh dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_PHUCTHAM_QDDUAVUANRAXETXURUTGON" xml:space="preserve">
+    <value>Mau so 37 HC-Quyet dinh dua vu an ra xet xu phuc tham theo thu tuc rut gon.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_PHUCTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 35 HC-Thong bao ve viec thu ly vu an de xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_QUYETDINHPHANCONGTHAMPHAN" xml:space="preserve">
+    <value>Mau HC-Quyet dinh phan cong Tham phan giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_QUYETDINHPHANCONGTHAMPHANHOITHAM" xml:space="preserve">
+    <value>Mau HC-Quyet dinh phan cong Tham phan, Hoi tham giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_BIAHOSO" xml:space="preserve">
+    <value>Mau HC-Bia ho so so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_BIAHOSONHANDON" xml:space="preserve">
+    <value>Mau HC-Bia ho so nhan don.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mau so 02 HC-Giay xac nhan da nhan đon khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>Mau so 16 HC-Quyet dinh dua vu an ra xet xu so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_QDDUAVUANRAXETXURUTGON" xml:space="preserve">
+    <value>Mau so 17 HC-Quyet dinh dua vu an ra giai quyet so tham theo thu tuc rut gon.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_THONGBAOTAMUNGANPHI" xml:space="preserve">
+    <value>Mau so 04 HC-Thong bao nop tien tam ung an phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_THONGBAOTAMUNGANPHIPT" xml:space="preserve">
+    <value>Mau so 31 HC-Thong bao nop tien tam ung an phi phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 06 HC-Thong bao ve viec thu ly vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HC_SOTHAM_XACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mau so 25 HC-Giay xac nhan da nhan don khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_BIAHOSOPHUCTHAM_VUAN" xml:space="preserve">
+    <value>HN-TC-Mau so 16-Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_BIAHOSOPHUCTHAM_VUVIEC" xml:space="preserve">
+    <value>HN-YC-Mau so 16-Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_BIAHOSOSOTHAM_VUAN" xml:space="preserve">
+    <value>HN-TC-Mau so 07-Bia ho so vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_BIAHOSOSOTHAM_VUVIEC" xml:space="preserve">
+    <value>HN-YC-Mau so 07-QD Phan cong Tham phan so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_GIAYTRIEUTAP_YC" xml:space="preserve">
+    <value>HN-YC-Mau so 09-Giay trieu tap so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_PHUCTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>HN-TC-Mau so 14-QD dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_PHUCTHAM_QDMOPHIENHOP" xml:space="preserve">
+    <value>HN-YC-Mau so 14- QD Mo phien hop phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_PHUCTHAM_QDMOPHIENHOP_TC" xml:space="preserve">
+    <value>HN-TC-Mau so 14A-QD mo phien hop phuc tham xem xet QD bi khang cao khang nghi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_PHUCTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>HN-TC-Mau so 12-Thong bao thu ly phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_PHUCTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>HN-YC-Mau so 12-Thong bao thu ly phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QDPHANCONGTHAMPHANGIAIQUYETVUANPT" xml:space="preserve">
+    <value>HN-TC-Mau so 13-QD phan cong phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QDPHANCONGTHAMPHANGIAIQUYETVUVIECPT" xml:space="preserve">
+    <value>HN-YC-Mau so 13-QD phan cong giai quyet phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>HN-TC-Mau so 08-QD dua vu an ra xet xu.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QUYETDINHMOPHIENHOPST" xml:space="preserve">
+    <value>HN-YC-Mau so 08-QD mo phien hop so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUANST" xml:space="preserve">
+    <value>HN-TC-Mau so 06-QD Phan cong giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUVIECST" xml:space="preserve">
+    <value>HN-YC-Mau so 07-QD Phan cong Tham phan so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_BIAHOSONHANDON" xml:space="preserve">
+    <value>HN-TC-Mau so 01-Bia ho so khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_BIAHOSONHANDON_YC" xml:space="preserve">
+    <value>HN-YC-Mau so 01-Bia ho so yeu cau.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>HN-YC-Mau so 02-Giay xac nhan da nhan don yeu cau.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_QUYETDINHPHANCONGTHAMPHANGIAIQUYETDON_YC" xml:space="preserve">
+    <value>HN-YC-Mau so 03-QD phan cong giai quyet don.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_THONGBAOTAMUNGLEPHI" xml:space="preserve">
+    <value>HN-YC-Mau so 04-Thong bao nop tien tam ung le phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>HN-TC-Mau so 05-Thong bao ve viec thu ly vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>HN-YC-Mau so 05-Thong bao thu ly viec dan su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_XACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>HN-TC-Mau so 10-Giay xac nhan da nhan don khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HN_SOTHAM_XACNHANDANHANDONKHANGCAO_YC" xml:space="preserve">
+    <value>HN-YC-Mau so 10-Giay xac nhan da nhan don khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_BIAHOSOPHUCTHAM" xml:space="preserve">
+    <value>Mau HS-Bia Ho so Hinh su phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_BIAHOSOSOTHAM" xml:space="preserve">
+    <value>Mau HS-Bia Ho so Hinh su so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_GIAYTRIEUTAPBICAO" xml:space="preserve">
+    <value>Mau HS-Giay trieu tap bi cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_GIAYTRIEUTAPNGUOITHAMGIATOTUNG" xml:space="preserve">
+    <value>Mau HS-Giay trieu tap nguoi tham gia to tung.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_QUYETDINHDUAVUANRAXETXUPT" xml:space="preserve">
+    <value>Mau so 21 - HS Quyet dinh dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>Mau so 20 - HS Quyet dinh dua vu an ra xet xu so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_QUYETDINHPHANCONGHOITHAM" xml:space="preserve">
+    <value>Mau so 01 - HS Quyet dinh phan cong Hoi tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_QUYETDINHPHANCONGTHAMPHAN" xml:space="preserve">
+    <value>Mau so 01 - HS Quyet dinh phan cong Tham phan.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_HS_QUYETDINHPHANCONGTHUKY" xml:space="preserve">
+    <value>Mau so 02 - HS Quyet dinh phan cong Thu ky.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_BIAHOSOPHUCTHAM_VUAN" xml:space="preserve">
+    <value>Mau-KDTM Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_BIAHOSOPHUCTHAM_VUVIEC" xml:space="preserve">
+    <value>Mau-KDTM Bia ho so viec phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_BIAHOSOSOTHAM_VUAN" xml:space="preserve">
+    <value>Mau-KDTM Bia ho so so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_BIAHOSOSOTHAM_VUVIEC" xml:space="preserve">
+    <value>Mau-KDTM Bia ho so viec so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_GIAYTRIEUTAP_TC" xml:space="preserve">
+    <value>Mau-KDTM Giay trieu tap duong su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_PHUCTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>Mau so 66-KDTM Quyet dinh dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_PHUCTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 65-KDTM Thong bao ve viec thu ly vu an de xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_QDPHANCONGTHAMPHANGIAIQUYETVUANPT" xml:space="preserve">
+    <value>Mau-KDTM Quyet dinh phan cong Tham phan giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>Mau so 47-KDTM Quyet dinh dua vu an ra xet xu so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_QUYETDINHMOPHIENHOPST" xml:space="preserve">
+    <value>Mau so 47-KDTM Quyet dinh mo phien hop so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUANST" xml:space="preserve">
+    <value>Mau-KDTM Quyet dinh phan cong Tham phan Hoi tham giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mau so 24-KDTM Giay xac nhan da nhan don khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_GIAYXACNHANDANHANDONYEUCAU" xml:space="preserve">
+    <value>Mau so 24-KDTM Giay xac nhan da nhan don yeu cau.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_THONGBAOTAMUNGANPHI" xml:space="preserve">
+    <value>Mau so 29-KDTM Thong bao nop tien tam ung an phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_THONGBAOTAMUNGLEPHI" xml:space="preserve">
+    <value>Mau so 29-KDTM Thong bao nop tien tam ung le phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 30-KDTM Thong bao ve viec thu ly vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>Mau so 30-KDTM Thong bao ve viec thu ly viec KDTM.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_KD_SOTHAM_XACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mau so 55-KDTM Giay xac nhan da nhan dnn khang cao.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_BIAHOSOPHUCTHAM_VUAN" xml:space="preserve">
+    <value>Mau-LD Bia ho so phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_BIAHOSOPHUCTHAM_VUVIEC" xml:space="preserve">
+    <value>Mau-LD Bia ho so viec phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_BIAHOSOSOTHAM_VUAN" xml:space="preserve">
+    <value>Mau-LD Bia ho so so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_BIAHOSOSOTHAM_VUVIEC" xml:space="preserve">
+    <value>Mau-LD Bia ho so viec so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_GIAYTRIEUTAP_TC" xml:space="preserve">
+    <value>Mau-LD Giay trieu tap duong su.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_PHUCTHAM_QDDUAVUANRAXETXU" xml:space="preserve">
+    <value>Mau so 66-LD Quyet dinh dua vu an ra xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_PHUCTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 65-LD Thong bao ve viec thu ly vu an de xet xu phuc tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_QUYETDINHDUAVUANRAXETXUST" xml:space="preserve">
+    <value>Mau so 47-LD Quyet dinh dua vu an ra xet xu so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_QUYETDINHMOPHIENHOPST" xml:space="preserve">
+    <value>Mau so 47-LD Quyet dinh mo phien hop so tham.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_QUYETDINHPHANCONGTHAMPHANGIAIQUYETVUANST" xml:space="preserve">
+    <value>Mau-LD Quyet dinh phan cong Tham phan Hoi tham giai quyet vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_GIAYXACNHANDANHANDONKHOIKIEN" xml:space="preserve">
+    <value>Mau so 24-LD Giay xac nhan da nhan don khoi kien.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_THONGBAOTAMUNGANPHI" xml:space="preserve">
+    <value>Mau so 29-LD Thong bao nop tien tam ung an phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_THONGBAOTAMUNGLEPHI" xml:space="preserve">
+    <value>Mau so 29-LD Thong bao nop tien tam ung le phi.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_THONGBAOTHULYVUAN" xml:space="preserve">
+    <value>Mau so 30-LD Thong bao ve viec thu ly vu an.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_THONGBAOTHULYVUVIEC" xml:space="preserve">
+    <value>Mau so 30-LD Thong bao ve viec thu ly viec LD.docx</value>
+  </data>
+  <data name="TEMPLATE_MAUIN_LD_SOTHAM_XACNHANDANHANDONKHANGCAO" xml:space="preserve">
+    <value>Mau so 55-LD Giay xac nhan da nhan dnn khang cao.docx</value>
+  </data>
+  <data name="THONGBAOLOI" xml:space="preserve">
+    <value>Xảy ra lỗi:</value>
+  </data>
+  <data name="THONGBAO_KHONGCOTEP_TAILEN" xml:space="preserve">
+    <value>Không có tệp tin nào được tải lên.</value>
+  </data>
+  <data name="THONGBAO_KHONGFILE" xml:space="preserve">
+    <value>Không có file</value>
+  </data>
+  <data name="THONGKELUUKHO_DANHSACHHOSO_FILENAME" xml:space="preserve">
+    <value>Danh_Sach_Ho_So_Luu_Kho_{0}.xlsx</value>
+  </data>
+  <data name="THONGKE_CHITIENXETXU_FILENAME" xml:space="preserve">
+    <value>Chi_Tien_Xet_Xu_{0}.xlsx</value>
+  </data>
+  <data name="THONGKE_DANHSACHHOSO_FILENAME" xml:space="preserve">
+    <value>Danh_Sach_Ho_So_{0}.xlsx</value>
+  </data>
+  <data name="THUTUC_RUTGON" xml:space="preserve">
+    <value>Rút gọn</value>
+  </data>
+  <data name="THUTUC_THONGTHUONG" xml:space="preserve">
+    <value>Thông thường</value>
+  </data>
+  <data name="TRANGTHAICONGDOAN_CHUYENDON" xml:space="preserve">
+    <value>Chuyển đơn</value>
+  </data>
+  <data name="TRANGTHAICONGDOAN_CHUYENHOSO" xml:space="preserve">
+    <value>Chuyển hồ sơ</value>
+  </data>
+  <data name="URL_CAUHINHHETHONG" xml:space="preserve">
+    <value>http://123.30.75.2:9969</value>
+  </data>
+  <data name="URL_DATLAIMATKHAU" xml:space="preserve">
+    <value>http://quanlian.camau.org.vn/datlaimatkhau</value>
+  </data>
+  <data name="VALUE_KIEMSATVIEN_KHONG" xml:space="preserve">
+    <value>Không</value>
+    <comment>dữ liệu định nghĩa trong danh sách kiểm sát viên</comment>
+  </data>
+  <data name="VALUE_KIEMSATVIEN_VANGMAT" xml:space="preserve">
+    <value>Vắng mặt</value>
+    <comment>dữ liệu định nghĩa trong danh sách kiểm sát viên</comment>
+  </data>
+  <data name="VUNG_CHUYENHOSO_NGOAITINH" xml:space="preserve">
+    <value>Ngoài tỉnh</value>
+  </data>
+  <data name="VUNG_CHUYENHOSO_TRONGTINH" xml:space="preserve">
+    <value>Trong tỉnh</value>
+  </data>
+</root>

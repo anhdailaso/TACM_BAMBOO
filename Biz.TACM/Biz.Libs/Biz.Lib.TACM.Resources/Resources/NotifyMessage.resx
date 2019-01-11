@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BANCO_MUONXOA" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa {0} này không?</value>
+  </data>
+  <data name="BITRUNG" xml:space="preserve">
+    <value>{0}: {1} bị trùng.</value>
+  </data>
+  <data name="CAPNHAT_DAIDIEN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật ảnh đại diện thành công.</value>
+  </data>
+  <data name="CAPNHAT_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật {0} không thành công!</value>
+  </data>
+  <data name="CAPNHAT_THANHCONG" xml:space="preserve">
+    <value>Cập nhật {0} thành công!</value>
+  </data>
+  <data name="CHAPNHAN_FILE" xml:space="preserve">
+    <value>Chấp nhận file: XLS, XLSX</value>
+  </data>
+  <data name="CHUACO_DULIEU" xml:space="preserve">
+    <value>Hiện tại chưa có dữ liệu.</value>
+  </data>
+  <data name="DANGXUAT_THANHCONG" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DULIEU_KHONGHOPLE" xml:space="preserve">
+    <value>[{0}] chứa dữ liệu không hợp lệ.</value>
+  </data>
+  <data name="DUNGLUONG_FILE_TOIDA" xml:space="preserve">
+    <value>Hỗ trợ *.PDF, *.DOC, *.DOCX. Dung lượng tối đa 5MB.</value>
+  </data>
+  <data name="DUNGLUONG_TOIDA" xml:space="preserve">
+    <value>Dung lượng tối đa {0}MB</value>
+  </data>
+  <data name="EMAIL_KHONGBITRUNG" xml:space="preserve">
+    <value>Email [{0}] bị trùng.</value>
+  </data>
+  <data name="GENERAL_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="KHONGCAPNHAT_HINHDAIDIEN" xml:space="preserve">
+    <value>Có lỗi xảy ra. Không thể cập nhật ảnh đại diện.</value>
+  </data>
+  <data name="PLEASE_SELECT_ACTION" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PLEASE_SELECT_CONTROLLER" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PLEASE_SELECT_USER" xml:space="preserve">
+    <value />
+  </data>
+  <data name="THEMNHANVIEN_TU_FILE_KHONGTHANHCONG" xml:space="preserve">
+    <value>Thêm Nhân Viên từ file không thành công. Xin vui lòng thử lại!</value>
+  </data>
+  <data name="THEMNHANVIEN_TU_FILE_THANHCONG" xml:space="preserve">
+    <value>Thêm nhân viên từ file thành công.</value>
+  </data>
+  <data name="THEM_THANHCONG" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TITLE_NHANVAO_THAYDOI_HINHDAIDIEN" xml:space="preserve">
+    <value>Nhấp vào đây để cập nhật hình đại diện</value>
+  </data>
+  <data name="UPDATE_STATUS_SUCCESS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="WARNING_DOES_NOT_EXIST" xml:space="preserve">
+    <value>[{0}] không tồn tại.</value>
+  </data>
+  <data name="WARNING_IMPORT_FILE_NOT_VALID" xml:space="preserve">
+    <value>[Warning] &lt;br/&gt;&lt;br/&gt; Sheet [{0}] - Cột không đúng định dạng hoặc không có dữ liệu.</value>
+  </data>
+  <data name="WARNING_IMPORT_SHEET" xml:space="preserve">
+    <value>[Warning] &lt;br/&gt;&lt;br/&gt; Sheet [{0}] - {1}</value>
+  </data>
+  <data name="XOA_THANHCONG" xml:space="preserve">
+    <value>{0}: {1} đã xóa thành công.</value>
+  </data>
+  <data name="THONGBAO_LOI" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="THONGBAO_TAMUNGANPHI_PHUCTHAM" xml:space="preserve">
+    <value>Thông báo tạm ứng án phí phúc thẩm</value>
+  </data>
+  <data name="THONGBAO_TAMUNGLEPHI_PHUCTHAM" xml:space="preserve">
+    <value>Thông báo tạm ứng lệ phí phúc thẩm</value>
+  </data>
+  <data name="THONGBAO_KHONGCO_MAUIN" xml:space="preserve">
+    <value>Không có mẫu in.</value>
+  </data>
+  <data name="THONGBAO_SUATHONGTIN_HOSO" xml:space="preserve">
+    <value>Không thể sửa thông tin chuyển hồ sơ.</value>
+  </data>
+  <data name="THONGBAO_BANCHUACHON_DUONGSU" xml:space="preserve">
+    <value>Bạn chưa chọn đương sự.</value>
+  </data>
+  <data name="THONGBAO_CAPNHATCHUCDANH_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật chức danh, chức vụ không thành công.</value>
+  </data>
+  <data name="THONGBAO_CAPNHAT_HOSO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin nhận hồ sơ không thành công.</value>
+  </data>
+  <data name="THONGBAO_CAPNHAT_HOSO_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin nhận hồ sơ thành công.</value>
+  </data>
+  <data name="THONGBAO_EMAIL_DATONTAI" xml:space="preserve">
+    <value>Email đã tồn tại. Vui lòng sử dụng email khác.</value>
+  </data>
+  <data name="THONGBAO_KHONGCAPNHAT_CHUCNANG" xml:space="preserve">
+    <value>Không cập nhật được chức năng.</value>
+  </data>
+  <data name="THONGBAO_KHONGCAPNHAT_HINHDAIDIEN" xml:space="preserve">
+    <value>Không thể cập nhật hình đại diện.</value>
+  </data>
+  <data name="THONGBAO_KHONGLUU_NHOMAN" xml:space="preserve">
+    <value>không lưu được thay đổi của nhóm án.</value>
+  </data>
+  <data name="THONGBAO_KHONGSUA_NHANVIEN" xml:space="preserve">
+    <value>Không thể sửa nhân viên.</value>
+  </data>
+  <data name="THONGBAO_KHONGSUA_THONGTIN_THAMPHAN" xml:space="preserve">
+    <value>Không thể sửa thông tin thẩm phán.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHEM_PHANCONG" xml:space="preserve">
+    <value>Không thêm được phân công!</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_ANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_KETQUANOP_ANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa kết quả nộp án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_KETQUA_NOPTAMUNGANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa kết quả nộp tạm ứng án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_KHANGCAO" xml:space="preserve">
+    <value>Không thể sửa kháng cáo.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_NOPTAMUNGANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa nộp tạm ứng án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_NOPTAMUNG_ANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa nộp tạm ứng án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_THONGTIN_CHUYENDON" xml:space="preserve">
+    <value>Không thể sửa thông tin chuyển đơn.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_THONGTIN_CHUYENHOSO" xml:space="preserve">
+    <value>Không thể sửa thông tin chuyển chuyển hồ sơ.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_THONGTIN_HOSO" xml:space="preserve">
+    <value>Không thể sửa thông tin hồ sơ.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_THONGTIN_TAIKHOAN" xml:space="preserve">
+    <value>Không thể sửa thông tin tài khoản.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_THONGTIN_THULY" xml:space="preserve">
+    <value>Không thể sửa thông tin thụ lý.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHESUA_YEUCAUDUNOP_TAMUNGANPHI_LEPHI" xml:space="preserve">
+    <value>Không thể sửa yêu cầu dự nộp nộp tạm ứng án phí/ lệ phí.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHEXOA_KHANGCAO" xml:space="preserve">
+    <value>Không thể xóa kháng cáo.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHE_KHANGCAO" xml:space="preserve">
+    <value>Không thể kháng cáo.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHE_KHANGNGHI" xml:space="preserve">
+    <value>Không thể kháng nghị.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHE_LUUKHO" xml:space="preserve">
+    <value>Không thể lưu kho.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHE_PHATHANH_BANAN" xml:space="preserve">
+    <value>Không thể phát hành bản án.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHE_SUACHUABANAN" xml:space="preserve">
+    <value>Không thể sửa chữa bản án.</value>
+  </data>
+  <data name="THONGBAO_KHONGXOADUOC_CHUCDANH" xml:space="preserve">
+    <value>Không xóa được chức danh, chức vụ.</value>
+  </data>
+  <data name="THONGBAO_KHONGXOA_DUONGSU" xml:space="preserve">
+    <value>Không thể xóa đương sự.</value>
+  </data>
+  <data name="THONGBAO_KHONGXOA_NHANVIEN" xml:space="preserve">
+    <value>không xóa được thông tin nhân viên.</value>
+  </data>
+  <data name="THONGBAO_KHONGXOA_PHANCONG" xml:space="preserve">
+    <value>Không xoá được phân công!</value>
+  </data>
+  <data name="THONGBAO_TENCHUCDANH_KHONGTONTAI" xml:space="preserve">
+    <value>Tên chức danh, chức vụ đã tồn tại.</value>
+  </data>
+  <data name="THONGBAO_THEMCHUCDANH_KHONGTHANHCONG" xml:space="preserve">
+    <value>Thêm chức danh, chức vụ không thành công.</value>
+  </data>
+  <data name="THONGBAO_THEMNHANVIEN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Thêm nhân viên không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATANPHI_LEPHI_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật án phí/ lệ phí không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATANPHI_LEPHI_THANHCONG" xml:space="preserve">
+    <value>Cập nhật án phí/ lệ phí thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATCHUCNANG_NHANVIEN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật chức năng nhân viên thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGCAO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGCAO_QUAHAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo quá hạn không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGCAO_QUAHAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo quá hạn  thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGCAO_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGNGHI_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng nghị không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATKHANGNGHI_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng nghị thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATNOPTAMUNG_ANPHILETHI_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin nộp tạm ứng án phí/ lệ phí không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATNOPTAMUNG_ANPHILETHI_THANHCONG1" xml:space="preserve">
+    <value>Cập nhật thông tin nộp tạm ứng án phí/ lệ phí thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATTHONGTINTAIKHOAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin tài khoản không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATTHONGTINTAIKHOAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHATTRALAIDON_KHANGCAO_THANHCONG" xml:space="preserve">
+    <value>Cập nhật trả lại đơn kháng cáo thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_CHUYENHOSO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Chuyển hồ sơ không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_CHUYENHOSO_THANHCONG" xml:space="preserve">
+    <value>Chuyển hồ sơ thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_HOSOVUAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin hồ sơ vụ án không thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_HOSOVUAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin hồ sơ vụ án thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_NOIDUNGTRIEUTAP_THANHCONG" xml:space="preserve">
+    <value>Cập nhật nội dung triệu tập thành công.</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_NOIDUNGXETXU_THANHCONG" xml:space="preserve">
+    <value>Cập nhật nội dung đưa vụ án ra xét xử thành công.</value>
+  </data>
+  <data name="MESSAGE_LUUKHO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin lưu kho không thành công.</value>
+  </data>
+  <data name="MESSAGE_LUUKHO_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin  lưu kho thành công.</value>
+  </data>
+  <data name="MESSAGE_PHANCONGTHAMPHAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin  phân công thẩm phán không thành công.</value>
+  </data>
+  <data name="MESSAGE_PHANCONGTHAMPHAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin phân công thẩm phán thành công.</value>
+  </data>
+  <data name="MESSAGE_PHATHANHBANAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin phát hành bản án / quyết định không thành công.</value>
+  </data>
+  <data name="MESSAGE_PHATHANHBANAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin phát hành bản án / quyết định thành công.</value>
+  </data>
+  <data name="MESSAGE_SUACHUABANAN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật Sửa chữa bổ sung bản án không thành công.</value>
+  </data>
+  <data name="MESSAGE_SUACHUABANAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật Sửa chữa bổ sung bản án thành công.</value>
+  </data>
+  <data name="MESSAGE_SUADOITRUYCAP_TOAAN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật truy cập nhân viên tòa án thành công.</value>
+  </data>
+  <data name="MESSAGE_SUAKHANGCAO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo không thành công.</value>
+  </data>
+  <data name="MESSAGE_SUAKHANGCAO_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin kháng cáo thành công.</value>
+  </data>
+  <data name="MESSAGE_SUANHANVIEN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin thông tin nhân viên không thành công.</value>
+  </data>
+  <data name="MESSAGE_SUANHANVIEN_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin thông tin nhân viên thành công.</value>
+  </data>
+  <data name="MESSAGE_THEMCHUCDANH_THANHCONG" xml:space="preserve">
+    <value>Thêm chức danh, chức vụ thành công.</value>
+  </data>
+  <data name="MESSAGE_THEMNHANVIEN_THANHCONG" xml:space="preserve">
+    <value>Thêm nhân viên thành công.</value>
+  </data>
+  <data name="MESSAGE_THEMNHANVIEN_TUFILE_THANHCONG" xml:space="preserve">
+    <value>Thêm nhân viên từ file thành công.</value>
+  </data>
+  <data name="MESSAGE_THULY_THANHCONG" xml:space="preserve">
+    <value>Cập nhật thông tin thụ lý thành công.</value>
+  </data>
+  <data name="MESSAGE_XOACHUCDANH_KHONGTHANHCONG" xml:space="preserve">
+    <value>Xóa thông tin chức danh, chức vụ không thành công.</value>
+  </data>
+  <data name="MESSAGE_XOACHUCDANH_THANHCONG" xml:space="preserve">
+    <value>Xóa thông tin chức danh, chức vụ thành công.</value>
+  </data>
+  <data name="MESSAGE_XOAKHANGCAO_KHONGTHANHCONG" xml:space="preserve">
+    <value>Xóa kháng cáo không thành công.</value>
+  </data>
+  <data name="MESSAGE_XOAKHANGCAO_THANHCONG" xml:space="preserve">
+    <value>Xóa kháng cáo thành công.</value>
+  </data>
+  <data name="MESSAGE_XOANHANVIEN_KHONGTHANHCONG" xml:space="preserve">
+    <value>Xóa nhân viên không thành công.</value>
+  </data>
+  <data name="MESSAGE_XOANHANVIEN_THANHCONG" xml:space="preserve">
+    <value>Xóa nhân viên thành công.</value>
+  </data>
+  <data name="THONGBAO_THANHCONG" xml:space="preserve">
+    <value>{0} thành công.</value>
+  </data>
+  <data name="CHUCDANH_KHONGHOPLE" xml:space="preserve">
+    <value>Chức danh: "{0}" không hợp lệ</value>
+  </data>
+  <data name="MESSAGE_CAPNHAT_MOPHIENHOP_THANHCONG" xml:space="preserve">
+    <value>Cập nhật nội dung mở phiên họp thành công.</value>
+  </data>
+  <data name="WARNING_TRUNG_SOBANAN" xml:space="preserve">
+    <value>Trùng số bản án.</value>
+  </data>
+  <data name="CHUCVU_KHONGHOPLE" xml:space="preserve">
+    <value>Chức vụ: "{0}" không hợp lệ</value>
+  </data>
+  <data name="MESSAGE_SUACHUCDANH_THANHCONG" xml:space="preserve">
+    <value>Cập nhật chức danh, chức vụ thành công</value>
+  </data>
+  <data name="THONGBAO_CAPNHAT_THUKY" xml:space="preserve">
+    <value>Cập nhật thư ký / thẩm tra viên thành công.</value>
+  </data>
+  <data name="THONGBAO_KHONGCAPNHAT_THUKY" xml:space="preserve">
+    <value>Không cập nhật được thư ký / thẩm tra viên.</value>
+  </data>
+  <data name="WARNING_DINHKEMFILE_BANAN" xml:space="preserve">
+    <value>Vui lòng đính kèm File bản án trước khi thực hiện thao tác này.</value>
+  </data>
+  <data name="WARNING_DINHKEMFILE_QUYETDINH" xml:space="preserve">
+    <value>Vui lòng đính kèm File quyết định trước khi thực hiện thao tác này.</value>
+  </data>
+  <data name="WARNING_NHAP_ANPHI" xml:space="preserve">
+    <value>Vui lòng nhập thông tin Án phí/ Lệ phí trước khi thực hiện thao tác này.</value>
+  </data>
+  <data name="WARNING_TRUNG_SOQUYETDINH" xml:space="preserve">
+    <value>Trùng số quyết định.</value>
+  </data>
+  <data name="WARNING_DINHKEMFILE_QUYETDINHVABANAN" xml:space="preserve">
+    <value>Vui lòng thêm dữ liệu quyết định hoặc bản án trước khi thực hiện thao tác này.</value>
+  </data>
+  <data name="THONGBAO_KHONGLOCDUOCDULIEU" xml:space="preserve">
+    <value>Không lọc được dữ liệu.</value>
+  </data>
+  <data name="THONGBAO_LOCDULIEUTHANHCONG" xml:space="preserve">
+    <value>Lọc dữ liệu thành công.</value>
+  </data>
+  <data name="THONGBAO_KHONGTHANHCONG" xml:space="preserve">
+    <value>{0} không thành công.</value>
+  </data>
+  <data name="THONGBAO_TAIKHOANKHONGHOATDONG" xml:space="preserve">
+    <value>Tài khoản của bạn đang ở trạng thái "Không hoạt động", vui lòng liên hệ quản trị!</value>
+  </data>
+  <data name="HUYHOSO_THANHCONG" xml:space="preserve">
+    <value>Huỷ hồ sơ thành công.</value>
+  </data>
+  <data name="HUYHOSO_THATBAI" xml:space="preserve">
+    <value>Huỷ hồ sơ thất bại.</value>
+  </data>
+  <data name="SUA_HUYHOSO_THANHCONG" xml:space="preserve">
+    <value>Sửa huỷ hồ sơ thành công.</value>
+  </data>
+  <data name="SUA_HUYHOSO_THATBAI" xml:space="preserve">
+    <value>Sửa huỷ hồ sơ thất bại.</value>
+  </data>
+  <data name="XACNHANHUYHOSO" xml:space="preserve">
+    <value>Hồ sơ bị huỷ không thể khôi phục, bạn  có chắc chắn muốn huỷ hồ sơ [ {0} ]?</value>
+  </data>
+  <data name="MANVDATONTAI" xml:space="preserve">
+    <value>Mã nhân viên {0} đã tồn tại. Vui lòng nhập mã khác.</value>
+  </data>
+</root>

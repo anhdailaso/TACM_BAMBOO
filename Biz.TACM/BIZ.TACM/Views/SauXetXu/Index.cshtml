@@ -1,0 +1,287 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.TACM.Infrastructure.Extensions
+@using Biz.TACM.Models.Model
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Enums
+@model Biz.Lib.TACM.NhanDon.Model.HoSoVuAnModel
+
+@*@{
+        ViewBag.TitleGiaiDoan = ViewText.TITLE_GIAIDOAN_PHUCTHAM;
+    }*@
+
+@{
+    ViewBag.Title = ViewText.TITLE_CONGDOAN_SAUXETXU;
+}
+
+@section Title
+{
+    @{ Html.RenderPartial("_PageTitlePartial");}
+}
+
+@section VerticalMenu
+{
+    @{ Html.RenderPartial("_VerticalMenuPartial");}
+}
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var giaiDoan = anSessionModel.GiaiDoanId;
+    var nhomAn = anSessionModel.MaNhomAn;
+    var roleCongDoan = ViewBag.ActiveCongDoan == 5 || ViewBag.ActiveCongDoan == -1 ? 1 : -1;
+}
+
+<input type="hidden" id="hoSoVuAnID" value="@Model.HoSoVuAnID" />
+<input type="hidden" id="roleGiaiDoan" value="@ViewBag.RoleGiaiDoan" />
+<input type="hidden" id="roleCongDoan" value="@roleCongDoan" />
+<input type="hidden" id="loaiQuanHe" value="@Model.LoaiQuanHe" />
+<input type="hidden" id="nhomAn" value="@Model.NhomAn" />
+<input type="hidden" id="toaAn" value="@Model.ToaAnID" />
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col-6">
+                <h3 class="text-uppercase mb-4">@ViewText.TITLE_CONGDOAN_SAUXETXU</h3>
+            </div>
+            <div class="col-6 text-right">
+                <div class="d-inline-block mr-3">
+                    @if ((int)ViewBag.ActiveCongDoan != CongDoan.NhanDon.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanPrev" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-left" aria-hidden="true"></i></span></a>
+                    }
+
+                    <a id="btnChuyenCongDoan" href="#" data-toggle="modal" data-target="#modalChuyenCongDoan" class="remove-outline"><span class="label-cell-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)">@Html.GetCongDoanHoSoAsString((int)ViewBag.ActiveCongDoan, nhomAn, giaiDoan) &nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+                    @if ((int)ViewBag.ActiveCongDoan != CongDoan.LuuKho.GetHashCode())
+                    {
+                        <a id="btnChuyenCongDoanNext" href="#"><span class="next-prev-state @Html.GetColorStateAsString((int) ViewBag.ActiveCongDoan)"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></a>
+
+                    }
+                </div>
+                <div class="label-cell">
+                    @Html.Raw(string.Format(ViewText.HOSOVUAN_NUMBER, Model.MaHoSo, Model.SoHoSo))
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav tabs -->
+        @if (nhomAn.Equals(Setting.MANHOMAN_APDUNG_BPXLHC))
+        {
+            <ul class="nav nav-tabs nav-tabs-sau-xet-xu-sticky" role="tablist">
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#chuyen-ho-so" role="tab">@ViewText.LABEL_CHUYENHOSO</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#khang-cao" role="tab">@ViewText.LABEL_KHIEUNAI_KIENNGHI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#khang-nghi" role="tab">@ViewText.LABEL_KHANGNGHI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#chuyen-ho-so" role="tab">@ViewText.LABEL_CHUYENHOSO</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#luu-kho" role="tab">@ViewText.LABEL_LUUKHO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#mau-in" role="tab">@ViewText.LABEL_MAUIN</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                @if (giaiDoan == GiaiDoan.PhucTham.GetHashCode())
+                {
+                    <div class="tab-pane fade active show" id="chuyen-ho-so" role="tabpanel">
+                        <div id="chuyen-ho-so-container">
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="tab-pane fade active show" id="khang-cao" role="tabpanel">
+                        <div id="khang-cao-container">
+                            @{ Html.RenderPartial("KhangCao/_KhangCao", (int)Model.HoSoVuAnID);}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="khang-nghi" role="tabpanel">
+                        <div id="khang-nghi-container">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="chuyen-ho-so" role="tabpanel">
+                        <div id="chuyen-ho-so-container">
+                        </div>
+                    </div>
+                }
+                <div class="tab-pane fade" id="luu-kho" role="tabpanel">
+                    <div id="luu-kho-container">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="mau-in" role="tabpanel">
+                    <div id="mau-in-container">
+                        @Html.Partial("MauIn/_MauIn")
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <ul class="nav nav-tabs nav-tabs-sau-xet-xu-sticky" role="tablist">
+                <li class="nav-item">
+                    <a id="tabPhatHanhQuyetDinhBanAn" class="nav-link active" data-toggle="tab" href="#phat-hanh-ban-an" role="tab">@ViewText.TAB_TITLE_PHATHANHBANAN</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tabSuaChuaQuyetDinhBanAn" class="nav-link" data-toggle="tab" href="#sua-chua-ban-an" role="tab">@ViewText.TAB_TITLE_SUACHUABANAN</a>
+                </li>
+                @if (giaiDoan == GiaiDoan.SoTham.GetHashCode())
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#khang-cao" role="tab">@ViewText.LABEL_KHANGCAO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#khang-nghi" role="tab">@ViewText.LABEL_KHANGNGHI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#khang-cao-qua-han" role="tab">@ViewText.LABEL_KHANGCAO_KHANGNGHI_QUAHAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tam-ung-an-phi-le-phi" role="tab" id="tam-ung-an-phi-tab-title">@ViewText.LABEL_TAMUNG_ANPHI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab_content_tra_lai_don" role="tab">@ViewText.LABEL_TRALAIDON_KHANGCAO</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#chuyen-ho-so" role="tab">@ViewText.LABEL_CHUYENHOSO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#luu-kho" role="tab">@ViewText.LABEL_LUUKHO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#mau-in" role="tab">@ViewText.LABEL_MAUIN</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="phat-hanh-ban-an" role="tabpanel">
+                    <div id="phat-hanh-ban-an-container">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="sua-chua-ban-an" role="tabpanel">
+                    <div id="sua-chua-ban-an-container">
+                    </div>
+                </div>
+                @if (giaiDoan == GiaiDoan.SoTham.GetHashCode())
+                {
+                    <div class="tab-pane fade" id="khang-cao" role="tabpanel">
+                        <div id="khang-cao-container">
+                            @{ Html.RenderPartial("KhangCao/_KhangCao", (int)Model.HoSoVuAnID); }
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="khang-nghi" role="tabpanel">
+                        <div id="khang-nghi-container">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="khang-cao-qua-han" role="tabpanel">
+                        <div id="khang-cao-qua-han-container">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tam-ung-an-phi-le-phi" role="tabpanel">
+                        <div id="tam-ung-an-phi-le-phi-container">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab_content_tra_lai_don" role="tabpanel">
+                        @Html.Partial("TraLaiDon/TabContentTraLaiDon")
+                    </div>
+                }
+                <div class="tab-pane fade" id="chuyen-ho-so" role="tabpanel">
+                    <div id="chuyen-ho-so-container">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="luu-kho" role="tabpanel">
+                    <div id="luu-kho-container">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="mau-in" role="tabpanel">
+                    <div id="mau-in-container">
+                        @Html.Partial("MauIn/_MauIn")
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<!-- Modal chuyen cong doan -->
+<div class="modal fade" id="modalChuyenCongDoan" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("ChuyenCongDoan", "NhanDon", FormMethod.Post, new { @id = "formChuyenCongDoan" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="HoSoVuAnID" value="@Model.HoSoVuAnID" />
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase">@ViewText.LABEL_CAPNHAT_CONGDOAN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>@ViewText.LABEL_CONGDOAN_CHUYENDEN</label>
+                                @Html.DropDownListFor(m => m.CongDoanHoSo, (SelectList)ViewBag.ddlTrangThai, new { @id = "selectChuyenCongDoan", @class = "custom-select w-100" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default text-uppercase pull-left" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+                    <button type="button" class="btn btn-danger text-uppercase pull-right" id="chuyen-cong-doan-btn">@ViewText.BUTTON_LUU</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal TamUngAnPhi custom -->
+<div class="modal fade" id="modalTamUngAnPhi" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-anphi-custom">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/SauXetXu")
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(".nav-tabs-sau-xet-xu-sticky").each(function () {
+                $(this).stickyTabs();
+            });
+        });
+
+        $(function () {
+            if ($("#loaiQuanHe").val() === "Yêu cầu") {
+                $("#tabPhatHanhQuyetDinhBanAn").html('@ViewText.TAB_TITLE_PHATHANHQUYETDINH');
+                $("#tabSuaChuaQuyetDinhBanAn").html('@ViewText.TAB_TITLE_SUACHUAQUYETDINH');
+                $("#tam-ung-an-phi-tab-title").html('@ViewText.TITLE_TAMUNGLEPHI');
+            }
+
+            if ($("#giaiDoanHoSo").val() == 2) {
+                //$('[href="#khang-cao"], [href="#khang-nghi"], [href="#khang-cao-qua-han"], [href="#tab_content_tra_lai_don"], [href="#tam-ung-an-phi-le-phi"]').hide();
+                $('#mau-in-so-61-btn').closest('div').hide();
+            }
+        });
+    </script>
+}

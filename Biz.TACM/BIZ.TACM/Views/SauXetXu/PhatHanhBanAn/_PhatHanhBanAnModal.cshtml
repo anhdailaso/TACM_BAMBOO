@@ -1,0 +1,97 @@
+﻿@model Biz.TACM.Models.ViewModel.SauXetXu.PhatHanhBanAn.ThongTinPhatHanhBanAnViewModel
+@using Biz.Lib.TACM.Resources.Resources
+
+<div class="modal-header">
+    <h5 id="titlePhatHanhQuyetDinhBanAn" class="modal-title text-uppercase">@ViewText.TITLE_MODAL_PHATHANHBANAN_QUYETDINH</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@using (Html.BeginForm("PhatHanhBanAn", "SauXetXu", FormMethod.Post, new { id = "phat-hanh-ban-an-form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-8">
+                <label>@ViewText.LABEL_THOIHANPHATHANH<span class="input-required">*</span></label>
+            </div>
+
+            <div class="col-4">
+                <div class="input-group date" id="ngay-phat-hanh-ban-an-modal-dtp">
+                    <input type="text" class="form-control" name="ngay-phat-hanh-ban-an-modal-dtp" value="@ViewBag.ngayphathanh" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <small class="form-text text-danger"><span for="ngay-phat-hanh-ban-an-modal-dtp"></span></small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-8">
+                <label>@ViewText.LABEL_HIEULUC</label>
+            </div>
+
+            <div class="col-4">
+                <div class="input-group date" id="hieu-luc-phat-hanh-modal-dtp">
+                    <input id="hieuluc-edit" type="text" class="form-control" name="hieu-luc-phat-hanh-modal-dtp" value="@ViewBag.HieuLuc" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="grid" style="width: 100%">
+                <div class="container-fluid">
+                    <p id="lblDSNhanPhatHanhEdit">
+                        @ViewText.LABEL_DUONGSU_NHANPHATHANH<span class="input-required">*</span>
+                    </p>
+                </div>
+                <table class="table table-hover table-bordered table-custom" id="duong-su-phat-hanh-ban-an-modal-table" cellspacing="0" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="duong-su-phat-hanh-ban-an-modal-select-all-checkbox">
+                            </td>
+                            <td class="text-capitalize">@ViewText.TABLE_HOTEN_HOAC_COQUAN</td>
+                            <td class="text-capitalize">@ViewText.TABLE_TUCACHTHAMGIATOTUNG</td>
+                            <td id="thNgayNhanPhatHanhEdit" class="text-capitalize">@ViewText.LABEL_NGAYNHANPHATHANH</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-12">
+                <small class="form-text text-danger"><span for="duong-su-phat-hanh-ban-an-modal-table"></span></small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">@ViewText.BUTTON_HUY</button>
+        <button type="button" class="btn btn-danger text-uppercase" id="phat-hanh-ban-an-btn">@ViewText.BUTTON_LUU</button>
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        PhatHanhBanAnModalModule.init();
+
+        $(function () {
+            if ($("#nhomAn").val() !== "HC") {
+                if ($("#nhomAn").val() === "HS") {
+                    $("#titlePhatHanhQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_PHATHANHBANAN_QUYETDINH');
+                } else {
+                    if ($("#loaiQuanHe").val() === "Yêu cầu") {
+                        $("#titlePhatHanhQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_PHATHANHQUYETDINH');
+                        $("#lblDSNhanPhatHanhEdit").html('@ViewText.LABEL_DUONGSU_NHANPHATHANH_QUYETDINH');
+                        $("#thNgayNhanPhatHanhEdit").html('@ViewText.LABEL_NGAYNHANPHATHANH_QUYETDINH');
+                    }
+                    else {
+                        $("#titlePhatHanhQuyetDinhBanAn").html('@ViewText.TITLE_MODAL_PHATHANHBANAN');
+                        $("#lblDSNhanPhatHanhEdit").html('@ViewText.LABEL_DUONGSU_NHANPHATHANH_BANAN');
+                        $("#thNgayNhanPhatHanhEdit").html('@ViewText.LABEL_NGAYNHANPHATHANH_BANAN');
+                    }
+                }               
+            }              
+        });
+    });
+</script>

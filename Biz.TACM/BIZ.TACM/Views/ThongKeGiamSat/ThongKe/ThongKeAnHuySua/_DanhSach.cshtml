@@ -1,0 +1,29 @@
+﻿@using Biz.Lib.TACM.Resources.Resources
+
+<input id="loaiThongKe" type="hidden" value="2" />
+<input id="ListHoSoHuyID" type="hidden" value="@ViewBag.ListHoSoHuyID" />
+<input id="ListHoSoSuaID" type="hidden" value="@ViewBag.ListHoSoSuaID" />
+<div class="container-fluid row">
+    <div id="danh-sach-thong-ke-huy-sua-container" style="width: 100%">
+        <table class="table table-hover table-bordered table-custom" cellspacing="0" id="danh-sach-thong-ke-huy-sua-table" style="width: 100%">
+            <thead class="thead-default">
+                <tr>
+                    <td>@ViewText.TABLE_STT</td>
+                    <td>@ViewText.TABLE_MAHOSO</td>
+                    <td>@ViewText.TABLE_TENVUAN</td>
+                    <td style="white-space:normal">@ViewText.TABLE_THAMPHAN_BAQD_BIHUYSUA</td>
+                    <td style="white-space:normal">@ViewText.TABLE_SO_BAQD_BIHUYSUA</td>
+                    <td style="white-space:normal">@ViewText.TABLE_THAMPHAN_COBAQD_HUYSUA</td>
+                    <td style="white-space:normal">@ViewText.TABLE_SO_BAQD_HUYSUA</td>
+                    <td>@ViewText.TABLE_HOATDONG</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        ThongKeHuySuaDanhSachModule.init();
+    });
+</script>

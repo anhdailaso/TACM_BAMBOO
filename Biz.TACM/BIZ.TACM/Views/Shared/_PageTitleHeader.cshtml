@@ -1,0 +1,51 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@using Biz.TACM.Enums
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var toaAn = anSessionModel.ToaAnId;
+}
+
+<a class="navbar-brand text-uppercase" href="@Url.Action("Index", "Home")">
+    <img src="@Url.Content("~/Content/Images/tacm/logo-small.png")" alt=""> 
+    @switch (toaAn)
+    {
+        case (int)ToaAn.TinhCaMau:
+            @ViewText.TITLE_HEADER_TOAAN_TINHCAMAU
+            break;
+        case (int)ToaAn.ThanhPhoCaMau:
+            @ViewText.TITLE_HEADER_TOAAN_THANHPHOCAMAU
+            break;
+        case (int)ToaAn.HuyenCaiNuoc:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENCAINUOC
+            break;
+        case (int)ToaAn.HuyenDamDoi:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENDAMDOI
+            break;
+        case (int)ToaAn.HuyenNamCan:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENNAMCAN
+            break;
+        case (int)ToaAn.HuyenNgocHien:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENNGOCHIEN
+            break;
+        case (int)ToaAn.HuyenPhuTan:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENPHUTAN
+            break;
+        case (int)ToaAn.HuyenThoiBinh:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENTHOIBINH
+            break;
+        case (int)ToaAn.HuyenTranVanThoi:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENTRANVANTHOI
+            break;
+        case (int)ToaAn.HuyenUMinh:
+            @ViewText.TITLE_HEADER_TOAAN_HUYENUMINH
+            break;
+        default:
+            @ViewText.TITLE_HEADER_TOAAN_TINHCAMAU
+            break;
+    }
+    
+</a>
+

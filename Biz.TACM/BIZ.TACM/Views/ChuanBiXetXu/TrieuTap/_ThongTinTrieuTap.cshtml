@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using Biz.Lib.TACM.Resources.Resources
+@model Biz.Lib.TACM.XetXu.Model.TrieuTapModel
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            <button id="btnSuaTrieuTap" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-toggle="modal" data-target="#modelXetXuTrieuTap"><i class="fa fa-pencil-square-o"></i></button>
+            @Html.DropDownListFor(m => m.TrieuTapID, (SelectList)ViewBag.ddlNgayTao, null, new { @id = "selectNgayTaoTrieuTap", @class = "custom-select mb-2" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between"><span class="ngay-gio-mo-phien-toa-lbl">@ViewText.LABEL_NGAYGIO_MOPHIENTOA</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss dd/MM/yyyy}", @Model.ThoiGianMoPhienToa)</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_DIADIEM</span><span class="font-weight-bold">@Model.DiaDiemMoPhienToa</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_LANTHU</span><span class="font-weight-bold">@Model.LanThu</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOIKY</span><span class="font-weight-bold">@Model.NhanVienNguoiKy.HoTenVaMaNV</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGUOITAO</span><span class="font-weight-bold">@Model.NguoiTao</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span>@ViewText.LABEL_NGAYTAO</span><span class="font-weight-bold">@string.Format("{0:HH:mm:ss, dd/MM/yyyy}", @Model.NgayTao)</span></li>
+            </ul>
+        </div>
+        @*<div class="offset-1"></div>*@
+        <div class="col-6">
+            <div class="card" style="min-height: 216px">
+                <div class="card-block">
+                    <div class="mb-3 border-bottom-custom">
+                        <p><strong>@ViewText.LABEL_DUONGSU</strong></p>
+                    </div>
+                    <div>
+                        <ul class="list-unstyled" style="margin-bottom: 0;">
+                            @foreach (var item in ViewBag.listDuongSu)
+                            {
+                                <li><label><input class="align-middle" @(item.DuongSuID > 0 ? "checked" : "") value="@item.DuongSuID" type="checkbox" disabled /> @item.HoVaTen</label></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemTrieuTap" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-toggle="modal" data-target="#modelXetXuTrieuTap"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(function () {
+        if ($("#loaiQuanHe").val() === "Yêu cầu" || $("#nhomAn").val() === "AD") {
+            $(".ngay-gio-mo-phien-toa-lbl").html("@ViewText.LABEL_NGAYGIO_MOPHIENHOP");
+        }             
+    });
+</script>

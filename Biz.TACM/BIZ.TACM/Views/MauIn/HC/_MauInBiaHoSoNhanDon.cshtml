@@ -1,0 +1,244 @@
+﻿@model Biz.TACM.Models.ViewModel.MauIn.MauInBiaHoSoNhanDonViewModel
+
+<table border="0" cellspacing="0" style="font-size: 14pt; font-family: 'Times New Roman'; margin: 56.7pt 42.525pt 0 85.05pt;">
+    <tr valign="top">
+        <td align="left" width="35%">
+            <table cellspacing="0">
+                <tr>
+                    <td align="left" colspan="3" style="font-size: 12pt;">
+                        <p style="text-align: center; margin: 0 0 10px 0;"><strong>TÒA ÁN NHÂN DÂN</strong></p>
+                        @if (Model.TenToaAn.IndexOf("huyện") != -1 || Model.TenToaAn.IndexOf("thành phố") != -1)
+                        {
+                            <p style="text-align: center; margin: 0 0 0 0;"><strong>@Model.TenToaAn.ToUpper()</strong></p>
+                        }
+                        <p style="text-align: center; margin:10px 0 0 0;"><strong>TỈNH CÀ MAU</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="70px" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+        <td width="5%"></td>
+        <td align="right" width="55%">
+            <table cellspacing="0">
+                <tr style="text-transform: uppercase;">
+                    <td colspan="3" style="text-align: center;">
+                        <p style="margin: 0 0 10px 0;font-size: 12pt"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
+                        <p style="margin: 0 0 0 0;font-size:14pt"><strong>Độc lập - Tự do - Hạnh phúc</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="60%" height="3px" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: black"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr style="height: 35px;"><td></td></tr>
+    <tr>
+        <td align="center" colspan="3" style="font-size:20pt">
+            
+                <p style="margin: 0 0 15px 0"><strong>HỒ SƠ KHỞI KIỆN VỤ ÁN HÀNH CHÍNH</strong></p>
+           
+        </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr @*style="font-size:12pt"*@>
+        <td colspan="3">
+            <div>
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    <strong>KHIẾU KIỆN:</strong> @Model.QuanHePhapLuat
+                </p>
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    <strong>NGÀY NHẬN ĐƠN KHỞI KIỆN:</strong> Ngày @(Model.NgayNhanDon.Day < 10 ? "0" + Model.NgayNhanDon.Day.ToString() : Model.NgayNhanDon.Day.ToString()) tháng @(Model.NgayNhanDon.Month < 3 ? "0" + Model.NgayNhanDon.Month.ToString() : Model.NgayNhanDon.Month.ToString()) năm @Model.NgayNhanDon.Year.ToString().
+                </p>
+                <p style="margin: 0 0 10px 0; text-align: justify; text-indent: 28.35pt; line-height: 1.15em;">
+                    <strong>THẨM PHÁN GIẢI QUYẾT ĐƠN:</strong> @Model.ThamPhanChuToa
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <table border="1" cellspacing="0" style="font-size: 14pt; font-family: 'Times New Roman'; margin: 0 42.525pt 20px 85.05pt;">
+                <tr>
+                    
+                        <td colspan="2" width="50%" style="text-align: center; padding: 10px 0 10px 0;"><strong>NGƯỜI KHỞI KIỆN (ĐẠI DIỆN)</strong></td>
+                        <td width="50%" style="text-align: center; padding: 10px 0 10px 0;"><strong>NGƯỜI BỊ KIỆN (ĐẠI DIỆN)</strong></td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2" valign="top" style="padding: 10px 0 10px 0;">
+                        <ol>
+                            @if (Model.DanhSachNguyenDon.Any())
+                            {
+                                foreach (var item in Model.DanhSachNguyenDon)
+                                {
+                                    <li>
+                                        @if (item.DuongSuLa == "Cá nhân")
+                                        {
+                                            <p>
+                                                Họ và tên: @*@(item.GioiTinh == "Nam" ? "Ông " : "Bà ")*@@item.HoTenDuongSu
+                                            </p>
+                                            <br />
+                                            <p>
+                                                @(item.NgayThangNamSinh!=null && item.NgayThangNamSinh.Count()>4 ? "Sinh ngày: " : "Sinh năm: ")@(item.NgayThangNamSinh ?? "...............")
+                                            </p>
+                                            <br />
+                                        }
+                                        else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                        {
+                                            <p>
+                                                @item.TenCoQuanToChuc
+                                            </p>
+                                            <br />
+                                        }
+                                        <p style="text-align: justify;">
+                                            Địa chỉ: @if (item.NoiTamTru != null && !item.NoiTamTru.IsEmpty())
+                                            {
+                                                @item.NoiTamTru
+                                            }
+                                            else
+                                            {
+                                                @item.NoiDKHKTT
+                                            }
+                                        </p>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <p style="text-align: justify;">
+                                        Họ và tên: ....................................
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        Năm sinh: ....................................
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        Địa chỉ: ......................................................
+                                    </p>
+                                </li>
+                            }
+                        </ol>
+                    </td>
+                    <td valign="top" style="padding: 10px 0 10px 0;">
+                        <ol>
+                            @if (Model.DanhSachBiDon.Any())
+                            {
+                                foreach (var item in Model.DanhSachBiDon)
+                                {
+                                    <li>
+                                        @if (item.DuongSuLa == "Cá nhân")
+                                        {
+                                            <p>
+                                                Họ và tên: @*@(item.GioiTinh == "Nam" ? "Ông " : "Bà ")*@@item.HoTenDuongSu
+                                            </p>
+                                            <br />
+                                            <p>
+                                                @(item.NgayThangNamSinh!=null && item.NgayThangNamSinh.Count()>4 ? "Sinh ngày: " : "Sinh năm: ")@(item.NgayThangNamSinh ?? "...............")
+                                            </p>
+                                            <br />
+                                        }
+                                        else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                        {
+                                            <p>
+                                                @item.TenCoQuanToChuc
+                                            </p>
+                                            <br />
+                                        }
+                                        <p style="text-align: justify;">
+                                            Địa chỉ: @if (item.NoiTamTru != null && !item.NoiTamTru.IsEmpty())
+                                            {
+                                                @item.NoiTamTru
+                                            }
+                                            else
+                                            {
+                                                @item.NoiDKHKTT
+                                            }
+                                        </p>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <p style="text-align: justify;">
+                                        Họ và tên: ....................................
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        Năm sinh: ....................................
+                                    </p>
+                                    <p style="text-align: justify;">
+                                        Địa chỉ: ......................................................
+                                    </p>
+                                </li>
+                            }
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="3" style="padding: 10px 0 10px 0;">
+                            <p style="text-align: center; margin: 0 0 10px 0;"><strong>NGƯỜI CÓ QUYỀN LỢI, NGHĨA VỤ LIÊN QUAN</strong></p>
+                            <ol>
+                                @if (Model.DanhSachNguoiLienQuanTranhChap.Any())
+                                {
+                                    foreach (var item in Model.DanhSachNguoiLienQuanTranhChap)
+                                    {
+                                        <li>
+                                            @if (item.DuongSuLa == "Cá nhân")
+                                            {
+                                                <p>
+                                                    Họ và tên: @*@(item.GioiTinh == "Nam" ? "Ông " : "Bà ")*@@item.HoTenDuongSu
+                                                </p>
+                                                <br />
+                                                <p>
+                                                    @(item.NgayThangNamSinh!=null && item.NgayThangNamSinh.Count()>4 ? "Sinh ngày: " : "Sinh năm: ")@(item.NgayThangNamSinh ?? "...............")
+                                                </p>
+                                                <br />
+                                            }
+                                            else if (item.DuongSuLa == "Cơ quan, tổ chức")
+                                            {
+                                                <p>
+                                                    Tên cơ quan, tổ chức: @item.TenCoQuanToChuc
+                                                </p>
+                                                <br />
+                                            }
+                                            <p style="text-align: justify;">
+                                                Địa chỉ: @if (item.NoiTamTru != null && !item.NoiTamTru.IsEmpty())
+                                                {
+                                                    @item.NoiTamTru
+                                                }
+                                                else
+                                                {
+                                                    @item.NoiDKHKTT
+                                                }
+                                            </p>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li>
+                                        <p style="text-align: justify;">
+                                            Họ và tên: ....................................
+                                        </p>
+                                        <p style="text-align: justify;">
+                                            Năm sinh: ....................................
+                                        </p>
+                                        <p style="text-align: justify;">
+                                            Địa chỉ: ......................................................
+                                        </p>
+                                    </li>
+                                }
+                            </ol>
+                        </td>
+                    </tr>
+            </table>
+        </td>
+    </tr>
+</table>

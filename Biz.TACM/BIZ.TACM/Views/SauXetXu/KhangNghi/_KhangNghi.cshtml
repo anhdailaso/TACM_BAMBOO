@@ -1,0 +1,39 @@
+﻿@using Biz.Lib.Helpers
+@using Biz.Lib.TACM.Resources.Resources
+@using Biz.TACM.Models.Model
+@model Biz.TACM.Models.ViewModel.SauXetXu.KhangNghi.KhangNghiViewModel
+
+@{
+    var anSessionModel = Sessions.GetObject<AnSessionModel>("AnSessionObject") ?? new AnSessionModel();
+    var nhomAn = anSessionModel.MaNhomAn;
+}
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-12">
+            @Html.DropDownList("ngay-khang-nghi-dropdownlist", Model.DanhSachNgayKhangNghi, new { @class = "custom-select mb-2" })
+            <button id="btnSuaKhangNghi" class="btn btn-sm btn-outline-primary btn-custom-size float-right mt-2" data-trigger="modal" data-target="@(nhomAn.Equals(Setting.MANHOMAN_HINHSU) ? "#modalLarge" : "#modal")" data-url="@Url.Action("KhangNghiModal", "SauXetXu", new { id = Model.ThongTinKhangNghi.KhangNghiId, hoSoVuAnId = Model.ThongTinKhangNghi.HoSoVuAnId })"><i class="fa fa-pencil-square-o"></i></button>
+        </div>
+    </div>
+    <div class="row" id="thong-tin-khang-nghi-container">
+        @{ Html.RenderPartial("KhangNghi/_ThongTinKhangNghi", Model.ThongTinKhangNghi); }
+    </div>
+}
+else
+{
+    <div class="container-fluid row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <button id="btnThemKhangNghi" class="btn btn-sm btn-primary float-right mt-2 mb-2" data-trigger="modal" data-target="@(nhomAn.Equals(Setting.MANHOMAN_HINHSU) ? "#modalLarge" : "#modal")" data-url="@Url.Action("KhangNghiModal", "SauXetXu", new { id=0, ViewBag.HoSoVuAnID})"><i class="fa fa-plus btn-icon-size"></i></button>
+                </div>
+            </div>
+            <div class="mb-1 text-center empty-data">
+                <blockquote>
+                    <strong>@NotifyMessage.CHUACO_DULIEU</strong>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
